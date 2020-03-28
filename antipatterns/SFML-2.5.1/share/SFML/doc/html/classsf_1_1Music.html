@@ -99,7 +99,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a288ef6f552a136b0e56952dcada3d672"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the total duration of the music.  <a href="#a288ef6f552a136b0e56952dcada3d672">More...</a><br /></td></tr>
 <tr class="separator:a288ef6f552a136b0e56952dcada3d672"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae3451cad5c16ee6a6e124e62ed61361"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsf_1_1Music_1_1Span.html">TimeSpan</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsf_1_1Music.html#aae3451cad5c16ee6a6e124e62ed61361">getLoopPoints</a> () const</td></tr>
-<tr class="memdesc:aae3451cad5c16ee6a6e124e62ed61361"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the positions of the of the sound's looping sequence.  <a href="#aae3451cad5c16ee6a6e124e62ed61361">More...</a><br /></td></tr>
+<tr class="memdesc:aae3451cad5c16ee6a6e124e62ed61361"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the _mouse_positions of the of the sound's looping sequence.  <a href="#aae3451cad5c16ee6a6e124e62ed61361">More...</a><br /></td></tr>
 <tr class="separator:aae3451cad5c16ee6a6e124e62ed61361"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7b339f0a957dfad045f3f28083a015e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsf_1_1Music.html#ae7b339f0a957dfad045f3f28083a015e">setLoopPoints</a> (<a class="el" href="structsf_1_1Music_1_1Span.html">TimeSpan</a> timePoints)</td></tr>
 <tr class="memdesc:ae7b339f0a957dfad045f3f28083a015e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the beginning and end of the sound's looping sequence using <a class="el" href="classsf_1_1Time.html" title="Represents a time value. ">sf::Time</a>.  <a href="#ae7b339f0a957dfad045f3f28083a015e">More...</a><br /></td></tr>
@@ -435,9 +435,9 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the positions of the of the sound's looping sequence. </p>
+<p>Get the _mouse_positions of the of the sound's looping sequence. </p>
 <dl class="section return"><dt>Returns</dt><dd>Loop <a class="el" href="classsf_1_1Time.html" title="Represents a time value. ">Time</a> position class.</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>Since <a class="el" href="classsf_1_1Music.html#ae7b339f0a957dfad045f3f28083a015e" title="Sets the beginning and end of the sound&#39;s looping sequence using sf::Time. ">setLoopPoints()</a> performs some adjustments on the provided values and rounds them to internal samples, a call to <a class="el" href="classsf_1_1Music.html#aae3451cad5c16ee6a6e124e62ed61361" title="Get the positions of the of the sound&#39;s looping sequence. ">getLoopPoints()</a> is not guaranteed to return the same times passed into a previous call to <a class="el" href="classsf_1_1Music.html#ae7b339f0a957dfad045f3f28083a015e" title="Sets the beginning and end of the sound&#39;s looping sequence using sf::Time. ">setLoopPoints()</a>. However, it is guaranteed to return times that will map to the valid internal samples of this <a class="el" href="classsf_1_1Music.html" title="Streamed music played from an audio file. ">Music</a> if they are later passed to <a class="el" href="classsf_1_1Music.html#ae7b339f0a957dfad045f3f28083a015e" title="Sets the beginning and end of the sound&#39;s looping sequence using sf::Time. ">setLoopPoints()</a>.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Since <a class="el" href="classsf_1_1Music.html#ae7b339f0a957dfad045f3f28083a015e" title="Sets the beginning and end of the sound&#39;s looping sequence using sf::Time. ">setLoopPoints()</a> performs some adjustments on the provided values and rounds them to internal samples, a call to <a class="el" href="classsf_1_1Music.html#aae3451cad5c16ee6a6e124e62ed61361" title="Get the _mouse_positions of the of the sound&#39;s looping sequence. ">getLoopPoints()</a> is not guaranteed to return the same times passed into a previous call to <a class="el" href="classsf_1_1Music.html#ae7b339f0a957dfad045f3f28083a015e" title="Sets the beginning and end of the sound&#39;s looping sequence using sf::Time. ">setLoopPoints()</a>. However, it is guaranteed to return times that will map to the valid internal samples of this <a class="el" href="classsf_1_1Music.html" title="Streamed music played from an audio file. ">Music</a> if they are later passed to <a class="el" href="classsf_1_1Music.html#ae7b339f0a957dfad045f3f28083a015e" title="Sets the beginning and end of the sound&#39;s looping sequence using sf::Time. ">setLoopPoints()</a>.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classsf_1_1Music.html#ae7b339f0a957dfad045f3f28083a015e" title="Sets the beginning and end of the sound&#39;s looping sequence using sf::Time. ">setLoopPoints</a> </dd></dl>
 
 </div>
@@ -1078,7 +1078,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets the beginning and end of the sound's looping sequence using <a class="el" href="classsf_1_1Time.html" title="Represents a time value. ">sf::Time</a>. </p>
-<p>Loop points allow one to specify a pair of positions such that, when the music is enabled for looping, it will seamlessly seek to the beginning whenever it encounters the end. Valid ranges for timePoints.offset and timePoints.length are [0, Dur) and (0, Dur-offset] respectively, where Dur is the value returned by <a class="el" href="classsf_1_1Music.html#a288ef6f552a136b0e56952dcada3d672" title="Get the total duration of the music. ">getDuration()</a>. Note that the EOF "loop point" from the end to the beginning of the stream is still honored, in case the caller seeks to a point after the end of the loop range. This function can be safely called at any point after a stream is opened, and will be applied to a playing sound without affecting the current playing offset.</p>
+<p>Loop points allow one to specify a pair of _mouse_positions such that, when the music is enabled for looping, it will seamlessly seek to the beginning whenever it encounters the end. Valid ranges for timePoints.offset and timePoints.length are [0, Dur) and (0, Dur-offset] respectively, where Dur is the value returned by <a class="el" href="classsf_1_1Music.html#a288ef6f552a136b0e56952dcada3d672" title="Get the total duration of the music. ">getDuration()</a>. Note that the EOF "loop point" from the end to the beginning of the stream is still honored, in case the caller seeks to a point after the end of the loop range. This function can be safely called at any point after a stream is opened, and will be applied to a playing sound without affecting the current playing offset.</p>
 <dl class="section warning"><dt>Warning</dt><dd>Setting the loop points while the stream's status is Paused will set its status to Stopped. The playing offset will be unaffected.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1086,7 +1086,7 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classsf_1_1Music.html#aae3451cad5c16ee6a6e124e62ed61361" title="Get the positions of the of the sound&#39;s looping sequence. ">getLoopPoints</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classsf_1_1Music.html#aae3451cad5c16ee6a6e124e62ed61361" title="Get the _mouse_positions of the of the sound&#39;s looping sequence. ">getLoopPoints</a> </dd></dl>
 
 </div>
 </div>

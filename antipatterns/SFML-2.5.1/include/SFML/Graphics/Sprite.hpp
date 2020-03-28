@@ -201,7 +201,7 @@ private:
     virtual void draw(RenderTarget& target, RenderStates states) const;
 
     ////////////////////////////////////////////////////////////
-    /// \brief Update the vertices' positions
+    /// \brief Update the vertices' _mouse_positions
     ///
     ////////////////////////////////////////////////////////////
     void updatePositions();

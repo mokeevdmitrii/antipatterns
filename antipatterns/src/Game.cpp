@@ -57,7 +57,7 @@ void Game::UpdateEvents() {
 
 void Game::UpdateTime() {
     /* get how much time elapsed while drawing one frame */
-    _time_elapsed = clock.Reset();
+    _time_elapsed = clock.restart().asSeconds();
 }
 
 void Game::Render() {
@@ -82,18 +82,21 @@ void Game::InitWindow() {
 
     std::ifstream in("../Config/window_init.txt");
     std::string game_title{};
+    unsigned int max_frame_limit = 60;
     sf::VideoMode window_bounds(800, 600);
     bool vertical_sync_enabled{};
 
     if (in.is_open()) {
         std::getline(in, game_title);
         in >> window_bounds.width >> window_bounds.height;
+        in >> max_frame_limit;
         in >> vertical_sync_enabled;
     }
 
     in.close();
 
     _window = std::make_shared<sf::RenderWindow>(window_bounds, game_title);
+    _window->setFramerateLimit(max_frame_limit);
     _window->setVerticalSyncEnabled(vertical_sync_enabled);
 }
 
@@ -110,7 +113,7 @@ void Game::InitKeys() {
 }
 
 void Game::InitStates() {
-    _states.push(std::make_shared<GameState>(_window, std::make_shared<std::unordered_map<std::string, int>>(_supported_keys)));
+    _states.push(std::make_shared<MainMenuState>(_window, std::make_shared<std::unordered_map<std::string, int>>(_supported_keys)));
 }
 
 

@@ -23,6 +23,7 @@ void GameState::EndState() {
 }
 
 void GameState::Update(const float time_elapsed) {
+    UpdateMousePositions();
     UpdateInput(time_elapsed);
     _player.Update(time_elapsed);
 }

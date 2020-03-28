@@ -6,6 +6,8 @@
 #define ANTIPATTERNS_GAMEOBJECT_H
 
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 #include <fstream>
 #include <sstream>
 #include <vector>
@@ -14,6 +16,7 @@
 #include <map>
 #include <unordered_map>
 #include <string>
+#include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>

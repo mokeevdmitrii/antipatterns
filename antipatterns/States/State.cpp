@@ -27,3 +27,12 @@ bool State::IsQuitting() const {
     return _to_quit;
 }
 
+void State::UpdateMousePositions() {
+    _mouse_positions.screen = sf::Mouse::getPosition();
+    _mouse_positions.window = sf::Mouse::getPosition(*_window);
+    _mouse_positions.view = _window->mapPixelToCoords(sf::Mouse::getPosition(*_window));
+}
+
+
+
+

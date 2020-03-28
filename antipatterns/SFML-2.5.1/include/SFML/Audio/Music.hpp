@@ -172,7 +172,7 @@ public:
     Time getDuration() const;
 
     ////////////////////////////////////////////////////////////
-    /// \brief Get the positions of the of the sound's looping sequence
+    /// \brief Get the _mouse_positions of the of the sound's looping sequence
     ///
     /// \return Loop Time position class.
     ///
@@ -191,7 +191,7 @@ public:
     ////////////////////////////////////////////////////////////
     /// \brief Sets the beginning and end of the sound's looping sequence using sf::Time
     ///
-    /// Loop points allow one to specify a pair of positions such that, when the music
+    /// Loop points allow one to specify a pair of _mouse_positions such that, when the music
     /// is enabled for looping, it will seamlessly seek to the beginning whenever it
     /// encounters the end. Valid ranges for timePoints.offset and timePoints.length are
     /// [0, Dur) and (0, Dur-offset] respectively, where Dur is the value returned by getDuration().

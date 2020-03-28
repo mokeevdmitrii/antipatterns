@@ -18,5 +18,5 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(antipatterns src/main.cpp src/Game.cpp src/Game.h src/Clock.cpp src/Clock.h States/State.cpp States/State.h States/GameState.cpp States/GameState.h src/GameObject.cpp src/GameObject.h)
+add_executable(antipatterns src/main.cpp src/Game.cpp src/Game.h States/State.cpp States/State.h States/GameState.cpp States/GameState.h src/GameObject.cpp src/GameObject.h States/MainMenuState.cpp States/MainMenuState.h Resources/Button.cpp Resources/Button.h)
 target_link_libraries (antipatterns sfml-graphics sfml-window sfml-audio sfml-system)

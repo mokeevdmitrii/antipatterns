@@ -88,22 +88,28 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.cpp">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.h">
 			<Option target="antipatterns"/>
 		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/States/State.cpp">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h">
-			<Option target="antipatterns"/>
-		</Unit>
-		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Clock.cpp">
-			<Option target="antipatterns"/>
-		</Unit>
-		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Clock.h">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.cpp">

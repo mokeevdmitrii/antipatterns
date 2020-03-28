@@ -123,6 +123,33 @@ antipatterns/fast:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/build
 .PHONY : antipatterns/fast
 
+Resources/Button.o: Resources/Button.cpp.o
+
+.PHONY : Resources/Button.o
+
+# target to build an object file
+Resources/Button.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Button.cpp.o
+.PHONY : Resources/Button.cpp.o
+
+Resources/Button.i: Resources/Button.cpp.i
+
+.PHONY : Resources/Button.i
+
+# target to preprocess a source file
+Resources/Button.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Button.cpp.i
+.PHONY : Resources/Button.cpp.i
+
+Resources/Button.s: Resources/Button.cpp.s
+
+.PHONY : Resources/Button.s
+
+# target to generate assembly for a file
+Resources/Button.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Button.cpp.s
+.PHONY : Resources/Button.cpp.s
+
 States/GameState.o: States/GameState.cpp.o
 
 .PHONY : States/GameState.o
@@ -150,6 +177,33 @@ States/GameState.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/GameState.cpp.s
 .PHONY : States/GameState.cpp.s
 
+States/MainMenuState.o: States/MainMenuState.cpp.o
+
+.PHONY : States/MainMenuState.o
+
+# target to build an object file
+States/MainMenuState.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o
+.PHONY : States/MainMenuState.cpp.o
+
+States/MainMenuState.i: States/MainMenuState.cpp.i
+
+.PHONY : States/MainMenuState.i
+
+# target to preprocess a source file
+States/MainMenuState.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.i
+.PHONY : States/MainMenuState.cpp.i
+
+States/MainMenuState.s: States/MainMenuState.cpp.s
+
+.PHONY : States/MainMenuState.s
+
+# target to generate assembly for a file
+States/MainMenuState.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.s
+.PHONY : States/MainMenuState.cpp.s
+
 States/State.o: States/State.cpp.o
 
 .PHONY : States/State.o
@@ -176,33 +230,6 @@ States/State.s: States/State.cpp.s
 States/State.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/State.cpp.s
 .PHONY : States/State.cpp.s
-
-src/Clock.o: src/Clock.cpp.o
-
-.PHONY : src/Clock.o
-
-# target to build an object file
-src/Clock.cpp.o:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Clock.cpp.o
-.PHONY : src/Clock.cpp.o
-
-src/Clock.i: src/Clock.cpp.i
-
-.PHONY : src/Clock.i
-
-# target to preprocess a source file
-src/Clock.cpp.i:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Clock.cpp.i
-.PHONY : src/Clock.cpp.i
-
-src/Clock.s: src/Clock.cpp.s
-
-.PHONY : src/Clock.s
-
-# target to generate assembly for a file
-src/Clock.cpp.s:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Clock.cpp.s
-.PHONY : src/Clock.cpp.s
 
 src/Game.o: src/Game.cpp.o
 
@@ -294,15 +321,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... antipatterns"
 	@echo "... edit_cache"
+	@echo "... Resources/Button.o"
+	@echo "... Resources/Button.i"
+	@echo "... Resources/Button.s"
 	@echo "... States/GameState.o"
 	@echo "... States/GameState.i"
 	@echo "... States/GameState.s"
+	@echo "... States/MainMenuState.o"
+	@echo "... States/MainMenuState.i"
+	@echo "... States/MainMenuState.s"
 	@echo "... States/State.o"
 	@echo "... States/State.i"
 	@echo "... States/State.s"
-	@echo "... src/Clock.o"
-	@echo "... src/Clock.i"
-	@echo "... src/Clock.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"

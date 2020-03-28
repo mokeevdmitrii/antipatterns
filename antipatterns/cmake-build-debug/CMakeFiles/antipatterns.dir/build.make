@@ -83,22 +83,9 @@ CMakeFiles/antipatterns.dir/src/Game.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/src/Game.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.cpp -o CMakeFiles/antipatterns.dir/src/Game.cpp.s
 
-CMakeFiles/antipatterns.dir/src/Clock.cpp.o: CMakeFiles/antipatterns.dir/flags.make
-CMakeFiles/antipatterns.dir/src/Clock.cpp.o: ../src/Clock.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/antipatterns.dir/src/Clock.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/src/Clock.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/src/Clock.cpp
-
-CMakeFiles/antipatterns.dir/src/Clock.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/src/Clock.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/src/Clock.cpp > CMakeFiles/antipatterns.dir/src/Clock.cpp.i
-
-CMakeFiles/antipatterns.dir/src/Clock.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/src/Clock.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/src/Clock.cpp -o CMakeFiles/antipatterns.dir/src/Clock.cpp.s
-
 CMakeFiles/antipatterns.dir/States/State.cpp.o: CMakeFiles/antipatterns.dir/flags.make
 CMakeFiles/antipatterns.dir/States/State.cpp.o: ../States/State.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/antipatterns.dir/States/State.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/antipatterns.dir/States/State.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/States/State.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/States/State.cpp
 
 CMakeFiles/antipatterns.dir/States/State.cpp.i: cmake_force
@@ -111,7 +98,7 @@ CMakeFiles/antipatterns.dir/States/State.cpp.s: cmake_force
 
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: CMakeFiles/antipatterns.dir/flags.make
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../States/GameState.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/antipatterns.dir/States/GameState.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/antipatterns.dir/States/GameState.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/States/GameState.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.cpp
 
 CMakeFiles/antipatterns.dir/States/GameState.cpp.i: cmake_force
@@ -124,7 +111,7 @@ CMakeFiles/antipatterns.dir/States/GameState.cpp.s: cmake_force
 
 CMakeFiles/antipatterns.dir/src/GameObject.cpp.o: CMakeFiles/antipatterns.dir/flags.make
 CMakeFiles/antipatterns.dir/src/GameObject.cpp.o: ../src/GameObject.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/antipatterns.dir/src/GameObject.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/antipatterns.dir/src/GameObject.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/src/GameObject.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.cpp
 
 CMakeFiles/antipatterns.dir/src/GameObject.cpp.i: cmake_force
@@ -135,31 +122,59 @@ CMakeFiles/antipatterns.dir/src/GameObject.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/src/GameObject.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.cpp -o CMakeFiles/antipatterns.dir/src/GameObject.cpp.s
 
+CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: CMakeFiles/antipatterns.dir/flags.make
+CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../States/MainMenuState.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.cpp
+
+CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.cpp > CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.i
+
+CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.cpp -o CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.s
+
+CMakeFiles/antipatterns.dir/Resources/Button.cpp.o: CMakeFiles/antipatterns.dir/flags.make
+CMakeFiles/antipatterns.dir/Resources/Button.cpp.o: ../Resources/Button.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/antipatterns.dir/Resources/Button.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/Resources/Button.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.cpp
+
+CMakeFiles/antipatterns.dir/Resources/Button.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/Resources/Button.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.cpp > CMakeFiles/antipatterns.dir/Resources/Button.cpp.i
+
+CMakeFiles/antipatterns.dir/Resources/Button.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Resources/Button.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.cpp -o CMakeFiles/antipatterns.dir/Resources/Button.cpp.s
+
 # Object files for target antipatterns
 antipatterns_OBJECTS = \
 "CMakeFiles/antipatterns.dir/src/main.cpp.o" \
 "CMakeFiles/antipatterns.dir/src/Game.cpp.o" \
-"CMakeFiles/antipatterns.dir/src/Clock.cpp.o" \
 "CMakeFiles/antipatterns.dir/States/State.cpp.o" \
 "CMakeFiles/antipatterns.dir/States/GameState.cpp.o" \
-"CMakeFiles/antipatterns.dir/src/GameObject.cpp.o"
+"CMakeFiles/antipatterns.dir/src/GameObject.cpp.o" \
+"CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o" \
+"CMakeFiles/antipatterns.dir/Resources/Button.cpp.o"
 
 # External object files for target antipatterns
 antipatterns_EXTERNAL_OBJECTS =
 
 antipatterns: CMakeFiles/antipatterns.dir/src/main.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/src/Game.cpp.o
-antipatterns: CMakeFiles/antipatterns.dir/src/Clock.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/States/State.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/States/GameState.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/src/GameObject.cpp.o
+antipatterns: CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o
+antipatterns: CMakeFiles/antipatterns.dir/Resources/Button.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/build.make
 antipatterns: ../SFML-2.5.1/lib/libsfml-graphics.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-window.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-audio.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-system.so.2.5.1
 antipatterns: CMakeFiles/antipatterns.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable antipatterns"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable antipatterns"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/antipatterns.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

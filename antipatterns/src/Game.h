@@ -5,10 +5,8 @@
 #ifndef ANTIPATTERNS_GAME_H
 #define ANTIPATTERNS_GAME_H
 
-#include <iostream>
-#include <ctime>
-#include "Clock.h"
-#include "../States/GameState.h"
+
+#include "../States/MainMenuState.h"
 
 
 class Game {
@@ -39,7 +37,7 @@ private:
     std::shared_ptr<sf::RenderWindow> _window;
     sf::Event _event{};
 
-    Clock clock;
+    sf::Clock clock;
     float _time_elapsed{};
 
     std::stack<std::shared_ptr<State>> _states;
