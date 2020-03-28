@@ -850,8 +850,18 @@ SFML/Config.hpp
 
 ../SFML-2.5.1/include/SFML/Window/WindowStyle.hpp
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.cpp
-GameObject.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.cpp
+GameState.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.h
+utility
+-
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.h
+State.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h
+../src/GameObject.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.h
 
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.h
@@ -868,6 +878,10 @@ memory
 stack
 -
 map
+-
+unordered_map
+-
+string
 -
 SFML/Graphics.hpp
 -

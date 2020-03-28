@@ -33,6 +33,7 @@ public:
 private:
     /* initializers */
     void InitWindow();
+    void InitKeys();
     void InitStates();
     /* variables */
     std::shared_ptr<sf::RenderWindow> _window;
@@ -42,6 +43,8 @@ private:
     float _time_elapsed{};
 
     std::stack<std::shared_ptr<State>> _states;
+
+    std::unordered_map<std::string, int> _supported_keys;
 };
 
 

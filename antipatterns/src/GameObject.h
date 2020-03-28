@@ -12,6 +12,8 @@
 #include <memory>
 #include <stack>
 #include <map>
+#include <unordered_map>
+#include <string>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>

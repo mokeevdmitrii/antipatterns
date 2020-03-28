@@ -18,24 +18,16 @@ void GameObject::Move(const float time_elapsed, const sf::Vector2f &direction) {
     _shape.move(direction * time_elapsed * _move_speed);
 }
 
+/* temporary (before player realization) */
+void GameObject::Update(float time_elapsed) {
+
+}
+
+
 void GameObject::Render(const std::shared_ptr<sf::RenderTarget> &target) {
     target->draw(_shape);
 }
 
-void GameObject::Update(float time_elapsed) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        Move(time_elapsed, sf::Vector2f(-1.f, 0.f));
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        Move(time_elapsed, sf::Vector2f(1.f, 0.f));
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        Move(time_elapsed, sf::Vector2f(0.f, 1.f));
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        Move(time_elapsed, sf::Vector2f(0.f, -1.f));
-    }
-}
 
 
 

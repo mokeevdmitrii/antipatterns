@@ -9,6 +9,7 @@
 
 Game::Game() {
     InitWindow();
+    InitKeys();
     InitStates();
 }
 
@@ -78,8 +79,8 @@ void Game::EndApplication() {
 
 void Game::InitWindow() {
     /* Creates a window from using config settings file */
-    std::ifstream in;
-    in.open("../Config/window_init.txt");
+
+    std::ifstream in("../Config/window_init.txt");
     std::string game_title{};
     sf::VideoMode window_bounds(800, 600);
     bool vertical_sync_enabled{};
@@ -96,8 +97,20 @@ void Game::InitWindow() {
     _window->setVerticalSyncEnabled(vertical_sync_enabled);
 }
 
+/*init keys must be used before init states, or program crashes - to fix*/
+void Game::InitKeys() {
+    std::ifstream in("../Config/supported_keys.txt");
+    if (in.is_open()) {
+        std::string key_str;
+        int key_val;
+        while (in >> key_str >> key_val) {
+            _supported_keys.try_emplace(key_str, static_cast<sf::Keyboard::Key>(key_val));
+        }
+    }
+}
+
 void Game::InitStates() {
-    _states.push(std::make_shared<GameState>(_window));
+    _states.push(std::make_shared<GameState>(_window, std::make_shared<std::unordered_map<std::string, int>>(_supported_keys)));
 }
 
 

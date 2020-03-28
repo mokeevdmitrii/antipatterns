@@ -9,17 +9,17 @@
 
 class GameState : public State {
 public:
-    GameState(std::shared_ptr<sf::RenderWindow> window);
+    GameState(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<std::unordered_map<std::string, int>> supported_keys);
     virtual ~GameState();
 
     /* overrided functions */
     void Update(float time_elapsed) override;
+    void UpdateInput(float time_elapsed) override;
     void Render(std::shared_ptr<sf::RenderTarget> target) override;
     void EndState() override;
-    void UpdateKeyBinds(float time_elapsed) override;
-
 private:
-    GameObject player;
+    void InitKeybindings() override;
+    GameObject _player;
 };
 
 
