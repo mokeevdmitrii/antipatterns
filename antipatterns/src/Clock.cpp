@@ -6,6 +6,7 @@
 
 float Clock::TimeElapsed() const {
     return _clock.getElapsedTime().asSeconds();
+
 }
 
 float Clock::Reset() {

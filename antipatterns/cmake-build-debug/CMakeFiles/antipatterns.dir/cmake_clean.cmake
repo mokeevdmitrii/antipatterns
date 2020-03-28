@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/antipatterns.dir/States/State.cpp.o"
   "CMakeFiles/antipatterns.dir/src/Clock.cpp.o"
   "CMakeFiles/antipatterns.dir/src/Game.cpp.o"
+  "CMakeFiles/antipatterns.dir/src/GameObject.cpp.o"
   "CMakeFiles/antipatterns.dir/src/main.cpp.o"
   "antipatterns"
   "antipatterns.pdb"

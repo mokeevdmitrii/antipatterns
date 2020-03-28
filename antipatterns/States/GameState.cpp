@@ -20,19 +20,16 @@ void GameState::EndState() {
     std::cout << "GameState ending" << std::endl;
 }
 
-void GameState::Update(float time_elapsed) {
+void GameState::Update(const float time_elapsed) {
     UpdateKeyBinds(time_elapsed);
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        std::cout << "A pressed" << std::endl;
-    }
+    player.Update(time_elapsed);
 }
 
 void GameState::Render(std::shared_ptr<sf::RenderTarget> target) {
-
+    player.Render(target);
 }
 
-void GameState::UpdateKeyBinds(float time_elapsed) {
+void GameState::UpdateKeyBinds(const float time_elapsed) {
     CheckQuit();
 }
 

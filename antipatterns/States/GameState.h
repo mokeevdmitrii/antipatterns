@@ -19,7 +19,7 @@ public:
     void UpdateKeyBinds(float time_elapsed) override;
 
 private:
-
+    GameObject player;
 };
 
 

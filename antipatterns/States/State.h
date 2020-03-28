@@ -5,16 +5,7 @@
 #ifndef ANTIPATTERNS_STATE_H
 #define ANTIPATTERNS_STATE_H
 
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <vector>
-#include <memory>
-#include <stack>
-#include <map>
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
+#include "../src/GameObject.h"
 
 class State {
 public:

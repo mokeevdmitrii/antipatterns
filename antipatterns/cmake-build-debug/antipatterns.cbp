@@ -112,6 +112,12 @@
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.h">
 			<Option target="antipatterns"/>
 		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/main.cpp">
 			<Option target="antipatterns"/>
 		</Unit>
