@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="antipatterns" targetName="antipatterns" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9e4f1c6d-604f-4f39-9e70-f446cd95eb0f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZicAjqYdf744cUDI4Xy7Yv1cBm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
+  </component>
+  <component name="RunManager">
+    <configuration name="antipatterns" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="antipatterns" TARGET_NAME="antipatterns" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="antipatterns" RUN_TARGET_NAME="antipatterns">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9e4f1c6d-604f-4f39-9e70-f446cd95eb0f" name="Default Changelist" comment="" />
+      <created>1585325213263</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585325213263</updated>
+      <workItem from="1585325214728" duration="4324000" />
+      <workItem from="1585331570600" duration="9975000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1878" height="276" key="GridCell.Tab.0.bottom" timestamp="1585384990856">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1585384990856" />
+    <state width="1878" height="276" key="GridCell.Tab.0.center" timestamp="1585384990855">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="276" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1585384990855" />
+    <state width="1878" height="276" key="GridCell.Tab.0.left" timestamp="1585384990855">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="276" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1585384990855" />
+    <state width="1878" height="276" key="GridCell.Tab.0.right" timestamp="1585384990856">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="276" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1585384990856" />
+    <state width="1878" height="341" key="GridCell.Tab.1.bottom" timestamp="1585344182847">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="341" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1585344182847" />
+    <state width="1878" height="341" key="GridCell.Tab.1.center" timestamp="1585344182846">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="341" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1585344182846" />
+    <state width="1878" height="341" key="GridCell.Tab.1.left" timestamp="1585344182846">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="341" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1585344182846" />
+    <state width="1878" height="341" key="GridCell.Tab.1.right" timestamp="1585344182846">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="341" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1585344182846" />
+    <state x="464" y="154" key="SettingsEditor" timestamp="1585337526369">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="464" y="154" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1585337526369" />
+    <state x="643" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1585331570890">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="643" y="346" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585331570890" />
+    <state x="623" y="228" width="672" height="678" key="search.everywhere.popup" timestamp="1585334364901">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="228" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1585334364901" />
+  </component>
+</project>
