@@ -7,10 +7,9 @@
 
 #include <iostream>
 #include <ctime>
-#include <SFML/System.hpp>
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
+#include "Clock.h"
+#include "../States/GameState.h"
+
 
 class Game {
 public:
@@ -18,16 +17,31 @@ public:
     Game();
     virtual ~Game();
     /* functions */
-    void Run();
+    /* updating */
     void Update();
     void UpdateEvents();
+    void UpdateTime();
+
+    /* running */
+    void Run();
+
+    /* rendering */
     void Render();
+
+    /* ending */
+    void EndApplication();
 private:
     /* initializers */
     void InitWindow();
+    void InitStates();
     /* variables */
-    std::unique_ptr<sf::RenderWindow> _window;
-    sf::Event _event;
+    std::shared_ptr<sf::RenderWindow> _window;
+    sf::Event _event{};
+
+    Clock clock;
+    float _time_elapsed{};
+
+    std::stack<std::shared_ptr<State>> _states;
 };
 
 

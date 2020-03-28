@@ -123,32 +123,86 @@ antipatterns/fast:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/build
 .PHONY : antipatterns/fast
 
-Clock.o: Clock.cpp.o
+States/GameState.o: States/GameState.cpp.o
 
-.PHONY : Clock.o
+.PHONY : States/GameState.o
 
 # target to build an object file
-Clock.cpp.o:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Clock.cpp.o
-.PHONY : Clock.cpp.o
+States/GameState.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/GameState.cpp.o
+.PHONY : States/GameState.cpp.o
 
-Clock.i: Clock.cpp.i
+States/GameState.i: States/GameState.cpp.i
 
-.PHONY : Clock.i
+.PHONY : States/GameState.i
 
 # target to preprocess a source file
-Clock.cpp.i:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Clock.cpp.i
-.PHONY : Clock.cpp.i
+States/GameState.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/GameState.cpp.i
+.PHONY : States/GameState.cpp.i
 
-Clock.s: Clock.cpp.s
+States/GameState.s: States/GameState.cpp.s
 
-.PHONY : Clock.s
+.PHONY : States/GameState.s
 
 # target to generate assembly for a file
-Clock.cpp.s:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Clock.cpp.s
-.PHONY : Clock.cpp.s
+States/GameState.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/GameState.cpp.s
+.PHONY : States/GameState.cpp.s
+
+States/State.o: States/State.cpp.o
+
+.PHONY : States/State.o
+
+# target to build an object file
+States/State.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/State.cpp.o
+.PHONY : States/State.cpp.o
+
+States/State.i: States/State.cpp.i
+
+.PHONY : States/State.i
+
+# target to preprocess a source file
+States/State.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/State.cpp.i
+.PHONY : States/State.cpp.i
+
+States/State.s: States/State.cpp.s
+
+.PHONY : States/State.s
+
+# target to generate assembly for a file
+States/State.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/State.cpp.s
+.PHONY : States/State.cpp.s
+
+src/Clock.o: src/Clock.cpp.o
+
+.PHONY : src/Clock.o
+
+# target to build an object file
+src/Clock.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Clock.cpp.o
+.PHONY : src/Clock.cpp.o
+
+src/Clock.i: src/Clock.cpp.i
+
+.PHONY : src/Clock.i
+
+# target to preprocess a source file
+src/Clock.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Clock.cpp.i
+.PHONY : src/Clock.cpp.i
+
+src/Clock.s: src/Clock.cpp.s
+
+.PHONY : src/Clock.s
+
+# target to generate assembly for a file
+src/Clock.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Clock.cpp.s
+.PHONY : src/Clock.cpp.s
 
 src/Game.o: src/Game.cpp.o
 
@@ -213,9 +267,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... antipatterns"
 	@echo "... edit_cache"
-	@echo "... Clock.o"
-	@echo "... Clock.i"
-	@echo "... Clock.s"
+	@echo "... States/GameState.o"
+	@echo "... States/GameState.i"
+	@echo "... States/GameState.s"
+	@echo "... States/State.o"
+	@echo "... States/State.i"
+	@echo "... States/State.s"
+	@echo "... src/Clock.o"
+	@echo "... src/Clock.i"
+	@echo "... src/Clock.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"

@@ -850,12 +850,24 @@ SFML/Config.hpp
 
 ../SFML-2.5.1/include/SFML/Window/WindowStyle.hpp
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.h
+State.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h
 iostream
 -
-ctime
+fstream
 -
-SFML/System.hpp
+sstream
+-
+vector
+-
+memory
+-
+stack
+-
+map
 -
 SFML/Graphics.hpp
 -
@@ -863,6 +875,26 @@ SFML/Window.hpp
 -
 SFML/Audio.hpp
 -
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Clock.h
+SFML/System.hpp
+-
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.cpp
+Game.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.h
+../States/GameState.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.h
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.h
+iostream
+-
+ctime
+-
+Clock.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Clock.h
+../States/GameState.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.h
 
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/main.cpp
 Game.h
