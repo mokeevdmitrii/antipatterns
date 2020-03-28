@@ -18,5 +18,5 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(antipatterns src/main.cpp src/Game.cpp src/Game.h)
+add_executable(antipatterns src/main.cpp src/Game.cpp src/Game.h Clock.cpp Clock.h)
 target_link_libraries (antipatterns sfml-graphics sfml-window sfml-audio sfml-system)

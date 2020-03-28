@@ -6,6 +6,7 @@
 #define ANTIPATTERNS_GAME_H
 
 #include <iostream>
+#include <ctime>
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>

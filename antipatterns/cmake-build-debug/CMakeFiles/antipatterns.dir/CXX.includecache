@@ -850,12 +850,10 @@ SFML/Config.hpp
 
 ../SFML-2.5.1/include/SFML/Window/WindowStyle.hpp
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.cpp
-Game.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.h
-
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.h
 iostream
+-
+ctime
 -
 SFML/System.hpp
 -

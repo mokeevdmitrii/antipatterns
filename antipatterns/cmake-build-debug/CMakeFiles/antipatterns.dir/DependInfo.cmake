@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/dmitry/MIPT/PATTERNS/antipatterns/Clock.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Clock.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Game.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/src/main.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/main.cpp.o"
   )

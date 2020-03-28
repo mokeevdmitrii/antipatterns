@@ -123,6 +123,33 @@ antipatterns/fast:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/build
 .PHONY : antipatterns/fast
 
+Clock.o: Clock.cpp.o
+
+.PHONY : Clock.o
+
+# target to build an object file
+Clock.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Clock.cpp.o
+.PHONY : Clock.cpp.o
+
+Clock.i: Clock.cpp.i
+
+.PHONY : Clock.i
+
+# target to preprocess a source file
+Clock.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Clock.cpp.i
+.PHONY : Clock.cpp.i
+
+Clock.s: Clock.cpp.s
+
+.PHONY : Clock.s
+
+# target to generate assembly for a file
+Clock.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Clock.cpp.s
+.PHONY : Clock.cpp.s
+
 src/Game.o: src/Game.cpp.o
 
 .PHONY : src/Game.o
@@ -186,6 +213,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... antipatterns"
 	@echo "... edit_cache"
+	@echo "... Clock.o"
+	@echo "... Clock.i"
+	@echo "... Clock.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"

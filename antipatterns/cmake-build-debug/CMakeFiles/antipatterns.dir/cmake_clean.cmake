@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/antipatterns.dir/Clock.cpp.o"
   "CMakeFiles/antipatterns.dir/src/Game.cpp.o"
   "CMakeFiles/antipatterns.dir/src/main.cpp.o"
   "antipatterns"
