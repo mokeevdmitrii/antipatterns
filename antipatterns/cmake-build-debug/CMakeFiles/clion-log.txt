@@ -1,0 +1,8 @@
+/opt/clion-2019.2.3/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/dmitry/MIPT/PATTERNS/antipatterns
+-- Found SFML 2.5.1 in /home/dmitry/MIPT/PATTERNS/antipatterns/SFML-2.5.1/lib/cmake/SFML
+-- SFML_INCLUDE_DIR: SFML-2.5.1/include
+-- SFML_LIBRARIES: 
+-- SFML_VERSION: 2.5.1
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug

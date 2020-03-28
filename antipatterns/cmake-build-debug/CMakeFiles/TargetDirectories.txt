@@ -1,0 +1,3 @@
+/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir
+/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/edit_cache.dir
