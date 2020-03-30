@@ -94,6 +94,18 @@
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.h">
 			<Option target="antipatterns"/>
 		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.cpp">
 			<Option target="antipatterns"/>
 		</Unit>

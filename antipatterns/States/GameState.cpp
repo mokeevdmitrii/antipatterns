@@ -7,8 +7,9 @@
 #include <utility>
 
 GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
-                     std::shared_ptr<std::unordered_map<std::string, int>> supported_keys) :
-        State(std::move(window), std::move(supported_keys)) {
+                     std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
+                     std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack) :
+        State(std::move(window), std::move(supported_keys), std::move(state_stack)) {
     GameState::InitKeybindings();
 }
 
@@ -18,9 +19,6 @@ GameState::~GameState() {
 
 /* overrided functions */
 
-void GameState::EndState() {
-    std::cout << "GameState ending" << std::endl;
-}
 
 void GameState::Update(const float time_elapsed) {
     UpdateMousePositions();
@@ -29,7 +27,9 @@ void GameState::Update(const float time_elapsed) {
 }
 
 void GameState::UpdateInput(const float time_elapsed) {
-    CheckQuit();
+    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("CLOSE")))) {
+        EndState();
+    }
 
     /* temporary handling player input - to be reworked */
     if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("MOVE_LEFT")))) {
@@ -44,6 +44,8 @@ void GameState::UpdateInput(const float time_elapsed) {
     if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("MOVE_UP")))) {
         _player.Move(time_elapsed, sf::Vector2f(0.f, -1.f));
     }
+
+
 }
 
 void GameState::Render(std::shared_ptr<sf::RenderTarget> target) {

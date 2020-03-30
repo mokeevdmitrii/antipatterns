@@ -150,6 +150,60 @@ Resources/Button.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Button.cpp.s
 .PHONY : Resources/Button.cpp.s
 
+Resources/ButtonManager.o: Resources/ButtonManager.cpp.o
+
+.PHONY : Resources/ButtonManager.o
+
+# target to build an object file
+Resources/ButtonManager.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.o
+.PHONY : Resources/ButtonManager.cpp.o
+
+Resources/ButtonManager.i: Resources/ButtonManager.cpp.i
+
+.PHONY : Resources/ButtonManager.i
+
+# target to preprocess a source file
+Resources/ButtonManager.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.i
+.PHONY : Resources/ButtonManager.cpp.i
+
+Resources/ButtonManager.s: Resources/ButtonManager.cpp.s
+
+.PHONY : Resources/ButtonManager.s
+
+# target to generate assembly for a file
+Resources/ButtonManager.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.s
+.PHONY : Resources/ButtonManager.cpp.s
+
+Resources/GraphicsSettings.o: Resources/GraphicsSettings.cpp.o
+
+.PHONY : Resources/GraphicsSettings.o
+
+# target to build an object file
+Resources/GraphicsSettings.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.o
+.PHONY : Resources/GraphicsSettings.cpp.o
+
+Resources/GraphicsSettings.i: Resources/GraphicsSettings.cpp.i
+
+.PHONY : Resources/GraphicsSettings.i
+
+# target to preprocess a source file
+Resources/GraphicsSettings.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.i
+.PHONY : Resources/GraphicsSettings.cpp.i
+
+Resources/GraphicsSettings.s: Resources/GraphicsSettings.cpp.s
+
+.PHONY : Resources/GraphicsSettings.s
+
+# target to generate assembly for a file
+Resources/GraphicsSettings.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.s
+.PHONY : Resources/GraphicsSettings.cpp.s
+
 States/GameState.o: States/GameState.cpp.o
 
 .PHONY : States/GameState.o
@@ -324,6 +378,12 @@ help:
 	@echo "... Resources/Button.o"
 	@echo "... Resources/Button.i"
 	@echo "... Resources/Button.s"
+	@echo "... Resources/ButtonManager.o"
+	@echo "... Resources/ButtonManager.i"
+	@echo "... Resources/ButtonManager.s"
+	@echo "... Resources/GraphicsSettings.o"
+	@echo "... Resources/GraphicsSettings.i"
+	@echo "... Resources/GraphicsSettings.s"
 	@echo "... States/GameState.o"
 	@echo "... States/GameState.i"
 	@echo "... States/GameState.s"

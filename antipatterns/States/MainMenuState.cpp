@@ -7,19 +7,12 @@
 /* constructors and destructors */
 
 MainMenuState::MainMenuState(std::shared_ptr<sf::RenderWindow> window,
-                             std::shared_ptr<std::unordered_map<std::string, int>> supported_keys) :
-        State(std::move(window), std::move(supported_keys)) {
+                             std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
+                             std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack) :
+        State(std::move(window), std::move(supported_keys), std::move(state_stack)),
+        _btn_manager("../Config/main_menu_buttons.txt", "../Config/lobster.otf") {
+    InitBackground();
     MainMenuState::InitKeybindings();
-    InitFonts();
-
-    /* testing */
-    _main_menu_button = std::make_shared<Button>(400, 300, 100, 100, std::make_shared<sf::Font>(_main_font),
-                                                 "Start game", sf::Color(10, 200, 200, 200),
-                                                 sf::Color(100, 100, 150, 150),
-                                                 sf::Color(180, 100, 100, 230));
-
-    _background.setSize(static_cast<sf::Vector2f>(_window->getSize()));
-    _background.setFillColor(sf::Color::Green);
 }
 
 MainMenuState::~MainMenuState() {
@@ -28,40 +21,41 @@ MainMenuState::~MainMenuState() {
 
 /* overrided functions */
 
-void MainMenuState::EndState() {
-    std::cout << "MainMenuState ending" << std::endl;
-}
 
 void MainMenuState::Update(const float time_elapsed) {
     UpdateMousePositions();
     UpdateInput(time_elapsed);
+    _btn_manager.Update(_mouse_positions.view);
 
-    /* testing */
-    _main_menu_button->Update(_mouse_positions.view);
+    /* updating all the buttons */
+    /* quit the game */
+    if (_btn_manager["END_GAME"]->IsActive()) {
+        _to_quit = true;
+    }
+
+    /* new game */
+    /* pushing a state */
+    if (_btn_manager["START_GAME"]->IsActive()) {
+        _state_stack->push(std::make_shared<GameState>(_window, _supported_keys, _state_stack));
+    }
 }
 
 void MainMenuState::UpdateInput(const float time_elapsed) {
-    CheckQuit();
+
 }
 
+
 void MainMenuState::Render(std::shared_ptr<sf::RenderTarget> target) {
+    /* временный костыль */
     if (target == nullptr) {
         target = _window;
     }
-    target->draw(_background);
-
-    /* testing */
-    _main_menu_button->Render(target);
-}
-
-void MainMenuState::InitFonts() {
-    if (!_main_font.loadFromFile("../Config/lobster.otf")) {
-        throw std::runtime_error("MainMenuState cannot load font");
-    }
+    target->draw(_background._image);
+    _btn_manager.Render(target);
 }
 
 void MainMenuState::InitKeybindings() {
-    std::ifstream in("../Config/gamestate_keybindings.txt");
+    std::ifstream in("../Config/main_menu_state_keybindings.txt");
     if (in.is_open()) {
         std::string key_str;
         std::string key_bind;
@@ -70,5 +64,16 @@ void MainMenuState::InitKeybindings() {
         }
     }
 }
+
+void MainMenuState::InitBackground() {
+    _background._image.setSize(static_cast<sf::Vector2f>(_window->getSize()));
+    if (!_background._back_texture.loadFromFile("../Images/Backgrounds/main_menu.png")) {
+        throw std::runtime_error("cannot load texture for main menu background");
+    }
+    _background._image.setTexture(&_background._back_texture);
+}
+
+
+
 
 

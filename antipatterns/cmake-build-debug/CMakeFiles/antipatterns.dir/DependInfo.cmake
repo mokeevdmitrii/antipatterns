@@ -5,6 +5,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Resources/Button.cpp.o"
+  "/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.o"
+  "/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/States/GameState.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/States/State.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/States/State.cpp.o"

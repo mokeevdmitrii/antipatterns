@@ -10,14 +10,14 @@
 #include <cstdlib>
 #include <fstream>
 #include <sstream>
-#include <vector>
 #include <memory>
+#include <vector>
 #include <stack>
 #include <map>
 #include <unordered_map>
 #include <string>
+#include "../Resources/GraphicsSettings.h"
 #include <SFML/System.hpp>
-#include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 
@@ -27,13 +27,20 @@ public:
 
     virtual ~GameObject();
 
+    /* functions */
     virtual void Update(float time_elapsed);
-    virtual void Render(const std::shared_ptr<sf::RenderTarget>& target);
+    virtual void Render(const std::shared_ptr<sf::RenderTarget> &target);
+    /* do not change signature */
     virtual void Move(float time_elapsed, const sf::Vector2f &direction);
 
+    void InitSprite(std::shared_ptr<sf::Texture> texture);
+
 protected:
-    sf::RectangleShape _shape;
     float _move_speed;
+
+    /* for drawing */
+    std::shared_ptr<sf::Texture> _texture;
+    sf::Sprite _sprite;
 private:
 
 };

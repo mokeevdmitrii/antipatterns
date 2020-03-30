@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/antipatterns.dir/Resources/Button.cpp.o"
+  "CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.o"
+  "CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.o"
   "CMakeFiles/antipatterns.dir/States/GameState.cpp.o"
   "CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o"
   "CMakeFiles/antipatterns.dir/States/State.cpp.o"

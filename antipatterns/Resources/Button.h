@@ -10,6 +10,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <memory>
+#include <fstream>
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
@@ -28,12 +29,19 @@ struct ButtonColors {
     sf::Color _hover;
 };
 
+struct ButtonParams {
+    float _x;
+    float _y;
+    float _width;
+    float _height;
+    std::shared_ptr<sf::Font> _font;
+    std::string _button_text;
+    ButtonColors _colors;
+};
+
 class Button {
 public:
-    /* heavy constructor but this class will be worked up */
-    Button(float x, float y, float width, float height,
-           std::shared_ptr<sf::Font> font, std::string button_text,
-           sf::Color active_color, sf::Color idle_color, sf::Color hover_color);
+    Button(ButtonParams params);
 
     virtual ~Button();
 
@@ -41,8 +49,9 @@ public:
     bool IsActive() const;
 
     /* functions */
-    void Update(const sf::Vector2f& mouse_pos);
-    void Render(std::shared_ptr<sf::RenderTarget> target);
+    void Update(const sf::Vector2f &mouse_pos);
+
+    void Render(const std::shared_ptr<sf::RenderTarget>& target);
 
 private:
     sf::RectangleShape _shape;

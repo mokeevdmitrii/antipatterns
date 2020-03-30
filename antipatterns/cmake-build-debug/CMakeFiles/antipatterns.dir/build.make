@@ -148,6 +148,32 @@ CMakeFiles/antipatterns.dir/Resources/Button.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Resources/Button.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.cpp -o CMakeFiles/antipatterns.dir/Resources/Button.cpp.s
 
+CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.o: CMakeFiles/antipatterns.dir/flags.make
+CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.o: ../Resources/ButtonManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.cpp
+
+CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.cpp > CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.i
+
+CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.cpp -o CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.s
+
+CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.o: CMakeFiles/antipatterns.dir/flags.make
+CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.o: ../Resources/GraphicsSettings.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.cpp
+
+CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.cpp > CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.i
+
+CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.cpp -o CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.s
+
 # Object files for target antipatterns
 antipatterns_OBJECTS = \
 "CMakeFiles/antipatterns.dir/src/main.cpp.o" \
@@ -156,7 +182,9 @@ antipatterns_OBJECTS = \
 "CMakeFiles/antipatterns.dir/States/GameState.cpp.o" \
 "CMakeFiles/antipatterns.dir/src/GameObject.cpp.o" \
 "CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o" \
-"CMakeFiles/antipatterns.dir/Resources/Button.cpp.o"
+"CMakeFiles/antipatterns.dir/Resources/Button.cpp.o" \
+"CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.o" \
+"CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.o"
 
 # External object files for target antipatterns
 antipatterns_EXTERNAL_OBJECTS =
@@ -168,13 +196,15 @@ antipatterns: CMakeFiles/antipatterns.dir/States/GameState.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/src/GameObject.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/Resources/Button.cpp.o
+antipatterns: CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.o
+antipatterns: CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/build.make
 antipatterns: ../SFML-2.5.1/lib/libsfml-graphics.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-window.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-audio.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-system.so.2.5.1
 antipatterns: CMakeFiles/antipatterns.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable antipatterns"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable antipatterns"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/antipatterns.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

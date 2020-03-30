@@ -7,27 +7,41 @@
 
 #include "../src/GameObject.h"
 
+
 struct MousePositions {
     sf::Vector2i screen;
     sf::Vector2i window;
     sf::Vector2f view;
 };
 
+/*
+ * enum StateType {
+ *      MAIN_MENU,
+ *      GAME,
+ *      ...
+ *      нужно ли???
+ * }
+ */
+
 class State {
 public:
-    State(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<std::unordered_map<std::string, int>> supported_keys);
+    State(std::shared_ptr<sf::RenderWindow> window,
+          std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
+          std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack);
+
     virtual ~State();
 
     /* tools for quitting */
-    void CheckQuit();
-    bool IsQuitting() const;
+    bool GetToQuit() const;
 
     /* State functions */
     void UpdateMousePositions();
-    virtual void EndState() = 0;
+    void EndState();
+
     virtual void Render(std::shared_ptr<sf::RenderTarget> target) = 0;
     virtual void Update(float time_elapsed) = 0;
     virtual void UpdateInput(float time_elapsed) = 0;
+
 protected:
     /* declarations */
     /* functions */
@@ -36,7 +50,10 @@ protected:
     /* variables */
     std::shared_ptr<std::unordered_map<std::string, int>> _supported_keys;
     std::unordered_map<std::string, int> _keybindings;
+
     std::shared_ptr<sf::RenderWindow> _window;
+    std::shared_ptr<std::stack<std::shared_ptr<State>>> _state_stack;
+
     bool _to_quit = false;
     MousePositions _mouse_positions;
 
@@ -46,11 +63,5 @@ private:
     /* still nothing */
 
 };
-
-
-
-
-
-
 
 #endif //ANTIPATTERNS_STATE_H

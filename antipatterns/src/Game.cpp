@@ -9,16 +9,16 @@
 
 Game::Game() {
     InitWindow();
+    /* init keys before init states */
     InitKeys();
+    /* do not put before init keys */
     InitStates();
 }
 
 Game::~Game() {
-    /* no need to delete std::shared_ptr<sf::RenderWindow> here */
-    while (!_states.empty()) {
-        _states.pop();
+    while (!_states->empty()) {
+        _states->pop();
     }
-
 }
 
 /* Functions */
@@ -33,12 +33,12 @@ void Game::Run() {
 
 void Game::Update() {
     UpdateEvents();
-    if (!_states.empty()) {
-        _states.top()->Update(_time_elapsed);
-        if (_states.top()->IsQuitting()) {
+    if (!_states->empty()) {
+        _states->top()->Update(_time_elapsed);
+        if (_states->top()->GetToQuit()) {
             /* animation, saving */
-            _states.top()->EndState();
-            _states.pop();
+            //_states->top()->EndState();
+            _states->pop();
         }
     } else {
         /* no states left, we are closing the game */
@@ -64,8 +64,8 @@ void Game::Render() {
     _window->clear();
 
     /* draw everything here actually */
-    if (!_states.empty()) {
-        _states.top()->Render(_window);
+    if (!_states->empty()) {
+        _states->top()->Render(_window);
     }
 
     _window->display();
@@ -79,41 +79,40 @@ void Game::EndApplication() {
 
 void Game::InitWindow() {
     /* Creates a window from using config settings file */
-
-    std::ifstream in("../Config/window_init.txt");
-    std::string game_title{};
-    unsigned int max_frame_limit = 60;
-    sf::VideoMode window_bounds(800, 600);
-    bool vertical_sync_enabled{};
-
-    if (in.is_open()) {
-        std::getline(in, game_title);
-        in >> window_bounds.width >> window_bounds.height;
-        in >> max_frame_limit;
-        in >> vertical_sync_enabled;
+    if (!_graphics_settings.LoadFromFile("../Config/window_init.txt")) {
+        throw std::runtime_error("settings not found");
     }
 
-    in.close();
-
-    _window = std::make_shared<sf::RenderWindow>(window_bounds, game_title);
-    _window->setFramerateLimit(max_frame_limit);
-    _window->setVerticalSyncEnabled(vertical_sync_enabled);
+    if (_graphics_settings._fullscreen) {
+        _window = std::make_shared<sf::RenderWindow>(_graphics_settings._resolution,
+                                                     _graphics_settings._game_title, sf::Style::Fullscreen,
+                                                     _graphics_settings._settings);
+    } else {
+        _window = std::make_shared<sf::RenderWindow>(_graphics_settings._resolution,
+                                                     _graphics_settings._game_title,
+                                                     sf::Style::Titlebar | sf::Style::Close,
+                                                     _graphics_settings._settings);
+    }
+    _window->setFramerateLimit(_graphics_settings._framerate_limit);
+    _window->setVerticalSyncEnabled(_graphics_settings._v_sync_enabled);
 }
 
 /*init keys must be used before init states, or program crashes - to fix*/
 void Game::InitKeys() {
+    _supported_keys = std::make_shared<std::unordered_map<std::string, int>>();
     std::ifstream in("../Config/supported_keys.txt");
     if (in.is_open()) {
-        std::string key_str;
-        int key_val;
+        std::string key_str{};
+        int key_val{};
         while (in >> key_str >> key_val) {
-            _supported_keys.try_emplace(key_str, static_cast<sf::Keyboard::Key>(key_val));
+            _supported_keys->try_emplace(key_str, static_cast<sf::Keyboard::Key>(key_val));
         }
     }
 }
 
 void Game::InitStates() {
-    _states.push(std::make_shared<MainMenuState>(_window, std::make_shared<std::unordered_map<std::string, int>>(_supported_keys)));
+    _states = std::make_shared<std::stack<std::shared_ptr<State>>>();
+    _states->push(std::make_shared<MainMenuState>(_window, _supported_keys, _states));
 }
 
 

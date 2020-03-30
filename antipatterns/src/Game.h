@@ -13,7 +13,7 @@ class Game {
 public:
     /* constructors, destructors */
     Game();
-    virtual ~Game();
+    ~Game();
     /* functions */
     /* updating */
     void Update();
@@ -23,6 +23,7 @@ public:
     /* running */
     void Run();
 
+    /* переделать в класс графика???*/
     /* rendering */
     void Render();
 
@@ -34,15 +35,16 @@ private:
     void InitKeys();
     void InitStates();
     /* variables */
-    std::shared_ptr<sf::RenderWindow> _window;
     sf::Event _event{};
 
     sf::Clock clock;
     float _time_elapsed{};
 
-    std::stack<std::shared_ptr<State>> _states;
-
-    std::unordered_map<std::string, int> _supported_keys;
+    GraphicsSettings _graphics_settings;
+    /*variables that are passed to State class*/
+    std::shared_ptr<sf::RenderWindow> _window;
+    std::shared_ptr<std::stack<std::shared_ptr<State>>> _states;
+    std::shared_ptr<std::unordered_map<std::string, int>> _supported_keys;
 };
 
 

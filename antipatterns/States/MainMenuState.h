@@ -6,29 +6,33 @@
 #define ANTIPATTERNS_MAINMENUSTATE_H
 
 #include "GameState.h"
-#include "../Resources/Button.h"
+#include "../Resources/ButtonManager.h"
+
+struct Background {
+    sf::RectangleShape _image;
+    sf::Texture _back_texture;
+};
 
 class MainMenuState : public State {
 public:
-    MainMenuState(std::shared_ptr<sf::RenderWindow> window, std::shared_ptr<std::unordered_map<std::string, int>> supported_keys);
+    MainMenuState(std::shared_ptr<sf::RenderWindow> window,
+            std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
+            std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack);
     virtual ~MainMenuState();
 
     /* overrided functions */
     void Update(float time_elapsed) override;
     void UpdateInput(float time_elapsed) override;
     void Render(std::shared_ptr<sf::RenderTarget> target) override;
-    void EndState() override;
 private:
     /* initializers */
-    void InitFonts();
     void InitKeybindings() override;
+    void InitBackground();
 
     /* variables */
     sf::Font _main_font;
-    sf::RectangleShape _background;
-
-    /* test */
-    std::shared_ptr<Button> _main_menu_button;
+    Background _background;
+    ButtonManager _btn_manager;
 };
 
 
