@@ -19,8 +19,11 @@ public:
     void UpdateInput(float time_elapsed) override;
     void Render(std::shared_ptr<sf::RenderTarget> target) override;
 private:
+    /* initializers */
     void InitKeybindings() override;
-    GameObject _player;
+    void InitTextures();
+    void InitPlayer();
+    std::unique_ptr<Creature> _player;
 };
 
 

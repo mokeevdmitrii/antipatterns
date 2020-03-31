@@ -1,0 +1,70 @@
+//
+// Created by dmitry on 3/31/20.
+//
+
+#ifndef ANTIPATTERNS_PHYSICSCOMPONENT_H
+#define ANTIPATTERNS_PHYSICSCOMPONENT_H
+
+#include <iostream>
+#include <ctime>
+#include <cmath>
+#include <cstdlib>
+#include <fstream>
+#include <sstream>
+#include <memory>
+#include <vector>
+#include <stack>
+#include <map>
+#include <unordered_map>
+#include <string>
+#include "../Resources/GraphicsSettings.h"
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
+
+enum MovementState {
+    IDLE,
+    MOVING,
+    MOVING_LEFT,
+    MOVING_RIGHT,
+    MOVING_UP,
+    MOVING_DOWN
+};
+
+class PhysicsComponent {
+public:
+    PhysicsComponent(sf::Sprite &sprite, float max_velocity = 0,
+                     float acceleration = 0, float deceleration = 0);
+
+    ~PhysicsComponent();
+
+    /* getters */
+    float GetMaxVelocity() const;
+    sf::Vector2f GetVelocity() const;
+    bool GetState(MovementState state) const;
+
+    /* modifiers */
+    /* for collisions in future */
+    void Stop();
+    void StopMoveX();
+    void StopMoveY();
+
+    /* checkers */
+    bool CheckCollision(const sf::Sprite &other_sprite);
+
+    /* functions */
+    void Accelerate(float time_elapsed, const sf::Vector2f &_direction);
+    void Update(float time_elapsed);
+
+private:
+    sf::Sprite &_sprite;
+
+    sf::Vector2f _velocity;
+
+    float _max_velocity;
+    float _acceleration;
+    float _deceleration;
+};
+
+
+#endif //ANTIPATTERNS_PHYSICSCOMPONENT_H

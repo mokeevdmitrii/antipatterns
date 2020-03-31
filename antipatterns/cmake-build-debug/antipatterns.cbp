@@ -88,6 +88,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.cpp">
 			<Option target="antipatterns"/>
 		</Unit>
@@ -124,16 +136,22 @@
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h">
 			<Option target="antipatterns"/>
 		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.cpp">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.h">
 			<Option target="antipatterns"/>
 		</Unit>
-		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.cpp">
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.cpp">
 			<Option target="antipatterns"/>
 		</Unit>
-		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.h">
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.h">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/main.cpp">

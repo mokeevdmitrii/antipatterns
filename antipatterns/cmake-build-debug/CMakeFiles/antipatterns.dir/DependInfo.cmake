@@ -4,14 +4,17 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Components/GraphicsComponent.cpp.o"
+  "/home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Resources/Button.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/States/GameState.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/States/State.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/States/State.cpp.o"
+  "/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Creature.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Game.cpp.o"
-  "/home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/GameObject.cpp.o"
+  "/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Player.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/src/main.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

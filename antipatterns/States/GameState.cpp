@@ -11,6 +11,8 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
                      std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack) :
         State(std::move(window), std::move(supported_keys), std::move(state_stack)) {
     GameState::InitKeybindings();
+    GameState::InitTextures();
+    GameState::InitPlayer();
 }
 
 GameState::~GameState() {
@@ -23,7 +25,7 @@ GameState::~GameState() {
 void GameState::Update(const float time_elapsed) {
     UpdateMousePositions();
     UpdateInput(time_elapsed);
-    _player.Update(time_elapsed);
+    _player->Update(time_elapsed);
 }
 
 void GameState::UpdateInput(const float time_elapsed) {
@@ -33,16 +35,16 @@ void GameState::UpdateInput(const float time_elapsed) {
 
     /* temporary handling player input - to be reworked */
     if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("MOVE_LEFT")))) {
-        _player.Move(time_elapsed, sf::Vector2f(-1.f, 0.f));
+        _player->Move(time_elapsed, sf::Vector2f(-1.f, 0.f));
     }
     if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("MOVE_DOWN")))) {
-        _player.Move(time_elapsed, sf::Vector2f(0.f, 1.f));
+        _player->Move(time_elapsed, sf::Vector2f(0.f, 1.f));
     }
     if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("MOVE_RIGHT")))) {
-        _player.Move(time_elapsed, sf::Vector2f(1.f, 0.f));
+        _player->Move(time_elapsed, sf::Vector2f(1.f, 0.f));
     }
     if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("MOVE_UP")))) {
-        _player.Move(time_elapsed, sf::Vector2f(0.f, -1.f));
+        _player->Move(time_elapsed, sf::Vector2f(0.f, -1.f));
     }
 
 
@@ -52,8 +54,10 @@ void GameState::Render(std::shared_ptr<sf::RenderTarget> target) {
     if (target == nullptr) {
         target = _window;
     }
-    _player.Render(target);
+    _player->Render(target);
 }
+
+/* initializers */
 
 void GameState::InitKeybindings() {
     std::ifstream in("../Config/gamestate_keybindings.txt");
@@ -64,6 +68,19 @@ void GameState::InitKeybindings() {
             _keybindings.try_emplace(key_str, _supported_keys->at(key_bind));
         }
     }
+}
+
+void GameState::InitTextures() {
+    sf::Texture temp;
+    sf::IntRect temp_rect(0, 0, 32, 48);
+    if (!temp.loadFromFile("../Images/Sprites/Player/hero.png", temp_rect)) {
+        throw std::runtime_error("Player texture cannot be loaded from file");
+    }
+    _textures["PLAYER_IDLE"] = std::make_shared<sf::Texture>(temp);
+}
+
+void GameState::InitPlayer() {
+    _player = std::make_unique<Player>(sf::Vector2f(0,0), _textures.at("PLAYER_IDLE"));
 }
 
 

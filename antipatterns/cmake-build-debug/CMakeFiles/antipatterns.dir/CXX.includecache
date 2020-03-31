@@ -850,6 +850,40 @@ SFML/Config.hpp
 
 ../SFML-2.5.1/include/SFML/Window/WindowStyle.hpp
 
+/home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
+iostream
+-
+ctime
+-
+cmath
+-
+cstdlib
+-
+fstream
+-
+sstream
+-
+memory
+-
+vector
+-
+stack
+-
+map
+-
+unordered_map
+-
+string
+-
+../Resources/GraphicsSettings.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
+SFML/System.hpp
+-
+SFML/Window.hpp
+-
+SFML/Audio.hpp
+-
+
 /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.h
 iostream
 -
@@ -915,8 +949,16 @@ utility
 -
 
 /home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h
-../src/GameObject.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.h
+../src/Player.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.h
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.cpp
+Creature.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
+../Components/PhysicsComponent.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
 
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.cpp
 Game.h
@@ -928,41 +970,13 @@ Game.h
 ../States/MainMenuState.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.h
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.cpp
-GameObject.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.cpp
+Player.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.h
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/GameObject.h
-iostream
--
-ctime
--
-cstdlib
--
-fstream
--
-sstream
--
-memory
--
-vector
--
-stack
--
-map
--
-unordered_map
--
-string
--
-../Resources/GraphicsSettings.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
-SFML/System.hpp
--
-SFML/Window.hpp
--
-SFML/Audio.hpp
--
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.h
+Creature.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
 
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/main.cpp
 Game.h

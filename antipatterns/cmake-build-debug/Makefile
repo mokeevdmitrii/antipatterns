@@ -123,6 +123,60 @@ antipatterns/fast:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/build
 .PHONY : antipatterns/fast
 
+Components/GraphicsComponent.o: Components/GraphicsComponent.cpp.o
+
+.PHONY : Components/GraphicsComponent.o
+
+# target to build an object file
+Components/GraphicsComponent.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/GraphicsComponent.cpp.o
+.PHONY : Components/GraphicsComponent.cpp.o
+
+Components/GraphicsComponent.i: Components/GraphicsComponent.cpp.i
+
+.PHONY : Components/GraphicsComponent.i
+
+# target to preprocess a source file
+Components/GraphicsComponent.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/GraphicsComponent.cpp.i
+.PHONY : Components/GraphicsComponent.cpp.i
+
+Components/GraphicsComponent.s: Components/GraphicsComponent.cpp.s
+
+.PHONY : Components/GraphicsComponent.s
+
+# target to generate assembly for a file
+Components/GraphicsComponent.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/GraphicsComponent.cpp.s
+.PHONY : Components/GraphicsComponent.cpp.s
+
+Components/PhysicsComponent.o: Components/PhysicsComponent.cpp.o
+
+.PHONY : Components/PhysicsComponent.o
+
+# target to build an object file
+Components/PhysicsComponent.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.o
+.PHONY : Components/PhysicsComponent.cpp.o
+
+Components/PhysicsComponent.i: Components/PhysicsComponent.cpp.i
+
+.PHONY : Components/PhysicsComponent.i
+
+# target to preprocess a source file
+Components/PhysicsComponent.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.i
+.PHONY : Components/PhysicsComponent.cpp.i
+
+Components/PhysicsComponent.s: Components/PhysicsComponent.cpp.s
+
+.PHONY : Components/PhysicsComponent.s
+
+# target to generate assembly for a file
+Components/PhysicsComponent.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.s
+.PHONY : Components/PhysicsComponent.cpp.s
+
 Resources/Button.o: Resources/Button.cpp.o
 
 .PHONY : Resources/Button.o
@@ -285,6 +339,33 @@ States/State.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/State.cpp.s
 .PHONY : States/State.cpp.s
 
+src/Creature.o: src/Creature.cpp.o
+
+.PHONY : src/Creature.o
+
+# target to build an object file
+src/Creature.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Creature.cpp.o
+.PHONY : src/Creature.cpp.o
+
+src/Creature.i: src/Creature.cpp.i
+
+.PHONY : src/Creature.i
+
+# target to preprocess a source file
+src/Creature.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Creature.cpp.i
+.PHONY : src/Creature.cpp.i
+
+src/Creature.s: src/Creature.cpp.s
+
+.PHONY : src/Creature.s
+
+# target to generate assembly for a file
+src/Creature.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Creature.cpp.s
+.PHONY : src/Creature.cpp.s
+
 src/Game.o: src/Game.cpp.o
 
 .PHONY : src/Game.o
@@ -312,32 +393,32 @@ src/Game.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Game.cpp.s
 .PHONY : src/Game.cpp.s
 
-src/GameObject.o: src/GameObject.cpp.o
+src/Player.o: src/Player.cpp.o
 
-.PHONY : src/GameObject.o
+.PHONY : src/Player.o
 
 # target to build an object file
-src/GameObject.cpp.o:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/GameObject.cpp.o
-.PHONY : src/GameObject.cpp.o
+src/Player.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Player.cpp.o
+.PHONY : src/Player.cpp.o
 
-src/GameObject.i: src/GameObject.cpp.i
+src/Player.i: src/Player.cpp.i
 
-.PHONY : src/GameObject.i
+.PHONY : src/Player.i
 
 # target to preprocess a source file
-src/GameObject.cpp.i:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/GameObject.cpp.i
-.PHONY : src/GameObject.cpp.i
+src/Player.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Player.cpp.i
+.PHONY : src/Player.cpp.i
 
-src/GameObject.s: src/GameObject.cpp.s
+src/Player.s: src/Player.cpp.s
 
-.PHONY : src/GameObject.s
+.PHONY : src/Player.s
 
 # target to generate assembly for a file
-src/GameObject.cpp.s:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/GameObject.cpp.s
-.PHONY : src/GameObject.cpp.s
+src/Player.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Player.cpp.s
+.PHONY : src/Player.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -375,6 +456,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... antipatterns"
 	@echo "... edit_cache"
+	@echo "... Components/GraphicsComponent.o"
+	@echo "... Components/GraphicsComponent.i"
+	@echo "... Components/GraphicsComponent.s"
+	@echo "... Components/PhysicsComponent.o"
+	@echo "... Components/PhysicsComponent.i"
+	@echo "... Components/PhysicsComponent.s"
 	@echo "... Resources/Button.o"
 	@echo "... Resources/Button.i"
 	@echo "... Resources/Button.s"
@@ -393,12 +480,15 @@ help:
 	@echo "... States/State.o"
 	@echo "... States/State.i"
 	@echo "... States/State.s"
+	@echo "... src/Creature.o"
+	@echo "... src/Creature.i"
+	@echo "... src/Creature.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"
-	@echo "... src/GameObject.o"
-	@echo "... src/GameObject.i"
-	@echo "... src/GameObject.s"
+	@echo "... src/Player.o"
+	@echo "... src/Player.i"
+	@echo "... src/Player.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

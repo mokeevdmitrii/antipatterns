@@ -18,6 +18,7 @@ public:
     unsigned int _framerate_limit;
     bool _fullscreen;
     bool _v_sync_enabled;
+
     GraphicsSettings();
 
     bool LoadFromFile(const std::string& file_name);

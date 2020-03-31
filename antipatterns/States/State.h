@@ -5,7 +5,8 @@
 #ifndef ANTIPATTERNS_STATE_H
 #define ANTIPATTERNS_STATE_H
 
-#include "../src/GameObject.h"
+
+#include "../src/Player.h"
 
 
 struct MousePositions {
@@ -44,7 +45,8 @@ public:
 
 protected:
     /* declarations */
-    /* functions */
+
+    /* initializers */
     virtual void InitKeybindings() = 0;
 
     /* variables */
@@ -58,7 +60,7 @@ protected:
     MousePositions _mouse_positions;
 
     /* from resources */
-    std::vector<std::shared_ptr<sf::Texture>> _textures;
+    std::unordered_map<std::string, std::shared_ptr<sf::Texture>> _textures;
 private:
     /* still nothing */
 
