@@ -31,13 +31,13 @@ bool PhysicsComponent::GetState(MovementState state) const {
         case MOVING:
             return _velocity.x != 0 || _velocity.y != 0;
         case MOVING_LEFT:
-            return _velocity.x < 0;
+            return _velocity.x < 0 && std::abs(_velocity.x) >= std::abs(_velocity.y);
         case MOVING_RIGHT:
-            return _velocity.x > 0;
+            return _velocity.x > 0 && std::abs(_velocity.x) >= std::abs(_velocity.y);
         case MOVING_UP:
-            return _velocity.y < 0;
+            return _velocity.y < 0 && std::abs(_velocity.x) < std::abs(_velocity.y);
         case MOVING_DOWN:
-            return _velocity.y > 0;
+            return _velocity.y > 0 && std::abs(_velocity.x) < std::abs(_velocity.y);
         default:
             throw std::runtime_error("CASE NOT HANDLED");
     }
@@ -48,16 +48,12 @@ void PhysicsComponent::Stop() {
     _velocity.x = _velocity.y = 0;
 }
 
-void PhysicsComponent::StopMoveX() {
+void PhysicsComponent::StopAxisMoveX() {
     _velocity.x = 0;
 }
 
-void PhysicsComponent::StopMoveY() {
+void PhysicsComponent::StopAxisMoveY() {
     _velocity.y = 0;
-}
-
-bool PhysicsComponent::CheckCollision(const sf::Sprite &other_sprite) {
-    return _sprite.getGlobalBounds().intersects(other_sprite.getGlobalBounds());
 }
 
 /* functions */

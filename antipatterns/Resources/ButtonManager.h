@@ -6,8 +6,6 @@
 #define ANTIPATTERNS_BUTTONMANAGER_H
 
 #include "Button.h"
-#include <unordered_map>
-#include <utility>
 
 class ButtonManager {
 public:
@@ -21,7 +19,9 @@ public:
 
     void Update(const sf::Vector2f &mouse_pos);
 
-    void Render(const std::shared_ptr<sf::RenderTarget> &target);
+    void Render(sf::RenderTarget &target);
+
+    const sf::Font& GetFont();
 
     std::shared_ptr<Button> operator[](const std::string &btn_name) const;
 

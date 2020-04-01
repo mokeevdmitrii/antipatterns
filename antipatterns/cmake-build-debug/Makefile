@@ -150,6 +150,33 @@ Components/GraphicsComponent.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/GraphicsComponent.cpp.s
 .PHONY : Components/GraphicsComponent.cpp.s
 
+Components/HitboxComponent.o: Components/HitboxComponent.cpp.o
+
+.PHONY : Components/HitboxComponent.o
+
+# target to build an object file
+Components/HitboxComponent.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.o
+.PHONY : Components/HitboxComponent.cpp.o
+
+Components/HitboxComponent.i: Components/HitboxComponent.cpp.i
+
+.PHONY : Components/HitboxComponent.i
+
+# target to preprocess a source file
+Components/HitboxComponent.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.i
+.PHONY : Components/HitboxComponent.cpp.i
+
+Components/HitboxComponent.s: Components/HitboxComponent.cpp.s
+
+.PHONY : Components/HitboxComponent.s
+
+# target to generate assembly for a file
+Components/HitboxComponent.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.s
+.PHONY : Components/HitboxComponent.cpp.s
+
 Components/PhysicsComponent.o: Components/PhysicsComponent.cpp.o
 
 .PHONY : Components/PhysicsComponent.o
@@ -258,6 +285,33 @@ Resources/GraphicsSettings.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.s
 .PHONY : Resources/GraphicsSettings.cpp.s
 
+Resources/PauseMenu.o: Resources/PauseMenu.cpp.o
+
+.PHONY : Resources/PauseMenu.o
+
+# target to build an object file
+Resources/PauseMenu.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/PauseMenu.cpp.o
+.PHONY : Resources/PauseMenu.cpp.o
+
+Resources/PauseMenu.i: Resources/PauseMenu.cpp.i
+
+.PHONY : Resources/PauseMenu.i
+
+# target to preprocess a source file
+Resources/PauseMenu.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/PauseMenu.cpp.i
+.PHONY : Resources/PauseMenu.cpp.i
+
+Resources/PauseMenu.s: Resources/PauseMenu.cpp.s
+
+.PHONY : Resources/PauseMenu.s
+
+# target to generate assembly for a file
+Resources/PauseMenu.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/PauseMenu.cpp.s
+.PHONY : Resources/PauseMenu.cpp.s
+
 States/GameState.o: States/GameState.cpp.o
 
 .PHONY : States/GameState.o
@@ -339,6 +393,33 @@ States/State.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/State.cpp.s
 .PHONY : States/State.cpp.s
 
+Tile/Tile.o: Tile/Tile.cpp.o
+
+.PHONY : Tile/Tile.o
+
+# target to build an object file
+Tile/Tile.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Tile/Tile.cpp.o
+.PHONY : Tile/Tile.cpp.o
+
+Tile/Tile.i: Tile/Tile.cpp.i
+
+.PHONY : Tile/Tile.i
+
+# target to preprocess a source file
+Tile/Tile.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Tile/Tile.cpp.i
+.PHONY : Tile/Tile.cpp.i
+
+Tile/Tile.s: Tile/Tile.cpp.s
+
+.PHONY : Tile/Tile.s
+
+# target to generate assembly for a file
+Tile/Tile.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Tile/Tile.cpp.s
+.PHONY : Tile/Tile.cpp.s
+
 src/Creature.o: src/Creature.cpp.o
 
 .PHONY : src/Creature.o
@@ -365,6 +446,33 @@ src/Creature.s: src/Creature.cpp.s
 src/Creature.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Creature.cpp.s
 .PHONY : src/Creature.cpp.s
+
+src/Enemy.o: src/Enemy.cpp.o
+
+.PHONY : src/Enemy.o
+
+# target to build an object file
+src/Enemy.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Enemy.cpp.o
+.PHONY : src/Enemy.cpp.o
+
+src/Enemy.i: src/Enemy.cpp.i
+
+.PHONY : src/Enemy.i
+
+# target to preprocess a source file
+src/Enemy.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Enemy.cpp.i
+.PHONY : src/Enemy.cpp.i
+
+src/Enemy.s: src/Enemy.cpp.s
+
+.PHONY : src/Enemy.s
+
+# target to generate assembly for a file
+src/Enemy.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Enemy.cpp.s
+.PHONY : src/Enemy.cpp.s
 
 src/Game.o: src/Game.cpp.o
 
@@ -459,6 +567,9 @@ help:
 	@echo "... Components/GraphicsComponent.o"
 	@echo "... Components/GraphicsComponent.i"
 	@echo "... Components/GraphicsComponent.s"
+	@echo "... Components/HitboxComponent.o"
+	@echo "... Components/HitboxComponent.i"
+	@echo "... Components/HitboxComponent.s"
 	@echo "... Components/PhysicsComponent.o"
 	@echo "... Components/PhysicsComponent.i"
 	@echo "... Components/PhysicsComponent.s"
@@ -471,6 +582,9 @@ help:
 	@echo "... Resources/GraphicsSettings.o"
 	@echo "... Resources/GraphicsSettings.i"
 	@echo "... Resources/GraphicsSettings.s"
+	@echo "... Resources/PauseMenu.o"
+	@echo "... Resources/PauseMenu.i"
+	@echo "... Resources/PauseMenu.s"
 	@echo "... States/GameState.o"
 	@echo "... States/GameState.i"
 	@echo "... States/GameState.s"
@@ -480,9 +594,15 @@ help:
 	@echo "... States/State.o"
 	@echo "... States/State.i"
 	@echo "... States/State.s"
+	@echo "... Tile/Tile.o"
+	@echo "... Tile/Tile.i"
+	@echo "... Tile/Tile.s"
 	@echo "... src/Creature.o"
 	@echo "... src/Creature.i"
 	@echo "... src/Creature.s"
+	@echo "... src/Enemy.o"
+	@echo "... src/Enemy.i"
+	@echo "... src/Enemy.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"

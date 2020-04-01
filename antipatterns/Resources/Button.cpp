@@ -5,20 +5,24 @@
 #include "Button.h"
 
 Button::Button(ButtonParams params) {
-    _shape.setPosition(params._x, params._y);
-    _shape.setSize(sf::Vector2f(params._width, params._height));
+    _shape.setPosition(params.x, params.y);
+    _shape.setSize(sf::Vector2f(params.width, params.height));
 
-    _button_font = std::move(params._font);
-    _text.setString(params._button_text);
+    _button_font = std::move(params.font);
+    _text.setString(params.button_text);
     _text.setFont(*_button_font);
     _text.setFillColor(sf::Color::White);
-    _text.setCharacterSize(20);
+    _text.setCharacterSize(params.character_size);
     _text.setPosition(_shape.getPosition().x + _shape.getGlobalBounds().width / 2 - _text.getGlobalBounds().width / 2,
                       _shape.getPosition().y + _shape.getGlobalBounds().height / 2 - _text.getGlobalBounds().height / 2);
 
-    _colors._active = params._colors._active;
-    _colors._idle = params._colors._idle;
-    _colors._hover = params._colors._hover;
+    btn_colors.active = params.btn_colors.active;
+    btn_colors.idle = params.btn_colors.idle;
+    btn_colors.hover = params.btn_colors.hover;
+    _txt_colors.active = params.txt_colors.active;
+    _txt_colors.idle = params.txt_colors.idle;
+    _txt_colors.hover = params.txt_colors.hover;
+
 }
 
 Button::~Button() {
@@ -38,22 +42,25 @@ void Button::Update(const sf::Vector2f &mouse_pos) {
 
     switch (_button_state) {
         case ButtonState::IDLE:
-            _shape.setFillColor(_colors._idle);
+            _shape.setFillColor(btn_colors.idle);
+            _text.setFillColor(_txt_colors.idle);
             break;
         case ButtonState::HOVER:
-            _shape.setFillColor(_colors._hover);
+            _shape.setFillColor(btn_colors.hover);
+            _text.setFillColor(_txt_colors.hover);
             break;
         case ButtonState::ACTIVE:
-            _shape.setFillColor(_colors._active);
+            _shape.setFillColor(btn_colors.active);
+            _text.setFillColor(btn_colors.active);
             break;
         default:
             throw (std::runtime_error("No state for button"));
     }
 }
 
-void Button::Render(const std::shared_ptr<sf::RenderTarget>& target) {
-    target->draw(_shape);
-    target->draw(_text);
+void Button::Render(sf::RenderTarget& target) {
+    target.draw(_shape);
+    target.draw(_text);
 }
 
 bool Button::IsActive() const {

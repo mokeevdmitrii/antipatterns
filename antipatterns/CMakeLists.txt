@@ -18,5 +18,5 @@ endif()
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(antipatterns src/main.cpp src/Game.cpp src/Game.h States/State.cpp States/State.h States/GameState.cpp States/GameState.h src/Creature.cpp src/Creature.h States/MainMenuState.cpp States/MainMenuState.h Resources/Button.cpp Resources/Button.h Resources/ButtonManager.cpp Resources/ButtonManager.h Resources/GraphicsSettings.cpp Resources/GraphicsSettings.h src/Player.cpp src/Player.h Components/PhysicsComponent.cpp Components/PhysicsComponent.h Components/GraphicsComponent.cpp Components/GraphicsComponent.h)
+add_executable(antipatterns src/main.cpp src/Game.cpp src/Game.h States/State.cpp States/State.h States/GameState.cpp States/GameState.h src/Creature.cpp src/Creature.h States/MainMenuState.cpp States/MainMenuState.h Resources/Button.cpp Resources/Button.h Resources/ButtonManager.cpp Resources/ButtonManager.h Resources/GraphicsSettings.cpp Resources/GraphicsSettings.h src/Player.cpp src/Player.h Components/PhysicsComponent.cpp Components/PhysicsComponent.h Components/GraphicsComponent.cpp Components/GraphicsComponent.h src/Enemy.cpp src/Enemy.h Components/HitboxComponent.cpp Components/HitboxComponent.h Tile/Tile.cpp Tile/Tile.h Resources/PauseMenu.cpp Resources/PauseMenu.h)
 target_link_libraries (antipatterns sfml-graphics sfml-window sfml-audio sfml-system)

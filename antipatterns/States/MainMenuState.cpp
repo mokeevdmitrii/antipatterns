@@ -51,7 +51,7 @@ void MainMenuState::Render(std::shared_ptr<sf::RenderTarget> target) {
         target = _window;
     }
     target->draw(_background._image);
-    _btn_manager.Render(target);
+    _btn_manager.Render(*target);
 }
 
 void MainMenuState::InitKeybindings() {

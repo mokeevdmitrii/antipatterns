@@ -7,6 +7,7 @@
 
 
 #include "../src/Player.h"
+#include "../Resources/PauseMenu.h"
 
 
 struct MousePositions {
@@ -37,7 +38,9 @@ public:
 
     /* State functions */
     void UpdateMousePositions();
-    void EndState();
+    void Pause();
+    void Unpause();
+    void End();
 
     virtual void Render(std::shared_ptr<sf::RenderTarget> target) = 0;
     virtual void Update(float time_elapsed) = 0;
@@ -57,10 +60,11 @@ protected:
     std::shared_ptr<std::stack<std::shared_ptr<State>>> _state_stack;
 
     bool _to_quit = false;
+    bool _paused = false;
     MousePositions _mouse_positions;
 
     /* from resources */
-    std::unordered_map<std::string, std::shared_ptr<sf::Texture>> _textures;
+    std::unordered_map<std::string, sf::Texture> _textures;
 private:
     /* still nothing */
 

@@ -22,17 +22,23 @@ void ButtonManager::InitButtons(const std::string &file_name) {
         std::string button_name{};
         int r, g, b, a;
         while (in >> button_name) {
-            in >> params._x >> params._y >> params._width >> params._height;
+            in >> params.x >> params.y >> params.width >> params.height;
             in.ignore();
-            std::getline(in, params._button_text);
-            params._font = std::make_shared<sf::Font>(_button_font);
-            /* я не понимаю, что тут ломается */
+            std::getline(in, params.button_text);
+            params.font = std::make_shared<sf::Font>(_button_font);
+            in >> params.character_size;
             in >> r >> g >> b >> a;
-            params._colors._active = sf::Color(r, g, b, a);
+            params.btn_colors.idle = sf::Color(r, g, b, a);
             in >> r >> g >> b >> a;
-            params._colors._hover = sf::Color(r, g, b, a);
+            params.btn_colors.hover = sf::Color(r, g, b, a);
             in >> r >> g >> b >> a;
-            params._colors._idle = sf::Color(r, g, b, a);
+            params.btn_colors.active = sf::Color(r, g, b, a);
+            in >> r >> g >> b >> a;
+            params.txt_colors.idle = sf::Color(r, g, b, a);
+            in >> r >> g >> b >> a;
+            params.txt_colors.hover = sf::Color(r, g, b, a);
+            in >> r >> g >> b >> a;
+            params.txt_colors.active = sf::Color(r, g, b, a);
             _buttons[button_name] = std::make_shared<Button>(params);
         }
     }
@@ -49,10 +55,14 @@ void ButtonManager::Update(const sf::Vector2f& mouse_pos) {
     }
 }
 
-void ButtonManager::Render(const std::shared_ptr<sf::RenderTarget> &target) {
+void ButtonManager::Render(sf::RenderTarget &target) {
     for (auto&[str, btn_ptr] : _buttons) {
         btn_ptr->Render(target);
     }
+}
+
+const sf::Font& ButtonManager::GetFont() {
+    return _button_font;
 }
 
 std::shared_ptr<Button> ButtonManager::operator[](const std::string &btn_name) const {
@@ -66,6 +76,8 @@ std::unordered_map<std::string, std::shared_ptr<Button>>::iterator ButtonManager
 std::unordered_map<std::string, std::shared_ptr<Button>>::iterator ButtonManager::end() {
     return _buttons.end();
 }
+
+
 
 
 

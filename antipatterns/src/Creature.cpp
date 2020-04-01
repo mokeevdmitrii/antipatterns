@@ -24,17 +24,20 @@ void Creature::Move(const float time_elapsed, const sf::Vector2f &direction) {
 }
 
 
-void Creature::SetTexture(std::shared_ptr<sf::Texture> texture) {
-    _texture = std::move(texture);
-    _sprite.setTexture(*_texture);
+void Creature::SetTexture(sf::Texture& texture) {
+    _sprite.setTexture(texture);
 }
 
 void Creature::InitPhysicsComponent(float max_velocity, float acceleration, float deceleration) {
-    _phys_comp = std::make_unique<PhysicsComponent>(_sprite, max_velocity, acceleration, deceleration);
+    _phys_comp = std::make_shared<PhysicsComponent>(_sprite, max_velocity, acceleration, deceleration);
 }
 
-void Creature::InitGraphicsComponent() {
+void Creature::InitGraphicsComponent(sf::Texture& texture_sheet) {
+    _graph_comp = std::make_shared<GraphicsComponent>(_sprite, texture_sheet);
+}
 
+void Creature::InitHitboxComponent(sf::Sprite &sprite, float width, float height, float offset_x, float offset_y) {
+    _hitbox_comp = std::make_shared<HitboxComponent>(_sprite, width, height, offset_x, offset_y);
 }
 
 

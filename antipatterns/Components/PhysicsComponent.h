@@ -5,22 +5,9 @@
 #ifndef ANTIPATTERNS_PHYSICSCOMPONENT_H
 #define ANTIPATTERNS_PHYSICSCOMPONENT_H
 
-#include <iostream>
-#include <ctime>
-#include <cmath>
-#include <cstdlib>
-#include <fstream>
-#include <sstream>
-#include <memory>
-#include <vector>
-#include <stack>
-#include <map>
-#include <unordered_map>
-#include <string>
+
 #include "../Resources/GraphicsSettings.h"
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
+
 
 enum MovementState {
     IDLE,
@@ -46,11 +33,8 @@ public:
     /* modifiers */
     /* for collisions in future */
     void Stop();
-    void StopMoveX();
-    void StopMoveY();
-
-    /* checkers */
-    bool CheckCollision(const sf::Sprite &other_sprite);
+    void StopAxisMoveX();
+    void StopAxisMoveY();
 
     /* functions */
     void Accelerate(float time_elapsed, const sf::Vector2f &_direction);

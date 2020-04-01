@@ -5,9 +5,23 @@
 #ifndef ANTIPATTERNS_GRAPHICSSETTINGS_H
 #define ANTIPATTERNS_GRAPHICSSETTINGS_H
 
-#include "fstream"
+#include <iostream>
+#include <ctime>
+#include <cmath>
+#include <cstdlib>
+#include <fstream>
+#include <sstream>
+#include <memory>
+#include <vector>
+#include <stack>
+#include <map>
+#include <utility>
+#include <unordered_map>
+#include <string>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
 
 class GraphicsSettings {
 public:

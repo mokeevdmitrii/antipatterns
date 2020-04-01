@@ -37,7 +37,7 @@ void Game::Update() {
         _states->top()->Update(_time_elapsed);
         if (_states->top()->GetToQuit()) {
             /* animation, saving */
-            //_states->top()->EndState();
+            //_states->top()->End();
             _states->pop();
         }
     } else {

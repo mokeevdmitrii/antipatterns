@@ -30,8 +30,16 @@ void State::UpdateMousePositions() {
     _mouse_positions.view = _window->mapPixelToCoords(sf::Mouse::getPosition(*_window));
 }
 
-void State::EndState() {
+void State::End() {
     _to_quit = true;
+}
+
+void State::Pause() {
+    _paused = true;
+}
+
+void State::Unpause() {
+    _paused = false;
 }
 
 

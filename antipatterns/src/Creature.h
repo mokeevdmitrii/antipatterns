@@ -6,6 +6,7 @@
 #define ANTIPATTERNS_CREATURE_H
 
 #include "../Components/GraphicsComponent.h"
+#include "../Components/HitboxComponent.h"
 
 
 /* class that in fact implements basic sprite inteface */
@@ -17,21 +18,23 @@ public:
 
     /* functions */
     virtual void Update(float time_elapsed) = 0;
-    virtual void Render(const std::shared_ptr<sf::RenderTarget> &target) = 0;
+    virtual void Render(sf::RenderTarget &target) = 0;
     /* do not change signature */
     virtual void SetPosition(const sf::Vector2f &position);
     virtual void Move(float time_elapsed, const sf::Vector2f &direction);
 
     /* initializers */
-    void SetTexture(std::shared_ptr<sf::Texture> texture);
+    void SetTexture(sf::Texture& texture);
     void InitPhysicsComponent(float max_velocity, float acceleration, float deceleration);
-    void InitGraphicsComponent();
+    void InitGraphicsComponent(sf::Texture& texture_sheet);
+    void InitHitboxComponent(sf::Sprite& sprite, float width, float height, float offset_x, float offset_y);
+
 
 protected:
-    std::unique_ptr<PhysicsComponent> _phys_comp{};
-    std::unique_ptr<GraphicsComponent> _graph_comp{};
+    std::shared_ptr<PhysicsComponent> _phys_comp{};
+    std::shared_ptr<GraphicsComponent> _graph_comp{};
+    std::shared_ptr<HitboxComponent> _hitbox_comp{};
     /* for drawing */
-    std::shared_ptr<sf::Texture> _texture{};
     sf::Sprite _sprite{};
 private:
 

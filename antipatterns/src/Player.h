@@ -10,17 +10,17 @@
 /* здесь я сижу сейчас */
 class Player : public Creature {
 public:
-    Player(sf::Vector2f position, std::shared_ptr<sf::Texture> texture);
+    Player(sf::Vector2f position, sf::Texture& texture_sheet);
     ~Player() override;
     /* overrided functions */
     void Update(float time_elapsed) override;
-    void Render(const std::shared_ptr<sf::RenderTarget> &target) override;
-
-    /* initializers */
-    void InitComponents();
+    void Render(sf::RenderTarget &target) override;
 private:
+    /* initializers */
+    void InitAnimations();
+
+    void UpdateAnimations(float time_elapsed);
     sf::Vector2f _position;
-    std::shared_ptr<sf::Texture> _texture;
 };
 
 

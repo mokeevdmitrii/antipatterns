@@ -18,12 +18,15 @@ public:
     void Update(float time_elapsed) override;
     void UpdateInput(float time_elapsed) override;
     void Render(std::shared_ptr<sf::RenderTarget> target) override;
+    /* class functions */
+    void UpdatePlayerInput(float time_elapsed);
 private:
     /* initializers */
     void InitKeybindings() override;
     void InitTextures();
     void InitPlayer();
     std::unique_ptr<Creature> _player;
+    PauseMenu _pause_menu;
 };
 
 

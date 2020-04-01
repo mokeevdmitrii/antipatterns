@@ -9,7 +9,7 @@
 GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
                      std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
                      std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack) :
-        State(std::move(window), std::move(supported_keys), std::move(state_stack)) {
+         _pause_menu(window), State(window, std::move(supported_keys), std::move(state_stack)) {
     GameState::InitKeybindings();
     GameState::InitTextures();
     GameState::InitPlayer();
@@ -23,17 +23,38 @@ GameState::~GameState() {
 
 
 void GameState::Update(const float time_elapsed) {
+    /* if not paused, update game */
     UpdateMousePositions();
-    UpdateInput(time_elapsed);
-    _player->Update(time_elapsed);
+    if (!_paused) {
+        UpdateInput(time_elapsed);
+        UpdatePlayerInput(time_elapsed);
+        _player->Update(time_elapsed);
+    /* else update pause menu */
+    } else {
+        _pause_menu.Update(_mouse_positions.view);
+        if (_pause_menu.IsButtonActive(std::string("UNPAUSE_GAME"))) {
+            Unpause();
+        }
+    }
 }
 
 void GameState::UpdateInput(const float time_elapsed) {
-    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("CLOSE")))) {
-        EndState();
+    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("PAUSE")))) {
+        Pause();
     }
+    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("CLOSE")))) {
+        End();
+    }
+}
 
-    /* temporary handling player input - to be reworked */
+void GameState::Render(std::shared_ptr<sf::RenderTarget> target) {
+    _player->Render(*target);
+    if (_paused) {
+        _pause_menu.Render(*target);
+    }
+}
+
+void GameState::UpdatePlayerInput(float time_elapsed) {
     if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("MOVE_LEFT")))) {
         _player->Move(time_elapsed, sf::Vector2f(-1.f, 0.f));
     }
@@ -46,15 +67,6 @@ void GameState::UpdateInput(const float time_elapsed) {
     if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("MOVE_UP")))) {
         _player->Move(time_elapsed, sf::Vector2f(0.f, -1.f));
     }
-
-
-}
-
-void GameState::Render(std::shared_ptr<sf::RenderTarget> target) {
-    if (target == nullptr) {
-        target = _window;
-    }
-    _player->Render(target);
 }
 
 /* initializers */
@@ -71,17 +83,19 @@ void GameState::InitKeybindings() {
 }
 
 void GameState::InitTextures() {
-    sf::Texture temp;
     sf::IntRect temp_rect(0, 0, 32, 48);
-    if (!temp.loadFromFile("../Images/Sprites/Player/hero.png", temp_rect)) {
+    if (!_textures["PLAYER_IDLE"].loadFromFile("../Images/Sprites/Player/hero.png", temp_rect)) {
         throw std::runtime_error("Player texture cannot be loaded from file");
     }
-    _textures["PLAYER_IDLE"] = std::make_shared<sf::Texture>(temp);
 }
 
 void GameState::InitPlayer() {
     _player = std::make_unique<Player>(sf::Vector2f(0,0), _textures.at("PLAYER_IDLE"));
 }
+
+
+
+
 
 
 
