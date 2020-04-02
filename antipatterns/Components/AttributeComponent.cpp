@@ -3,3 +3,11 @@
 //
 
 #include "AttributeComponent.h"
+
+AttributeComponent::AttributeComponent(int level) : _level(level) {
+
+}
+
+int AttributeComponent::GetLevel() {
+    return _level;
+}

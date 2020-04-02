@@ -5,6 +5,7 @@
 #ifndef ANTIPATTERNS_ENEMYSPAWNER_H
 #define ANTIPATTERNS_ENEMYSPAWNER_H
 
+#include "Enemy.h"
 
 class EnemySpawner {
 

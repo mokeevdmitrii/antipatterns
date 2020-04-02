@@ -8,12 +8,24 @@
 #include "../Resources/GraphicsSettings.h"
 
 enum TileType {
-    GRASS,
-    WATER
+    BRICK = 0,
+    SAND = 1,
+    GRASS = 2,
+    MUD = 3,
+    YELLOW_BRICK = 4
 };
 
 class Tile {
+public:
+    Tile(TileType type, const sf::Texture &texture,
+            const sf::IntRect &rect, const sf::Vector2f &pos = sf::Vector2f());
 
+    std::unique_ptr<Tile> Clone(const sf::Vector2f& position);
+
+    void Render(sf::RenderTarget& target);
+private:
+    sf::Sprite _sprite;
+    TileType _type;
 };
 
 

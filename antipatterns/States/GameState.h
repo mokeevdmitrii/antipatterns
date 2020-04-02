@@ -6,6 +6,9 @@
 #define ANTIPATTERNS_GAMESTATE_H
 
 #include "State.h"
+#include "../src/EnemySystem.h"
+#include "../Enemies/Rat.h"
+#include "../src/TileMap.h"
 
 class GameState : public State {
 public:
@@ -25,7 +28,12 @@ private:
     void InitKeybindings() override;
     void InitTextures();
     void InitPlayer();
+    void InitEnemySystem();
+    void InitTileMap();
+
     std::unique_ptr<Creature> _player;
+    std::unique_ptr<EnemySystem> _enemy_system;
+    std::unique_ptr<TileMap> _tile_map;
     PauseMenu _pause_menu;
 };
 

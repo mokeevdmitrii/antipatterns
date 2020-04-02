@@ -231,6 +231,33 @@ Components/PhysicsComponent.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.s
 .PHONY : Components/PhysicsComponent.cpp.s
 
+Enemies/Rat.o: Enemies/Rat.cpp.o
+
+.PHONY : Enemies/Rat.o
+
+# target to build an object file
+Enemies/Rat.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o
+.PHONY : Enemies/Rat.cpp.o
+
+Enemies/Rat.i: Enemies/Rat.cpp.i
+
+.PHONY : Enemies/Rat.i
+
+# target to preprocess a source file
+Enemies/Rat.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.i
+.PHONY : Enemies/Rat.cpp.i
+
+Enemies/Rat.s: Enemies/Rat.cpp.s
+
+.PHONY : Enemies/Rat.s
+
+# target to generate assembly for a file
+Enemies/Rat.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.s
+.PHONY : Enemies/Rat.cpp.s
+
 Resources/Button.o: Resources/Button.cpp.o
 
 .PHONY : Resources/Button.o
@@ -311,6 +338,33 @@ Resources/GraphicsSettings.s: Resources/GraphicsSettings.cpp.s
 Resources/GraphicsSettings.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.s
 .PHONY : Resources/GraphicsSettings.cpp.s
+
+Resources/Json.o: Resources/Json.cpp.o
+
+.PHONY : Resources/Json.o
+
+# target to build an object file
+Resources/Json.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Json.cpp.o
+.PHONY : Resources/Json.cpp.o
+
+Resources/Json.i: Resources/Json.cpp.i
+
+.PHONY : Resources/Json.i
+
+# target to preprocess a source file
+Resources/Json.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Json.cpp.i
+.PHONY : Resources/Json.cpp.i
+
+Resources/Json.s: Resources/Json.cpp.s
+
+.PHONY : Resources/Json.s
+
+# target to generate assembly for a file
+Resources/Json.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Json.cpp.s
+.PHONY : Resources/Json.cpp.s
 
 Resources/PauseMenu.o: Resources/PauseMenu.cpp.o
 
@@ -419,33 +473,6 @@ States/State.s: States/State.cpp.s
 States/State.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/States/State.cpp.s
 .PHONY : States/State.cpp.s
-
-Tile/Tile.o: Tile/Tile.cpp.o
-
-.PHONY : Tile/Tile.o
-
-# target to build an object file
-Tile/Tile.cpp.o:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Tile/Tile.cpp.o
-.PHONY : Tile/Tile.cpp.o
-
-Tile/Tile.i: Tile/Tile.cpp.i
-
-.PHONY : Tile/Tile.i
-
-# target to preprocess a source file
-Tile/Tile.cpp.i:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Tile/Tile.cpp.i
-.PHONY : Tile/Tile.cpp.i
-
-Tile/Tile.s: Tile/Tile.cpp.s
-
-.PHONY : Tile/Tile.s
-
-# target to generate assembly for a file
-Tile/Tile.cpp.s:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Tile/Tile.cpp.s
-.PHONY : Tile/Tile.cpp.s
 
 src/Creature.o: src/Creature.cpp.o
 
@@ -711,6 +738,9 @@ help:
 	@echo "... Components/PhysicsComponent.o"
 	@echo "... Components/PhysicsComponent.i"
 	@echo "... Components/PhysicsComponent.s"
+	@echo "... Enemies/Rat.o"
+	@echo "... Enemies/Rat.i"
+	@echo "... Enemies/Rat.s"
 	@echo "... Resources/Button.o"
 	@echo "... Resources/Button.i"
 	@echo "... Resources/Button.s"
@@ -720,6 +750,9 @@ help:
 	@echo "... Resources/GraphicsSettings.o"
 	@echo "... Resources/GraphicsSettings.i"
 	@echo "... Resources/GraphicsSettings.s"
+	@echo "... Resources/Json.o"
+	@echo "... Resources/Json.i"
+	@echo "... Resources/Json.s"
 	@echo "... Resources/PauseMenu.o"
 	@echo "... Resources/PauseMenu.i"
 	@echo "... Resources/PauseMenu.s"
@@ -732,9 +765,6 @@ help:
 	@echo "... States/State.o"
 	@echo "... States/State.i"
 	@echo "... States/State.s"
-	@echo "... Tile/Tile.o"
-	@echo "... Tile/Tile.i"
-	@echo "... Tile/Tile.s"
 	@echo "... src/Creature.o"
 	@echo "... src/Creature.i"
 	@echo "... src/Creature.s"

@@ -1,0 +1,33 @@
+{
+  "file_name": "../Images/Tiles/temp_tileset.png",
+  "grid_size": 62,
+  "world_size_x" : 3,
+  "world_size_y" : 3
+  "tiles": [
+    {
+      "type": 0,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "type": 1,
+      "x": 0,
+      "y": 1
+    },
+    {
+      "type": 2,
+      "x": 0,
+      "y": 2
+    },
+    {
+      "type": 3,
+      "x": 0,
+      "y": 3
+    },
+    {
+      "type": 4,
+      "x": 0,
+      "y": 4
+    }
+  ]
+}

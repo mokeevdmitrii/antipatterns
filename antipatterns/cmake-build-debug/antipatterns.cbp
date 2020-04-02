@@ -112,6 +112,12 @@
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h">
 			<Option target="antipatterns"/>
 		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.cpp">
 			<Option target="antipatterns"/>
 		</Unit>
@@ -128,6 +134,12 @@
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.cpp">
@@ -152,12 +164,6 @@
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h">
-			<Option target="antipatterns"/>
-		</Unit>
-		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Tile/Tile.cpp">
-			<Option target="antipatterns"/>
-		</Unit>
-		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Tile/Tile.h">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.cpp">

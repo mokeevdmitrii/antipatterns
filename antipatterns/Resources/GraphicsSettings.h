@@ -13,11 +13,13 @@
 #include <sstream>
 #include <memory>
 #include <vector>
+#include <list>
 #include <stack>
 #include <map>
 #include <utility>
 #include <unordered_map>
 #include <string>
+#include "Json.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>

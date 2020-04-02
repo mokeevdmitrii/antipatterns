@@ -13,6 +13,8 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
     GameState::InitKeybindings();
     GameState::InitTextures();
     GameState::InitPlayer();
+    GameState::InitEnemySystem();
+    GameState::InitTileMap();
 }
 
 GameState::~GameState() {
@@ -29,6 +31,7 @@ void GameState::Update(const float time_elapsed) {
         UpdateInput(time_elapsed);
         UpdatePlayerInput(time_elapsed);
         _player->Update(time_elapsed);
+        _enemy_system->Update(time_elapsed);
     /* else update pause menu */
     } else {
         _pause_menu.Update(_mouse_positions.view);
@@ -48,6 +51,8 @@ void GameState::UpdateInput(const float time_elapsed) {
 }
 
 void GameState::Render(std::shared_ptr<sf::RenderTarget> target) {
+    _tile_map->Render(*target);
+    _enemy_system->Render(*target);
     _player->Render(*target);
     if (_paused) {
         _pause_menu.Render(*target);
@@ -91,6 +96,16 @@ void GameState::InitTextures() {
 
 void GameState::InitPlayer() {
     _player = std::make_unique<Player>(sf::Vector2f(0,0), _textures.at("PLAYER_IDLE"));
+}
+
+void GameState::InitEnemySystem() {
+    _enemy_system = std::make_unique<EnemySystem>();
+    _enemy_system->AddEnemy(std::make_unique<Rat>(sf::Vector2f(0,0), _textures.at("PLAYER_IDLE")));
+    _enemy_system->CreateEnemy(0, sf::Vector2f(100, 100), 1);
+}
+
+void GameState::InitTileMap() {
+    _tile_map = std::make_unique<TileMap>("../Config/unique_tiles.json", "../Config/init_map.json");
 }
 
 

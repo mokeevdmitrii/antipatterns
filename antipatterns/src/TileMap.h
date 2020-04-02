@@ -9,16 +9,29 @@
 #include "Creature.h"
 
 class TileMap {
+    using Map = std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>>;
 public:
-    TileMap();
-    ~TileMap();
+    TileMap(const std::string& settings_file_name, const std::string& map_tile_name);
+    ~TileMap() = default;
 
-    void UpdateTiles(std::unique_ptr<Creature>, float time_elapsed /*, EnemySystem &system */);
+
+    /* updating all the map */
+    void UpdateTiles(std::unique_ptr<Creature> creature, float time_elapsed);
     void Render(sf::RenderTarget& target);
 
+    sf::Vector2i GetGridPosition(sf::Vector2f global_position);
+    sf::Vector2f GetGlobalPosition(sf::Vector2i grid_position);
+
 private:
-    std::vector<std::vector<std::shared_ptr<Tile>>> _map;
-    static std::unordered_map<TileType, std::shared_ptr<Tile>> _tiles;
+    /* initializers */
+    /* initialize unique tiles parameters from a tile */
+    void InitUniqueTiles(const std::string& file_name);
+    void InitMap(const std::string& file_name);
+    std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>> _map;
+    std::unordered_map<TileType, std::unique_ptr<Tile>> _unique_tiles;
+    int _grid_size;
+    sf::Vector2i _world_size;
+    sf::Texture _tile_sheet;
 };
 
 

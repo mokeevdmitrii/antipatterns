@@ -40,6 +40,10 @@ void Creature::InitHitboxComponent(sf::Sprite &sprite, float width, float height
     _hitbox_comp = std::make_shared<HitboxComponent>(_sprite, width, height, offset_x, offset_y);
 }
 
+void Creature::InitAttributeComponent(int level) {
+    _attribute_comp = std::make_shared<AttributeComponent>(level);
+}
+
 
 
 
