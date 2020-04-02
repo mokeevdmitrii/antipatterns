@@ -16,7 +16,7 @@ public:
 
     virtual ~Creature();
 
-    /* functions */
+    /* pure functions */
     virtual void Update(float time_elapsed) = 0;
     virtual void Render(sf::RenderTarget &target) = 0;
     /* do not change signature */

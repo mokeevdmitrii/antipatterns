@@ -850,39 +850,51 @@ SFML/Config.hpp
 
 ../SFML-2.5.1/include/SFML/Window/WindowStyle.hpp
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
 iostream
--
-sstream
 -
 ctime
 -
-cstdlib
+cmath
 -
-memory
+cstdlib
 -
 fstream
 -
+sstream
+-
+memory
+-
+vector
+-
+stack
+-
+map
+-
+utility
+-
 unordered_map
 -
-SFML/System.hpp
+string
 -
 SFML/Graphics.hpp
+-
+SFML/System.hpp
 -
 SFML/Window.hpp
 -
 SFML/Audio.hpp
 -
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h
-Button.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Tile.h
+../Resources/GraphicsSettings.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.cpp
-PauseMenu.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.cpp
+TileMap.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.h
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h
-ButtonManager.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.h
+Tile.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Tile.h
 

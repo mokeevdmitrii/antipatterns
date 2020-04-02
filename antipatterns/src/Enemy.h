@@ -12,6 +12,9 @@ class Enemy : public Creature {
 public:
     Enemy();
     ~Enemy();
+
+    std::shared_ptr<Enemy> Clone(int level) const;
+
 private:
 
 };

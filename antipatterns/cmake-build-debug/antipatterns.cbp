@@ -88,6 +88,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/AttributeComponent.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/AttributeComponent.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.cpp">
 			<Option target="antipatterns"/>
 		</Unit>
@@ -166,6 +172,18 @@
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Enemy.h">
 			<Option target="antipatterns"/>
 		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySpawner.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySpawner.h">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.cpp">
 			<Option target="antipatterns"/>
 		</Unit>
@@ -176,6 +194,18 @@
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.h">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Tile.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Tile.h">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.h">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/main.cpp">

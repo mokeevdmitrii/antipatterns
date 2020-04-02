@@ -22,7 +22,6 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
-
 class GraphicsSettings {
 public:
     std::string _game_title;

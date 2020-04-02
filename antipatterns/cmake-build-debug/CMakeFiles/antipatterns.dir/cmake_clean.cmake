@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/GraphicsComponent.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.o"
@@ -12,8 +13,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/antipatterns.dir/Tile/Tile.cpp.o"
   "CMakeFiles/antipatterns.dir/src/Creature.cpp.o"
   "CMakeFiles/antipatterns.dir/src/Enemy.cpp.o"
+  "CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.o"
+  "CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o"
   "CMakeFiles/antipatterns.dir/src/Game.cpp.o"
   "CMakeFiles/antipatterns.dir/src/Player.cpp.o"
+  "CMakeFiles/antipatterns.dir/src/Tile.cpp.o"
+  "CMakeFiles/antipatterns.dir/src/TileMap.cpp.o"
   "CMakeFiles/antipatterns.dir/src/main.cpp.o"
   "antipatterns"
   "antipatterns.pdb"

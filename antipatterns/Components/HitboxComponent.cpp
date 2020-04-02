@@ -3,6 +3,7 @@
 //
 
 #include "HitboxComponent.h"
+#include "iostream"
 
 HitboxComponent::HitboxComponent(sf::Sprite &sprite, float width, float height, float offset_x, float offset_y)
         : _sprite(sprite), _offset(offset_x, offset_y) {

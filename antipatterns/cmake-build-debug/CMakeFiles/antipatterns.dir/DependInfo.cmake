@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/dmitry/MIPT/PATTERNS/antipatterns/Components/AttributeComponent.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Components/GraphicsComponent.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.o"
@@ -17,8 +18,12 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/dmitry/MIPT/PATTERNS/antipatterns/Tile/Tile.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/Tile/Tile.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Creature.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/src/Enemy.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Enemy.cpp.o"
+  "/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySpawner.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.o"
+  "/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Game.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Player.cpp.o"
+  "/home/dmitry/MIPT/PATTERNS/antipatterns/src/Tile.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Tile.cpp.o"
+  "/home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/TileMap.cpp.o"
   "/home/dmitry/MIPT/PATTERNS/antipatterns/src/main.cpp" "/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles/antipatterns.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

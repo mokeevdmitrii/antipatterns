@@ -123,6 +123,33 @@ antipatterns/fast:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/build
 .PHONY : antipatterns/fast
 
+Components/AttributeComponent.o: Components/AttributeComponent.cpp.o
+
+.PHONY : Components/AttributeComponent.o
+
+# target to build an object file
+Components/AttributeComponent.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o
+.PHONY : Components/AttributeComponent.cpp.o
+
+Components/AttributeComponent.i: Components/AttributeComponent.cpp.i
+
+.PHONY : Components/AttributeComponent.i
+
+# target to preprocess a source file
+Components/AttributeComponent.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.i
+.PHONY : Components/AttributeComponent.cpp.i
+
+Components/AttributeComponent.s: Components/AttributeComponent.cpp.s
+
+.PHONY : Components/AttributeComponent.s
+
+# target to generate assembly for a file
+Components/AttributeComponent.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.s
+.PHONY : Components/AttributeComponent.cpp.s
+
 Components/GraphicsComponent.o: Components/GraphicsComponent.cpp.o
 
 .PHONY : Components/GraphicsComponent.o
@@ -474,6 +501,60 @@ src/Enemy.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Enemy.cpp.s
 .PHONY : src/Enemy.cpp.s
 
+src/EnemySpawner.o: src/EnemySpawner.cpp.o
+
+.PHONY : src/EnemySpawner.o
+
+# target to build an object file
+src/EnemySpawner.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.o
+.PHONY : src/EnemySpawner.cpp.o
+
+src/EnemySpawner.i: src/EnemySpawner.cpp.i
+
+.PHONY : src/EnemySpawner.i
+
+# target to preprocess a source file
+src/EnemySpawner.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.i
+.PHONY : src/EnemySpawner.cpp.i
+
+src/EnemySpawner.s: src/EnemySpawner.cpp.s
+
+.PHONY : src/EnemySpawner.s
+
+# target to generate assembly for a file
+src/EnemySpawner.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.s
+.PHONY : src/EnemySpawner.cpp.s
+
+src/EnemySystem.o: src/EnemySystem.cpp.o
+
+.PHONY : src/EnemySystem.o
+
+# target to build an object file
+src/EnemySystem.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o
+.PHONY : src/EnemySystem.cpp.o
+
+src/EnemySystem.i: src/EnemySystem.cpp.i
+
+.PHONY : src/EnemySystem.i
+
+# target to preprocess a source file
+src/EnemySystem.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.i
+.PHONY : src/EnemySystem.cpp.i
+
+src/EnemySystem.s: src/EnemySystem.cpp.s
+
+.PHONY : src/EnemySystem.s
+
+# target to generate assembly for a file
+src/EnemySystem.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.s
+.PHONY : src/EnemySystem.cpp.s
+
 src/Game.o: src/Game.cpp.o
 
 .PHONY : src/Game.o
@@ -528,6 +609,60 @@ src/Player.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Player.cpp.s
 .PHONY : src/Player.cpp.s
 
+src/Tile.o: src/Tile.cpp.o
+
+.PHONY : src/Tile.o
+
+# target to build an object file
+src/Tile.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Tile.cpp.o
+.PHONY : src/Tile.cpp.o
+
+src/Tile.i: src/Tile.cpp.i
+
+.PHONY : src/Tile.i
+
+# target to preprocess a source file
+src/Tile.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Tile.cpp.i
+.PHONY : src/Tile.cpp.i
+
+src/Tile.s: src/Tile.cpp.s
+
+.PHONY : src/Tile.s
+
+# target to generate assembly for a file
+src/Tile.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Tile.cpp.s
+.PHONY : src/Tile.cpp.s
+
+src/TileMap.o: src/TileMap.cpp.o
+
+.PHONY : src/TileMap.o
+
+# target to build an object file
+src/TileMap.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/TileMap.cpp.o
+.PHONY : src/TileMap.cpp.o
+
+src/TileMap.i: src/TileMap.cpp.i
+
+.PHONY : src/TileMap.i
+
+# target to preprocess a source file
+src/TileMap.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/TileMap.cpp.i
+.PHONY : src/TileMap.cpp.i
+
+src/TileMap.s: src/TileMap.cpp.s
+
+.PHONY : src/TileMap.s
+
+# target to generate assembly for a file
+src/TileMap.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/TileMap.cpp.s
+.PHONY : src/TileMap.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -564,6 +699,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... antipatterns"
 	@echo "... edit_cache"
+	@echo "... Components/AttributeComponent.o"
+	@echo "... Components/AttributeComponent.i"
+	@echo "... Components/AttributeComponent.s"
 	@echo "... Components/GraphicsComponent.o"
 	@echo "... Components/GraphicsComponent.i"
 	@echo "... Components/GraphicsComponent.s"
@@ -603,12 +741,24 @@ help:
 	@echo "... src/Enemy.o"
 	@echo "... src/Enemy.i"
 	@echo "... src/Enemy.s"
+	@echo "... src/EnemySpawner.o"
+	@echo "... src/EnemySpawner.i"
+	@echo "... src/EnemySpawner.s"
+	@echo "... src/EnemySystem.o"
+	@echo "... src/EnemySystem.i"
+	@echo "... src/EnemySystem.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"
 	@echo "... src/Player.o"
 	@echo "... src/Player.i"
 	@echo "... src/Player.s"
+	@echo "... src/Tile.o"
+	@echo "... src/Tile.i"
+	@echo "... src/Tile.s"
+	@echo "... src/TileMap.o"
+	@echo "... src/TileMap.i"
+	@echo "... src/TileMap.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
