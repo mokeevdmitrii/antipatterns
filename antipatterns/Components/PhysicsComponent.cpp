@@ -6,7 +6,7 @@
 
 PhysicsComponent::PhysicsComponent(sf::Sprite &sprite, float max_velocity,
                                    float acceleration, float deceleration) :
-        _sprite(sprite), _max_velocity(max_velocity),
+        _sprite(&sprite), _max_velocity(max_velocity),
         _acceleration(acceleration), _deceleration(deceleration) {
 
 }
@@ -85,5 +85,9 @@ void PhysicsComponent::Update(const float time_elapsed) {
     }
     _velocity.x = _velocity.x;
     _velocity.y = _velocity.y;
-    _sprite.move(_velocity * time_elapsed);
+    _sprite->move(_velocity * time_elapsed);
+}
+
+void PhysicsComponent::ChangeSprite(sf::Sprite &sprite) {
+    _sprite = &sprite;
 }

@@ -4,7 +4,7 @@
 
 #include "GraphicsComponent.h"
 
-GraphicsComponent::GraphicsComponent(sf::Sprite &sprite, sf::Texture &texture_sheet) : _sprite(sprite),
+GraphicsComponent::GraphicsComponent(sf::Sprite &sprite, sf::Texture &texture_sheet) : _sprite(&sprite),
                                                                                        _texture_sheet(texture_sheet) {
 
 }
@@ -54,7 +54,11 @@ void GraphicsComponent::CheckLastAnimation(const std::string &animation_key) {
     }
 }
 
-GraphicsComponent::Animation::Animation(sf::Sprite &sprite, sf::Texture &texture_sheet, float anim_time,
+void GraphicsComponent::ChangeSprite(sf::Sprite &sprite) {
+    _sprite = &sprite;
+}
+
+GraphicsComponent::Animation::Animation(sf::Sprite *sprite, sf::Texture &texture_sheet, float anim_time,
                                         int start_frame_x, int start_frame_y,
                                         int frames_x, int frames_y, sf::Vector2i rect_params) : _sprite(sprite),
                                                                                                 _texture_sheet(
@@ -68,8 +72,8 @@ GraphicsComponent::Animation::Animation(sf::Sprite &sprite, sf::Texture &texture
                               rect_params.y);
     _current_rect = _start_rect;
     _end_rect = sf::IntRect(frames_x * rect_params.x, frames_y * rect_params.y, rect_params.x, rect_params.y);
-    _sprite.setTexture(_texture_sheet, true);
-    _sprite.setTextureRect(_start_rect);
+    _sprite->setTexture(_texture_sheet, true);
+    _sprite->setTextureRect(_start_rect);
 }
 
 bool GraphicsComponent::Animation::Play(const float time_elapsed, const float speed_modifier) {
@@ -89,7 +93,7 @@ void GraphicsComponent::Animation::Animate() {
         _current_rect.left = _start_rect.left;
         _is_done = true;
     }
-    _sprite.setTextureRect(_current_rect);
+    _sprite->setTextureRect(_current_rect);
 }
 
 void GraphicsComponent::Animation::Reset() {

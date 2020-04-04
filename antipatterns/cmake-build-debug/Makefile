@@ -231,6 +231,33 @@ Components/PhysicsComponent.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.s
 .PHONY : Components/PhysicsComponent.cpp.s
 
+Enemies/EnemySpawner.o: Enemies/EnemySpawner.cpp.o
+
+.PHONY : Enemies/EnemySpawner.o
+
+# target to build an object file
+Enemies/EnemySpawner.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o
+.PHONY : Enemies/EnemySpawner.cpp.o
+
+Enemies/EnemySpawner.i: Enemies/EnemySpawner.cpp.i
+
+.PHONY : Enemies/EnemySpawner.i
+
+# target to preprocess a source file
+Enemies/EnemySpawner.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.i
+.PHONY : Enemies/EnemySpawner.cpp.i
+
+Enemies/EnemySpawner.s: Enemies/EnemySpawner.cpp.s
+
+.PHONY : Enemies/EnemySpawner.s
+
+# target to generate assembly for a file
+Enemies/EnemySpawner.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.s
+.PHONY : Enemies/EnemySpawner.cpp.s
+
 Enemies/Rat.o: Enemies/Rat.cpp.o
 
 .PHONY : Enemies/Rat.o
@@ -528,33 +555,6 @@ src/Enemy.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Enemy.cpp.s
 .PHONY : src/Enemy.cpp.s
 
-src/EnemySpawner.o: src/EnemySpawner.cpp.o
-
-.PHONY : src/EnemySpawner.o
-
-# target to build an object file
-src/EnemySpawner.cpp.o:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.o
-.PHONY : src/EnemySpawner.cpp.o
-
-src/EnemySpawner.i: src/EnemySpawner.cpp.i
-
-.PHONY : src/EnemySpawner.i
-
-# target to preprocess a source file
-src/EnemySpawner.cpp.i:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.i
-.PHONY : src/EnemySpawner.cpp.i
-
-src/EnemySpawner.s: src/EnemySpawner.cpp.s
-
-.PHONY : src/EnemySpawner.s
-
-# target to generate assembly for a file
-src/EnemySpawner.cpp.s:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.s
-.PHONY : src/EnemySpawner.cpp.s
-
 src/EnemySystem.o: src/EnemySystem.cpp.o
 
 .PHONY : src/EnemySystem.o
@@ -738,6 +738,9 @@ help:
 	@echo "... Components/PhysicsComponent.o"
 	@echo "... Components/PhysicsComponent.i"
 	@echo "... Components/PhysicsComponent.s"
+	@echo "... Enemies/EnemySpawner.o"
+	@echo "... Enemies/EnemySpawner.i"
+	@echo "... Enemies/EnemySpawner.s"
 	@echo "... Enemies/Rat.o"
 	@echo "... Enemies/Rat.i"
 	@echo "... Enemies/Rat.s"
@@ -771,9 +774,6 @@ help:
 	@echo "... src/Enemy.o"
 	@echo "... src/Enemy.i"
 	@echo "... src/Enemy.s"
-	@echo "... src/EnemySpawner.o"
-	@echo "... src/EnemySpawner.i"
-	@echo "... src/EnemySpawner.s"
 	@echo "... src/EnemySystem.o"
 	@echo "... src/EnemySystem.i"
 	@echo "... src/EnemySystem.s"

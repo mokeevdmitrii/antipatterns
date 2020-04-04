@@ -16,10 +16,13 @@ public:
     void Update();
     void Render(sf::RenderTarget& target);
 
+    void SetPosition(const sf::Vector2f& position);
+    void ChangeSprite(sf::Sprite& sprite);
+
     bool CheckCollision(const sf::FloatRect& other);
 private:
     sf::RectangleShape _hitbox;
-    sf::Sprite& _sprite;
+    sf::Sprite* _sprite;
     sf::Vector2f _offset;
 };
 

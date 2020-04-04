@@ -7,6 +7,7 @@
 
 
 #include "../Resources/GraphicsSettings.h"
+#include "../Resources/Json.h"
 
 
 enum MovementState {
@@ -39,9 +40,10 @@ public:
     /* functions */
     void Accelerate(float time_elapsed, const sf::Vector2f &_direction);
     void Update(float time_elapsed);
+    void ChangeSprite(sf::Sprite &sprite);
 
 private:
-    sf::Sprite &_sprite;
+    sf::Sprite *_sprite;
 
     sf::Vector2f _velocity;
 

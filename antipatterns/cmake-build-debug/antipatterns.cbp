@@ -112,6 +112,12 @@
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h">
 			<Option target="antipatterns"/>
 		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.cpp">
 			<Option target="antipatterns"/>
 		</Unit>
@@ -176,12 +182,6 @@
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Enemy.h">
-			<Option target="antipatterns"/>
-		</Unit>
-		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySpawner.cpp">
-			<Option target="antipatterns"/>
-		</Unit>
-		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySpawner.h">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.cpp">

@@ -8,6 +8,16 @@ Enemy::Enemy() {
 
 }
 
+Enemy::Enemy(const Enemy &other) : Creature(other) {
+    std::cout << "enemy copied" << std::endl;
+}
+
 Enemy::~Enemy() {
 
 }
+
+void Enemy::GenerateAttributes(int level) {
+
+}
+
+

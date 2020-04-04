@@ -5,11 +5,12 @@
 #include "Player.h"
 
 Player::Player(const sf::Vector2f position, sf::Texture &texture_sheet) {
-    Creature::SetPosition(position);
     Creature::InitPhysicsComponent(100.f, 2000.f, 1000.f);
     Creature::InitGraphicsComponent(texture_sheet);
     Creature::InitHitboxComponent(_sprite, 32,  48, 0, 0);
     Creature::InitAttributeComponent(1);
+
+    Creature::SetPosition(position);
     /* init animations IS NOT READY */
     InitAnimations();
 

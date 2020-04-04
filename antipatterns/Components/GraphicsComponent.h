@@ -21,13 +21,15 @@ public:
 
     bool Play(const std::string& animation_key, float time_elapsed, float speed_modifier = 1, bool priority = false);
 
+    void ChangeSprite(sf::Sprite &sprite);
+
 private:
 
     class Animation {
     public:
         constexpr static float TIME_NORMALIZE{100};
         /* variables */
-        sf::Sprite& _sprite;
+        sf::Sprite* _sprite;
         sf::Texture &_texture_sheet;
         float _time_to_animate;
         float _time{0};
@@ -38,7 +40,7 @@ private:
         bool _is_done;
 
         /* constructor */
-        Animation(sf::Sprite& sprite, sf::Texture &texture_sheet, float anim_time, int start_frame_x, int start_frame_y,
+        Animation(sf::Sprite *sprite, sf::Texture &texture_sheet, float anim_time, int start_frame_x, int start_frame_y,
                   int frames_x, int frames_y, sf::Vector2i rect_params);
 
         /* functions */
@@ -51,7 +53,7 @@ private:
 
     void CheckLastAnimation(const std::string& animation_key);
 
-    sf::Sprite& _sprite;
+    sf::Sprite* _sprite;
     sf::Texture& _texture_sheet;
     std::unordered_map<std::string, std::shared_ptr<Animation>> _animations;
     std::shared_ptr<Animation> _last_animation;

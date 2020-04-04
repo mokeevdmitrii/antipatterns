@@ -15,6 +15,8 @@ class Creature {
 public:
     Creature();
 
+    Creature(const Creature &other);
+
     virtual ~Creature();
 
     /* pure functions */
@@ -32,10 +34,10 @@ public:
     void InitAttributeComponent(int level);
 
 protected:
-    std::shared_ptr<PhysicsComponent> _phys_comp{};
-    std::shared_ptr<GraphicsComponent> _graph_comp{};
-    std::shared_ptr<HitboxComponent> _hitbox_comp{};
-    std::shared_ptr<AttributeComponent> _attribute_comp{};
+    std::unique_ptr<PhysicsComponent> _phys_comp{};
+    std::unique_ptr<GraphicsComponent> _graph_comp{};
+    std::unique_ptr<HitboxComponent> _hitbox_comp{};
+    std::unique_ptr<AttributeComponent> _attribute_comp{};
     /* for drawing */
     sf::Sprite _sprite{};
 private:

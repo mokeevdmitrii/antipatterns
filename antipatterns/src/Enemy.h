@@ -11,12 +11,11 @@
 class Enemy : public Creature {
 public:
     Enemy();
+    Enemy(const Enemy& other);
     ~Enemy();
 
-    //virtual void Update(float time_elapsed) = 0;
-    //virtual void Render(sf::RenderTarget target) = 0;
-
-    virtual std::unique_ptr<Enemy> Clone(const sf::Vector2f& pos, int level) = 0;
+    void GenerateAttributes(int level);
+    virtual std::unique_ptr<Enemy> Clone() = 0;
 private:
 
 };

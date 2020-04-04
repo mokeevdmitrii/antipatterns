@@ -1,6 +1,5 @@
 {
   "Rat": {
-    "health" : 10,
-    "health_per_level" : 3
+
   }
 }

@@ -10,11 +10,12 @@
 class Rat : public Enemy {
 public:
     Rat(const sf::Vector2f& position, sf::Texture& texture_sheet);
+    Rat(const Rat& other);
     ~Rat() = default;
 
     void Update(float time_elapsed) override;
     void Render(sf::RenderTarget& target) override;
-    std::unique_ptr<Enemy> Clone(const sf::Vector2f& pos, int level) override;
+    std::unique_ptr<Enemy> Clone() override;
 private:
     void InitAnimations();
 

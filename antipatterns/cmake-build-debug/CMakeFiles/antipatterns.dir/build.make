@@ -304,18 +304,18 @@ CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.cpp -o CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.s
 
-CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.o: CMakeFiles/antipatterns.dir/flags.make
-CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.o: ../src/EnemySpawner.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySpawner.cpp
+CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o: CMakeFiles/antipatterns.dir/flags.make
+CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o: ../Enemies/EnemySpawner.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.cpp
 
-CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySpawner.cpp > CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.i
+CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.cpp > CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.i
 
-CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySpawner.cpp -o CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.s
+CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.cpp -o CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.s
 
 CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o: CMakeFiles/antipatterns.dir/flags.make
 CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o: ../Enemies/Rat.cpp
@@ -364,7 +364,7 @@ antipatterns_OBJECTS = \
 "CMakeFiles/antipatterns.dir/src/TileMap.cpp.o" \
 "CMakeFiles/antipatterns.dir/src/Tile.cpp.o" \
 "CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o" \
-"CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.o" \
+"CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o" \
 "CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o" \
 "CMakeFiles/antipatterns.dir/Resources/Json.cpp.o"
 
@@ -390,7 +390,7 @@ antipatterns: CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/src/TileMap.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/src/Tile.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o
-antipatterns: CMakeFiles/antipatterns.dir/src/EnemySpawner.cpp.o
+antipatterns: CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/Resources/Json.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/build.make

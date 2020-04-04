@@ -101,7 +101,7 @@ void GameState::InitPlayer() {
 void GameState::InitEnemySystem() {
     _enemy_system = std::make_unique<EnemySystem>();
     _enemy_system->AddEnemy(std::make_unique<Rat>(sf::Vector2f(0,0), _textures.at("PLAYER_IDLE")));
-    _enemy_system->CreateEnemy(0, sf::Vector2f(100, 100), 1);
+    _enemy_system->CreateEnemy(0, sf::Vector2f(80, 100), 1);
 }
 
 void GameState::InitTileMap() {

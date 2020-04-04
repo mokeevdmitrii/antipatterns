@@ -15,6 +15,9 @@ public:
     int GetLevel();
 private:
     int _level;
+
+    int _health;
+    int _health_per_level;
 };
 
 

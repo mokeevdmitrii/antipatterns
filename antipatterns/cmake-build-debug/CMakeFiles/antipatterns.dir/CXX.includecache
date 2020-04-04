@@ -865,6 +865,12 @@ SFML/Graphics.hpp
 /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
 ../Resources/GraphicsSettings.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
+../Resources/Json.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h
+../src/Enemy.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Enemy.h
 
 /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.h
 ../src/Enemy.h
@@ -992,13 +998,9 @@ State.h
 Creature.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySpawner.h
-Enemy.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Enemy.h
-
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.h
-EnemySpawner.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySpawner.h
+../Enemies/EnemySpawner.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h
 ../Enemies/Rat.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.h
 
