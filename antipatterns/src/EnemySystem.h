@@ -15,6 +15,7 @@ public:
     ~EnemySystem();
 
     void LoadUniqueEnemies(const std::string& file_name);
+    void LoadEnemies(const std::string& file_name);
 
     /* add and create will be private with other signature */
     void AddEnemy(std::unique_ptr<Enemy> enemy);

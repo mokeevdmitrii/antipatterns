@@ -7,17 +7,21 @@
 
 
 #include <SFML/Graphics.hpp>
+#include "../Resources/Json.h"
 
 class HitboxComponent {
 public:
-    HitboxComponent(sf::Sprite& sprite, float width, float height, float offset_x, float offset_y);
+    HitboxComponent(sf::Sprite& sprite, const std::map<std::string, Json::Node> &settings);
     ~HitboxComponent();
+
+    /* initializer */
+    void LoadFromMap(const std::map<std::string, Json::Node>& settings);
 
     void Update();
     void Render(sf::RenderTarget& target);
 
     void SetPosition(const sf::Vector2f& position);
-    void ChangeSprite(sf::Sprite& sprite);
+    void UpdateCopy(sf::Sprite& sprite);
 
     bool CheckCollision(const sf::FloatRect& other);
 private:

@@ -14,6 +14,14 @@ EnemySystem::~EnemySystem() {
 
 }
 
+void EnemySystem::LoadUniqueEnemies(const std::string &file_name) {
+
+}
+
+void EnemySystem::LoadEnemies(const std::string &file_name) {
+
+}
+
 void EnemySystem::AddEnemy(std::unique_ptr<Enemy> enemy) {
     _unique_enemies.push_back(std::move(enemy));
 }
@@ -36,6 +44,8 @@ void EnemySystem::Render(sf::RenderTarget &target) {
         active_enemy->Render(target);
     }
 }
+
+
 
 
 

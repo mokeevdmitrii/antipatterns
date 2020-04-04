@@ -88,19 +88,19 @@ void GameState::InitKeybindings() {
 }
 
 void GameState::InitTextures() {
-    sf::IntRect temp_rect(0, 0, 32, 48);
-    if (!_textures["PLAYER_IDLE"].loadFromFile("../Images/Sprites/Player/hero.png", temp_rect)) {
+    if (!_textures["PLAYER"].loadFromFile("../Images/Sprites/Player/hero.png")) {
         throw std::runtime_error("Player texture cannot be loaded from file");
     }
 }
 
 void GameState::InitPlayer() {
-    _player = std::make_unique<Player>(sf::Vector2f(0,0), _textures.at("PLAYER_IDLE"));
+    _player = std::make_unique<Player>(sf::Vector2f(0,0), _textures.at("PLAYER"), "../Config/player_settings.json");
 }
 
 void GameState::InitEnemySystem() {
     _enemy_system = std::make_unique<EnemySystem>();
-    _enemy_system->AddEnemy(std::make_unique<Rat>(sf::Vector2f(0,0), _textures.at("PLAYER_IDLE")));
+    std::map<std::string, Json::Node> enemy_settings = Json::Load("../Config/enemies_settings.json").GetRoot().AsMap();
+    _enemy_system->AddEnemy(std::make_unique<Rat>(sf::Vector2f(0,0), _textures.at("PLAYER"), enemy_settings.at("Rat").AsMap()));
     _enemy_system->CreateEnemy(0, sf::Vector2f(80, 100), 1);
 }
 

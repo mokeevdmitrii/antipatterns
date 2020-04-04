@@ -28,10 +28,10 @@ public:
 
     /* initializers */
     void SetTexture(sf::Texture& texture);
-    void InitPhysicsComponent(float max_velocity, float acceleration, float deceleration);
-    void InitGraphicsComponent(sf::Texture& texture_sheet);
-    void InitHitboxComponent(sf::Sprite& sprite, float width, float height, float offset_x, float offset_y);
-    void InitAttributeComponent(int level);
+    void InitPhysicsComponent(const std::map<std::string, Json::Node> &settings);
+    void InitGraphicsComponent(sf::Texture& texture_sheet, const std::map<std::string, Json::Node> &settings);
+    void InitHitboxComponent(const std::map<std::string, Json::Node> &settings);
+    void InitAttributeComponent(const std::map<std::string, Json::Node> &settings);
 
 protected:
     std::unique_ptr<PhysicsComponent> _phys_comp{};

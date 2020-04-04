@@ -4,15 +4,15 @@
 
 #include "Player.h"
 
-Player::Player(const sf::Vector2f position, sf::Texture &texture_sheet) {
-    Creature::InitPhysicsComponent(100.f, 2000.f, 1000.f);
-    Creature::InitGraphicsComponent(texture_sheet);
-    Creature::InitHitboxComponent(_sprite, 32,  48, 0, 0);
-    Creature::InitAttributeComponent(1);
+
+Player::Player(const sf::Vector2f position, sf::Texture &texture_sheet, const std::string &file_name) {
+    const std::map<std::string, Json::Node> settings = Json::Load(file_name).GetRoot().AsMap();
+    Creature::InitPhysicsComponent(settings.at("physics_component").AsMap());
+    Creature::InitGraphicsComponent(texture_sheet, settings.at("graphics_component").AsMap());
+    Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
+    Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
 
     Creature::SetPosition(position);
-    /* init animations IS NOT READY */
-    InitAnimations();
 
 }
 
@@ -37,9 +37,9 @@ void Player::Render(sf::RenderTarget &target) {
 
 /* initializers */
 
-void Player::InitAnimations() {
-    _graph_comp->AddAnimation("PLAYER_IDLE", 0.f, 0, 0, 0, 0, sf::Vector2i(32, 48));
-}
+//void Player::InitAnimations() {
+//    _graph_comp->AddAnimation("PLAYER_IDLE", 0.f, 0, 0, 0, 0, sf::Vector2i(32, 48));
+//}
 
 void Player::UpdateAnimations(float time_elapsed) {
     _graph_comp->Play("PLAYER_IDLE", time_elapsed);

@@ -9,13 +9,14 @@
 
 class AttributeComponent {
 public:
-    AttributeComponent(int level);
+    AttributeComponent(const std::map<std::string, Json::Node>& settings);
     ~AttributeComponent() = default;
+
+    void LoadFromMap(const std::map<std::string, Json::Node>& settings);
 
     int GetLevel();
 private:
-    int _level;
-
+    int _level{1};
     int _health;
     int _health_per_level;
 };

@@ -4,12 +4,17 @@
 
 #include "PhysicsComponent.h"
 
-PhysicsComponent::PhysicsComponent(sf::Sprite &sprite, float max_velocity,
-                                   float acceleration, float deceleration) :
-        _sprite(&sprite), _max_velocity(max_velocity),
-        _acceleration(acceleration), _deceleration(deceleration) {
-
+PhysicsComponent::PhysicsComponent(sf::Sprite &sprite, const std::map<std::string, Json::Node> &settings) :
+        _sprite(&sprite)  {
+    LoadFromMap(settings);
 }
+
+void PhysicsComponent::LoadFromMap(const std::map<std::string, Json::Node> &settings) {
+    _max_velocity = static_cast<float>(settings.at("max_velocity").AsDouble());
+    _acceleration = static_cast<float>(settings.at("acceleration").AsDouble());
+    _deceleration = static_cast<float>(settings.at("deceleration").AsDouble());
+}
+
 
 PhysicsComponent::~PhysicsComponent() {
 
@@ -88,6 +93,8 @@ void PhysicsComponent::Update(const float time_elapsed) {
     _sprite->move(_velocity * time_elapsed);
 }
 
-void PhysicsComponent::ChangeSprite(sf::Sprite &sprite) {
+void PhysicsComponent::UpdateCopy(sf::Sprite &sprite) {
     _sprite = &sprite;
 }
+
+

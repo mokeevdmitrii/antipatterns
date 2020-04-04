@@ -10,8 +10,12 @@
 class GraphicsComponent {
 public:
 
-    GraphicsComponent(sf::Sprite &sprite, sf::Texture& texture_sheet);
+    GraphicsComponent(sf::Sprite &sprite, sf::Texture &texture_sheet, const std::map<std::string, Json::Node>& settings);
+    GraphicsComponent(const GraphicsComponent& other);
     ~GraphicsComponent();
+    /* initializer */
+    void LoadFromMap(const std::map<std::string, Json::Node>& settings);
+
     /* getter method */
     bool IsDone(const std::string& animation_key);
 
@@ -21,7 +25,7 @@ public:
 
     bool Play(const std::string& animation_key, float time_elapsed, float speed_modifier = 1, bool priority = false);
 
-    void ChangeSprite(sf::Sprite &sprite);
+    void UpdateCopy(sf::Sprite &sprite);
 
 private:
 
@@ -41,7 +45,7 @@ private:
 
         /* constructor */
         Animation(sf::Sprite *sprite, sf::Texture &texture_sheet, float anim_time, int start_frame_x, int start_frame_y,
-                  int frames_x, int frames_y, sf::Vector2i rect_params);
+                  int end_frame_x, int end_frame_y, sf::Vector2i rect_params);
 
         /* functions */
         bool Play(float time_elapsed, float speed_modifier = 1);
@@ -55,9 +59,9 @@ private:
 
     sf::Sprite* _sprite;
     sf::Texture& _texture_sheet;
-    std::unordered_map<std::string, std::shared_ptr<Animation>> _animations;
-    std::shared_ptr<Animation> _last_animation;
-    std::shared_ptr<Animation> _prior_animation;
+    std::unordered_map<std::string, std::unique_ptr<Animation>> _animations;
+    Animation* _last_animation;
+    Animation* _prior_animation;
 };
 
 

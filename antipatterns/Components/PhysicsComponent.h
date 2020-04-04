@@ -21,8 +21,10 @@ enum MovementState {
 
 class PhysicsComponent {
 public:
-    PhysicsComponent(sf::Sprite &sprite, float max_velocity = 0,
-                     float acceleration = 0, float deceleration = 0);
+    PhysicsComponent(sf::Sprite &sprite, const std::map<std::string, Json::Node> &settings);
+
+    /* initializer */
+    void LoadFromMap(const std::map<std::string, Json::Node>& settings);
 
     ~PhysicsComponent();
 
@@ -40,7 +42,7 @@ public:
     /* functions */
     void Accelerate(float time_elapsed, const sf::Vector2f &_direction);
     void Update(float time_elapsed);
-    void ChangeSprite(sf::Sprite &sprite);
+    void UpdateCopy(sf::Sprite &sprite);
 
 private:
     sf::Sprite *_sprite;

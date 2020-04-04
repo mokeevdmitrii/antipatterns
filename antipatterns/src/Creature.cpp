@@ -19,9 +19,9 @@ Creature::Creature(const Creature &other) {
     _graph_comp = std::make_unique<GraphicsComponent>(*other._graph_comp);
     _attribute_comp = std::make_unique<AttributeComponent>(*other._attribute_comp);
     _hitbox_comp = std::make_unique<HitboxComponent>(*other._hitbox_comp);
-    _phys_comp->ChangeSprite(_sprite);
-    _graph_comp->ChangeSprite(_sprite);
-    _hitbox_comp->ChangeSprite(_sprite);
+    _phys_comp->UpdateCopy(_sprite);
+    _graph_comp->UpdateCopy(_sprite);
+    _hitbox_comp->UpdateCopy(_sprite);
 }
 
 void Creature::SetPosition(const sf::Vector2f &position) {
@@ -43,20 +43,20 @@ void Creature::SetTexture(sf::Texture& texture) {
     _sprite.setTexture(texture);
 }
 
-void Creature::InitPhysicsComponent(float max_velocity, float acceleration, float deceleration) {
-    _phys_comp = std::make_unique<PhysicsComponent>(_sprite, max_velocity, acceleration, deceleration);
+void Creature::InitPhysicsComponent(const std::map<std::string, Json::Node> &settings) {
+    _phys_comp = std::make_unique<PhysicsComponent>(_sprite, settings);
 }
 
-void Creature::InitGraphicsComponent(sf::Texture& texture_sheet) {
-    _graph_comp = std::make_unique<GraphicsComponent>(_sprite, texture_sheet);
+void Creature::InitGraphicsComponent(sf::Texture& texture_sheet, const std::map<std::string, Json::Node> &settings) {
+    _graph_comp = std::make_unique<GraphicsComponent>(_sprite, texture_sheet, settings);
 }
 
-void Creature::InitHitboxComponent(sf::Sprite &sprite, float width, float height, float offset_x, float offset_y) {
-    _hitbox_comp = std::make_unique<HitboxComponent>(_sprite, width, height, offset_x, offset_y);
+void Creature::InitHitboxComponent(const std::map<std::string, Json::Node> &settings) {
+    _hitbox_comp = std::make_unique<HitboxComponent>(_sprite, settings);
 }
 
-void Creature::InitAttributeComponent(int level) {
-    _attribute_comp = std::make_unique<AttributeComponent>(level);
+void Creature::InitAttributeComponent(const std::map<std::string, Json::Node> &settings) {
+    _attribute_comp = std::make_unique<AttributeComponent>(settings);
 }
 
 

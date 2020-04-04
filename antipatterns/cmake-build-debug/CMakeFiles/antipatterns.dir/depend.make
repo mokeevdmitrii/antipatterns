@@ -272,6 +272,7 @@ CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.o: ../SFML-2.5.1/incl
 CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.o: ../SFML-2.5.1/include/SFML/Window/WindowStyle.hpp
 CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.o: ../Components/HitboxComponent.cpp
 CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.o: ../Components/HitboxComponent.h
+CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.o: ../Resources/Json.h
 
 CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.o: ../SFML-2.5.1/include/SFML/Audio.hpp
 CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.o: ../SFML-2.5.1/include/SFML/Audio/AlResource.hpp

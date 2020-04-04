@@ -9,7 +9,7 @@
 
 class Rat : public Enemy {
 public:
-    Rat(const sf::Vector2f& position, sf::Texture& texture_sheet);
+    Rat(const sf::Vector2f& position, sf::Texture& texture_sheet, const std::map<std::string, Json::Node>& settings);
     Rat(const Rat& other);
     ~Rat() = default;
 

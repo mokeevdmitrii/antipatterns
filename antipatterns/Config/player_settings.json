@@ -1,0 +1,31 @@
+{
+  "physics_component": {
+    "acceleration" : 2000,
+    "deceleration" : 1000,
+    "max_velocity" : 100
+  },
+  "graphics_component" : {
+    "animations" : {
+      "PLAYER_IDLE" : {
+        "animation_time" : 0,
+        "start_frame_x" : 0,
+        "start_frame_y" : 0,
+        "end_frame_x" : 0,
+        "end_frame_y" : 0,
+        "rect_params_x" : 32,
+        "rect_params_y" : 48
+      }
+    }
+  },
+  "hitbox_component" : {
+    "width": 32,
+    "height" : 48,
+    "offset_x" : 0,
+    "offset_y" : 0
+  },
+  "attribute_component" : {
+    "level" : 1,
+    "health" : 10,
+    "health_per_level" : 10
+  }
+}
