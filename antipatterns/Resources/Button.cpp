@@ -58,7 +58,7 @@ void Button::Update(const sf::Vector2f &mouse_pos) {
     }
 }
 
-void Button::Render(sf::RenderTarget& target) {
+void Button::Render(sf::RenderTarget& target) const {
     target.draw(_shape);
     target.draw(_text);
 }

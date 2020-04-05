@@ -59,6 +59,10 @@ void Creature::InitAttributeComponent(const std::map<std::string, Json::Node> &s
     _attribute_comp = std::make_unique<AttributeComponent>(settings);
 }
 
+sf::Vector2f Creature::GetPosition() const {
+    return _hitbox_comp != nullptr ?  _hitbox_comp->GetPosition() : _sprite.getPosition();
+}
+
 
 
 

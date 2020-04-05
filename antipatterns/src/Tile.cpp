@@ -9,13 +9,13 @@ Tile::Tile(TileType type, const sf::Texture &texture, const sf::IntRect &rect,
     _sprite.setPosition(pos);
 }
 
-std::unique_ptr<Tile> Tile::Clone(const sf::Vector2f &position) {
+std::unique_ptr<Tile> Tile::Clone(const sf::Vector2f &position) const {
     auto new_tile = *this;
     new_tile._sprite.setPosition(position);
     return std::make_unique<Tile>(std::move(new_tile));
 }
 
-void Tile::Render(sf::RenderTarget &target) {
+void Tile::Render(sf::RenderTarget &target) const {
     target.draw(_sprite);
 }
 

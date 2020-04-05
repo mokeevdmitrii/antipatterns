@@ -14,7 +14,7 @@ public:
     ~Player() override;
     /* overrided functions */
     void Update(float time_elapsed) override;
-    void Render(sf::RenderTarget &target) override;
+    void Render(sf::RenderTarget &target) const override;
 private:
     /* initializers */
 

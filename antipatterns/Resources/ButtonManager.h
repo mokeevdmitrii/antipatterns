@@ -14,22 +14,21 @@ public:
     void LoadFont(const std::string &file_name);
 
     void InitButtons(const std::string &file_name);
-
-    bool IsActive(const std::string &button_name) const;
-
     void Update(const sf::Vector2f &mouse_pos);
 
-    void Render(sf::RenderTarget &target);
+    void Render(sf::RenderTarget &target) const;
 
     const sf::Font& GetFont();
+    bool IsActive(const std::string &button_name) const;
 
     std::shared_ptr<Button> operator[](const std::string &btn_name) const;
 
+    /* for iterating with C++11 for-each cycle */
     std::unordered_map<std::string, std::shared_ptr<Button>>::iterator begin();
-
     std::unordered_map<std::string, std::shared_ptr<Button>>::iterator end();
 
 private:
+    /* think about shared_ptr */
     std::unordered_map<std::string, std::shared_ptr<Button>> _buttons;
     sf::Font _button_font;
 };

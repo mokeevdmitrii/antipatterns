@@ -5,13 +5,11 @@
 #include "Rat.h"
 
 
-Rat::Rat(const sf::Vector2f &position, sf::Texture &texture_sheet, const std::map<std::string, Json::Node>& settings) {
+Rat::Rat(sf::Texture &texture_sheet, const std::map<std::string, Json::Node>& settings) {
     Creature::InitPhysicsComponent(settings.at("physics_component").AsMap());
     Creature::InitGraphicsComponent(texture_sheet, settings.at("graphics_component").AsMap());
     Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
     Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
-
-    Creature::SetPosition(position);
 }
 
 Rat::Rat(const Rat &other) : Enemy(other) {
@@ -27,7 +25,7 @@ void Rat::Update(float time_elapsed) {
     _hitbox_comp->Update();
 }
 
-void Rat::Render(sf::RenderTarget &target) {
+void Rat::Render(sf::RenderTarget &target) const {
     target.draw(_sprite);
     _hitbox_comp->Render(target);
 }
@@ -37,7 +35,7 @@ void Rat::UpdateAnimations(float time_elapsed) {
     _graph_comp->Play("PLAYER_IDLE", time_elapsed);
 }
 
-std::unique_ptr<Enemy> Rat::Clone() {
+std::unique_ptr<Enemy> Rat::Clone() const {
     return std::make_unique<Rat>(*this);
 }
 

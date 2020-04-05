@@ -19,11 +19,13 @@
 #include <utility>
 #include <unordered_map>
 #include <string>
+#include "random"
 #include "Json.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
+
 class GraphicsSettings {
 public:
     std::string _game_title;

@@ -15,7 +15,7 @@ public:
     ~Enemy();
 
     void GenerateAttributes(int level);
-    virtual std::unique_ptr<Enemy> Clone() = 0;
+    virtual std::unique_ptr<Enemy> Clone() const = 0;
 private:
 
 };

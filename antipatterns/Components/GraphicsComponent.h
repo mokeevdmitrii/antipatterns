@@ -17,7 +17,7 @@ public:
     void LoadFromMap(const std::map<std::string, Json::Node>& settings);
 
     /* getter method */
-    bool IsDone(const std::string& animation_key);
+    bool IsDone(const std::string& animation_key) const;
 
     void AddAnimation(const std::string& animation_key, float anim_time,
                       int start_frame_x, int start_frame_y,
@@ -50,7 +50,7 @@ private:
         /* functions */
         bool Play(float time_elapsed, float speed_modifier = 1);
         void Reset();
-        bool IsDone();
+        bool IsDone() const;
     private:
         void Animate();
     };

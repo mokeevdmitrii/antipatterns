@@ -850,15 +850,7 @@ SFML/Config.hpp
 
 ../SFML-2.5.1/include/SFML/Window/WindowStyle.hpp
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/Components/AttributeComponent.cpp
-AttributeComponent.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Components/AttributeComponent.h
-
-/home/dmitry/MIPT/PATTERNS/antipatterns/Components/AttributeComponent.h
-GraphicsComponent.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
-
-/home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.cpp
 GraphicsComponent.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
 
@@ -951,6 +943,8 @@ unordered_map
 -
 string
 -
+random
+/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/random
 Json.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
 SFML/Graphics.hpp
@@ -1010,21 +1004,11 @@ GameState.h
 ../Resources/ButtonManager.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/States/State.cpp
-State.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h
-utility
--
-
 /home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h
 ../src/Player.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.h
 ../Resources/PauseMenu.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h
-
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.cpp
-Creature.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
 
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
 ../Components/AttributeComponent.h
@@ -1060,10 +1044,6 @@ Game.h
 ../States/MainMenuState.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.h
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.cpp
-Player.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.h
-
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.h
 Creature.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
@@ -1071,10 +1051,6 @@ Creature.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Tile.h
 ../Resources/GraphicsSettings.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
-
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.cpp
-TileMap.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.h
 
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.h
 Tile.h

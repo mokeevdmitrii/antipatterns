@@ -14,7 +14,7 @@ void TileMap::UpdateTiles(std::unique_ptr<Creature> creature, float time_elapsed
     /* проверка всех плиток в определенном прямоугольнике */
 }
 
-void TileMap::Render(sf::RenderTarget &target) {
+void TileMap::Render(sf::RenderTarget &target) const {
     for (auto &vec_x : _map) {
         for (auto& vec_y : vec_x) {
             for (auto &tile_layer : vec_y) {
@@ -24,12 +24,12 @@ void TileMap::Render(sf::RenderTarget &target) {
     }
 }
 
-sf::Vector2i TileMap::GetGridPosition(sf::Vector2f global_position) {
+sf::Vector2i TileMap::GetGridPosition(sf::Vector2f global_position) const {
     return sf::Vector2i(static_cast<int>(static_cast<int>(global_position.x) / _grid_size),
                         static_cast<int>(static_cast<int>(global_position.y)) / _grid_size);
 }
 
-sf::Vector2f TileMap::GetGlobalPosition(sf::Vector2i grid_position) {
+sf::Vector2f TileMap::GetGlobalPosition(sf::Vector2i grid_position) const {
     return sf::Vector2f(static_cast<float>(grid_position.x * _grid_size),
                         static_cast<float>(grid_position.y * _grid_size));
 }

@@ -20,9 +20,9 @@ public:
     Tile(TileType type, const sf::Texture &texture,
             const sf::IntRect &rect, const sf::Vector2f &pos = sf::Vector2f());
 
-    std::unique_ptr<Tile> Clone(const sf::Vector2f& position);
+    std::unique_ptr<Tile> Clone(const sf::Vector2f& position) const;
 
-    void Render(sf::RenderTarget& target);
+    void Render(sf::RenderTarget& target) const;
 private:
     sf::Sprite _sprite;
     TileType _type;

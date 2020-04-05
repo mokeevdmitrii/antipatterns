@@ -30,7 +30,7 @@ void Player::Update(float time_elapsed) {
     _hitbox_comp->Update();
 }
 
-void Player::Render(sf::RenderTarget &target) {
+void Player::Render(sf::RenderTarget &target) const {
     target.draw(_sprite);
     _hitbox_comp->Render(target);
 }

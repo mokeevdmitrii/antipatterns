@@ -22,11 +22,11 @@ void HitboxComponent::Update() {
     _hitbox.setPosition(_sprite->getPosition().x + _offset.x, _sprite->getPosition().y + _offset.y);
 }
 
-void HitboxComponent::Render(sf::RenderTarget &target) {
+void HitboxComponent::Render(sf::RenderTarget &target) const {
     target.draw(_hitbox);
 }
 
-bool HitboxComponent::CheckCollision(const sf::FloatRect &other) {
+bool HitboxComponent::CheckCollision(const sf::FloatRect &other) const {
     return _hitbox.getGlobalBounds().intersects(other);
 }
 
@@ -46,6 +46,10 @@ void HitboxComponent::LoadFromMap(const std::map<std::string, Json::Node> &setti
     float offset_y = static_cast<float>(settings.at("offset_y").AsDouble());
     _hitbox.setSize(sf::Vector2f(width, height));
     _offset = sf::Vector2f(offset_x, offset_y);
+}
+
+sf::Vector2f HitboxComponent::GetPosition() const {
+    return _hitbox.getPosition();
 }
 
 

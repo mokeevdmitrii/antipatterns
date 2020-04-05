@@ -18,12 +18,14 @@ public:
     void LoadFromMap(const std::map<std::string, Json::Node>& settings);
 
     void Update();
-    void Render(sf::RenderTarget& target);
+    void Render(sf::RenderTarget& target) const;
 
     void SetPosition(const sf::Vector2f& position);
     void UpdateCopy(sf::Sprite& sprite);
 
-    bool CheckCollision(const sf::FloatRect& other);
+    bool CheckCollision(const sf::FloatRect& other) const;
+    /* getters */
+    sf::Vector2f GetPosition() const;
 private:
     sf::RectangleShape _hitbox;
     sf::Sprite* _sprite;

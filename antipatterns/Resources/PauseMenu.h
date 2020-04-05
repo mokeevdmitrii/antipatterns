@@ -13,9 +13,9 @@ public:
     ~PauseMenu();
 
     void Update(const sf::Vector2f& mouse_pos);
-    void Render(sf::RenderTarget& target);
+    void Render(sf::RenderTarget& target) const;
 
-    bool IsButtonActive(const std::string& button_key);
+    bool IsButtonActive(const std::string& button_key) const;
 private:
     sf::RectangleShape _background;
     sf::RectangleShape _inner;

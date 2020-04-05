@@ -14,7 +14,7 @@ void AttributeComponent::LoadFromMap(const std::map<std::string, Json::Node> &se
     _health_per_level = static_cast<int>(settings.at("health_per_level").AsDouble());
 }
 
-int AttributeComponent::GetLevel() {
+int AttributeComponent::GetLevel() const {
     return _level;
 }
 

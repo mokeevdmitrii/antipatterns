@@ -29,7 +29,7 @@ void GraphicsComponent::LoadFromMap(const std::map<std::string, Json::Node> &set
 }
 
 
-bool GraphicsComponent::IsDone(const std::string &animation_key) {
+bool GraphicsComponent::IsDone(const std::string &animation_key) const {
     return _animations.at(animation_key)->IsDone();
 }
 
@@ -130,7 +130,7 @@ void GraphicsComponent::Animation::Reset() {
 }
 
 
-bool GraphicsComponent::Animation::IsDone() {
+bool GraphicsComponent::Animation::IsDone() const {
     return _is_done;
 }
 

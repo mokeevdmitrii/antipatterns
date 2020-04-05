@@ -60,7 +60,7 @@ public:
     /* functions */
     void Update(const sf::Vector2f &mouse_pos);
 
-    void Render(sf::RenderTarget& target);
+    void Render(sf::RenderTarget& target) const;
 
 private:
     sf::RectangleShape _shape;

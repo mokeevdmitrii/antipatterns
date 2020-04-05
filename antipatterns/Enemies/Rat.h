@@ -9,16 +9,15 @@
 
 class Rat : public Enemy {
 public:
-    Rat(const sf::Vector2f& position, sf::Texture& texture_sheet, const std::map<std::string, Json::Node>& settings);
+    Rat(sf::Texture& texture_sheet, const std::map<std::string, Json::Node>& settings);
     Rat(const Rat& other);
     ~Rat() = default;
 
     void Update(float time_elapsed) override;
-    void Render(sf::RenderTarget& target) override;
-    std::unique_ptr<Enemy> Clone() override;
-private:
-    void InitAnimations();
+    void Render(sf::RenderTarget& target) const override;
+    std::unique_ptr<Enemy> Clone() const override;
 
+private:
     void UpdateAnimations(float time_elapsed);
 };
 

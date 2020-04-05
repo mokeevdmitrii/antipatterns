@@ -14,7 +14,7 @@ public:
 
     void LoadFromMap(const std::map<std::string, Json::Node>& settings);
 
-    int GetLevel();
+    int GetLevel() const;
 private:
     int _level{1};
     int _health;

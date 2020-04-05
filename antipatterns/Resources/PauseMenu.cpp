@@ -35,13 +35,13 @@ void PauseMenu::Update(const sf::Vector2f& mouse_pos) {
     _btn_manager.Update(mouse_pos);
 }
 
-void PauseMenu::Render(sf::RenderTarget &target) {
+void PauseMenu::Render(sf::RenderTarget &target) const {
     target.draw(_background);
     target.draw(_inner);
     target.draw(_menu_text);
     _btn_manager.Render(target);
 }
 
-bool PauseMenu::IsButtonActive(const std::string& button_key) {
+bool PauseMenu::IsButtonActive(const std::string& button_key) const {
     return _btn_manager[button_key]->IsActive();
 }

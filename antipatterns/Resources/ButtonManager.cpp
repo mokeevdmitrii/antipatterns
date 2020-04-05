@@ -55,7 +55,7 @@ void ButtonManager::Update(const sf::Vector2f& mouse_pos) {
     }
 }
 
-void ButtonManager::Render(sf::RenderTarget &target) {
+void ButtonManager::Render(sf::RenderTarget &target) const {
     for (auto&[str, btn_ptr] : _buttons) {
         btn_ptr->Render(target);
     }

@@ -21,7 +21,7 @@ public:
 
     /* pure functions */
     virtual void Update(float time_elapsed) = 0;
-    virtual void Render(sf::RenderTarget &target) = 0;
+    virtual void Render(sf::RenderTarget &target) const = 0;
     /* do not change signature */
     virtual void SetPosition(const sf::Vector2f &position);
     virtual void Move(float time_elapsed, const sf::Vector2f &direction);
@@ -33,6 +33,8 @@ public:
     void InitHitboxComponent(const std::map<std::string, Json::Node> &settings);
     void InitAttributeComponent(const std::map<std::string, Json::Node> &settings);
 
+    /* getters */
+    sf::Vector2f GetPosition() const;
 protected:
     std::unique_ptr<PhysicsComponent> _phys_comp{};
     std::unique_ptr<GraphicsComponent> _graph_comp{};

@@ -38,6 +38,7 @@ public:
 
     /* State functions */
     void UpdateMousePositions();
+    /* for pause and quit */
     void Pause();
     void Unpause();
     void End();
