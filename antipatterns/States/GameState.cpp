@@ -9,12 +9,13 @@
 GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
                      std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
                      std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack) :
-         _pause_menu(window), State(window, std::move(supported_keys), std::move(state_stack)) {
+          State(std::move(window), std::move(supported_keys), std::move(state_stack)) {
     GameState::InitKeybindings();
     GameState::InitTextures();
     GameState::InitPlayer();
     GameState::InitEnemySystem();
     GameState::InitTileMap();
+    GameState::InitPauseMenu();
 }
 
 GameState::~GameState() {
@@ -34,9 +35,12 @@ void GameState::Update(const float time_elapsed) {
         _enemy_system->Update(time_elapsed);
     /* else update pause menu */
     } else {
-        _pause_menu.Update(_mouse_positions.view);
-        if (_pause_menu.IsButtonActive(std::string("UNPAUSE_GAME"))) {
+        _pause_menu->Update(_mouse_positions.view);
+        if (_pause_menu->IsButtonActive(std::string("PLAY"))) {
             Unpause();
+        }
+        if (_pause_menu->IsButtonActive(std::string("QUIT"))) {
+            End();
         }
     }
 }
@@ -55,7 +59,7 @@ void GameState::Render(std::shared_ptr<sf::RenderTarget> target) {
     _enemy_system->Render(*target);
     _player->Render(*target);
     if (_paused) {
-        _pause_menu.Render(*target);
+        _pause_menu->Render(*target);
     }
 }
 
@@ -105,6 +109,11 @@ void GameState::InitEnemySystem() {
 void GameState::InitTileMap() {
     _tile_map = std::make_unique<TileMap>("../Config/unique_tiles.json", "../Config/init_map.json");
 }
+
+void GameState::InitPauseMenu() {
+    _pause_menu = std::make_shared<PauseMenu>(_window);
+}
+
 
 
 

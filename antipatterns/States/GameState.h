@@ -30,11 +30,13 @@ private:
     void InitPlayer();
     void InitEnemySystem();
     void InitTileMap();
+    void InitPauseMenu();
 
+    /* thinking about moving player somewhere else */
     std::unique_ptr<Creature> _player;
     std::unique_ptr<EnemySystem> _enemy_system;
     std::unique_ptr<TileMap> _tile_map;
-    PauseMenu _pause_menu;
+    std::shared_ptr<PauseMenu> _pause_menu;
 };
 
 

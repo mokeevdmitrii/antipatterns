@@ -870,17 +870,9 @@ SFML/Graphics.hpp
 ../Resources/Json.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.cpp
-EnemySpawner.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h
-
 /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h
 ../src/Enemy.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Enemy.h
-
-/home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.cpp
-Rat.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.h
 
 /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.h
 ../src/Enemy.h
@@ -994,16 +986,6 @@ State.h
 ../src/TileMap.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.h
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.cpp
-MainMenuState.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.h
-
-/home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.h
-GameState.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.h
-../Resources/ButtonManager.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h
-
 /home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h
 ../src/Player.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.h
@@ -1016,33 +998,15 @@ GameState.h
 ../Components/HitboxComponent.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Enemy.cpp
-Enemy.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Enemy.h
-
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Enemy.h
 Creature.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
-
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.cpp
-EnemySystem.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.h
 
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.h
 ../Enemies/EnemySpawner.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h
 ../Enemies/Rat.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.h
-
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.cpp
-Game.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.h
-../States/GameState.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.h
-
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.h
-../States/MainMenuState.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.h
 
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.h
 Creature.h
@@ -1057,8 +1021,4 @@ Tile.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Tile.h
 Creature.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
-
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/main.cpp
-Game.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/Game.h
 

@@ -10,7 +10,6 @@
 
 
 
-/* class that in fact implements basic sprite inteface */
 class Creature {
 public:
     Creature();

@@ -21,7 +21,6 @@ void EnemySystem::LoadUniqueEnemies(const std::string &file_name) {
     /* загружает все виды врагов в вектор уникальных врагов */
     const std::map<std::string, Json::Node> enemy_settings = Json::Load(file_name).GetRoot().AsMap();
     _tile_size = static_cast<int>(enemy_settings.at("tile_size").AsDouble());
-    _unique_enemies.resize(10);
     /* index 0 */
     AddUniqueEnemy(std::make_shared<EnemySpawner>(_textures.at("PLAYER"), enemy_settings.at("EnemySpawner").AsMap()));
     /* index 1 will fix this ****-code later*/
