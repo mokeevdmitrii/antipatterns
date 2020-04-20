@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.10)
 project(antipatterns)
 
 set(SFML_INCLUDE_DIR SFML-2.5.1/include)
@@ -10,13 +10,17 @@ include_directories(SFML_INCLUDE_DIR)
 
 find_package(SFML 2.5.1 COMPONENTS system window graphics network audio)
 
-if(SFML_FOUND)
+if (SFML_FOUND)
     message(STATUS "SFML_INCLUDE_DIR: ${SFML_INCLUDE_DIR}")
     message(STATUS "SFML_LIBRARIES: ${SFML_LIBRARIES}")
     message(STATUS "SFML_VERSION: ${SFML_VERSION}")
-endif()
+endif ()
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(antipatterns src/main.cpp src/Game.cpp States/State.cpp States/GameState.cpp  src/Creature.cpp  States/MainMenuState.cpp  Resources/Button.cpp  Resources/ButtonManager.cpp  Resources/GraphicsSettings.cpp src/Player.cpp Components/PhysicsComponent.cpp Components/GraphicsComponent.cpp src/Enemy.cpp Components/HitboxComponent.cpp Resources/PauseMenu.cpp Components/AttributeComponent.cpp src/TileMap.cpp src/Tile.cpp src/EnemySystem.cpp Enemies/EnemySpawner.cpp  Enemies/Rat.cpp Resources/Json.cpp)
-target_link_libraries (antipatterns sfml-graphics sfml-window sfml-audio sfml-system)
+add_executable(antipatterns src/main.cpp src/Game.cpp States/State.cpp States/GameState.cpp src/Creature.cpp
+        States/MainMenuState.cpp Resources/Button.cpp Resources/ButtonManager.cpp Resources/GraphicsSettings.cpp
+        src/Player.cpp Components/PhysicsComponent.cpp Components/GraphicsComponent.cpp src/Enemy.cpp
+        Components/HitboxComponent.cpp Resources/PauseMenu.cpp Components/AttributeComponent.cpp src/TileMap.cpp
+        src/Tile.cpp src/EnemySystem.cpp Enemies/EnemySpawner.cpp Enemies/Rat.cpp Resources/Json.cpp)
+target_link_libraries(antipatterns sfml-graphics sfml-window sfml-audio sfml-system)
