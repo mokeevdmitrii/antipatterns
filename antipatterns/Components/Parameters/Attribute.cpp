@@ -56,15 +56,14 @@ void BaseAttribute::Update(float time_elapsed) {
 }
 
 void BaseAttribute::UpdateLevel(int level_change) {
+    _current_value = _stats.base_value;
     for (int i = 0; i < level_change; ++i) {
         _stats.base_value += _level_change.delta_value;
         _stats.base_value *= (1.0 + _level_change.multiplier);
     }
+    Update(0);
 }
 
-void BaseAttribute::ApplyBonus(std::shared_ptr<BaseAttribute> &base_attribute, Stats stats) {
-
-}
 
 void BaseAttribute::UpdateBonuses(float time_elapsed, std::list<std::shared_ptr<BaseAttribute>> &bonuses) {
     auto b_it = bonuses.begin();

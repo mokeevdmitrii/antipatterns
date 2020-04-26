@@ -47,15 +47,13 @@ public:
 
     virtual void Update(float time_elapsed);
 
-    virtual void UpdateLevel(int level_change = 1);
+    virtual void UpdateLevel(int level_change);
 
     void UpdateBaseValue(double delta_value);
 
     void UpdateLevelChange(LevelChange delta_change);
 
 protected:
-    virtual void ApplyBonus(std::shared_ptr<BaseAttribute>& base_attribute, Stats stats);
-
     virtual void UpdateBonuses(float time_elapsed, std::list<std::shared_ptr<BaseAttribute>> &bonuses);
 
     virtual void CheckBoundaries();
@@ -110,23 +108,41 @@ private:
 
 class OverTimeEffect : public Effect {
 public:
-    OverTimeEffect(EFFECT_TYPE type, Stats stats, LevelChange level_change) : Effect(type, stats, _level_change) {
+    OverTimeEffect(EFFECT_TYPE type, Stats stats, LevelChange level_change) : Effect(type, stats, level_change) {
 
     }
 
-    
-
+    void Update(float time_elapsed) override {
+        _time_from_tick += time_elapsed;
+        Effect::Update(time_elapsed);
+    }
 
     void SetTickTime(float tick_time) {
         _tick_time = tick_time;
     }
 
-private:
+protected:
     float _tick_time{1.0};
-    mutable float _time_from_tick;
+    mutable float _time_from_tick{0};
 };
 
-std::shared_ptr<Effect> CreateEffect(EFFECT_TYPE type);
+class ProckingEffect : public OverTimeEffect {
+public:
+    ProckingEffect(EFFECT_TYPE type, Stats stats, LevelChange level_change) : OverTimeEffect(type, stats, level_change) {
+
+    }
+
+    //очень осторожно - возвращает IsReady() == true всего один раз !!!
+    bool IsReady() const override {
+        if (_time_from_tick >= _tick_time) {
+            _time_from_tick -= _tick_time;
+            return true;
+        }
+        return false;
+    }
+};
+
+std::shared_ptr<Effect> CreateEffect(EFFECT_TYPE type, Stats stats, LevelChange level_change);
 
 /* каждый атрибут может зависеть от остальных атрибутов,
  * к нему применяются первоначальные бонусы (одежда и т.д.),
@@ -150,18 +166,53 @@ private:
     std::vector<std::shared_ptr<BaseAttribute>> _base_attributes;
 };
 
+//хихихихи максируемся под BaseAttribute, но полностью меняем интерфейс!!!
 class AttributeValue : public BaseAttribute {
 public:
     AttributeValue(std::shared_ptr<BaseAttribute> max_value) : _max_value(std::move(max_value)), BaseAttribute(Stats(), LevelChange()) {
 
     }
 
+    double GetBaseValue() const override {
+        return _max_value->GetBaseValue();
+    }
+
+    double GetCurrentValue() const override {
+        return _max_value->GetCurrentValue() * _relative_value;
+    }
+
+    double GetMultiplier() const override {
+        return _max_value->GetMultiplier();
+    }
+
+    void Update(float time_elapsed) override {
+        //я тут
+    }
 
 
+protected:
+    void UpdateBonuses(float time_elapsed, std::list<std::shared_ptr<BaseAttribute>>& bonuses) override {
+        auto b_it = bonuses.begin();
+        double bonus_value{0}, bonus_multiplier{0};
+        while (b_it != bonuses.end()) {
+            //порядок - подумать!!!!
+            (*b_it)->Update(time_elapsed);
+            if ((*b_it)->ToRemove()) {
+                b_it = bonuses.erase(b_it);
+                continue;
+            }
+            if ((*b_it)->IsReady()) {
+                bonus_value += (*b_it)->GetCurrentValue();
+                bonus_multiplier += (*b_it)->GetMultiplier();
+            }
+            ++b_it;
+        }
+        _relative_value += bonus_value / _max_value->GetCurrentValue();
+        _relative_value *= (1.0 + bonus_multiplier);
+    }
 
-private:
     std::shared_ptr<BaseAttribute> _max_value;
-    double relative_value{1};
+    double _relative_value{1};
 };
 
 
