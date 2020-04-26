@@ -9,7 +9,6 @@
 #include "../Components/HitboxComponent.h"
 
 
-
 class Creature {
 public:
     Creature();
@@ -24,6 +23,8 @@ public:
     /* do not change signature */
     virtual void SetPosition(const sf::Vector2f &position);
     virtual void Move(float time_elapsed, const sf::Vector2f &direction);
+    //для актуализации параметров в случае чево)
+    //virtual void Actualize() = 0;
 
     /* initializers */
     void SetTexture(sf::Texture& texture);

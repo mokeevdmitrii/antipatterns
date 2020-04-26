@@ -7,7 +7,21 @@
 
 
 class Parameter {
+public:
+    explicit Parameter(double value) : _value(value) {
 
+    }
+
+    double GetValue() const {
+        return _value;
+    }
+
+    void SetValue(double value) {
+        _value = value;
+    }
+
+private:
+    double _value;
 };
 
 

@@ -60,7 +60,7 @@ void MainMenuState::InitKeybindings() {
         std::string key_str;
         std::string key_bind;
         while (in >> key_str >> key_bind) {
-            _keybindings.try_emplace(key_str, _supported_keys->at(key_bind));
+            _keybindings->try_emplace(key_str, _supported_keys->at(key_bind));
         }
     }
 }

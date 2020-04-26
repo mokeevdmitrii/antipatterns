@@ -6,10 +6,11 @@
 #define ANTIPATTERNS_ATTRIBUTECOMPONENT_H
 
 #include "GraphicsComponent.h"
+#include "Parameters/Attribute.h"
 
 class AttributeComponent {
 public:
-    AttributeComponent(const std::map<std::string, Json::Node>& settings);
+    explicit AttributeComponent(const std::map<std::string, Json::Node>& settings);
     ~AttributeComponent() = default;
 
     void LoadFromMap(const std::map<std::string, Json::Node>& settings);

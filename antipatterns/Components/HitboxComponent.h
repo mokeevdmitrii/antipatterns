@@ -9,6 +9,7 @@
 #include <SFML/Graphics.hpp>
 #include "../Resources/Json.h"
 
+
 class HitboxComponent {
 public:
     HitboxComponent(sf::Sprite& sprite, const std::map<std::string, Json::Node> &settings);

@@ -5,10 +5,11 @@
 #ifndef ANTIPATTERNS_EFFECT_H
 #define ANTIPATTERNS_EFFECT_H
 
+#include "Attribute.h"
+#include <vector>
+#include <memory>
+#include <SFML/System.hpp>
 
-class Effect {
-
-};
 
 
 #endif //ANTIPATTERNS_EFFECT_H

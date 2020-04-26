@@ -5,7 +5,9 @@
 #include "Player.h"
 
 
-Player::Player(const sf::Vector2f position, sf::Texture &texture_sheet, const std::string &file_name) {
+Player::Player(sf::Vector2f position, sf::Texture &texture_sheet, const std::string &file_name,
+               std::shared_ptr<std::unordered_map<std::string, int>> keybindings) : _keybindings(
+        std::move(keybindings)) {
     const std::map<std::string, Json::Node> settings = Json::Load(file_name).GetRoot().AsMap();
     Creature::InitPhysicsComponent(settings.at("physics_component").AsMap());
     Creature::InitGraphicsComponent(texture_sheet, settings.at("graphics_component").AsMap());
@@ -23,6 +25,7 @@ Player::~Player() {
 /* overrided functions */
 
 void Player::Update(float time_elapsed) {
+    UpdateInput(time_elapsed);
     _phys_comp->Update(time_elapsed);
     /* here we use GetState from PhysicsComponent and play animations */
     UpdateAnimations(time_elapsed);
@@ -37,13 +40,29 @@ void Player::Render(sf::RenderTarget &target) const {
 
 /* initializers */
 
-//void Player::InitAnimations() {
-//    _graph_comp->AddAnimation("PLAYER_IDLE", 0.f, 0, 0, 0, 0, sf::Vector2i(32, 48));
-//}
+
+void Player::UpdateInput(float time_elapsed) {
+    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings->at("MOVE_LEFT")))) {
+        Move(time_elapsed, sf::Vector2f(-1.f, 0.f));
+    }
+    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings->at("MOVE_DOWN")))) {
+        Move(time_elapsed, sf::Vector2f(0.f, 1.f));
+    }
+    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings->at("MOVE_RIGHT")))) {
+        Move(time_elapsed, sf::Vector2f(1.f, 0.f));
+    }
+    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings->at("MOVE_UP")))) {
+        Move(time_elapsed, sf::Vector2f(0.f, -1.f));
+    }
+}
 
 void Player::UpdateAnimations(float time_elapsed) {
     _graph_comp->Play("PLAYER_IDLE", time_elapsed);
 }
+
+
+
+
 
 
 

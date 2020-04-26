@@ -22,5 +22,7 @@ add_executable(antipatterns src/main.cpp src/Game.cpp States/State.cpp States/Ga
         States/MainMenuState.cpp Resources/Button.cpp Resources/ButtonManager.cpp Resources/GraphicsSettings.cpp
         src/Player.cpp Components/PhysicsComponent.cpp Components/GraphicsComponent.cpp src/Enemy.cpp
         Components/HitboxComponent.cpp Resources/PauseMenu.cpp Components/AttributeComponent.cpp src/TileMap.cpp
-        src/Tile.cpp src/EnemySystem.cpp Enemies/EnemySpawner.cpp Enemies/Rat.cpp Resources/Json.cpp)
+        src/Tile.cpp src/EnemySystem.cpp Enemies/EnemySpawner.cpp Enemies/Rat.cpp Resources/Json.cpp
+        Components/Parameters/Attribute.cpp Components/Parameters/Attribute.h Components/Parameters/Effect.cpp
+        Components/Parameters/Effect.h Components/Parameters/Parameter.cpp Components/Parameters/Parameter.h Components/SkillComponent.cpp Components/SkillComponent.h Components/Parameters/Skill.cpp Components/Parameters/Skill.h Components/Parameters/Timer.cpp Components/Parameters/Timer.h)
 target_link_libraries(antipatterns sfml-graphics sfml-window sfml-audio sfml-system)

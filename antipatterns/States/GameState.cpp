@@ -9,7 +9,7 @@
 GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
                      std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
                      std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack) :
-          State(std::move(window), std::move(supported_keys), std::move(state_stack)) {
+        State(std::move(window), std::move(supported_keys), std::move(state_stack)) {
     GameState::InitKeybindings();
     GameState::InitTextures();
     GameState::InitPlayer();
@@ -30,10 +30,9 @@ void GameState::Update(const float time_elapsed) {
     UpdateMousePositions();
     if (!_paused) {
         UpdateInput(time_elapsed);
-        UpdatePlayerInput(time_elapsed);
         _player->Update(time_elapsed);
         _enemy_system->Update(time_elapsed);
-    /* else update pause menu */
+        /* else update pause menu */
     } else {
         _pause_menu->Update(_mouse_positions.view);
         if (_pause_menu->IsButtonActive(std::string("PLAY"))) {
@@ -46,10 +45,10 @@ void GameState::Update(const float time_elapsed) {
 }
 
 void GameState::UpdateInput(const float time_elapsed) {
-    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("PAUSE")))) {
+    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings->at("PAUSE")))) {
         Pause();
     }
-    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("CLOSE")))) {
+    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings->at("CLOSE")))) {
         End();
     }
 }
@@ -63,21 +62,6 @@ void GameState::Render(std::shared_ptr<sf::RenderTarget> target) {
     }
 }
 
-void GameState::UpdatePlayerInput(float time_elapsed) {
-    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("MOVE_LEFT")))) {
-        _player->Move(time_elapsed, sf::Vector2f(-1.f, 0.f));
-    }
-    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("MOVE_DOWN")))) {
-        _player->Move(time_elapsed, sf::Vector2f(0.f, 1.f));
-    }
-    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("MOVE_RIGHT")))) {
-        _player->Move(time_elapsed, sf::Vector2f(1.f, 0.f));
-    }
-    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings.at("MOVE_UP")))) {
-        _player->Move(time_elapsed, sf::Vector2f(0.f, -1.f));
-    }
-}
-
 /* initializers */
 
 void GameState::InitKeybindings() {
@@ -86,7 +70,7 @@ void GameState::InitKeybindings() {
         std::string key_str;
         std::string key_bind;
         while (in >> key_str >> key_bind) {
-            _keybindings.try_emplace(key_str, _supported_keys->at(key_bind));
+            _keybindings->try_emplace(key_str, _supported_keys->at(key_bind));
         }
     }
 }
@@ -98,11 +82,13 @@ void GameState::InitTextures() {
 }
 
 void GameState::InitPlayer() {
-    _player = std::make_unique<Player>(sf::Vector2f(0,0), _textures.at("PLAYER"), "../Config/player_settings.json");
+    _player = std::make_unique<Player>(sf::Vector2f(0, 0), _textures.at("PLAYER"), "../Config/player_settings.json",
+                                       _keybindings);
 }
 
 void GameState::InitEnemySystem() {
-    _enemy_system = std::make_unique<EnemySystem>(_textures, "../Config/enemies_settings.json", "../Config/enemies_location.json");
+    _enemy_system = std::make_unique<EnemySystem>(_textures, "../Config/enemies_settings.json",
+                                                  "../Config/enemies_location.json");
     std::map<std::string, Json::Node> enemy_settings = Json::Load("../Config/enemies_settings.json").GetRoot().AsMap();
 }
 

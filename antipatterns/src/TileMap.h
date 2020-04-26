@@ -17,6 +17,9 @@
  * порождающий паттерн :(
  */
 
+
+/* переделать всю карту в вектор комнат (class Room), каждый раз при обновлении TileMap и прочего, обновлять только комнату!!! */
+
 class TileMap {
     using Map = std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>>;
 public:

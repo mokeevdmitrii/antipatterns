@@ -64,6 +64,7 @@ void GraphicsComponent::CheckLastAnimation(const std::string &animation_key) {
         if (_last_animation == nullptr) {
             _last_animation = _animations.at(animation_key).get();
         } else {
+            //ВНИМАНИЕ НА ПОРЯДОК
             _last_animation->Reset();
             _last_animation = _animations.at(animation_key).get();
         }

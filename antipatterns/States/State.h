@@ -51,11 +51,11 @@ protected:
     /* declarations */
 
     /* initializers */
-    virtual void InitKeybindings() = 0;
+    virtual void InitKeybindings();
 
     /* variables */
     std::shared_ptr<std::unordered_map<std::string, int>> _supported_keys;
-    std::unordered_map<std::string, int> _keybindings;
+    std::shared_ptr<std::unordered_map<std::string, int>> _keybindings;
 
     std::shared_ptr<sf::RenderWindow> _window;
     std::shared_ptr<std::stack<std::shared_ptr<State>>> _state_stack;

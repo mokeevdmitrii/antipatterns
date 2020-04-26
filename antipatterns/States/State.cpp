@@ -13,7 +13,7 @@ State::State(std::shared_ptr<sf::RenderWindow> window,
         : _window(std::move(window)),
         _supported_keys(std::move(supported_keys)),
         _state_stack(std::move(state_stack)) {
-
+    State::InitKeybindings();
 }
 
 State::~State() {
@@ -40,6 +40,10 @@ void State::Pause() {
 
 void State::Unpause() {
     _paused = false;
+}
+
+void State::InitKeybindings() {
+    _keybindings = std::make_shared<std::unordered_map<std::string, int>>();
 }
 
 

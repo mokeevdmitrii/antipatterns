@@ -23,7 +23,6 @@ public:
     /* running */
     void Run();
 
-    /* переделать в класс графика???*/
     /* rendering */
     void Render();
 
