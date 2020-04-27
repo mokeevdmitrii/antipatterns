@@ -118,6 +118,12 @@
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Effect.h">
 			<Option target="antipatterns"/>
 		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Parameter.cpp">
 			<Option target="antipatterns"/>
 		</Unit>

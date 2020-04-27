@@ -120,17 +120,28 @@ void RawBonus::SetToRemove() {
 }
 
 
-/// ----------------- EFFECT ------------------ ///
+/// ---------------- EFFECT ------------------- ///
 
-Effect::Effect(ATTRIBUTE_ID id, Stats stats, LevelChange level_change) : _id(id), BaseAttribute(stats, level_change) {
+Effect::Effect(ATTRIBUTE_ID id, Stats stats, LevelChange level_change) : BaseAttribute(stats, level_change), _id(id) {
 
 }
 
-bool Effect::ToRemove() const {
+
+void Effect::SetAttributeId(ATTRIBUTE_ID id) {
+    _id = id;
+}
+
+/// -----------------TIMED EFFECT ------------------ ///
+
+TimedEffect::TimedEffect(ATTRIBUTE_ID id, Stats stats, LevelChange level_change) : Effect(id, stats, level_change) {
+
+}
+
+bool TimedEffect::ToRemove() const {
     return _time_to_expire <= 0;
 }
 
-void Effect::Update(float time_elapsed) {
+void TimedEffect::Update(float time_elapsed) {
     if (_updated) {
         return;
     }
@@ -145,31 +156,30 @@ void Effect::Update(float time_elapsed) {
     CheckBoundaries();
 }
 
-void Effect::SetExpirationTime(float time_to_expire) {
+void TimedEffect::SetExpirationTime(float time_to_expire) {
     _time_to_expire = time_to_expire;
 }
 
-void Effect::SetAttributeId(ATTRIBUTE_ID id) {
-    _id = id;
-}
 
 
-std::shared_ptr<Effect> CreateEffect(EFFECT_TYPE type, Stats stats, LevelChange level_change) {
+
+std::shared_ptr<TimedEffect> CreateEffect(EFFECT_TYPE type, Stats stats, LevelChange level_change) {
     switch (type) {
         case EFFECT_TYPE::STATS:
-            return std::shared_ptr<Effect>(t)
-            break;
+            return std::shared_ptr<TimedEffect>();
         case EFFECT_TYPE::POISON:
+            return std::shared_ptr<TimedEffect>();
+        case EFFECT_TYPE::PHYSICAL_DAMAGE:
             break;
-        case EFFECT_TYPE::DAMAGE:
+        case EFFECT_TYPE::MAGICAL_DAMAGE:
             break;
     }
 }
 
 /// --------------OVER_TIME_EFFECT ------------///
 
-OverTimeEffect::OverTimeEffect(ATTRIBUTE_ID id, Stats stats, LevelChange level_change) : Effect(id, stats,
-                                                                                                 level_change) {
+OverTimeEffect::OverTimeEffect(ATTRIBUTE_ID id, Stats stats, LevelChange level_change) : TimedEffect(id, stats,
+                                                                                                     level_change) {
 
 }
 
@@ -212,25 +222,10 @@ bool ProckingEffect::IsReady() const {
 /// ---------------- ATTRIBUTE ---------------- ///
 
 
-template<typename... Attributes>
-Attribute::Attribute(Stats stats, LevelChange level_change, Attributes... attributes) : BaseAttribute(stats,
-                                                                                                      level_change) {
-    VariadicConstruct(attributes...);
-}
-
-Attribute::Attribute(Stats stats, LevelChange level_change, std::vector<std::shared_ptr<BaseAttribute>> attributes)
+Attribute::Attribute(Stats stats, LevelChange level_change, std::shared_ptr<Expression> expression)
         : BaseAttribute(stats, level_change),
-          _base_attributes(std::move(
-                  attributes)) {
+          _expression(std::move(expression)) {
 }
-
-template<typename... Attributes>
-void Attribute::VariadicConstruct(std::shared_ptr<BaseAttribute> stat, Attributes... attributes) {
-    _base_attributes.push_back(std::move(stat));
-    VariadicConstruct(attributes...);
-}
-
-void Attribute::VariadicConstruct() {}
 
 void Attribute::Update(float time_elapsed) {
     if (_updated) {
@@ -246,6 +241,7 @@ void Attribute::Update(float time_elapsed) {
     //смотрим не вышли ли за допустимые границы
     CheckBoundaries();
 }
+
 
 /// ------------ ATTRIBUTE VALUE ------------ ///
 

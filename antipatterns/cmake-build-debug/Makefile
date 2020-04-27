@@ -258,6 +258,33 @@ Components/Parameters/Effect.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.s
 .PHONY : Components/Parameters/Effect.cpp.s
 
+Components/Parameters/Expression.o: Components/Parameters/Expression.cpp.o
+
+.PHONY : Components/Parameters/Expression.o
+
+# target to build an object file
+Components/Parameters/Expression.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o
+.PHONY : Components/Parameters/Expression.cpp.o
+
+Components/Parameters/Expression.i: Components/Parameters/Expression.cpp.i
+
+.PHONY : Components/Parameters/Expression.i
+
+# target to preprocess a source file
+Components/Parameters/Expression.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.i
+.PHONY : Components/Parameters/Expression.cpp.i
+
+Components/Parameters/Expression.s: Components/Parameters/Expression.cpp.s
+
+.PHONY : Components/Parameters/Expression.s
+
+# target to generate assembly for a file
+Components/Parameters/Expression.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.s
+.PHONY : Components/Parameters/Expression.cpp.s
+
 Components/Parameters/Parameter.o: Components/Parameters/Parameter.cpp.o
 
 .PHONY : Components/Parameters/Parameter.o
@@ -903,6 +930,9 @@ help:
 	@echo "... Components/Parameters/Effect.o"
 	@echo "... Components/Parameters/Effect.i"
 	@echo "... Components/Parameters/Effect.s"
+	@echo "... Components/Parameters/Expression.o"
+	@echo "... Components/Parameters/Expression.i"
+	@echo "... Components/Parameters/Expression.s"
 	@echo "... Components/Parameters/Parameter.o"
 	@echo "... Components/Parameters/Parameter.i"
 	@echo "... Components/Parameters/Parameter.s"

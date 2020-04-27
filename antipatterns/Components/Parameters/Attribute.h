@@ -5,9 +5,9 @@
 #ifndef ANTIPATTERNS_ATTRIBUTE_H
 #define ANTIPATTERNS_ATTRIBUTE_H
 
-#include <list>
-#include <memory>
-#include <vector>
+
+
+#include "Expression.h"
 
 enum class ATTRIBUTE_ID {
     STRENGTH
@@ -23,15 +23,11 @@ struct LevelChange {
     double multiplier;
 };
 
-//добавить проверку на обновление!!!
-
-class BaseAttribute {
+class BaseAttribute : public Value {
 public:
     //BaseAttribute() = default;
 
     explicit BaseAttribute(Stats stats, LevelChange level_change);
-
-    virtual ~BaseAttribute() = default;
 
     void AddRawBonus(std::shared_ptr<BaseAttribute> raw_bonus);
 
@@ -66,7 +62,6 @@ protected:
     std::list<std::shared_ptr<BaseAttribute>> _effects{};
     Stats _stats;
     LevelChange _level_change;
-    double _current_value;
     bool _updated{false};
 private:
 };
@@ -89,12 +84,24 @@ private:
 enum class EFFECT_TYPE {
     STATS,
     POISON,
-    DAMAGE
+    PHYSICAL_DAMAGE,
+    MAGICAL_DAMAGE
 };
 
 class Effect : public BaseAttribute {
 public:
     Effect(ATTRIBUTE_ID id, Stats stats, LevelChange level_change);
+
+    void SetAttributeId(ATTRIBUTE_ID id);
+
+protected:
+    ATTRIBUTE_ID _id;
+};
+
+
+class TimedEffect : public Effect {
+public:
+    TimedEffect(ATTRIBUTE_ID id, Stats stats, LevelChange level_change);
 
     bool ToRemove() const override;
 
@@ -102,16 +109,13 @@ public:
 
     void SetExpirationTime(float time_to_expire);
 
-    void SetAttributeId(ATTRIBUTE_ID id);
-
 protected:
     float _time_to_expire{std::numeric_limits<float>::infinity()};
-    ATTRIBUTE_ID _id;
 private:
 };
 
 
-class OverTimeEffect : public Effect {
+class OverTimeEffect : public TimedEffect {
 public:
     OverTimeEffect(ATTRIBUTE_ID id, Stats stats, LevelChange level_change);
 
@@ -132,33 +136,31 @@ public:
     bool IsReady() const override;
 };
 
-std::shared_ptr<Effect> CreateEffect(EFFECT_TYPE type, Stats stats, LevelChange level_change);
+std::shared_ptr<TimedEffect> CreateEffect(EFFECT_TYPE type, Stats stats, LevelChange level_change);
 
 /* каждый атрибут может зависеть от остальных атрибутов,
  * к нему применяются первоначальные бонусы (одежда и т.д.),
  * затем применяются остальные бонусы */
 class Attribute : public BaseAttribute {
 public:
-    template<typename ...Attributes>
-    explicit Attribute(Stats stats, LevelChange level_change, Attributes... attributes);
-
-    Attribute(Stats stats, LevelChange level_change, std::vector<std::shared_ptr<BaseAttribute>> attributes);
+    Attribute(Stats stats, LevelChange level_change, std::shared_ptr<Expression> expression);
 
     void Update(float time_elapsed) override;
-private:
+protected:
     virtual void ApplyBaseAttributes(double& base_value) = 0;
 
-    template<typename ...Attributes>
-    void VariadicConstruct(std::shared_ptr<BaseAttribute> stat, Attributes... attributes);
+    /// СЮДА СМОТРИ ДИМА МОКЕЕВ ТЫ СЕЙЧАС ДЕЛАЕШЬ ЭТО ///
 
-    void VariadicConstruct();
-
-    std::vector<std::shared_ptr<BaseAttribute>> _base_attributes;
+    std::shared_ptr<Expression> _expression;
+private:
+    void UpdateBaseAttributes(float time_elapsed);
 };
 
 //хихихихи максируемся под BaseAttribute, но полностью меняем интерфейс!!!
 class AttributeValue : public BaseAttribute {
 public:
+    AttributeValue() = default;
+
     explicit AttributeValue(std::shared_ptr<BaseAttribute> max_value);
 
     double GetBaseValue() const override;
@@ -180,8 +182,6 @@ protected:
 };
 
 
-
-
 //типы базовых атрибутов:
 
 // живучесть
@@ -201,6 +201,7 @@ protected:
 // шанс критического удара
 // защита
 // магическая защита
+
 
 
 

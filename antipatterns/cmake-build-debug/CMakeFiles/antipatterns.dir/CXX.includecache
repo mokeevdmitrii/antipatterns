@@ -906,14 +906,6 @@ Effect.h
 Attribute.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Timer.cpp
-Timer.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Timer.h
-
-/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Timer.h
-SFML/System/Clock.hpp
--
-
 /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
 ../Resources/GraphicsSettings.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h

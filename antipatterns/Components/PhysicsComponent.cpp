@@ -9,18 +9,6 @@ PhysicsComponent::PhysicsComponent(sf::Sprite &sprite, const std::map<std::strin
     LoadFromMap(settings);
 }
 
-PhysicsComponent &PhysicsComponent::operator=(const PhysicsComponent &other) {
-    if (&other == this) {
-        return *this;
-    }
-    _velocity = other._velocity;
-    _max_velocity = other._max_velocity;
-    _acceleration = other._acceleration;
-    _deceleration = other._deceleration;
-    _sprite = nullptr;
-    return *this;
-}
-
 void PhysicsComponent::LoadFromMap(const std::map<std::string, Json::Node> &settings) {
     _max_velocity = static_cast<float>(settings.at("max_velocity").AsDouble());
     _acceleration = static_cast<float>(settings.at("acceleration").AsDouble());

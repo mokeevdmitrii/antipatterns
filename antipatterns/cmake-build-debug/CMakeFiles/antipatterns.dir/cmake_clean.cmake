@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/Parameters/Attribute.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o"
+  "CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o"
