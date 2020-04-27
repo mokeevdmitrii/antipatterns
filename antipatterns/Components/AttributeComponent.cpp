@@ -4,6 +4,8 @@
 
 #include "AttributeComponent.h"
 
+const std::unordered_map<std::string, ATTRIBUTE_ID> AttributeComponent::_names_to_id = {};
+
 AttributeComponent::AttributeComponent(const std::map<std::string, Json::Node> &settings) {
     LoadFromMap(settings);
 }

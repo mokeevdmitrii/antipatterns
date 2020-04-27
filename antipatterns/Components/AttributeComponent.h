@@ -28,7 +28,7 @@ private:
     std::shared_ptr<Expression> LoadNode(std::istream& input);
 
     std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>> _attributes;
-    static std::unordered_map<std::string, ATTRIBUTE_ID> _names_to_id;
+    static const std::unordered_map<std::string, ATTRIBUTE_ID> _names_to_id;
     int _level{1};
     int _health;
     int _health_per_level;

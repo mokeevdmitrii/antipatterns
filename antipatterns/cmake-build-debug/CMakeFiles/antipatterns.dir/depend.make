@@ -96,6 +96,7 @@ CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o: ../Components/A
 CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o: ../Components/AttributeComponent.h
 CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o: ../Resources/GraphicsSettings.h
 CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o: ../Resources/Json.h
@@ -277,6 +278,8 @@ CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.o: ../Resources/Json.
 
 CMakeFiles/antipatterns.dir/Components/Parameters/Attribute.cpp.o: ../Components/Parameters/Attribute.cpp
 CMakeFiles/antipatterns.dir/Components/Parameters/Attribute.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/Components/Parameters/Attribute.cpp.o: ../Components/Parameters/Expression.h
+CMakeFiles/antipatterns.dir/Components/Parameters/Attribute.cpp.o: ../Resources/Json.h
 
 CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o: ../SFML-2.5.1/include/SFML/Config.hpp
 CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o: ../SFML-2.5.1/include/SFML/System.hpp
@@ -307,6 +310,12 @@ CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o: ../SFML-2.5.1/in
 CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o: ../Components/Parameters/Attribute.h
 CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o: ../Components/Parameters/Effect.cpp
 CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o: ../Components/Parameters/Effect.h
+CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o: ../Components/Parameters/Expression.h
+CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o: ../Resources/Json.h
+
+CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o: ../Components/Parameters/Expression.cpp
+CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o: ../Components/Parameters/Expression.h
+CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o: ../Resources/Json.h
 
 CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.o: ../Components/Parameters/Parameter.cpp
 CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.o: ../Components/Parameters/Parameter.h
@@ -339,8 +348,10 @@ CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../SFML-2.5.1/inc
 CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../SFML-2.5.1/include/SFML/System/Vector3.inl
 CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../Components/Parameters/Attribute.h
 CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../Components/Parameters/Effect.h
+CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../Components/Parameters/Skill.cpp
 CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../Components/Parameters/Skill.h
+CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../Resources/Json.h
 
 CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o: ../SFML-2.5.1/include/SFML/Config.hpp
 CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o: ../SFML-2.5.1/include/SFML/System/Clock.hpp
@@ -473,9 +484,11 @@ CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o: ../SFML-2.5.1/inclu
 CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o: ../SFML-2.5.1/include/SFML/System/Vector3.inl
 CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o: ../Components/Parameters/Attribute.h
 CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o: ../Components/Parameters/Effect.h
+CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o: ../Components/Parameters/Skill.h
 CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o: ../Components/SkillComponent.cpp
 CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o: ../Components/SkillComponent.h
+CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o: ../Resources/Json.h
 
 CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o: ../SFML-2.5.1/include/SFML/Audio.hpp
 CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o: ../SFML-2.5.1/include/SFML/Audio/AlResource.hpp
@@ -572,6 +585,7 @@ CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o: ../Components/AttributeC
 CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o: ../Components/HitboxComponent.h
 CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o: ../Enemies/EnemySpawner.cpp
 CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o: ../Enemies/EnemySpawner.h
@@ -675,6 +689,7 @@ CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o: ../Components/AttributeComponent.
 CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o: ../Components/HitboxComponent.h
 CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o: ../Enemies/Rat.cpp
 CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o: ../Enemies/Rat.h
@@ -1161,6 +1176,7 @@ CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Components/AttributeCompo
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Components/HitboxComponent.h
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Enemies/EnemySpawner.h
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Enemies/Rat.h
@@ -1274,6 +1290,7 @@ CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Components/AttributeC
 CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Components/HitboxComponent.h
 CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Enemies/EnemySpawner.h
 CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Enemies/Rat.h
@@ -1388,6 +1405,7 @@ CMakeFiles/antipatterns.dir/States/State.cpp.o: ../Components/AttributeComponent
 CMakeFiles/antipatterns.dir/States/State.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/States/State.cpp.o: ../Components/HitboxComponent.h
 CMakeFiles/antipatterns.dir/States/State.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/States/State.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/States/State.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/States/State.cpp.o: ../Resources/Button.h
 CMakeFiles/antipatterns.dir/States/State.cpp.o: ../Resources/ButtonManager.h
@@ -1494,6 +1512,7 @@ CMakeFiles/antipatterns.dir/src/Creature.cpp.o: ../Components/AttributeComponent
 CMakeFiles/antipatterns.dir/src/Creature.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/src/Creature.cpp.o: ../Components/HitboxComponent.h
 CMakeFiles/antipatterns.dir/src/Creature.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/src/Creature.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/src/Creature.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/src/Creature.cpp.o: ../Resources/GraphicsSettings.h
 CMakeFiles/antipatterns.dir/src/Creature.cpp.o: ../Resources/Json.h
@@ -1595,6 +1614,7 @@ CMakeFiles/antipatterns.dir/src/Enemy.cpp.o: ../Components/AttributeComponent.h
 CMakeFiles/antipatterns.dir/src/Enemy.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/src/Enemy.cpp.o: ../Components/HitboxComponent.h
 CMakeFiles/antipatterns.dir/src/Enemy.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/src/Enemy.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/src/Enemy.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/src/Enemy.cpp.o: ../Resources/GraphicsSettings.h
 CMakeFiles/antipatterns.dir/src/Enemy.cpp.o: ../Resources/Json.h
@@ -1697,6 +1717,7 @@ CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o: ../Components/AttributeCompon
 CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o: ../Components/HitboxComponent.h
 CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o: ../Enemies/EnemySpawner.h
 CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o: ../Enemies/Rat.h
@@ -1802,6 +1823,7 @@ CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Components/AttributeComponent.h
 CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Components/HitboxComponent.h
 CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Enemies/EnemySpawner.h
 CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Enemies/Rat.h
@@ -1917,6 +1939,7 @@ CMakeFiles/antipatterns.dir/src/Player.cpp.o: ../Components/AttributeComponent.h
 CMakeFiles/antipatterns.dir/src/Player.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/src/Player.cpp.o: ../Components/HitboxComponent.h
 CMakeFiles/antipatterns.dir/src/Player.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/src/Player.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/src/Player.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/src/Player.cpp.o: ../Resources/GraphicsSettings.h
 CMakeFiles/antipatterns.dir/src/Player.cpp.o: ../Resources/Json.h
@@ -2115,6 +2138,7 @@ CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Components/AttributeComponent.
 CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Components/HitboxComponent.h
 CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Resources/GraphicsSettings.h
 CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Resources/Json.h
@@ -2218,6 +2242,7 @@ CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Components/AttributeComponent.h
 CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Components/GraphicsComponent.h
 CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Components/HitboxComponent.h
 CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Components/Parameters/Attribute.h
+CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Components/Parameters/Expression.h
 CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Enemies/EnemySpawner.h
 CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Enemies/Rat.h
