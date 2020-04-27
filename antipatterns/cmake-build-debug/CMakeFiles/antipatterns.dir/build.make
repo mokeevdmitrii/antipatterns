@@ -408,18 +408,18 @@ CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Skill.cpp -o CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.s
 
-CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.o: CMakeFiles/antipatterns.dir/flags.make
-CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.o: ../Components/Parameters/TImer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/TImer.cpp
+CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o: CMakeFiles/antipatterns.dir/flags.make
+CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o: ../Components/Parameters/Timer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Timer.cpp
 
-CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/TImer.cpp > CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.i
+CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Timer.cpp > CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.i
 
-CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/TImer.cpp -o CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.s
+CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Timer.cpp -o CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.s
 
 # Object files for target antipatterns
 antipatterns_OBJECTS = \
@@ -450,7 +450,7 @@ antipatterns_OBJECTS = \
 "CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.o" \
 "CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o" \
 "CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o" \
-"CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.o"
+"CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o"
 
 # External object files for target antipatterns
 antipatterns_EXTERNAL_OBJECTS =
@@ -482,7 +482,7 @@ antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o
-antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.o
+antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/build.make
 antipatterns: ../SFML-2.5.1/lib/libsfml-graphics.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-window.so.2.5.1

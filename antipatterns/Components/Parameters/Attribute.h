@@ -23,6 +23,8 @@ struct LevelChange {
     double multiplier;
 };
 
+//добавить проверку на обновление!!!
+
 class BaseAttribute {
 public:
     //BaseAttribute() = default;
@@ -47,6 +49,8 @@ public:
 
     virtual void Update(float time_elapsed);
 
+    void ResetUpdate();
+
     virtual void UpdateLevel(int level_change);
 
     void UpdateBaseValue(double delta_value);
@@ -58,13 +62,13 @@ protected:
 
     virtual void CheckBoundaries();
 
-    LevelChange _level_change;
     std::list<std::shared_ptr<BaseAttribute>> _raw_bonuses;
     std::list<std::shared_ptr<BaseAttribute>> _effects;
     Stats _stats;
+    LevelChange _level_change;
     double _current_value;
+    bool _updated{false};
 private:
-
 };
 
 class RawBonus : public BaseAttribute {
@@ -99,10 +103,11 @@ public:
 
     void SetAttributeId(ATTRIBUTE_ID id);
 
-private:
-    EFFECT_TYPE _type;
-    ATTRIBUTE_ID _id;
+protected:
     float _time_to_expire{std::numeric_limits<float>::infinity()};
+    ATTRIBUTE_ID _id;
+    EFFECT_TYPE _type;
+private:
 };
 
 
@@ -113,8 +118,19 @@ public:
     }
 
     void Update(float time_elapsed) override {
+        if (_updated) {
+            return;
+        }
         _time_from_tick += time_elapsed;
-        Effect::Update(time_elapsed);
+        _time_to_expire -= time_elapsed;
+        _updated = true;
+        _current_value = _stats.base_value;
+        //обновляем все постоянные бонусы
+        UpdateBonuses(time_elapsed, _raw_bonuses);
+        //обновляем все эффекты
+        UpdateBonuses(time_elapsed, _effects);
+        //смотрим не вышли ли за допустимые границы
+        CheckBoundaries();
     }
 
     void SetTickTime(float tick_time) {

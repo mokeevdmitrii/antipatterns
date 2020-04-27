@@ -13,8 +13,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ee18d34d-65e2-44fa-9c5b-5e4061795cb1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/GraphicsComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Components/GraphicsComponent.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Parameters/Attribute.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Parameters/Attribute.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Components/Parameters/Attribute.h" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Parameters/Attribute.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/antipatterns.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/antipatterns.cbp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +134,7 @@
       <workItem from="1587730170088" duration="8640000" />
       <workItem from="1587807598321" duration="12963000" />
       <workItem from="1587829639507" duration="45955000" />
+      <workItem from="1587976122739" duration="3687000" />
     </task>
     <servers />
   </component>
@@ -213,10 +221,10 @@
     </state>
     <state x="464" y="154" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585769820323" />
     <state x="464" y="160" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1587395808409" />
-    <state x="643" y="346" key="com.intellij.ide.util.TipDialog" timestamp="1587829642842">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="643" y="333" key="com.intellij.ide.util.TipDialog" timestamp="1587976124796">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="643" y="333" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586027920231" />
+    <state x="643" y="333" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587976124796" />
     <state x="643" y="346" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1587829642842" />
     <state x="704" y="171" width="501" height="702" key="refactoring.ChangeSignatureDialog" timestamp="1587897337844">
       <screen x="0" y="0" width="1920" height="1080" />

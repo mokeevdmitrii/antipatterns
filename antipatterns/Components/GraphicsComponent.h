@@ -60,8 +60,8 @@ private:
     sf::Sprite* _sprite;
     sf::Texture& _texture_sheet;
     std::unordered_map<std::string, std::unique_ptr<Animation>> _animations;
-    Animation* _last_animation;
-    Animation* _prior_animation;
+    Animation* _last_animation{nullptr};
+    Animation* _prior_animation{nullptr};
 };
 
 

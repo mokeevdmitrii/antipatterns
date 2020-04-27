@@ -46,6 +46,10 @@ bool BaseAttribute::ToRemove() const {
 }
 
 void BaseAttribute::Update(float time_elapsed) {
+    if (_updated) {
+        return;
+    }
+    _updated = true;
     _current_value = _stats.base_value;
     //обновляем все постоянные бонусы
     UpdateBonuses(time_elapsed, _raw_bonuses);
@@ -91,6 +95,10 @@ void BaseAttribute::CheckBoundaries() {
     }
 }
 
+void BaseAttribute::ResetUpdate() {
+    _updated = false;
+}
+
 /// ----------------- RAW BONUS ----------------- ///
 
 
@@ -122,8 +130,18 @@ bool Effect::ToRemove() const {
 }
 
 void Effect::Update(float time_elapsed) {
+    if (_updated) {
+        return;
+    }
     _time_to_expire -= time_elapsed;
-    BaseAttribute::Update(time_elapsed);
+    _updated = true;
+    _current_value = _stats.base_value;
+    //обновляем все постоянные бонусы
+    UpdateBonuses(time_elapsed, _raw_bonuses);
+    //обновляем все эффекты
+    UpdateBonuses(time_elapsed, _effects);
+    //смотрим не вышли ли за допустимые границы
+    CheckBoundaries();
 }
 
 void Effect::SetExpirationTime(float time_to_expire) {
@@ -155,6 +173,10 @@ void Attribute::VariadicConstruct(std::shared_ptr<BaseAttribute> stat, Attribute
 void Attribute::VariadicConstruct() {}
 
 void Attribute::Update(float time_elapsed) {
+    if (_updated) {
+        return;
+    }
+    _updated = true;
     _current_value = _stats.base_value;
     ApplyBaseAttributes(_stats.base_value);
     //обновляем все постоянные бонусы

@@ -312,32 +312,32 @@ Components/Parameters/Skill.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.s
 .PHONY : Components/Parameters/Skill.cpp.s
 
-Components/Parameters/TImer.o: Components/Parameters/TImer.cpp.o
+Components/Parameters/Timer.o: Components/Parameters/Timer.cpp.o
 
-.PHONY : Components/Parameters/TImer.o
+.PHONY : Components/Parameters/Timer.o
 
 # target to build an object file
-Components/Parameters/TImer.cpp.o:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.o
-.PHONY : Components/Parameters/TImer.cpp.o
+Components/Parameters/Timer.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o
+.PHONY : Components/Parameters/Timer.cpp.o
 
-Components/Parameters/TImer.i: Components/Parameters/TImer.cpp.i
+Components/Parameters/Timer.i: Components/Parameters/Timer.cpp.i
 
-.PHONY : Components/Parameters/TImer.i
+.PHONY : Components/Parameters/Timer.i
 
 # target to preprocess a source file
-Components/Parameters/TImer.cpp.i:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.i
-.PHONY : Components/Parameters/TImer.cpp.i
+Components/Parameters/Timer.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.i
+.PHONY : Components/Parameters/Timer.cpp.i
 
-Components/Parameters/TImer.s: Components/Parameters/TImer.cpp.s
+Components/Parameters/Timer.s: Components/Parameters/Timer.cpp.s
 
-.PHONY : Components/Parameters/TImer.s
+.PHONY : Components/Parameters/Timer.s
 
 # target to generate assembly for a file
-Components/Parameters/TImer.cpp.s:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/TImer.cpp.s
-.PHONY : Components/Parameters/TImer.cpp.s
+Components/Parameters/Timer.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.s
+.PHONY : Components/Parameters/Timer.cpp.s
 
 Components/PhysicsComponent.o: Components/PhysicsComponent.cpp.o
 
@@ -909,9 +909,9 @@ help:
 	@echo "... Components/Parameters/Skill.o"
 	@echo "... Components/Parameters/Skill.i"
 	@echo "... Components/Parameters/Skill.s"
-	@echo "... Components/Parameters/TImer.o"
-	@echo "... Components/Parameters/TImer.i"
-	@echo "... Components/Parameters/TImer.s"
+	@echo "... Components/Parameters/Timer.o"
+	@echo "... Components/Parameters/Timer.i"
+	@echo "... Components/Parameters/Timer.s"
 	@echo "... Components/PhysicsComponent.o"
 	@echo "... Components/PhysicsComponent.i"
 	@echo "... Components/PhysicsComponent.s"

@@ -342,6 +342,13 @@ CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Effect.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Skill.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Skill.h
+CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o
+ ../SFML-2.5.1/include/SFML/Config.hpp
+ ../SFML-2.5.1/include/SFML/System/Clock.hpp
+ ../SFML-2.5.1/include/SFML/System/Export.hpp
+ ../SFML-2.5.1/include/SFML/System/Time.hpp
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Timer.cpp
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Timer.h
 CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.o
  ../SFML-2.5.1/include/SFML/Audio.hpp
  ../SFML-2.5.1/include/SFML/Audio/AlResource.hpp

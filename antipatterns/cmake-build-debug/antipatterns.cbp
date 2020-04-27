@@ -130,10 +130,10 @@
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Skill.h">
 			<Option target="antipatterns"/>
 		</Unit>
-		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/TImer.cpp">
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Timer.cpp">
 			<Option target="antipatterns"/>
 		</Unit>
-		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/TImer.h">
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Timer.h">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.cpp">

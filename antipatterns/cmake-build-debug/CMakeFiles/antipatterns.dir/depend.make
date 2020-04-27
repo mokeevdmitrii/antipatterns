@@ -342,6 +342,13 @@ CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../Components/Par
 CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../Components/Parameters/Skill.cpp
 CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../Components/Parameters/Skill.h
 
+CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o: ../SFML-2.5.1/include/SFML/Config.hpp
+CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o: ../SFML-2.5.1/include/SFML/System/Clock.hpp
+CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o: ../SFML-2.5.1/include/SFML/System/Export.hpp
+CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o: ../SFML-2.5.1/include/SFML/System/Time.hpp
+CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o: ../Components/Parameters/Timer.cpp
+CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o: ../Components/Parameters/Timer.h
+
 CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.o: ../SFML-2.5.1/include/SFML/Audio.hpp
 CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.o: ../SFML-2.5.1/include/SFML/Audio/AlResource.hpp
 CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.o: ../SFML-2.5.1/include/SFML/Audio/Export.hpp
