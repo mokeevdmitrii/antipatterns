@@ -22,7 +22,8 @@ enum MovementState {
 class PhysicsComponent {
 public:
     PhysicsComponent(sf::Sprite &sprite, const std::map<std::string, Json::Node> &settings);
-
+    PhysicsComponent(const PhysicsComponent& other) = default;
+    PhysicsComponent& operator = (const PhysicsComponent& other) = default;
     /* initializer */
     void LoadFromMap(const std::map<std::string, Json::Node>& settings);
 

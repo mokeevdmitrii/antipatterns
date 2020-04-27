@@ -11,6 +11,8 @@
 class AttributeComponent {
 public:
     explicit AttributeComponent(const std::map<std::string, Json::Node>& settings);
+    AttributeComponent(const AttributeComponent& other);
+    AttributeComponent& operator = (const AttributeComponent& other);
     ~AttributeComponent() = default;
 
     void LoadFromMap(const std::map<std::string, Json::Node>& settings);

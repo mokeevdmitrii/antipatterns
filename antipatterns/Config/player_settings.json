@@ -27,8 +27,5 @@
     "level" : 1,
     "health" : 10,
     "health_per_level" : 10
-  },
-  "input_component" : {
-    "file_name" :
   }
 }

@@ -12,6 +12,7 @@ public:
 
     GraphicsComponent(sf::Sprite &sprite, sf::Texture &texture_sheet, const std::map<std::string, Json::Node>& settings);
     GraphicsComponent(const GraphicsComponent& other);
+    GraphicsComponent& operator = (const GraphicsComponent& other);
     ~GraphicsComponent();
     /* initializer */
     void LoadFromMap(const std::map<std::string, Json::Node>& settings);
@@ -46,6 +47,8 @@ private:
         /* constructor */
         Animation(sf::Sprite *sprite, sf::Texture &texture_sheet, float anim_time, int start_frame_x, int start_frame_y,
                   int end_frame_x, int end_frame_y, sf::Vector2i rect_params);
+        Animation(const Animation& other) = default;
+        Animation&operator = (const Animation& other) = delete;
 
         /* functions */
         bool Play(float time_elapsed, float speed_modifier = 1);

@@ -53,7 +53,7 @@ public:
 
     virtual void UpdateLevel(int level_change);
 
-    void UpdateBaseValue(double delta_value);
+    void UpdateBaseValue(Stats delta_stats);
 
     void UpdateLevelChange(LevelChange delta_change);
 
@@ -62,8 +62,8 @@ protected:
 
     virtual void CheckBoundaries();
 
-    std::list<std::shared_ptr<BaseAttribute>> _raw_bonuses;
-    std::list<std::shared_ptr<BaseAttribute>> _effects;
+    std::list<std::shared_ptr<BaseAttribute>> _raw_bonuses{};
+    std::list<std::shared_ptr<BaseAttribute>> _effects{};
     Stats _stats;
     LevelChange _level_change;
     double _current_value;
@@ -88,12 +88,13 @@ private:
 
 enum class EFFECT_TYPE {
     STATS,
-    POISON
+    POISON,
+    DAMAGE
 };
 
 class Effect : public BaseAttribute {
 public:
-    Effect(EFFECT_TYPE type, Stats stats, LevelChange level_change);
+    Effect(ATTRIBUTE_ID id, Stats stats, LevelChange level_change);
 
     bool ToRemove() const override;
 
@@ -106,36 +107,17 @@ public:
 protected:
     float _time_to_expire{std::numeric_limits<float>::infinity()};
     ATTRIBUTE_ID _id;
-    EFFECT_TYPE _type;
 private:
 };
 
 
 class OverTimeEffect : public Effect {
 public:
-    OverTimeEffect(EFFECT_TYPE type, Stats stats, LevelChange level_change) : Effect(type, stats, level_change) {
+    OverTimeEffect(ATTRIBUTE_ID id, Stats stats, LevelChange level_change);
 
-    }
+    void Update(float time_elapsed) override;
 
-    void Update(float time_elapsed) override {
-        if (_updated) {
-            return;
-        }
-        _time_from_tick += time_elapsed;
-        _time_to_expire -= time_elapsed;
-        _updated = true;
-        _current_value = _stats.base_value;
-        //обновляем все постоянные бонусы
-        UpdateBonuses(time_elapsed, _raw_bonuses);
-        //обновляем все эффекты
-        UpdateBonuses(time_elapsed, _effects);
-        //смотрим не вышли ли за допустимые границы
-        CheckBoundaries();
-    }
-
-    void SetTickTime(float tick_time) {
-        _tick_time = tick_time;
-    }
+    void SetTickTime(float tick_time);
 
 protected:
     float _tick_time{1.0};
@@ -144,18 +126,10 @@ protected:
 
 class ProckingEffect : public OverTimeEffect {
 public:
-    ProckingEffect(EFFECT_TYPE type, Stats stats, LevelChange level_change) : OverTimeEffect(type, stats, level_change) {
-
-    }
+    ProckingEffect(ATTRIBUTE_ID id, Stats stats, LevelChange level_change);
 
     //очень осторожно - возвращает IsReady() == true всего один раз !!!
-    bool IsReady() const override {
-        if (_time_from_tick >= _tick_time) {
-            _time_from_tick -= _tick_time;
-            return true;
-        }
-        return false;
-    }
+    bool IsReady() const override;
 };
 
 std::shared_ptr<Effect> CreateEffect(EFFECT_TYPE type, Stats stats, LevelChange level_change);
@@ -185,48 +159,22 @@ private:
 //хихихихи максируемся под BaseAttribute, но полностью меняем интерфейс!!!
 class AttributeValue : public BaseAttribute {
 public:
-    AttributeValue(std::shared_ptr<BaseAttribute> max_value) : _max_value(std::move(max_value)), BaseAttribute(Stats(), LevelChange()) {
+    explicit AttributeValue(std::shared_ptr<BaseAttribute> max_value);
 
-    }
+    double GetBaseValue() const override;
 
-    double GetBaseValue() const override {
-        return _max_value->GetBaseValue();
-    }
+    double GetCurrentValue() const override;
 
-    double GetCurrentValue() const override {
-        return _max_value->GetCurrentValue() * _relative_value;
-    }
+    double GetMultiplier() const override;
 
-    double GetMultiplier() const override {
-        return _max_value->GetMultiplier();
-    }
+    void Update(float time_elapsed) override;
 
-    void Update(float time_elapsed) override {
-        //я тут
-    }
+    //здоровье обновляется при получении уровня
+    void UpdateLevel(int level_change) override;
 
-
+    void CheckBoundaries() override;
 protected:
-    void UpdateBonuses(float time_elapsed, std::list<std::shared_ptr<BaseAttribute>>& bonuses) override {
-        auto b_it = bonuses.begin();
-        double bonus_value{0}, bonus_multiplier{0};
-        while (b_it != bonuses.end()) {
-            //порядок - подумать!!!!
-            (*b_it)->Update(time_elapsed);
-            if ((*b_it)->ToRemove()) {
-                b_it = bonuses.erase(b_it);
-                continue;
-            }
-            if ((*b_it)->IsReady()) {
-                bonus_value += (*b_it)->GetCurrentValue();
-                bonus_multiplier += (*b_it)->GetMultiplier();
-            }
-            ++b_it;
-        }
-        _relative_value += bonus_value / _max_value->GetCurrentValue();
-        _relative_value *= (1.0 + bonus_multiplier);
-    }
-
+    void UpdateBonuses(float time_elapsed, std::list<std::shared_ptr<BaseAttribute>>& bonuses) override;
     std::shared_ptr<BaseAttribute> _max_value;
     double _relative_value{1};
 };

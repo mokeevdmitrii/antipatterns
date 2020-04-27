@@ -13,6 +13,8 @@
 class HitboxComponent {
 public:
     HitboxComponent(sf::Sprite& sprite, const std::map<std::string, Json::Node> &settings);
+    HitboxComponent(const HitboxComponent& other) = default;
+    HitboxComponent& operator = (const HitboxComponent& other) = default;
     ~HitboxComponent();
 
     /* initializer */
