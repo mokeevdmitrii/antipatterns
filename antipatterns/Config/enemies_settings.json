@@ -25,10 +25,145 @@
       "offset_x": 0,
       "offset_y": 0
     },
-    "attribute_component": {
-      "level": 1,
-      "health": 10,
-      "health_per_level": 10
+    "attribute_component" : {
+      "base_attributes": {
+        "vigor" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "strength" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "dexterity" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "intelligence" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "faith" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "luck" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        }
+      },
+      "dependant_attributes" : {
+        "max_hp" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "max_mana" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "phys_armor" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "mag_armor" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "attack_speed" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "base_damage" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "crit_chance" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        }
+      },
+      "changing_attributes" : {
+        "curr_hp" : {},
+        "curr_mana" : {}
+      }
     }
   },
   "EnemySpawner" : {
@@ -56,10 +191,145 @@
       "offset_x": 0,
       "offset_y": 0
     },
-    "attribute_component": {
-      "level": 1,
-      "health": 10,
-      "health_per_level": 10
+    "attribute_component" : {
+      "base_attributes": {
+        "vigor" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "strength" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "dexterity" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "intelligence" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "faith" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "luck" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        }
+      },
+      "dependant_attributes" : {
+        "max_hp" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "max_mana" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "phys_armor" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "mag_armor" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "attack_speed" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "base_damage" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        },
+        "crit_chance" : {
+          "stats" : {
+            "base_value" : 10,
+            "multiplier" : 0
+          },
+          "level_change" : {
+            "delta_value" : 3,
+            "multiplier" : 0
+          }
+        }
+      },
+      "changing_attributes" : {
+        "curr_hp" : {},
+        "curr_mana" : {}
+      }
     }
   }
 }

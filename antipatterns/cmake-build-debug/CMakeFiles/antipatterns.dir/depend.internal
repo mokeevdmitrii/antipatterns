@@ -97,8 +97,9 @@ CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/AttributeComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
 CMakeFiles/antipatterns.dir/Components/GraphicsComponent.cpp.o
@@ -279,8 +280,10 @@ CMakeFiles/antipatterns.dir/Components/HitboxComponent.cpp.o
 CMakeFiles/antipatterns.dir/Components/Parameters/Attribute.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
+CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.o
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.cpp
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
 CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o
  ../SFML-2.5.1/include/SFML/Config.hpp
  ../SFML-2.5.1/include/SFML/System.hpp
@@ -311,12 +314,6 @@ CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Effect.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Effect.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
-CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.cpp
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
 CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Parameter.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Parameter.h
@@ -349,10 +346,8 @@ CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o
  ../SFML-2.5.1/include/SFML/System/Vector3.inl
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Effect.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Skill.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Skill.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
 CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o
  ../SFML-2.5.1/include/SFML/Config.hpp
  ../SFML-2.5.1/include/SFML/System/Clock.hpp
@@ -485,11 +480,9 @@ CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o
  ../SFML-2.5.1/include/SFML/System/Vector3.inl
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Effect.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Skill.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/SkillComponent.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/SkillComponent.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
 CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o
  ../SFML-2.5.1/include/SFML/Audio.hpp
  ../SFML-2.5.1/include/SFML/Audio/AlResource.hpp
@@ -586,10 +579,11 @@ CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
@@ -690,10 +684,11 @@ CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
@@ -887,6 +882,9 @@ CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h
+CMakeFiles/antipatterns.dir/Resources/Constants.cpp.o
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.cpp
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
 CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.o
  ../SFML-2.5.1/include/SFML/Audio.hpp
  ../SFML-2.5.1/include/SFML/Audio/AlResource.hpp
@@ -1177,12 +1175,13 @@ CMakeFiles/antipatterns.dir/States/GameState.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h
@@ -1291,12 +1290,13 @@ CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h
@@ -1406,10 +1406,11 @@ CMakeFiles/antipatterns.dir/States/State.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h
@@ -1513,8 +1514,9 @@ CMakeFiles/antipatterns.dir/src/Creature.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.cpp
@@ -1615,8 +1617,9 @@ CMakeFiles/antipatterns.dir/src/Enemy.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
@@ -1718,10 +1721,11 @@ CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
@@ -1824,12 +1828,13 @@ CMakeFiles/antipatterns.dir/src/Game.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h
@@ -1940,8 +1945,9 @@ CMakeFiles/antipatterns.dir/src/Player.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
@@ -2139,8 +2145,9 @@ CMakeFiles/antipatterns.dir/src/TileMap.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
@@ -2243,12 +2250,13 @@ CMakeFiles/antipatterns.dir/src/main.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/GraphicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/PhysicsComponent.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/Rat.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Button.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h

@@ -12,7 +12,7 @@
 class Creature {
 public:
     Creature();
-
+    Creature& operator = (const Creature& other);
     Creature(const Creature &other);
 
     virtual ~Creature();

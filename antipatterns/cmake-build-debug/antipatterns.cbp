@@ -112,16 +112,16 @@
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h">
 			<Option target="antipatterns"/>
 		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Effect.cpp">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Effect.h">
-			<Option target="antipatterns"/>
-		</Unit>
-		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.cpp">
-			<Option target="antipatterns"/>
-		</Unit>
-		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.h">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Parameter.cpp">
@@ -176,6 +176,12 @@
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h">
 			<Option target="antipatterns"/>
 		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.cpp">

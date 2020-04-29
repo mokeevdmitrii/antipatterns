@@ -231,6 +231,33 @@ Components/Parameters/Attribute.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Attribute.cpp.s
 .PHONY : Components/Parameters/Attribute.cpp.s
 
+Components/Parameters/AttributeFormulas.o: Components/Parameters/AttributeFormulas.cpp.o
+
+.PHONY : Components/Parameters/AttributeFormulas.o
+
+# target to build an object file
+Components/Parameters/AttributeFormulas.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.o
+.PHONY : Components/Parameters/AttributeFormulas.cpp.o
+
+Components/Parameters/AttributeFormulas.i: Components/Parameters/AttributeFormulas.cpp.i
+
+.PHONY : Components/Parameters/AttributeFormulas.i
+
+# target to preprocess a source file
+Components/Parameters/AttributeFormulas.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.i
+.PHONY : Components/Parameters/AttributeFormulas.cpp.i
+
+Components/Parameters/AttributeFormulas.s: Components/Parameters/AttributeFormulas.cpp.s
+
+.PHONY : Components/Parameters/AttributeFormulas.s
+
+# target to generate assembly for a file
+Components/Parameters/AttributeFormulas.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.s
+.PHONY : Components/Parameters/AttributeFormulas.cpp.s
+
 Components/Parameters/Effect.o: Components/Parameters/Effect.cpp.o
 
 .PHONY : Components/Parameters/Effect.o
@@ -257,33 +284,6 @@ Components/Parameters/Effect.s: Components/Parameters/Effect.cpp.s
 Components/Parameters/Effect.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.s
 .PHONY : Components/Parameters/Effect.cpp.s
-
-Components/Parameters/Expression.o: Components/Parameters/Expression.cpp.o
-
-.PHONY : Components/Parameters/Expression.o
-
-# target to build an object file
-Components/Parameters/Expression.cpp.o:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o
-.PHONY : Components/Parameters/Expression.cpp.o
-
-Components/Parameters/Expression.i: Components/Parameters/Expression.cpp.i
-
-.PHONY : Components/Parameters/Expression.i
-
-# target to preprocess a source file
-Components/Parameters/Expression.cpp.i:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.i
-.PHONY : Components/Parameters/Expression.cpp.i
-
-Components/Parameters/Expression.s: Components/Parameters/Expression.cpp.s
-
-.PHONY : Components/Parameters/Expression.s
-
-# target to generate assembly for a file
-Components/Parameters/Expression.cpp.s:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.s
-.PHONY : Components/Parameters/Expression.cpp.s
 
 Components/Parameters/Parameter.o: Components/Parameters/Parameter.cpp.o
 
@@ -527,6 +527,33 @@ Resources/ButtonManager.s: Resources/ButtonManager.cpp.s
 Resources/ButtonManager.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/ButtonManager.cpp.s
 .PHONY : Resources/ButtonManager.cpp.s
+
+Resources/Constants.o: Resources/Constants.cpp.o
+
+.PHONY : Resources/Constants.o
+
+# target to build an object file
+Resources/Constants.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Constants.cpp.o
+.PHONY : Resources/Constants.cpp.o
+
+Resources/Constants.i: Resources/Constants.cpp.i
+
+.PHONY : Resources/Constants.i
+
+# target to preprocess a source file
+Resources/Constants.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Constants.cpp.i
+.PHONY : Resources/Constants.cpp.i
+
+Resources/Constants.s: Resources/Constants.cpp.s
+
+.PHONY : Resources/Constants.s
+
+# target to generate assembly for a file
+Resources/Constants.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Constants.cpp.s
+.PHONY : Resources/Constants.cpp.s
 
 Resources/GraphicsSettings.o: Resources/GraphicsSettings.cpp.o
 
@@ -927,12 +954,12 @@ help:
 	@echo "... Components/Parameters/Attribute.o"
 	@echo "... Components/Parameters/Attribute.i"
 	@echo "... Components/Parameters/Attribute.s"
+	@echo "... Components/Parameters/AttributeFormulas.o"
+	@echo "... Components/Parameters/AttributeFormulas.i"
+	@echo "... Components/Parameters/AttributeFormulas.s"
 	@echo "... Components/Parameters/Effect.o"
 	@echo "... Components/Parameters/Effect.i"
 	@echo "... Components/Parameters/Effect.s"
-	@echo "... Components/Parameters/Expression.o"
-	@echo "... Components/Parameters/Expression.i"
-	@echo "... Components/Parameters/Expression.s"
 	@echo "... Components/Parameters/Parameter.o"
 	@echo "... Components/Parameters/Parameter.i"
 	@echo "... Components/Parameters/Parameter.s"
@@ -960,6 +987,9 @@ help:
 	@echo "... Resources/ButtonManager.o"
 	@echo "... Resources/ButtonManager.i"
 	@echo "... Resources/ButtonManager.s"
+	@echo "... Resources/Constants.o"
+	@echo "... Resources/Constants.i"
+	@echo "... Resources/Constants.s"
 	@echo "... Resources/GraphicsSettings.o"
 	@echo "... Resources/GraphicsSettings.i"
 	@echo "... Resources/GraphicsSettings.s"

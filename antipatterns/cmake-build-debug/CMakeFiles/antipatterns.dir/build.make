@@ -421,18 +421,31 @@ CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Timer.cpp -o CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.s
 
-CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o: CMakeFiles/antipatterns.dir/flags.make
-CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o: ../Components/Parameters/Expression.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.cpp
+CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.o: CMakeFiles/antipatterns.dir/flags.make
+CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.o: ../Components/Parameters/AttributeFormulas.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.cpp
 
-CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.cpp > CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.i
+CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.cpp > CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.i
 
-CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Expression.cpp -o CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.s
+CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/AttributeFormulas.cpp -o CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.s
+
+CMakeFiles/antipatterns.dir/Resources/Constants.cpp.o: CMakeFiles/antipatterns.dir/flags.make
+CMakeFiles/antipatterns.dir/Resources/Constants.cpp.o: ../Resources/Constants.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/antipatterns.dir/Resources/Constants.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/Resources/Constants.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.cpp
+
+CMakeFiles/antipatterns.dir/Resources/Constants.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/Resources/Constants.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.cpp > CMakeFiles/antipatterns.dir/Resources/Constants.cpp.i
+
+CMakeFiles/antipatterns.dir/Resources/Constants.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Resources/Constants.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.cpp -o CMakeFiles/antipatterns.dir/Resources/Constants.cpp.s
 
 # Object files for target antipatterns
 antipatterns_OBJECTS = \
@@ -464,7 +477,8 @@ antipatterns_OBJECTS = \
 "CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o" \
 "CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o" \
 "CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o" \
-"CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o"
+"CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.o" \
+"CMakeFiles/antipatterns.dir/Resources/Constants.cpp.o"
 
 # External object files for target antipatterns
 antipatterns_EXTERNAL_OBJECTS =
@@ -497,14 +511,15 @@ antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/Components/SkillComponent.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o
-antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/Expression.cpp.o
+antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.o
+antipatterns: CMakeFiles/antipatterns.dir/Resources/Constants.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/build.make
 antipatterns: ../SFML-2.5.1/lib/libsfml-graphics.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-window.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-audio.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-system.so.2.5.1
 antipatterns: CMakeFiles/antipatterns.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Linking CXX executable antipatterns"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Linking CXX executable antipatterns"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/antipatterns.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

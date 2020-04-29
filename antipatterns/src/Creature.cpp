@@ -12,8 +12,11 @@ Creature::~Creature() {
 
 }
 
-Creature::Creature(const Creature &other) {
-    std::cout << "creature copied" << std::endl;
+Creature &Creature::operator=(const Creature &other) {
+    if (&other == this) {
+        return *this;
+    }
+    std::cout << "creature copied (operator)" << std::endl;
     _sprite = other._sprite;
     _phys_comp = std::make_unique<PhysicsComponent>(*other._phys_comp);
     _graph_comp = std::make_unique<GraphicsComponent>(*other._graph_comp);
@@ -22,6 +25,12 @@ Creature::Creature(const Creature &other) {
     _phys_comp->UpdateCopy(_sprite);
     _graph_comp->UpdateCopy(_sprite);
     _hitbox_comp->UpdateCopy(_sprite);
+    return *this;
+}
+
+
+Creature::Creature(const Creature &other) {
+    *this = other;
 }
 
 void Creature::SetPosition(const sf::Vector2f &position) {
@@ -62,6 +71,7 @@ void Creature::InitAttributeComponent(const std::map<std::string, Json::Node> &s
 sf::Vector2f Creature::GetPosition() const {
     return _hitbox_comp != nullptr ?  _hitbox_comp->GetPosition() : _sprite.getPosition();
 }
+
 
 
 
