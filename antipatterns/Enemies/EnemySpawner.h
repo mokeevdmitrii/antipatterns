@@ -29,10 +29,10 @@ private:
     void UpdateAnimations(float time_elapsed);
 
     /* the enemy to be cloned */
-    std::shared_ptr<Enemy> _prototype;
-    std::list<std::unique_ptr<Enemy>> _spawned_enemies;
+    std::shared_ptr<Enemy> prototype_;
+    std::list<std::unique_ptr<Enemy>> spawned_enemies_;
     /* здесь какие-то параметры спаунера, пока сделаем одного врага */
-    sf::Clock _spawn_clock;
+    sf::Clock spawn_clock_;
     bool cloned = false;
 };
 

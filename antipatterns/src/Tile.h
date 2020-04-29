@@ -24,8 +24,8 @@ public:
 
     void Render(sf::RenderTarget& target) const;
 private:
-    sf::Sprite _sprite;
-    TileType _type;
+    sf::Sprite sprite_;
+    TileType type_;
 };
 
 

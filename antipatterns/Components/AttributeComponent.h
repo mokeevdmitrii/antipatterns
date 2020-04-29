@@ -39,19 +39,19 @@ private:
 
     void GetBaseStats(Stats& stats, LevelChange& level_change, const std::map<std::string, Json::Node>& settings);
 
-    std::vector<std::shared_ptr<BaseAttribute>> _attributes;
-    int _level{1};
+    std::vector<std::shared_ptr<BaseAttribute>> attributes_;
+    int level_{1};
 
-    static const std::unordered_map<std::string, ATTRIBUTE_ID> _names_to_id;
+    static const std::unordered_map<std::string, ATTRIBUTE_ID> names_to_id_;
 
-    static const std::unordered_map<ATTRIBUTE_ID, std::vector<ATTRIBUTE_ID>> _dependence;
+    static const std::unordered_map<ATTRIBUTE_ID, std::vector<ATTRIBUTE_ID>> dependence_;
 
-    static const std::unordered_map<ATTRIBUTE_ID, std::pair<double, double>> _id_boundaries;
+    static const std::unordered_map<ATTRIBUTE_ID, std::pair<double, double>> id_boundaries_;
     using BaseStats = std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>>;
     using StatsFunc = std::function<double(const BaseStats &)>;
 
 
-    static const std::unordered_map<ATTRIBUTE_ID, StatsFunc> _id_to_functions;
+    static const std::unordered_map<ATTRIBUTE_ID, StatsFunc> id_to_functions_;
 };
 
 

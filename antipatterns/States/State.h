@@ -54,18 +54,18 @@ protected:
     virtual void InitKeybindings();
 
     /* variables */
-    std::shared_ptr<std::unordered_map<std::string, int>> _supported_keys;
-    std::shared_ptr<std::unordered_map<std::string, int>> _keybindings;
+    std::shared_ptr<std::unordered_map<std::string, int>> supported_keys_;
+    std::shared_ptr<std::unordered_map<std::string, int>> keybindings_;
 
-    std::shared_ptr<sf::RenderWindow> _window;
-    std::shared_ptr<std::stack<std::shared_ptr<State>>> _state_stack;
+    std::shared_ptr<sf::RenderWindow> window_;
+    std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack_;
 
     bool _to_quit = false;
     bool _paused = false;
-    MousePositions _mouse_positions;
+    MousePositions mouse_positions_;
 
     /* from resources */
-    std::unordered_map<std::string, sf::Texture> _textures;
+    std::unordered_map<std::string, sf::Texture> textures_;
 private:
     /* still nothing */
 

@@ -18,21 +18,21 @@ Rat::Rat(const Rat &other) : Enemy(other) {
 
 
 void Rat::Update(float time_elapsed) {
-    _phys_comp->Update(time_elapsed);
+    phys_comp_->Update(time_elapsed);
     /* here we use GetState from PhysicsComponent and play animations */
     UpdateAnimations(time_elapsed);
     /* here animations end */
-    _hitbox_comp->Update();
+    hitbox_comp_->Update();
 }
 
 void Rat::Render(sf::RenderTarget &target) const {
-    target.draw(_sprite);
-    _hitbox_comp->Render(target);
+    target.draw(sprite_);
+    hitbox_comp_->Render(target);
 }
 
 
 void Rat::UpdateAnimations(float time_elapsed) {
-    _graph_comp->Play("PLAYER_IDLE", time_elapsed);
+    graph_comp_->Play("PLAYER_IDLE", time_elapsed);
 }
 
 std::unique_ptr<Enemy> Rat::Clone() const {

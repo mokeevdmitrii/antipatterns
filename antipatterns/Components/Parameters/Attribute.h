@@ -93,12 +93,12 @@ public:
 protected:
     virtual void UpdateBonuses(float time_elapsed, std::list<std::shared_ptr<BaseAttribute>> &bonuses);
 
-    std::list<std::shared_ptr<BaseAttribute>> _raw_bonuses{};
-    std::list<std::shared_ptr<BaseAttribute>> _effects{};
-    Stats _stats;
-    LevelChange _level_change;
-    double _current_value;
-    bool _updated{false};
+    std::list<std::shared_ptr<BaseAttribute>> raw_bonuses_{};
+    std::list<std::shared_ptr<BaseAttribute>> effects_{};
+    Stats stats_;
+    LevelChange level_change_;
+    double current_value_;
+    bool updated_{false};
 private:
 };
 
@@ -115,8 +115,8 @@ public:
     void SetToRemove(bool value);
 
 private:
-    bool _to_remove{false};
-    ATTRIBUTE_ID _id;
+    bool to_remove_{false};
+    ATTRIBUTE_ID id_;
 };
 
 enum class EFFECT_TYPE {
@@ -135,7 +135,7 @@ public:
     void SetAttributeId(ATTRIBUTE_ID id);
 
 protected:
-    ATTRIBUTE_ID _id;
+    ATTRIBUTE_ID id_;
 };
 
 class OperatingEffect : public Effect {
@@ -151,7 +151,7 @@ public:
     bool IsReady() const override;
 
 protected:
-    mutable bool _to_remove{false};
+    mutable bool to_remove_{false};
 };
 
 
@@ -168,7 +168,7 @@ public:
     void SetExpirationTime(float time_to_expire);
 
 protected:
-    float _time_to_expire{std::numeric_limits<float>::infinity()};
+    float time_to_expire_{std::numeric_limits<float>::infinity()};
 private:
 };
 
@@ -186,8 +186,8 @@ public:
 protected:
     void SetTimeFromTick(float time_from_tick);
 
-    float _tick_time{1.0};
-    mutable float _time_from_tick{0};
+    float tick_time_{1.0};
+    mutable float time_from_tick_{0};
 };
 
 class ProckingEffect : public OverTimeEffect {
@@ -220,8 +220,8 @@ public:
 protected:
     void ApplyBaseAttributes(const BaseStats& base_attributes, double& base_value);
 
-    std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>> _base_attributes;
-    StatsFunc _calc_func;
+    std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>> base_attributes_;
+    StatsFunc calc_func_;
 private:
 
 };
@@ -250,8 +250,8 @@ public:
 
 protected:
     void UpdateBonuses(float time_elapsed, std::list<std::shared_ptr<BaseAttribute>>& bonuses) override;
-    std::shared_ptr<BaseAttribute> _max_value;
-    double _relative_value;
+    std::shared_ptr<BaseAttribute> max_value_;
+    double relative_value_;
 };
 
 

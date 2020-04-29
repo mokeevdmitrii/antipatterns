@@ -18,7 +18,7 @@ public:
     MainMenuState(std::shared_ptr<sf::RenderWindow> window,
             std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
             std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack);
-    virtual ~MainMenuState();
+    ~MainMenuState();
 
     /* overrided functions */
     void Update(float time_elapsed) override;
@@ -30,9 +30,9 @@ private:
     void InitBackground();
 
     /* variables */
-    sf::Font _main_font;
-    Background _background;
-    ButtonManager _btn_manager;
+    sf::Font main_font_;
+    Background background_;
+    ButtonManager btn_manager_;
 };
 
 

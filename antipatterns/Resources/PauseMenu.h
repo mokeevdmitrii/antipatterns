@@ -17,16 +17,16 @@ public:
 
     bool IsButtonActive(const std::string& button_key) const;
 private:
-    sf::RectangleShape _background;
-    sf::RectangleShape _inner;
-    sf::Text _menu_text;
-    ButtonManager _btn_manager;
+    sf::RectangleShape background_;
+    sf::RectangleShape inner_;
+    sf::Text menu_text_;
+    ButtonManager btn_manager_;
 
-    constexpr static const float _outer_ratio_x{1.0};
-    constexpr static const float _outer_ratio_y{1.0};
+    constexpr static const float outer_ratio_x_{1.0};
+    constexpr static const float outer_ratio_y_{1.0};
 
-    constexpr static const float _inner_ratio_x{0.4};
-    constexpr static const float _inner_ratio_y{1.0};
+    constexpr static const float inner_ratio_x_{0.4};
+    constexpr static const float inner_ratio_y_{1.0};
 };
 
 

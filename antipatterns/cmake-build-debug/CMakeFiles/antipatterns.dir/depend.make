@@ -314,9 +314,6 @@ CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o: ../Components/Pa
 CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o: ../Components/Parameters/Effect.cpp
 CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o: ../Components/Parameters/Effect.h
 
-CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.o: ../Components/Parameters/Parameter.cpp
-CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.o: ../Components/Parameters/Parameter.h
-
 CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../SFML-2.5.1/include/SFML/Config.hpp
 CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../SFML-2.5.1/include/SFML/System.hpp
 CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o: ../SFML-2.5.1/include/SFML/System/Clock.hpp

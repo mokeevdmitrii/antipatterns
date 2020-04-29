@@ -31,10 +31,10 @@ private:
     void InitPauseMenu();
 
     /* thinking about moving player somewhere else */
-    std::unique_ptr<Creature> _player;
-    std::unique_ptr<EnemySystem> _enemy_system;
-    std::unique_ptr<TileMap> _tile_map;
-    std::shared_ptr<PauseMenu> _pause_menu;
+    std::unique_ptr<Creature> player_;
+    std::unique_ptr<EnemySystem> enemy_system_;
+    std::unique_ptr<TileMap> tile_map_;
+    std::shared_ptr<PauseMenu> pause_menu_;
 };
 
 

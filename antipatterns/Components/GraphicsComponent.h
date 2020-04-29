@@ -34,15 +34,15 @@ private:
     public:
         constexpr static float TIME_NORMALIZE{100};
         /* variables */
-        sf::Sprite* _sprite;
-        sf::Texture &_texture_sheet;
-        float _time_to_animate;
-        float _time{0};
-        sf::IntRect _start_rect;
-        sf::IntRect _current_rect;
-        sf::IntRect _end_rect;
-        sf::Vector2i _rect_params;
-        bool _is_done;
+        sf::Sprite* sprite_;
+        sf::Texture &texture_sheet_;
+        float time_to_animate_;
+        float time_{0};
+        sf::IntRect start_rect_;
+        sf::IntRect current_rect_;
+        sf::IntRect end_rect_;
+        sf::Vector2i rect_params_;
+        bool is_done_;
 
         /* constructor */
         Animation(sf::Sprite *sprite, sf::Texture &texture_sheet, float anim_time, int start_frame_x, int start_frame_y,

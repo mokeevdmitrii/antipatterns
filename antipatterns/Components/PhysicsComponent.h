@@ -46,13 +46,13 @@ public:
     void UpdateCopy(sf::Sprite &sprite);
 
 private:
-    sf::Sprite *_sprite;
+    sf::Sprite *sprite_;
 
-    sf::Vector2f _velocity;
+    sf::Vector2f velocity_;
 
-    float _max_velocity;
-    float _acceleration;
-    float _deceleration;
+    float max_velocity_;
+    float acceleration_;
+    float deceleration_;
 };
 
 

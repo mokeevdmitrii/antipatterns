@@ -28,13 +28,13 @@
 
 class GraphicsSettings {
 public:
-    std::string _game_title;
-    sf::VideoMode _resolution;
-    std::vector<sf::VideoMode> _video_modes;
-    sf::ContextSettings _settings;
-    unsigned int _framerate_limit;
-    bool _fullscreen;
-    bool _v_sync_enabled;
+    std::string game_title_;
+    sf::VideoMode resolution_;
+    std::vector<sf::VideoMode> video_modes_;
+    sf::ContextSettings settings_;
+    unsigned int framerate_limit_;
+    bool fullscreen_;
+    bool v_sync_enabled_;
 
     GraphicsSettings();
 

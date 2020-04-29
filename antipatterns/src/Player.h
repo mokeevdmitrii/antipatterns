@@ -25,8 +25,8 @@ private:
     void UpdateInput(float time_elapsed);
     void UpdateAnimations(float time_elapsed);
 
-    std::shared_ptr<std::unordered_map<std::string, int>> _keybindings;
-    sf::Vector2f _position;
+    std::shared_ptr<std::unordered_map<std::string, int>> keybindings_;
+    sf::Vector2f position_;
     // std::shared_ptr<Equipment> equipment;
 
 };

@@ -10,13 +10,13 @@ MainMenuState::MainMenuState(std::shared_ptr<sf::RenderWindow> window,
                              std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
                              std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack) :
         State(std::move(window), std::move(supported_keys), std::move(state_stack)),
-        _btn_manager("../Config/main_menu_buttons.txt", "../Config/lobster.otf") {
+        btn_manager_("../Config/main_menu_buttons.txt", "../Config/lobster.otf") {
     InitBackground();
     MainMenuState::InitKeybindings();
 }
 
 MainMenuState::~MainMenuState() {
-
+    std::cout << "main menu destructed" << std::endl;
 }
 
 /* overrided functions */
@@ -25,18 +25,18 @@ MainMenuState::~MainMenuState() {
 void MainMenuState::Update(const float time_elapsed) {
     UpdateMousePositions();
     UpdateInput(time_elapsed);
-    _btn_manager.Update(_mouse_positions.view);
+    btn_manager_.Update(mouse_positions_.view);
 
     /* updating all the buttons */
     /* quit the game */
-    if (_btn_manager["END_GAME"]->IsActive()) {
+    if (btn_manager_["END_GAME"]->IsActive()) {
         _to_quit = true;
     }
 
     /* new game */
     /* pushing a state */
-    if (_btn_manager["START_GAME"]->IsActive()) {
-        _state_stack->push(std::make_shared<GameState>(_window, _supported_keys, _state_stack));
+    if (btn_manager_["START_GAME"]->IsActive()) {
+        state_stack_->push(std::make_shared<GameState>(window_, supported_keys_, state_stack_));
     }
 }
 
@@ -48,10 +48,10 @@ void MainMenuState::UpdateInput(const float time_elapsed) {
 void MainMenuState::Render(std::shared_ptr<sf::RenderTarget> target) {
     /* временный костыль */
     if (target == nullptr) {
-        target = _window;
+        target = window_;
     }
-    target->draw(_background._image);
-    _btn_manager.Render(*target);
+    target->draw(background_._image);
+    btn_manager_.Render(*target);
 }
 
 void MainMenuState::InitKeybindings() {
@@ -60,17 +60,17 @@ void MainMenuState::InitKeybindings() {
         std::string key_str;
         std::string key_bind;
         while (in >> key_str >> key_bind) {
-            _keybindings->try_emplace(key_str, _supported_keys->at(key_bind));
+            keybindings_->try_emplace(key_str, supported_keys_->at(key_bind));
         }
     }
 }
 
 void MainMenuState::InitBackground() {
-    _background._image.setSize(static_cast<sf::Vector2f>(_window->getSize()));
-    if (!_background._back_texture.loadFromFile("../Images/Backgrounds/main_menu.png")) {
+    background_._image.setSize(static_cast<sf::Vector2f>(window_->getSize()));
+    if (!background_._back_texture.loadFromFile("../Images/Backgrounds/main_menu.png")) {
         throw std::runtime_error("cannot load texture for main menu background");
     }
-    _background._image.setTexture(&_background._back_texture);
+    background_._image.setTexture(&background_._back_texture);
 }
 
 

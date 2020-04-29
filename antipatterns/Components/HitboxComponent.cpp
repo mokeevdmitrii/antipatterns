@@ -6,12 +6,12 @@
 #include "iostream"
 
 HitboxComponent::HitboxComponent(sf::Sprite &sprite, const std::map<std::string, Json::Node> &settings)
-        : _sprite(&sprite) {
+        : sprite_(&sprite) {
     LoadFromMap(settings);
-    _hitbox.setPosition(_sprite->getPosition().x + _offset.x, _sprite->getPosition().y + _offset.y);
-    _hitbox.setFillColor(sf::Color::Transparent);
-    _hitbox.setOutlineColor(sf::Color::Blue);
-    _hitbox.setOutlineThickness(1);
+    hitbox_.setPosition(sprite_->getPosition().x + offset_.x, sprite_->getPosition().y + offset_.y);
+    hitbox_.setFillColor(sf::Color::Transparent);
+    hitbox_.setOutlineColor(sf::Color::Blue);
+    hitbox_.setOutlineThickness(1);
 }
 
 HitboxComponent::~HitboxComponent() {
@@ -19,24 +19,24 @@ HitboxComponent::~HitboxComponent() {
 }
 
 void HitboxComponent::Update() {
-    _hitbox.setPosition(_sprite->getPosition().x + _offset.x, _sprite->getPosition().y + _offset.y);
+    hitbox_.setPosition(sprite_->getPosition().x + offset_.x, sprite_->getPosition().y + offset_.y);
 }
 
 void HitboxComponent::Render(sf::RenderTarget &target) const {
-    target.draw(_hitbox);
+    target.draw(hitbox_);
 }
 
 bool HitboxComponent::CheckCollision(const sf::FloatRect &other) const {
-    return _hitbox.getGlobalBounds().intersects(other);
+    return hitbox_.getGlobalBounds().intersects(other);
 }
 
 void HitboxComponent::SetPosition(const sf::Vector2f& position) {
-    _hitbox.setPosition(position);
-    _sprite->setPosition(position.x - _offset.x, position.y - _offset.y);
+    hitbox_.setPosition(position);
+    sprite_->setPosition(position.x - offset_.x, position.y - offset_.y);
 }
 
 void HitboxComponent::UpdateCopy(sf::Sprite &sprite) {
-    _sprite = &sprite;
+    sprite_ = &sprite;
 }
 
 void HitboxComponent::LoadFromMap(const std::map<std::string, Json::Node> &settings) {
@@ -44,12 +44,12 @@ void HitboxComponent::LoadFromMap(const std::map<std::string, Json::Node> &setti
     float height = static_cast<float>(settings.at("height").AsDouble());
     float offset_x = static_cast<float>(settings.at("offset_x").AsDouble());
     float offset_y = static_cast<float>(settings.at("offset_y").AsDouble());
-    _hitbox.setSize(sf::Vector2f(width, height));
-    _offset = sf::Vector2f(offset_x, offset_y);
+    hitbox_.setSize(sf::Vector2f(width, height));
+    offset_ = sf::Vector2f(offset_x, offset_y);
 }
 
 sf::Vector2f HitboxComponent::GetPosition() const {
-    return _hitbox.getPosition();
+    return hitbox_.getPosition();
 }
 
 

@@ -63,12 +63,12 @@ public:
     void Render(sf::RenderTarget& target) const;
 
 private:
-    sf::RectangleShape _shape;
-    std::shared_ptr<sf::Font> _button_font;
-    sf::Text _text;
-    ButtonColors btn_colors;
-    TextColors _txt_colors;
-    ButtonState _button_state;
+    sf::RectangleShape shape_;
+    std::shared_ptr<sf::Font> button_font_;
+    sf::Text text_;
+    ButtonColors btn_colors_;
+    TextColors txt_colors_;
+    ButtonState button_state_;
 };
 
 

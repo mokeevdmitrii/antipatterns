@@ -30,9 +30,9 @@ public:
     /* getters */
     sf::Vector2f GetPosition() const;
 private:
-    sf::RectangleShape _hitbox;
-    sf::Sprite* _sprite;
-    sf::Vector2f _offset;
+    sf::RectangleShape hitbox_;
+    sf::Sprite* sprite_;
+    sf::Vector2f offset_;
 };
 
 

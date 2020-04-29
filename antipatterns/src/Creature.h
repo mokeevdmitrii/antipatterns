@@ -36,12 +36,12 @@ public:
     /* getters */
     sf::Vector2f GetPosition() const;
 protected:
-    std::unique_ptr<PhysicsComponent> _phys_comp{};
-    std::unique_ptr<GraphicsComponent> _graph_comp{};
-    std::unique_ptr<HitboxComponent> _hitbox_comp{};
-    std::unique_ptr<AttributeComponent> _attribute_comp{};
+    std::unique_ptr<PhysicsComponent> phys_comp_{};
+    std::unique_ptr<GraphicsComponent> graph_comp_{};
+    std::unique_ptr<HitboxComponent> hitbox_comp_{};
+    std::unique_ptr<AttributeComponent> attribute_comp_{};
     /* for drawing */
-    sf::Sprite _sprite{};
+    sf::Sprite sprite_{};
 private:
 
 };

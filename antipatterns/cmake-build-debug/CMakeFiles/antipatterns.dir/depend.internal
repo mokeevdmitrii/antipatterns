@@ -314,9 +314,6 @@ CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Attribute.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Effect.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Effect.h
-CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.o
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Parameter.cpp
- /home/dmitry/MIPT/PATTERNS/antipatterns/Components/Parameters/Parameter.h
 CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o
  ../SFML-2.5.1/include/SFML/Config.hpp
  ../SFML-2.5.1/include/SFML/System.hpp

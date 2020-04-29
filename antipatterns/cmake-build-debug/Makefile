@@ -285,33 +285,6 @@ Components/Parameters/Effect.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.s
 .PHONY : Components/Parameters/Effect.cpp.s
 
-Components/Parameters/Parameter.o: Components/Parameters/Parameter.cpp.o
-
-.PHONY : Components/Parameters/Parameter.o
-
-# target to build an object file
-Components/Parameters/Parameter.cpp.o:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.o
-.PHONY : Components/Parameters/Parameter.cpp.o
-
-Components/Parameters/Parameter.i: Components/Parameters/Parameter.cpp.i
-
-.PHONY : Components/Parameters/Parameter.i
-
-# target to preprocess a source file
-Components/Parameters/Parameter.cpp.i:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.i
-.PHONY : Components/Parameters/Parameter.cpp.i
-
-Components/Parameters/Parameter.s: Components/Parameters/Parameter.cpp.s
-
-.PHONY : Components/Parameters/Parameter.s
-
-# target to generate assembly for a file
-Components/Parameters/Parameter.cpp.s:
-	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.s
-.PHONY : Components/Parameters/Parameter.cpp.s
-
 Components/Parameters/Skill.o: Components/Parameters/Skill.cpp.o
 
 .PHONY : Components/Parameters/Skill.o
@@ -960,9 +933,6 @@ help:
 	@echo "... Components/Parameters/Effect.o"
 	@echo "... Components/Parameters/Effect.i"
 	@echo "... Components/Parameters/Effect.s"
-	@echo "... Components/Parameters/Parameter.o"
-	@echo "... Components/Parameters/Parameter.i"
-	@echo "... Components/Parameters/Parameter.s"
 	@echo "... Components/Parameters/Skill.o"
 	@echo "... Components/Parameters/Skill.i"
 	@echo "... Components/Parameters/Skill.s"

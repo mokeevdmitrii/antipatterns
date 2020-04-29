@@ -17,14 +17,14 @@ Creature &Creature::operator=(const Creature &other) {
         return *this;
     }
     std::cout << "creature copied (operator)" << std::endl;
-    _sprite = other._sprite;
-    _phys_comp = std::make_unique<PhysicsComponent>(*other._phys_comp);
-    _graph_comp = std::make_unique<GraphicsComponent>(*other._graph_comp);
-    _attribute_comp = std::make_unique<AttributeComponent>(*other._attribute_comp);
-    _hitbox_comp = std::make_unique<HitboxComponent>(*other._hitbox_comp);
-    _phys_comp->UpdateCopy(_sprite);
-    _graph_comp->UpdateCopy(_sprite);
-    _hitbox_comp->UpdateCopy(_sprite);
+    sprite_ = other.sprite_;
+    phys_comp_ = std::make_unique<PhysicsComponent>(*other.phys_comp_);
+    graph_comp_ = std::make_unique<GraphicsComponent>(*other.graph_comp_);
+    attribute_comp_ = std::make_unique<AttributeComponent>(*other.attribute_comp_);
+    hitbox_comp_ = std::make_unique<HitboxComponent>(*other.hitbox_comp_);
+    phys_comp_->UpdateCopy(sprite_);
+    graph_comp_->UpdateCopy(sprite_);
+    hitbox_comp_->UpdateCopy(sprite_);
     return *this;
 }
 
@@ -34,42 +34,42 @@ Creature::Creature(const Creature &other) {
 }
 
 void Creature::SetPosition(const sf::Vector2f &position) {
-    if (_hitbox_comp != nullptr) {
-        _hitbox_comp->SetPosition(position);
+    if (hitbox_comp_ != nullptr) {
+        hitbox_comp_->SetPosition(position);
     } else {
-        _sprite.setPosition(position);
+        sprite_.setPosition(position);
     }
 }
 
 void Creature::Move(const float time_elapsed, const sf::Vector2f &direction) {
-    if (this->_phys_comp != nullptr) {
-        _phys_comp->Accelerate(time_elapsed, direction);
+    if (this->phys_comp_ != nullptr) {
+        phys_comp_->Accelerate(time_elapsed, direction);
     }
 }
 
 
 void Creature::SetTexture(sf::Texture& texture) {
-    _sprite.setTexture(texture);
+    sprite_.setTexture(texture);
 }
 
 void Creature::InitPhysicsComponent(const std::map<std::string, Json::Node> &settings) {
-    _phys_comp = std::make_unique<PhysicsComponent>(_sprite, settings);
+    phys_comp_ = std::make_unique<PhysicsComponent>(sprite_, settings);
 }
 
 void Creature::InitGraphicsComponent(sf::Texture& texture_sheet, const std::map<std::string, Json::Node> &settings) {
-    _graph_comp = std::make_unique<GraphicsComponent>(_sprite, texture_sheet, settings);
+    graph_comp_ = std::make_unique<GraphicsComponent>(sprite_, texture_sheet, settings);
 }
 
 void Creature::InitHitboxComponent(const std::map<std::string, Json::Node> &settings) {
-    _hitbox_comp = std::make_unique<HitboxComponent>(_sprite, settings);
+    hitbox_comp_ = std::make_unique<HitboxComponent>(sprite_, settings);
 }
 
 void Creature::InitAttributeComponent(const std::map<std::string, Json::Node> &settings) {
-    _attribute_comp = std::make_unique<AttributeComponent>(settings);
+    attribute_comp_ = std::make_unique<AttributeComponent>(settings);
 }
 
 sf::Vector2f Creature::GetPosition() const {
-    return _hitbox_comp != nullptr ?  _hitbox_comp->GetPosition() : _sprite.getPosition();
+    return hitbox_comp_ != nullptr ? hitbox_comp_->GetPosition() : sprite_.getPosition();
 }
 
 

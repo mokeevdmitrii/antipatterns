@@ -5,7 +5,7 @@
 
 #include "AttributeComponent.h"
 
-const std::unordered_map<std::string, ATTRIBUTE_ID> AttributeComponent::_names_to_id{
+const std::unordered_map<std::string, ATTRIBUTE_ID> AttributeComponent::names_to_id_{
         {"vigor",        ATTRIBUTE_ID::VIGOR},
         {"strength",     ATTRIBUTE_ID::STRENGTH},
         {"dexterity",    ATTRIBUTE_ID::DEXTERITY},
@@ -23,7 +23,7 @@ const std::unordered_map<std::string, ATTRIBUTE_ID> AttributeComponent::_names_t
         {"curr_mana",    ATTRIBUTE_ID::CURR_MANA}
 };
 
-const std::unordered_map<ATTRIBUTE_ID, std::vector<ATTRIBUTE_ID>> AttributeComponent::_dependence{
+const std::unordered_map<ATTRIBUTE_ID, std::vector<ATTRIBUTE_ID>> AttributeComponent::dependence_{
         {ATTRIBUTE_ID::MAX_HP,       {ATTRIBUTE_ID::VIGOR}},
         {ATTRIBUTE_ID::MAX_MANA,     {ATTRIBUTE_ID::INTELLIGENCE, ATTRIBUTE_ID::FAITH}},
         {ATTRIBUTE_ID::PHYS_ARMOR,   {ATTRIBUTE_ID::VIGOR,        ATTRIBUTE_ID::STRENGTH, ATTRIBUTE_ID::DEXTERITY}},
@@ -35,7 +35,7 @@ const std::unordered_map<ATTRIBUTE_ID, std::vector<ATTRIBUTE_ID>> AttributeCompo
         {ATTRIBUTE_ID::CURR_MANA,    {ATTRIBUTE_ID::MAX_MANA}}
 };
 
-const std::unordered_map<ATTRIBUTE_ID, std::pair<double, double>> AttributeComponent::_id_boundaries{
+const std::unordered_map<ATTRIBUTE_ID, std::pair<double, double>> AttributeComponent::id_boundaries_{
         {ATTRIBUTE_ID::VIGOR,        {0,           D_INFINITY}},
         {ATTRIBUTE_ID::STRENGTH,     {0,           D_INFINITY}},
         {ATTRIBUTE_ID::DEXTERITY,    {0,           D_INFINITY}},
@@ -54,7 +54,7 @@ const std::unordered_map<ATTRIBUTE_ID, std::pair<double, double>> AttributeCompo
 };
 
 const std::unordered_map<ATTRIBUTE_ID, std::function<double(
-        const std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>> &)>> AttributeComponent::_id_to_functions{
+        const std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>> &)>> AttributeComponent::id_to_functions_{
         {ATTRIBUTE_ID::MAX_HP,       ATTRIBUTE_FORMULAS::MaxHPFunction},
         {ATTRIBUTE_ID::MAX_MANA,     ATTRIBUTE_FORMULAS::MaxManaFunction},
         {ATTRIBUTE_ID::PHYS_ARMOR,   ATTRIBUTE_FORMULAS::PhysArmorFunction},
@@ -65,7 +65,7 @@ const std::unordered_map<ATTRIBUTE_ID, std::function<double(
 };
 
 AttributeComponent::AttributeComponent(const std::map<std::string, Json::Node> &settings) {
-    _attributes.resize(_names_to_id.size());
+    attributes_.resize(names_to_id_.size());
     LoadFromMap(settings);
     this->Update(0);
 }
@@ -78,10 +78,10 @@ AttributeComponent &AttributeComponent::operator=(const AttributeComponent &othe
     if (&other == this) {
         return *this;
     }
-    _level = other._level;
-    _attributes = std::vector<std::shared_ptr<BaseAttribute>>();
-    for (const auto& attribute : other._attributes) {
-        _attributes.push_back(attribute->Clone());
+    level_ = other.level_;
+    attributes_ = std::vector<std::shared_ptr<BaseAttribute>>();
+    for (const auto& attribute : other.attributes_) {
+        attributes_.push_back(attribute->Clone());
     }
     ResetAttributesDependence();
     this->Update(0);
@@ -90,7 +90,7 @@ AttributeComponent &AttributeComponent::operator=(const AttributeComponent &othe
 
 
 void AttributeComponent::Update(float time_elapsed) {
-    for (auto& attribute : _attributes) {
+    for (auto& attribute : attributes_) {
         attribute->Update(time_elapsed);
     }
     CheckBoundaries();
@@ -104,33 +104,33 @@ void AttributeComponent::LoadFromMap(const std::map<std::string, Json::Node> &se
 }
 
 double AttributeComponent::GetAttributeValue(ATTRIBUTE_ID id) {
-    return _attributes.at(static_cast<size_t>(id))->GetCurrentValue();
+    return attributes_.at(static_cast<size_t>(id))->GetCurrentValue();
 }
 
 
 int AttributeComponent::GetLevel() const {
-    return _level;
+    return level_;
 }
 
 
 void AttributeComponent::ResetAttributesDependence() {
-    for (size_t curr_index = 0; curr_index < _attributes.size(); ++curr_index) {
+    for (size_t curr_index = 0; curr_index < attributes_.size(); ++curr_index) {
         auto curr_id = static_cast<ATTRIBUTE_ID>(curr_index);
-        if (_dependence.count(curr_id) != 0) {
-            for (ATTRIBUTE_ID id : _dependence.at(curr_id)) {
-                _attributes[curr_index]->AddDependantAttribute(id, _attributes.at(static_cast<size_t>(id)));
+        if (dependence_.count(curr_id) != 0) {
+            for (ATTRIBUTE_ID id : dependence_.at(curr_id)) {
+                attributes_[curr_index]->AddDependantAttribute(id, attributes_.at(static_cast<size_t>(id)));
             }
         }
     }
 }
 
 void AttributeComponent::CheckBoundaries() {
-    for (size_t i = 0; i < _attributes.size(); ++i) {
+    for (size_t i = 0; i < attributes_.size(); ++i) {
         auto curr_id = static_cast<ATTRIBUTE_ID>(i);
-        if (_attributes[i]->GetCurrentValue() < _id_boundaries.at(curr_id).first) {
-            _attributes[i]->SetCurrentValue(_id_boundaries.at(curr_id).first);
-        } else if (_attributes[i]->GetCurrentValue() > _id_boundaries.at(curr_id).second) {
-            _attributes[i]->SetCurrentValue(_id_boundaries.at(curr_id).second);
+        if (attributes_[i]->GetCurrentValue() < id_boundaries_.at(curr_id).first) {
+            attributes_[i]->SetCurrentValue(id_boundaries_.at(curr_id).first);
+        } else if (attributes_[i]->GetCurrentValue() > id_boundaries_.at(curr_id).second) {
+            attributes_[i]->SetCurrentValue(id_boundaries_.at(curr_id).second);
         }
     }
 }
@@ -141,9 +141,9 @@ void AttributeComponent::LoadBaseAttributes(const std::map<std::string, Json::No
     LevelChange temp_level_change{};
     for (const auto&[attr_name, attr_settings] : settings) {
         GetBaseStats(temp_stats, temp_level_change, attr_settings.AsMap());
-        auto curr_id = _names_to_id.at(attr_name);
+        auto curr_id = names_to_id_.at(attr_name);
         auto curr_index = static_cast<size_t>(curr_id);
-        _attributes.at(curr_index) = std::make_shared<BaseAttribute>(temp_stats, temp_level_change);
+        attributes_.at(curr_index) = std::make_shared<BaseAttribute>(temp_stats, temp_level_change);
     }
 }
 
@@ -152,25 +152,25 @@ void AttributeComponent::LoadDependantAttributes(const std::map<std::string, Jso
     LevelChange level_change{};
     for (const auto&[attr_name, attr_settings] : settings) {
         GetBaseStats(temp_stats, level_change, attr_settings.AsMap());
-        auto curr_id = _names_to_id.at(attr_name);
+        auto curr_id = names_to_id_.at(attr_name);
         auto curr_index = static_cast<size_t>(curr_id);
         std::shared_ptr<Attribute> curr_attr = std::make_shared<Attribute>(temp_stats, level_change,
-                                                                           _id_to_functions.at(
+                                                                           id_to_functions_.at(
                                                                                    static_cast<ATTRIBUTE_ID>(curr_index)));
-        for (const ATTRIBUTE_ID &dependent_id : _dependence.at(curr_id)) {
-            curr_attr->AddDependantAttribute(dependent_id, _attributes.at(static_cast<int>(dependent_id)));
+        for (const ATTRIBUTE_ID &dependent_id : dependence_.at(curr_id)) {
+            curr_attr->AddDependantAttribute(dependent_id, attributes_.at(static_cast<int>(dependent_id)));
         }
-        _attributes.at(curr_index) = std::move(curr_attr);
+        attributes_.at(curr_index) = std::move(curr_attr);
     }
 }
 
 void AttributeComponent::LoadChangingAttributes(const std::map<std::string, Json::Node> &settings) {
     for (const auto&[attr_name, attr_settings] : settings) {
-        auto curr_id = _names_to_id.at(attr_name);
+        auto curr_id = names_to_id_.at(attr_name);
         auto curr_index = static_cast<size_t>(curr_id);
         //вектор гарантированно содержит всего 1 элемент!
-        auto max_value_index = static_cast<size_t>(_dependence.at(curr_id).front());
-        _attributes.at(curr_index) = std::make_shared<AttributeValue>(_attributes.at(max_value_index));
+        auto max_value_index = static_cast<size_t>(dependence_.at(curr_id).front());
+        attributes_.at(curr_index) = std::make_shared<AttributeValue>(attributes_.at(max_value_index));
     }
 }
 

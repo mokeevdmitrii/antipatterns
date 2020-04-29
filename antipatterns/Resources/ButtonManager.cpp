@@ -10,7 +10,7 @@ ButtonManager::ButtonManager(const std::string &params_file, const std::string &
 }
 
 void ButtonManager::LoadFont(const std::string &file_name) {
-    if (!_button_font.loadFromFile(file_name)) {
+    if (!button_font_.loadFromFile(file_name)) {
         throw std::runtime_error("Cannot load font");
     }
 }
@@ -25,7 +25,7 @@ void ButtonManager::InitButtons(const std::string &file_name) {
             in >> params.x >> params.y >> params.width >> params.height;
             in.ignore();
             std::getline(in, params.button_text);
-            params.font = std::make_shared<sf::Font>(_button_font);
+            params.font = std::make_shared<sf::Font>(button_font_);
             in >> params.character_size;
             in >> r >> g >> b >> a;
             params.btn_colors.idle = sf::Color(r, g, b, a);
@@ -39,42 +39,42 @@ void ButtonManager::InitButtons(const std::string &file_name) {
             params.txt_colors.hover = sf::Color(r, g, b, a);
             in >> r >> g >> b >> a;
             params.txt_colors.active = sf::Color(r, g, b, a);
-            _buttons[button_name] = std::make_shared<Button>(params);
+            buttons_[button_name] = std::make_shared<Button>(params);
         }
     }
     in.close();
 }
 
 bool ButtonManager::IsActive(const std::string &button_name) const {
-    return _buttons.at(button_name)->IsActive();
+    return buttons_.at(button_name)->IsActive();
 }
 
 void ButtonManager::Update(const sf::Vector2f& mouse_pos) {
-    for (const auto&[str, btn_ptr] : _buttons) {
+    for (const auto&[str, btn_ptr] : buttons_) {
         btn_ptr->Update(mouse_pos);
     }
 }
 
 void ButtonManager::Render(sf::RenderTarget &target) const {
-    for (auto&[str, btn_ptr] : _buttons) {
+    for (auto&[str, btn_ptr] : buttons_) {
         btn_ptr->Render(target);
     }
 }
 
 const sf::Font& ButtonManager::GetFont() {
-    return _button_font;
+    return button_font_;
 }
 
 std::shared_ptr<Button> ButtonManager::operator[](const std::string &btn_name) const {
-    return _buttons.at(btn_name);
+    return buttons_.at(btn_name);
 }
 
 std::unordered_map<std::string, std::shared_ptr<Button>>::iterator ButtonManager::begin() {
-    return _buttons.begin();
+    return buttons_.begin();
 }
 
 std::unordered_map<std::string, std::shared_ptr<Button>>::iterator ButtonManager::end() {
-    return _buttons.end();
+    return buttons_.end();
 }
 
 

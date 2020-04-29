@@ -5,7 +5,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/antipatterns.dir/Components/Parameters/Attribute.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/Parameters/Effect.cpp.o"
-  "CMakeFiles/antipatterns.dir/Components/Parameters/Parameter.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o"
   "CMakeFiles/antipatterns.dir/Components/PhysicsComponent.cpp.o"

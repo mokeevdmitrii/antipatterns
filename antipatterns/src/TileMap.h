@@ -42,11 +42,11 @@ private:
     /* initialize unique tiles parameters from a tile */
     void InitUniqueTiles(const std::string& file_name);
     void InitMap(const std::string& file_name);
-    std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>> _map;
-    std::unordered_map<TileType, std::unique_ptr<Tile>> _unique_tiles;
-    int _grid_size;
-    sf::Vector2i _world_size;
-    sf::Texture _tile_sheet;
+    std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>> map_;
+    std::unordered_map<TileType, std::unique_ptr<Tile>> unique_tiles_;
+    int grid_size_;
+    sf::Vector2i world_size_;
+    sf::Texture tile_sheet_;
 };
 
 

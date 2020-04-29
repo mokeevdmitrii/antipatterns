@@ -38,11 +38,11 @@ private:
     /* will think about possible use of these functions */
     void AddUniqueEnemy(std::shared_ptr<Enemy> enemy);
 
-    std::list<std::unique_ptr<Enemy>> _active_enemies;
-    std::list<std::unique_ptr<Enemy>> _dead_enemies;
-    std::vector<std::shared_ptr<Enemy>> _unique_enemies;
-    std::unordered_map<std::string, sf::Texture>& _textures;
-    int _tile_size;
+    std::list<std::unique_ptr<Enemy>> active_enemies_;
+    std::list<std::unique_ptr<Enemy>> dead_enemies_;
+    std::vector<std::shared_ptr<Enemy>> unique_enemies_;
+    std::unordered_map<std::string, sf::Texture>& textures_;
+    int tile_size_;
 };
 
 

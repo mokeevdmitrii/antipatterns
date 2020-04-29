@@ -29,8 +29,8 @@ public:
 
 private:
     /* think about shared_ptr */
-    std::unordered_map<std::string, std::shared_ptr<Button>> _buttons;
-    sf::Font _button_font;
+    std::unordered_map<std::string, std::shared_ptr<Button>> buttons_;
+    sf::Font button_font_;
 };
 
 

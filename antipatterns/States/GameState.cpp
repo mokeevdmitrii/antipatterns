@@ -19,7 +19,7 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
 }
 
 GameState::~GameState() {
-
+    std::cout << "game destructed" << std::endl;
 }
 
 /* overrided functions */
@@ -30,35 +30,35 @@ void GameState::Update(const float time_elapsed) {
     UpdateMousePositions();
     if (!_paused) {
         UpdateInput(time_elapsed);
-        _player->Update(time_elapsed);
-        _enemy_system->Update(time_elapsed);
+        player_->Update(time_elapsed);
+        enemy_system_->Update(time_elapsed);
         /* else update pause menu */
     } else {
-        _pause_menu->Update(_mouse_positions.view);
-        if (_pause_menu->IsButtonActive(std::string("PLAY"))) {
+        pause_menu_->Update(mouse_positions_.view);
+        if (pause_menu_->IsButtonActive(std::string("PLAY"))) {
             Unpause();
         }
-        if (_pause_menu->IsButtonActive(std::string("QUIT"))) {
+        if (pause_menu_->IsButtonActive(std::string("QUIT"))) {
             End();
         }
     }
 }
 
 void GameState::UpdateInput(const float time_elapsed) {
-    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings->at("PAUSE")))) {
+    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(keybindings_->at("PAUSE")))) {
         Pause();
     }
-    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(_keybindings->at("CLOSE")))) {
+    if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(keybindings_->at("CLOSE")))) {
         End();
     }
 }
 
 void GameState::Render(std::shared_ptr<sf::RenderTarget> target) {
-    _tile_map->Render(*target);
-    _enemy_system->Render(*target);
-    _player->Render(*target);
+    tile_map_->Render(*target);
+    enemy_system_->Render(*target);
+    player_->Render(*target);
     if (_paused) {
-        _pause_menu->Render(*target);
+        pause_menu_->Render(*target);
     }
 }
 
@@ -70,34 +70,34 @@ void GameState::InitKeybindings() {
         std::string key_str;
         std::string key_bind;
         while (in >> key_str >> key_bind) {
-            _keybindings->try_emplace(key_str, _supported_keys->at(key_bind));
+            keybindings_->try_emplace(key_str, supported_keys_->at(key_bind));
         }
     }
 }
 
 void GameState::InitTextures() {
-    if (!_textures["PLAYER"].loadFromFile("../Images/Sprites/Player/hero.png")) {
+    if (!textures_["PLAYER"].loadFromFile("../Images/Sprites/Player/hero.png")) {
         throw std::runtime_error("Player texture cannot be loaded from file");
     }
 }
 
 void GameState::InitPlayer() {
-    _player = std::make_unique<Player>(sf::Vector2f(0, 0), _textures.at("PLAYER"), "../Config/player_settings.json",
-                                       _keybindings);
+    player_ = std::make_unique<Player>(sf::Vector2f(0, 0), textures_.at("PLAYER"), "../Config/player_settings.json",
+                                       keybindings_);
 }
 
 void GameState::InitEnemySystem() {
-    _enemy_system = std::make_unique<EnemySystem>(_textures, "../Config/enemies_settings.json",
+    enemy_system_ = std::make_unique<EnemySystem>(textures_, "../Config/enemies_settings.json",
                                                   "../Config/enemies_location.json");
     std::map<std::string, Json::Node> enemy_settings = Json::Load("../Config/enemies_settings.json").GetRoot().AsMap();
 }
 
 void GameState::InitTileMap() {
-    _tile_map = std::make_unique<TileMap>("../Config/unique_tiles.json", "../Config/init_map.json");
+    tile_map_ = std::make_unique<TileMap>("../Config/unique_tiles.json", "../Config/init_map.json");
 }
 
 void GameState::InitPauseMenu() {
-    _pause_menu = std::make_shared<PauseMenu>(_window);
+    pause_menu_ = std::make_shared<PauseMenu>(window_);
 }
 
 
