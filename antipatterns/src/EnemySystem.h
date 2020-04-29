@@ -35,7 +35,6 @@ private:
     /* implement later */
     //sf::Vector2f GeneratePosition(int x, int y);
 
-
     /* will think about possible use of these functions */
     void AddUniqueEnemy(std::shared_ptr<Enemy> enemy);
 
