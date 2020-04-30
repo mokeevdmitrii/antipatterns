@@ -771,6 +771,33 @@ src/EnemySystem.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.s
 .PHONY : src/EnemySystem.cpp.s
 
+src/Exit.o: src/Exit.cpp.o
+
+.PHONY : src/Exit.o
+
+# target to build an object file
+src/Exit.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Exit.cpp.o
+.PHONY : src/Exit.cpp.o
+
+src/Exit.i: src/Exit.cpp.i
+
+.PHONY : src/Exit.i
+
+# target to preprocess a source file
+src/Exit.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Exit.cpp.i
+.PHONY : src/Exit.cpp.i
+
+src/Exit.s: src/Exit.cpp.s
+
+.PHONY : src/Exit.s
+
+# target to generate assembly for a file
+src/Exit.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Exit.cpp.s
+.PHONY : src/Exit.cpp.s
+
 src/Game.o: src/Game.cpp.o
 
 .PHONY : src/Game.o
@@ -824,6 +851,33 @@ src/Player.s: src/Player.cpp.s
 src/Player.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Player.cpp.s
 .PHONY : src/Player.cpp.s
+
+src/Room.o: src/Room.cpp.o
+
+.PHONY : src/Room.o
+
+# target to build an object file
+src/Room.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Room.cpp.o
+.PHONY : src/Room.cpp.o
+
+src/Room.i: src/Room.cpp.i
+
+.PHONY : src/Room.i
+
+# target to preprocess a source file
+src/Room.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Room.cpp.i
+.PHONY : src/Room.cpp.i
+
+src/Room.s: src/Room.cpp.s
+
+.PHONY : src/Room.s
+
+# target to generate assembly for a file
+src/Room.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/src/Room.cpp.s
+.PHONY : src/Room.cpp.s
 
 src/Tile.o: src/Tile.cpp.o
 
@@ -987,12 +1041,18 @@ help:
 	@echo "... src/EnemySystem.o"
 	@echo "... src/EnemySystem.i"
 	@echo "... src/EnemySystem.s"
+	@echo "... src/Exit.o"
+	@echo "... src/Exit.i"
+	@echo "... src/Exit.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"
 	@echo "... src/Player.o"
 	@echo "... src/Player.i"
 	@echo "... src/Player.s"
+	@echo "... src/Room.o"
+	@echo "... src/Room.i"
+	@echo "... src/Room.s"
 	@echo "... src/Tile.o"
 	@echo "... src/Tile.i"
 	@echo "... src/Tile.s"

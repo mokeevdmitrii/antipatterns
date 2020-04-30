@@ -434,6 +434,32 @@ CMakeFiles/antipatterns.dir/Resources/Constants.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/Resources/Constants.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.cpp -o CMakeFiles/antipatterns.dir/Resources/Constants.cpp.s
 
+CMakeFiles/antipatterns.dir/src/Room.cpp.o: CMakeFiles/antipatterns.dir/flags.make
+CMakeFiles/antipatterns.dir/src/Room.cpp.o: ../src/Room.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/antipatterns.dir/src/Room.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/src/Room.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/src/Room.cpp
+
+CMakeFiles/antipatterns.dir/src/Room.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/src/Room.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/src/Room.cpp > CMakeFiles/antipatterns.dir/src/Room.cpp.i
+
+CMakeFiles/antipatterns.dir/src/Room.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/src/Room.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/src/Room.cpp -o CMakeFiles/antipatterns.dir/src/Room.cpp.s
+
+CMakeFiles/antipatterns.dir/src/Exit.cpp.o: CMakeFiles/antipatterns.dir/flags.make
+CMakeFiles/antipatterns.dir/src/Exit.cpp.o: ../src/Exit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/antipatterns.dir/src/Exit.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/antipatterns.dir/src/Exit.cpp.o -c /home/dmitry/MIPT/PATTERNS/antipatterns/src/Exit.cpp
+
+CMakeFiles/antipatterns.dir/src/Exit.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/antipatterns.dir/src/Exit.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dmitry/MIPT/PATTERNS/antipatterns/src/Exit.cpp > CMakeFiles/antipatterns.dir/src/Exit.cpp.i
+
+CMakeFiles/antipatterns.dir/src/Exit.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/antipatterns.dir/src/Exit.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dmitry/MIPT/PATTERNS/antipatterns/src/Exit.cpp -o CMakeFiles/antipatterns.dir/src/Exit.cpp.s
+
 # Object files for target antipatterns
 antipatterns_OBJECTS = \
 "CMakeFiles/antipatterns.dir/src/main.cpp.o" \
@@ -464,7 +490,9 @@ antipatterns_OBJECTS = \
 "CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o" \
 "CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o" \
 "CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.o" \
-"CMakeFiles/antipatterns.dir/Resources/Constants.cpp.o"
+"CMakeFiles/antipatterns.dir/Resources/Constants.cpp.o" \
+"CMakeFiles/antipatterns.dir/src/Room.cpp.o" \
+"CMakeFiles/antipatterns.dir/src/Exit.cpp.o"
 
 # External object files for target antipatterns
 antipatterns_EXTERNAL_OBJECTS =
@@ -498,13 +526,15 @@ antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/Skill.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/Timer.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/Components/Parameters/AttributeFormulas.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/Resources/Constants.cpp.o
+antipatterns: CMakeFiles/antipatterns.dir/src/Room.cpp.o
+antipatterns: CMakeFiles/antipatterns.dir/src/Exit.cpp.o
 antipatterns: CMakeFiles/antipatterns.dir/build.make
 antipatterns: ../SFML-2.5.1/lib/libsfml-graphics.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-window.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-audio.so.2.5.1
 antipatterns: ../SFML-2.5.1/lib/libsfml-system.so.2.5.1
 antipatterns: CMakeFiles/antipatterns.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Linking CXX executable antipatterns"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/dmitry/MIPT/PATTERNS/antipatterns/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Linking CXX executable antipatterns"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/antipatterns.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

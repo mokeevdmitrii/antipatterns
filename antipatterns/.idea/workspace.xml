@@ -12,76 +12,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee18d34d-65e2-44fa-9c5b-5e4061795cb1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Exit.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exit.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Room.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Room.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/AttributeComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Components/AttributeComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/AttributeComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Components/AttributeComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/GraphicsComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Components/GraphicsComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/GraphicsComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Components/GraphicsComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/HitboxComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Components/HitboxComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/HitboxComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Components/HitboxComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/Parameters/Attribute.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Parameters/Attribute.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/Parameters/Attribute.h" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Parameters/Attribute.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/Parameters/Parameter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/Parameters/Parameter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/PhysicsComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Components/PhysicsComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Components/PhysicsComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Components/PhysicsComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/todo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Config/todo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Enemies/EnemySpawner.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Enemies/EnemySpawner.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Enemies/EnemySpawner.h" beforeDir="false" afterPath="$PROJECT_DIR$/Enemies/EnemySpawner.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Enemies/Rat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Enemies/Rat.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Button.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Button.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Button.h" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Button.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/ButtonManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/ButtonManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/GraphicsSettings.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/GraphicsSettings.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/GraphicsSettings.h" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/GraphicsSettings.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/PauseMenu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/PauseMenu.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/PauseMenu.h" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/PauseMenu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/States/GameState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/States/GameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/States/MainMenuState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/MainMenuState.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/States/MainMenuState.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/MainMenuState.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/States/State.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/State.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/States/State.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/State.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/Components/AttributeComponent.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/Components/Parameters/Attribute.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/Components/Parameters/Attribute.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/Enemies/EnemySpawner.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/Enemies/Rat.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/States/GameState.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/States/GameState.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/States/State.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/States/State.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Creature.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Creature.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Enemy.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Enemy.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Game.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Game.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Player.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Player.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/TileMap.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/TileMap.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/antipatterns.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/antipatterns.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Creature.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Creature.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Creature.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Creature.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EnemySystem.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/EnemySystem.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EnemySystem.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/EnemySystem.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tile.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tile.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TileMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileMap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TileMap.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileMap.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +141,7 @@
       <workItem from="1587829639507" duration="45955000" />
       <workItem from="1587976122739" duration="27965000" />
       <workItem from="1588087973294" duration="26826000" />
-      <workItem from="1588170950229" duration="13251000" />
+      <workItem from="1588170950229" duration="16022000" />
     </task>
     <servers />
   </component>
