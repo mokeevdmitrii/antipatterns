@@ -4,8 +4,11 @@
 
 #include "TileMap.h"
 
-TileMap::TileMap(const std::string &settings_file_name, const std::string &map_tile_name) {
-    InitUniqueTiles(settings_file_name);
+int TileMap::grid_size_ = 62;
+
+std::shared_ptr<std::unordered_map<TileType, std::unique_ptr<Tile>>> TileMap::unique_tiles_ = nullptr;
+
+TileMap::TileMap(const std::string &map_tile_name) {
     InitMap(map_tile_name);
 }
 
@@ -16,13 +19,22 @@ void TileMap::UpdateTiles(std::unique_ptr<Creature> creature, float time_elapsed
 
 void TileMap::Render(sf::RenderTarget &target) const {
     for (auto &vec_x : map_) {
-        for (auto& vec_y : vec_x) {
+        for (auto &vec_y : vec_x) {
             for (auto &tile_layer : vec_y) {
                 tile_layer->Render(target);
             }
         }
     }
 }
+
+int TileMap::GetGridSize() {
+    return grid_size_;
+}
+
+void TileMap::SetGridSize(int grid_size) {
+    grid_size_ = grid_size;
+}
+
 
 sf::Vector2i TileMap::GetGridPosition(sf::Vector2f global_position) const {
     return sf::Vector2i(static_cast<int>(static_cast<int>(global_position.x) / grid_size_),
@@ -37,41 +49,32 @@ sf::Vector2f TileMap::GetGlobalPosition(sf::Vector2i grid_position) const {
 
 /* initializers */
 
-void TileMap::InitUniqueTiles(const std::string &file_name) {
-    std::map<std::string, Json::Node> settings = Json::Load(file_name).GetRoot().AsMap();
-    std::string texture_file = settings.at("file_name").AsString();
-    tile_sheet_.loadFromFile(texture_file);
-    grid_size_ = static_cast<int>(settings.at("grid_size").AsDouble());
-    world_size_.x = static_cast<int>(settings.at("world_size_x").AsDouble());
-    world_size_.y = static_cast<int>(settings.at("world_size_y").AsDouble());
-    for (const auto &settings_map : settings.at("tiles").AsArray()) {
-        sf::IntRect curr_rect;
-        TileType curr_type;
-        curr_rect.height = curr_rect.width = grid_size_;
-        curr_rect.left = static_cast<int>(settings_map.AsMap().at("x").AsDouble()) * grid_size_;
-        curr_rect.top = static_cast<int>(settings_map.AsMap().at("y").AsDouble()) * grid_size_;
-        curr_type = static_cast<TileType>(settings_map.AsMap().at("type").AsDouble());
-        unique_tiles_[curr_type] = std::make_unique<Tile>(curr_type, tile_sheet_, curr_rect);
-    }
-}
-
 void TileMap::InitMap(const std::string &file_name) {
+    const std::vector<Json::Node> map_layers = Json::Load(file_name).GetRoot().AsArray();
+    world_size_.y = map_layers.empty() ? 0 : map_layers.front().AsArray().size();
+    world_size_.x = world_size_.y == 0 ? 0 : map_layers.front().AsArray().front().AsArray().size();
+    //настраиваем размеры карты
     map_.resize(world_size_.x);
     for (auto &sub_vec : map_) {
         sub_vec.resize(world_size_.y);
     }
-    const std::vector<Json::Node> map = Json::Load(file_name).GetRoot().AsArray();
-    for (int i = 0; i < world_size_.x; ++i) {
-        const std::vector<Json::Node> &map_x = map[i].AsArray();
-        for (int j = 0; j < world_size_.y; ++j) {
-            const std::vector<Json::Node> &map_y = map_x[j].AsArray();
-            for (const Json::Node &type : map_y) {
-                map_[i][j].push_back(unique_tiles_.at(static_cast<TileType>(type.AsDouble()))->Clone(
-                        GetGlobalPosition(sf::Vector2i(i, j))));
+    for (const auto &layer_node : map_layers) {
+        const std::vector<Json::Node>& layer = layer_node.AsArray();
+        for (int y_pos = 0; y_pos < world_size_.y; ++y_pos) {
+            const std::vector<Json::Node> &row = layer[y_pos].AsArray();
+            for (int x_pos = 0; x_pos < world_size_.x; ++x_pos) {
+                auto type = static_cast<TileType>(row[x_pos].AsDouble());
+                map_[y_pos][x_pos].push_back(
+                        unique_tiles_->at(type)->Clone(GetGlobalPosition(sf::Vector2i(x_pos, y_pos))));
             }
         }
     }
 }
+
+void TileMap::SetUniqueTiles(std::shared_ptr<std::unordered_map<TileType, std::unique_ptr<Tile>>> unique_tiles) {
+    unique_tiles_ = std::move(unique_tiles);
+}
+
 
 
 

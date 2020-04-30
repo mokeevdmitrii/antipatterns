@@ -23,7 +23,7 @@
 class TileMap {
     using Map = std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>>;
 public:
-    TileMap(const std::string& settings_file_name, const std::string& map_tile_name);
+    TileMap(const std::string &map_tile_name);
     ~TileMap() = default;
 
     /* updating all the map */
@@ -33,18 +33,22 @@ public:
     void UpdateTiles(std::unique_ptr<Creature> creature, float time_elapsed);
     void Render(sf::RenderTarget& target) const;
 
+    static int GetGridSize();
+
+    static void SetGridSize(int grid_size);
+
     /* not static because what about different grid_sizes ? */
     sf::Vector2i GetGridPosition(sf::Vector2f global_position) const;
     sf::Vector2f GetGlobalPosition(sf::Vector2i grid_position) const;
 
+   static void SetUniqueTiles(std::shared_ptr<std::unordered_map<TileType, std::unique_ptr<Tile>>> unique_tiles);
+
 private:
     /* initializers */
-    /* initialize unique tiles parameters from a tile */
-    void InitUniqueTiles(const std::string& file_name);
     void InitMap(const std::string& file_name);
     std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>> map_;
-    std::unordered_map<TileType, std::unique_ptr<Tile>> unique_tiles_;
-    int grid_size_;
+    static std::shared_ptr<std::unordered_map<TileType, std::unique_ptr<Tile>>> unique_tiles_;
+    static int grid_size_;
     sf::Vector2i world_size_;
     sf::Texture tile_sheet_;
 };

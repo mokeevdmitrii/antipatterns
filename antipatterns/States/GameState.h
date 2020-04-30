@@ -9,6 +9,7 @@
 #include "../src/EnemySystem.h"
 #include "../Enemies/Rat.h"
 #include "../src/TileMap.h"
+#include "../src/Room.h"
 
 class GameState : public State {
 public:
@@ -26,14 +27,21 @@ private:
     void InitKeybindings() override;
     void InitTextures();
     void InitPlayer();
-    void InitEnemySystem();
-    void InitTileMap();
     void InitPauseMenu();
+    void InitRooms();
+    void InitUniqueEnemies();
+    void AddUniqueEnemy(EnemyType enemy_type, const std::shared_ptr<Enemy>& enemy);
+    void InitUniqueTiles();
+
+    void ChangeRoom(ROOM_ID old_room, ROOM_ID new_room);
 
     /* thinking about moving player somewhere else */
-    std::unique_ptr<Creature> player_;
-    std::unique_ptr<EnemySystem> enemy_system_;
-    std::unique_ptr<TileMap> tile_map_;
+    static const std::unordered_map<std::string, ROOM_ID> names_to_room_ids_;
+    std::unordered_map<ROOM_ID, std::unique_ptr<Room>> rooms_;
+    Room* current_room_{nullptr};
+    std::shared_ptr<Creature> player_;
+    std::shared_ptr<std::unordered_map<EnemyType, std::shared_ptr<Enemy>>> unique_enemies_;
+    std::shared_ptr<std::unordered_map<TileType, std::unique_ptr<Tile>>> unique_tiles_;
     std::shared_ptr<PauseMenu> pause_menu_;
 };
 

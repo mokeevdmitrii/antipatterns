@@ -45,8 +45,6 @@ namespace Json {
         bool AsBool() const {
             return std::get<bool>(*this);
         }
-
-        static const std::unordered_set<char> POSSIBLE_CHARS_FOR_DOUBLE;
     };
 
     class Document {

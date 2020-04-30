@@ -232,6 +232,9 @@
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.h">
 			<Option target="antipatterns"/>
 		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemyTypes.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/src/Exit.cpp">
 			<Option target="antipatterns"/>
 		</Unit>

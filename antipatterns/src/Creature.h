@@ -7,6 +7,7 @@
 
 #include "../Components/AttributeComponent.h"
 #include "../Components/HitboxComponent.h"
+#include "Tile.h"
 
 
 class Creature {

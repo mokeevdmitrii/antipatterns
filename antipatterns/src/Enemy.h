@@ -7,6 +7,8 @@
 
 
 #include "Creature.h"
+#include "EnemyTypes.h"
+
 
 class Enemy : public Creature {
 public:

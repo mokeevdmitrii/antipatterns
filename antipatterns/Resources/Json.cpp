@@ -15,9 +15,6 @@ namespace Json {
         return root;
     }
 
-    const unordered_set<char> Node::POSSIBLE_CHARS_FOR_DOUBLE = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-                                                                 '-'};
-
     Node LoadNode(istream &input);
 
     Node LoadArray(istream &input) {
