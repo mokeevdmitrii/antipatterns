@@ -41,7 +41,7 @@ public:
 
     bool Intersects(const sf::RectangleShape &other_hitbox) const;
     bool Contains(const sf::RectangleShape &other_hitbox) const;
-    bool Contained(const sf::RectangleShape &other_hitbox) const;
+    bool ContainedIn(const sf::RectangleShape &other_hitbox) const;
 
 protected:
     std::unique_ptr<PhysicsComponent> phys_comp_{};

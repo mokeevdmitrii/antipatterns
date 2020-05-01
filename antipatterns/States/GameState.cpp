@@ -39,8 +39,9 @@ void GameState::Update(const float time_elapsed) {
     if (!_paused) {
         UpdateInput(time_elapsed);
         current_room_->Update(time_elapsed);
-        //player_->Update(time_elapsed);
-        //enemy_system_->Update(time_elapsed);
+        if (current_room_->GetRoomID() != current_room_->GetCurrentRoomID()) {
+            ChangeRoom(current_room_->GetRoomID(), current_room_->GetCurrentRoomID());
+        }
 
         // вызывать проверку на переход в другую комнату !
         /* if (current_room_->GetRoomID() != current_room_->GetCurrentRoomID()) {
@@ -186,6 +187,13 @@ void GameState::InitUniqueExits() {
                                                                                                      exit_hitbox_height)), textures_.at("EXITS"), curr_rect));
     }
     Exit::SetUniqueExits(unique_exits_);
+}
+
+void GameState::ChangeRoom(ROOM_ID old_room, ROOM_ID new_room) {
+    rooms_.at(new_room)->SetPlayer(player_);
+    current_room_ = rooms_.at(new_room).get();
+    player_->SetPosition(sf::Vector2f(100, 100));
+    rooms_.at(old_room)->SetPlayer(nullptr);
 }
 
 

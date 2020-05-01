@@ -12,38 +12,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee18d34d-65e2-44fa-9c5b-5e4061795cb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Config/Exits/init_room.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/Exits/second_room.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/Rooms/second_room.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/TileMaps/second_room.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config/unique_exits.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/Rooms/init_room.json" beforeDir="false" afterPath="$PROJECT_DIR$/Config/Rooms/init_room.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/TileMaps/init_room.json" beforeDir="false" afterPath="$PROJECT_DIR$/Config/TileMaps/init_room.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/Config/rooms.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/unique_tiles.json" beforeDir="false" afterPath="$PROJECT_DIR$/Config/unique_tiles.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Utility.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/States/GameState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/States/GameState.h" beforeDir="false" afterPath="$PROJECT_DIR$/States/GameState.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/States/GameState.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/States/GameState.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Creature.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Creature.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/EnemySystem.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Game.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/Game.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/TileMap.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/TileMap.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/antipatterns.dir/src/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Creature.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Creature.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Creature.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Creature.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Enemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Enemy.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Exit.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exit.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Exit.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exit.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Room.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Room.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TileMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileMap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TileMap.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/TileMap.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +139,7 @@
       <workItem from="1588087973294" duration="26826000" />
       <workItem from="1588170950229" duration="39036000" />
       <workItem from="1588328693098" duration="23950000" />
-      <workItem from="1588362283872" duration="2234000" />
+      <workItem from="1588362283872" duration="3642000" />
     </task>
     <servers />
   </component>
@@ -204,30 +182,30 @@
     <state x="1223" y="267" width="424" height="479" key="FileChooserDialogImpl/0.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588351261912" />
     <state x="1223" y="267" width="424" height="479" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588286995189" />
     <state x="1223" y="277" width="424" height="479" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1587823669152" />
-    <state width="1878" height="276" key="GridCell.Tab.0.bottom" timestamp="1588364374560">
+    <state width="1878" height="276" key="GridCell.Tab.0.bottom" timestamp="1588366062831">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588354614277" />
     <state width="1878" height="340" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588289774166" />
-    <state width="1878" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1588364374560" />
-    <state width="1878" height="276" key="GridCell.Tab.0.center" timestamp="1588364374560">
+    <state width="1878" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1588366062831" />
+    <state width="1878" height="276" key="GridCell.Tab.0.center" timestamp="1588366062831">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="276" key="GridCell.Tab.0.center/0.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588354614277" />
     <state width="1878" height="340" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588289774166" />
-    <state width="1878" height="276" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1588364374560" />
-    <state width="1878" height="276" key="GridCell.Tab.0.left" timestamp="1588364374559">
+    <state width="1878" height="276" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1588366062831" />
+    <state width="1878" height="276" key="GridCell.Tab.0.left" timestamp="1588366062830">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="276" key="GridCell.Tab.0.left/0.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588354614277" />
     <state width="1878" height="340" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588289774166" />
-    <state width="1878" height="276" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1588364374559" />
-    <state width="1878" height="276" key="GridCell.Tab.0.right" timestamp="1588364374560">
+    <state width="1878" height="276" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1588366062830" />
+    <state width="1878" height="276" key="GridCell.Tab.0.right" timestamp="1588366062831">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="276" key="GridCell.Tab.0.right/0.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588354614277" />
     <state width="1878" height="340" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588289774166" />
-    <state width="1878" height="276" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1588364374560" />
+    <state width="1878" height="276" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1588366062831" />
     <state width="1878" height="340" key="GridCell.Tab.1.bottom" timestamp="1588364274108">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -264,12 +242,12 @@
     <state x="643" y="333" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588328694446" />
     <state x="643" y="333" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588087973328" />
     <state x="643" y="346" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1588170953187" />
-    <state x="704" y="165" width="501" height="702" key="refactoring.ChangeSignatureDialog" timestamp="1588355599417">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="704" y="171" width="501" height="702" key="refactoring.ChangeSignatureDialog" timestamp="1588364686819">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="704" y="165" width="501" height="702" key="refactoring.ChangeSignatureDialog/0.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588355599417" />
     <state x="704" y="165" width="501" height="702" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588289166386" />
-    <state x="704" y="171" width="501" height="702" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1587897337844" />
+    <state x="704" y="171" width="501" height="702" key="refactoring.ChangeSignatureDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1588364686819" />
     <state x="619" y="246" key="run.anything.popup" timestamp="1587904320866">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

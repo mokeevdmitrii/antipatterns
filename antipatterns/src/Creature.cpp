@@ -94,19 +94,25 @@ bool Creature::Intersects(const sf::RectangleShape &other_hitbox) const {
 
 bool Creature::Contains(const sf::RectangleShape &other_hitbox) const {
     sf::FloatRect hitbox_rect = sf::FloatRect(GetHitbox().getPosition(), GetHitbox().getSize());
+    sf::Vector2f position = GetHitbox().getPosition();
     for (size_t point_index = 0; point_index < 4; ++point_index) {
-        if (!hitbox_rect.contains(other_hitbox.getPoint(point_index))) {
+        sf::Vector2f curr_point = other_hitbox.getPoint(point_index);
+        curr_point.x += position.x, curr_point.y += position.y;
+        if (!hitbox_rect.contains(curr_point)) {
             return false;
         }
     }
     return true;
 }
 
-bool Creature::Contained(const sf::RectangleShape &other_hitbox) const {
+bool Creature::ContainedIn(const sf::RectangleShape &other_hitbox) const {
     sf::FloatRect other_rect = other_hitbox.getGlobalBounds();
     sf::RectangleShape hitbox = GetHitbox();
+    sf::Vector2f position = hitbox.getPosition();
     for (size_t point_index = 0; point_index < 4; ++point_index) {
-        if (!other_rect.contains(hitbox.getPoint(point_index))) {
+        sf::Vector2f curr_point = hitbox.getPoint(point_index);
+        curr_point.x += position.x, curr_point.y += position.y;
+        if (!other_rect.contains(curr_point)) {
             return false;
         }
     }

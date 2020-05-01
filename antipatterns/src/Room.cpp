@@ -28,7 +28,15 @@ void Room::Render(sf::RenderTarget &target) {
 }
 
 ROOM_ID Room::GetCurrentRoomID() const {
-    return INIT_ROOM;
+    ROOM_ID current_id = room_id_;
+    for (const auto& exit : exits_) {
+        const sf::RectangleShape& hitbox = exit->GetHitbox();
+        if (player_->ContainedIn(hitbox)) {
+            current_id = exit->GetRoomIdTo();
+            break;
+        }
+    }
+    return current_id;
 }
 
 ROOM_ID Room::GetRoomID() const {

@@ -25,7 +25,7 @@ ROOM_ID Exit::GetRoomIdTo() const {
     return id_to_;
 }
 
-sf::RectangleShape Exit::GetHitbox() const {
+const RectangleShape & Exit::GetHitbox() const {
     return hitbox_;
 }
 
@@ -43,11 +43,6 @@ void Exit::LoadFromMap(const std::map<std::string, Json::Node> &settings) {
 
 sf::Vector2f Exit::GetPosition() const {
     return hitbox_.getPosition();
-}
-
-
-sf::RectangleShape Exit::GetActiveRectangle() const {
-    return hitbox_;
 }
 
 Exit::Exit(ROOM_ID from, ROOM_ID to) : id_from_(from), id_to_(to) {

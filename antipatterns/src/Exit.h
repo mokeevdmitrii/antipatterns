@@ -40,15 +40,13 @@ public:
 
     ROOM_ID GetRoomIdTo() const;
 
-    sf::RectangleShape GetHitbox() const;
+    const sf::RectangleShape & GetHitbox() const;
 
     void Render(sf::RenderTarget &target) const;
 
     void LoadFromMap(const std::map<std::string, Json::Node> &settings);
 
     sf::Vector2f GetPosition() const;
-
-    sf::RectangleShape GetActiveRectangle() const;
 
     static void SetUniqueExits(std::shared_ptr<std::unordered_map<ExitType, std::unique_ptr<Exit>>> unique_exits);
 };

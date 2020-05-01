@@ -4,6 +4,6 @@
     "enemies" : []
   },
   "tile_map": {
-    "tiles": "../Config/TileMaps/init_room.json"
+    "tiles": "../Config/TileMaps/second_room.json"
   }
 }
