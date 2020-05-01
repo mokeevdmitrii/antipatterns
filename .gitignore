@@ -1,4 +1,4 @@
-*.idea
-cmake-build-debug/
+antipatterns/.idea
+antipatterns/cmake-build-debug
 
 
