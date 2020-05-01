@@ -39,8 +39,10 @@ public:
     void SetPossibleMoveDirections(PossibleDirections directions);
     sf::RectangleShape GetHitbox() const;
 
-    const std::unique_ptr<PhysicsComponent>& GetPhysicsComponent() const;
-    const std::unique_ptr<HitboxComponent>& GetHitboxComponent() const;
+    bool Intersects(const sf::RectangleShape &other_hitbox) const;
+    bool Contains(const sf::RectangleShape &other_hitbox) const;
+    bool Contained(const sf::RectangleShape &other_hitbox) const;
+
 protected:
     std::unique_ptr<PhysicsComponent> phys_comp_{};
     std::unique_ptr<GraphicsComponent> graph_comp_{};

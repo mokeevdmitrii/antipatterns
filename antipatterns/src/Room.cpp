@@ -20,13 +20,25 @@ void Room::Update(float time_elapsed) {
 
 void Room::Render(sf::RenderTarget &target) {
     map_->Render(target);
+    for (const auto& exit : exits_) {
+        exit->Render(target);
+    }
     enemy_system_->Render(target);
     player_->Render(target);
+}
+
+ROOM_ID Room::GetCurrentRoomID() const {
+    return INIT_ROOM;
 }
 
 ROOM_ID Room::GetRoomID() const {
     return room_id_;
 }
+
+void Room::AddExit(std::unique_ptr<Exit> exit) {
+    exits_.push_back(std::move(exit));
+}
+
 
 void Room::SetPlayer(std::shared_ptr<Creature> player) {
     player_ = std::move(player);
@@ -45,6 +57,9 @@ void Room::InitTileMap(const std::map<std::string, Json::Node> &map_settings) {
 void Room::UpdateCollisions() {
     map_->UpdateCreature<std::shared_ptr<Creature>>(player_, 0);
 }
+
+
+
 
 
 

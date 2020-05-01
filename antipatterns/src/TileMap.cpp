@@ -56,9 +56,9 @@ void TileMap::InitMap(const std::string &file_name) {
     world_size_.y = map_layers.empty() ? 0 : map_layers.front().AsArray().size();
     world_size_.x = world_size_.y == 0 ? 0 : map_layers.front().AsArray().front().AsArray().size();
     //настраиваем размеры карты
-    map_.resize(world_size_.x);
+    map_.resize(world_size_.y);
     for (auto &sub_vec : map_) {
-        sub_vec.resize(world_size_.y);
+        sub_vec.resize(world_size_.x);
     }
     for (const auto &layer_node : map_layers) {
         const std::vector<Json::Node> &layer = layer_node.AsArray();

@@ -1,8 +1,8 @@
 {
   "enemy_system": {
     "tile_size": [
-      64,
-      64
+      62,
+      62
     ],
     "enemies": [
       {

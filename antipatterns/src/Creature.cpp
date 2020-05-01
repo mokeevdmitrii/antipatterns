@@ -72,14 +72,6 @@ sf::Vector2f Creature::GetPosition() const {
     return hitbox_comp_ != nullptr ? hitbox_comp_->GetPosition() : sprite_.getPosition();
 }
 
-const std::unique_ptr<PhysicsComponent> &Creature::GetPhysicsComponent() const {
-    return phys_comp_;
-}
-
-const std::unique_ptr<HitboxComponent> &Creature::GetHitboxComponent() const {
-    return hitbox_comp_;
-}
-
 void Creature::SetPossibleMoveDirections(PossibleDirections directions) {
     if (phys_comp_ != nullptr) {
         phys_comp_->SetPossibleMoveDirections(directions);
@@ -95,6 +87,33 @@ sf::RectangleShape Creature::GetHitbox() const {
     result.setPosition(sprite_.getPosition());
     return result;
 }
+
+bool Creature::Intersects(const sf::RectangleShape &other_hitbox) const {
+    return GetHitbox().getGlobalBounds().intersects(other_hitbox.getGlobalBounds());
+}
+
+bool Creature::Contains(const sf::RectangleShape &other_hitbox) const {
+    sf::FloatRect hitbox_rect = sf::FloatRect(GetHitbox().getPosition(), GetHitbox().getSize());
+    for (size_t point_index = 0; point_index < 4; ++point_index) {
+        if (!hitbox_rect.contains(other_hitbox.getPoint(point_index))) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Creature::Contained(const sf::RectangleShape &other_hitbox) const {
+    sf::FloatRect other_rect = other_hitbox.getGlobalBounds();
+    sf::RectangleShape hitbox = GetHitbox();
+    for (size_t point_index = 0; point_index < 4; ++point_index) {
+        if (!other_rect.contains(hitbox.getPoint(point_index))) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
 
 
 

@@ -76,7 +76,6 @@ void TileMap::UpdateCreature(T &creature, float time_elapsed) {
                                          left_up_pos.y >= borders_pos.y,
                                          left_up_pos.y + size.y <= borders_pos.y + borders_size.y};
     creature->SetPossibleMoveDirections(new_directions);
-
 }
 
 

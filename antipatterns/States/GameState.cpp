@@ -7,7 +7,8 @@
 #include <utility>
 
 const std::unordered_map<std::string, ROOM_ID> GameState::names_to_room_ids_ = {
-        {"init_room", ROOM_ID::INIT_ROOM}, {"boss_room", ROOM_ID::BOSS_ROOM}
+        {"init_room",   ROOM_ID::INIT_ROOM},
+        {"second_room", ROOM_ID::SECOND_ROOM}
 };
 
 
@@ -20,6 +21,7 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
     GameState::InitPlayer();
     GameState::InitUniqueTiles();
     GameState::InitUniqueEnemies();
+    GameState::InitUniqueExits();
     GameState::InitRooms();
     GameState::InitPauseMenu();
 }
@@ -89,6 +91,12 @@ void GameState::InitTextures() {
     if (!textures_["PLAYER"].loadFromFile("../Images/Sprites/Player/hero.png")) {
         throw std::runtime_error("Player texture cannot be loaded from file");
     }
+    if (!textures_["EXITS"].loadFromFile("../Images/Exits/door_prototype.png")) {
+        throw std::runtime_error("Exits texture cannot be loaded from file");
+    }
+    if (!textures_["TILE_MAP"].loadFromFile("../Images/Tiles/temp_tileset.png")) {
+        throw std::runtime_error("Tiles textures cannot be loaded from file");
+    }
 }
 
 void GameState::InitPlayer() {
@@ -102,26 +110,41 @@ void GameState::InitPauseMenu() {
 
 void GameState::InitRooms() {
     const std::map<std::string, Json::Node> rooms_settings = Json::Load("../Config/rooms.json").GetRoot().AsMap();
-    for (const auto& [room_name, room_file_node] : rooms_settings) {
-        rooms_[names_to_room_ids_.at(room_name)] = std::make_unique<Room>(room_file_node.AsString());
+    for (const auto&[room_name, room_settings_json] : rooms_settings) {
+        const auto &room_settings = room_settings_json.AsMap();
+        ROOM_ID room_id = names_to_room_ids_.at(room_name);
+        rooms_[room_id] = std::make_unique<Room>(room_settings.at("file_name").AsString());
+        std::string exits_file_name = room_settings.at("exits").AsString();
+        const std::vector<Json::Node> room_exits_settings = Json::Load(exits_file_name).GetRoot().AsArray();
+        for (const auto &exit_node : room_exits_settings) {
+            const auto &exit_settings_map = exit_node.AsMap();
+            ExitType curr_type = static_cast<ExitType>(exit_settings_map.at("type").AsDouble());
+            std::unique_ptr<Exit> curr_exit = std::make_unique<Exit>(*unique_exits_->at(curr_type));
+            curr_exit->LoadFromMap(exit_settings_map.at("settings").AsMap());
+            rooms_.at(room_id)->AddExit(std::move(curr_exit));
+        }
+        current_room_ = rooms_.at(ROOM_ID::INIT_ROOM).get();
+        current_room_->SetPlayer(player_);
     }
-    current_room_ = rooms_.at(ROOM_ID::INIT_ROOM).get();
-    current_room_->SetPlayer(player_);
 }
+
+
 
 void GameState::InitUniqueEnemies() {
     unique_enemies_ = std::make_shared<std::unordered_map<EnemyType, std::shared_ptr<Enemy>>>();
     const std::map<std::string, Json::Node> enemy_settings = Json::Load(
             "../Config/enemies_settings.json").GetRoot().AsMap();
     /* index 0 */
-    AddUniqueEnemy(EnemyType::ENEMY_SPAWNER, std::make_shared<EnemySpawner>(textures_.at("PLAYER"), enemy_settings.at("EnemySpawner").AsMap()));
+    AddUniqueEnemy(EnemyType::ENEMY_SPAWNER,
+                   std::make_shared<EnemySpawner>(textures_.at("PLAYER"), enemy_settings.at("EnemySpawner").AsMap()));
     /* index 1 will fix this ****-code later*/
-    AddUniqueEnemy(EnemyType::RAT, std::make_shared<Rat>(textures_.at("PLAYER"), enemy_settings.at("Rat").AsMap()));
+    AddUniqueEnemy(EnemyType::RAT,
+                   std::make_shared<Rat>(textures_.at("PLAYER"), enemy_settings.at("Rat").AsMap()));
     EnemySystem::SetUniqueEnemies(unique_enemies_);
 }
 
-void GameState::AddUniqueEnemy(EnemyType enemy_type, const std::shared_ptr<Enemy>& enemy) {
-    if(!unique_enemies_->try_emplace(enemy_type, enemy).second) {
+void GameState::AddUniqueEnemy(EnemyType enemy_type, const std::shared_ptr<Enemy> &enemy) {
+    if (!unique_enemies_->try_emplace(enemy_type, enemy).second) {
         throw std::runtime_error("You didn't load all enemies");
     }
 }
@@ -129,11 +152,9 @@ void GameState::AddUniqueEnemy(EnemyType enemy_type, const std::shared_ptr<Enemy
 void GameState::InitUniqueTiles() {
     unique_tiles_ = std::make_shared<std::unordered_map<TileType, std::unique_ptr<Tile>>>();
     std::map<std::string, Json::Node> settings = Json::Load("../Config/unique_tiles.json").GetRoot().AsMap();
-    std::string texture_file = settings.at("file_name").AsString();
-    textures_["TILE_MAP"].loadFromFile(texture_file);
     int grid_size = static_cast<int>(settings.at("grid_size").AsDouble());
     TileMap::SetGridSize(grid_size);
-    for (const auto& settings_map : settings.at("tiles").AsArray()) {
+    for (const auto &settings_map : settings.at("tiles").AsArray()) {
         sf::IntRect curr_rect;
         TileType curr_type;
         curr_rect.height = curr_rect.width = TileMap::GetGridSize();
@@ -143,6 +164,28 @@ void GameState::InitUniqueTiles() {
         unique_tiles_->try_emplace(curr_type, std::make_unique<Tile>(curr_type, textures_.at("TILE_MAP"), curr_rect));
     }
     TileMap::SetUniqueTiles(unique_tiles_);
+}
+
+void GameState::InitUniqueExits() {
+    unique_exits_ = std::make_shared<std::unordered_map<ExitType, std::unique_ptr<Exit>>>();
+    const std::map<std::string, Json::Node> settings = Json::Load("../Config/unique_exits.json").GetRoot().AsMap();
+    const std::vector<Json::Node> &exits_nodes = settings.at("exits").AsArray();
+    for (const auto &exit_node : exits_nodes) {
+        const auto &exit_settings = exit_node.AsMap();
+        sf::IntRect curr_rect{};
+        ExitType exit_type;
+        curr_rect.height = static_cast<int>(exit_settings.at("height").AsDouble());
+        curr_rect.width = static_cast<int>(exit_settings.at("width").AsDouble());
+        curr_rect.left = static_cast<int>(exit_settings.at("x").AsDouble());
+        curr_rect.top = static_cast<int>(exit_settings.at("y").AsDouble());
+        float exit_hitbox_width = exit_settings.at("hitbox_x").AsFloat();
+        float exit_hitbox_height = exit_settings.at("hitbox_y").AsFloat();
+
+        exit_type = static_cast<ExitType>(exit_settings.at("type").AsDouble());
+        unique_exits_->try_emplace(exit_type, std::make_unique<Exit>(sf::RectangleShape(sf::Vector2f(exit_hitbox_width,
+                                                                                                     exit_hitbox_height)), textures_.at("EXITS"), curr_rect));
+    }
+    Exit::SetUniqueExits(unique_exits_);
 }
 
 

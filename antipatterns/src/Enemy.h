@@ -14,7 +14,7 @@ class Enemy : public Creature {
 public:
     Enemy();
     Enemy(const Enemy& other);
-    ~Enemy();
+    ~Enemy() override;
 
     virtual void UpdatePlayer(float time_elapsed, const std::shared_ptr<Creature>& player);
     void GenerateAttributes(int level);

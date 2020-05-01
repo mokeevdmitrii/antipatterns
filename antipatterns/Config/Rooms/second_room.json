@@ -1,0 +1,9 @@
+{
+  "enemy_system" : {
+    "tile_size" : [62, 62],
+    "enemies" : []
+  },
+  "tile_map": {
+    "tiles": "../Config/TileMaps/init_room.json"
+  }
+}

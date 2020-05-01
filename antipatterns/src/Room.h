@@ -10,11 +10,6 @@
 #include "Player.h"
 #include "Exit.h"
 
-enum ROOM_ID {
-    INIT_ROOM = 0,
-    BOSS_ROOM
-};
-
 class Room {
 public:
     explicit Room(const std::string &file_name);
@@ -28,6 +23,8 @@ public:
     ROOM_ID GetCurrentRoomID() const;
 
     ROOM_ID GetRoomID() const;
+
+    void AddExit(std::unique_ptr<Exit> exit);
 
     void SetPlayer(std::shared_ptr<Creature> player);
 private:
@@ -43,9 +40,9 @@ private:
 
     std::shared_ptr<TileMap> map_;
     std::shared_ptr<Creature> player_{nullptr};
-    std::vector<Exit> exits_;
     std::unique_ptr<EnemySystem> enemy_system_;
-    ROOM_ID room_id_;
+    std::vector<std::unique_ptr<Exit>> exits_;
+    ROOM_ID room_id_{};
 };
 
 

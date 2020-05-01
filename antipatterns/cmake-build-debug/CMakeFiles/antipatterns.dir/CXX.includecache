@@ -970,6 +970,16 @@ unordered_map
 unordered_set
 -
 
+/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Utility.h
+type_traits
+-
+iostream
+-
+memory
+-
+SFML/Audio.hpp
+-
+
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
 ../Components/AttributeComponent.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Components/AttributeComponent.h
@@ -984,10 +994,6 @@ Creature.h
 EnemyTypes.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemyTypes.h
 
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.cpp
-EnemySystem.h
-/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.h
-
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.h
 ../Enemies/EnemySpawner.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Enemies/EnemySpawner.h
@@ -996,7 +1002,45 @@ EnemySystem.h
 
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemyTypes.h
 
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Exit.h
+string
+-
+iostream
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/iostream
+../Components/HitboxComponent.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/Components/HitboxComponent.h
+SFML/Graphics.hpp
+-
+memory
+-
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.h
+Creature.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Room.cpp
+Room.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Room.h
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Room.h
+TileMap.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.h
+EnemySystem.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.h
+Player.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Player.h
+Exit.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Exit.h
+
 /home/dmitry/MIPT/PATTERNS/antipatterns/src/Tile.h
 ../Resources/GraphicsSettings.h
 /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
+
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.h
+Tile.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Tile.h
+Creature.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
+../Resources/Utility.h
+/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Utility.h
 

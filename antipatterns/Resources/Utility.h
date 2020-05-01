@@ -8,6 +8,24 @@
 #include <type_traits>
 #include <iostream>
 #include <memory>
+#include <SFML/Audio.hpp>
+
+
+class Segment {
+private:
+    constexpr static const float abs_eps = 10e-6;
+
+public:
+    Segment(sf::Vector2f first, sf::Vector2f second);
+
+    bool Intersects(const Segment &other);
+
+    bool ContainsPoint(sf::Vector2f point);
+private:
+    std::pair<sf::Vector2f, sf::Vector2f> points_;
+};
+
+
 
 
 

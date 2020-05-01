@@ -29,9 +29,11 @@ private:
     void InitPlayer();
     void InitPauseMenu();
     void InitRooms();
+    void InitUniqueExits();
     void InitUniqueEnemies();
     void AddUniqueEnemy(EnemyType enemy_type, const std::shared_ptr<Enemy>& enemy);
     void InitUniqueTiles();
+
 
     void ChangeRoom(ROOM_ID old_room, ROOM_ID new_room);
 
@@ -42,6 +44,7 @@ private:
     std::shared_ptr<Creature> player_;
     std::shared_ptr<std::unordered_map<EnemyType, std::shared_ptr<Enemy>>> unique_enemies_;
     std::shared_ptr<std::unordered_map<TileType, std::unique_ptr<Tile>>> unique_tiles_;
+    std::shared_ptr<std::unordered_map<ExitType, std::unique_ptr<Exit>>> unique_exits_;
     std::shared_ptr<PauseMenu> pause_menu_;
 };
 
