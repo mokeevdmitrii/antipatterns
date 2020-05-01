@@ -48,9 +48,15 @@ void HitboxComponent::LoadFromMap(const std::map<std::string, Json::Node> &setti
     offset_ = sf::Vector2f(offset_x, offset_y);
 }
 
+sf::RectangleShape HitboxComponent::GetHitbox() const {
+    return hitbox_;
+}
+
 sf::Vector2f HitboxComponent::GetPosition() const {
     return hitbox_.getPosition();
 }
+
+
 
 
 

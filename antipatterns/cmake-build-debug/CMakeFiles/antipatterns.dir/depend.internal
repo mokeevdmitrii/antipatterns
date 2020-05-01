@@ -1080,6 +1080,9 @@ CMakeFiles/antipatterns.dir/Resources/PauseMenu.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/ButtonManager.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h
+CMakeFiles/antipatterns.dir/Resources/Utility.cpp.o
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Utility.cpp
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Utility.h
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o
  ../SFML-2.5.1/include/SFML/Audio.hpp
  ../SFML-2.5.1/include/SFML/Audio/AlResource.hpp
@@ -1186,6 +1189,7 @@ CMakeFiles/antipatterns.dir/States/GameState.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Utility.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h
@@ -1304,6 +1308,7 @@ CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Utility.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.cpp
  /home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.h
@@ -1854,6 +1859,7 @@ CMakeFiles/antipatterns.dir/src/Game.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Utility.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h
@@ -2076,6 +2082,7 @@ CMakeFiles/antipatterns.dir/src/Room.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Utility.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/Enemy.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/EnemySystem.h
@@ -2283,6 +2290,7 @@ CMakeFiles/antipatterns.dir/src/TileMap.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Constants.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Utility.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/Creature.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/Tile.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/src/TileMap.cpp
@@ -2393,6 +2401,7 @@ CMakeFiles/antipatterns.dir/src/main.cpp.o
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/GraphicsSettings.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Json.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h
+ /home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Utility.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/States/MainMenuState.h
  /home/dmitry/MIPT/PATTERNS/antipatterns/States/State.h

@@ -29,9 +29,11 @@ public:
 
     void Render(sf::RenderTarget &target) const;
 
+    void SetPlayer(std::shared_ptr<Creature> player);
     static void SetUniqueEnemies(std::shared_ptr<std::unordered_map<EnemyType, std::shared_ptr<Enemy>>> unique_enemies);
 
 private:
+    void UpdatePlayer(float time_elapsed);
     /* returns new random position on map for [x][y]-tile within the tile */
     /* implement later */
     //sf::Vector2f GeneratePosition(int x, int y);

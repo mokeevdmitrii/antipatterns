@@ -56,6 +56,7 @@ void EnemySystem::CreateEnemy(EnemyParams params, const sf::Vector2f &pos) {
 }
 
 void EnemySystem::Update(float time_elapsed) {
+    UpdatePlayer(time_elapsed);
     for (auto &active_enemy : active_enemies_) {
         active_enemy->Update(time_elapsed);
     }
@@ -68,10 +69,22 @@ void EnemySystem::Render(sf::RenderTarget &target) const {
     }
 }
 
+void EnemySystem::SetPlayer(std::shared_ptr<Creature> player) {
+    player_ = std::move(player);
+}
+
+
 void
 EnemySystem::SetUniqueEnemies(std::shared_ptr<std::unordered_map<EnemyType, std::shared_ptr<Enemy>>> unique_enemies) {
     unique_enemies_ = std::move(unique_enemies);
 }
+
+void EnemySystem::UpdatePlayer(float time_elapsed) {
+    for (auto& enemy_alive : active_enemies_) {
+        enemy_alive->UpdatePlayer(time_elapsed, player_);
+    }
+}
+
 
 
 

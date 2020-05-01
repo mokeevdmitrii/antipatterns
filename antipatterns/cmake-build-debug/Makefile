@@ -609,6 +609,33 @@ Resources/PauseMenu.cpp.s:
 	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/PauseMenu.cpp.s
 .PHONY : Resources/PauseMenu.cpp.s
 
+Resources/Utility.o: Resources/Utility.cpp.o
+
+.PHONY : Resources/Utility.o
+
+# target to build an object file
+Resources/Utility.cpp.o:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Utility.cpp.o
+.PHONY : Resources/Utility.cpp.o
+
+Resources/Utility.i: Resources/Utility.cpp.i
+
+.PHONY : Resources/Utility.i
+
+# target to preprocess a source file
+Resources/Utility.cpp.i:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Utility.cpp.i
+.PHONY : Resources/Utility.cpp.i
+
+Resources/Utility.s: Resources/Utility.cpp.s
+
+.PHONY : Resources/Utility.s
+
+# target to generate assembly for a file
+Resources/Utility.cpp.s:
+	$(MAKE) -f CMakeFiles/antipatterns.dir/build.make CMakeFiles/antipatterns.dir/Resources/Utility.cpp.s
+.PHONY : Resources/Utility.cpp.s
+
 States/GameState.o: States/GameState.cpp.o
 
 .PHONY : States/GameState.o
@@ -1023,6 +1050,9 @@ help:
 	@echo "... Resources/PauseMenu.o"
 	@echo "... Resources/PauseMenu.i"
 	@echo "... Resources/PauseMenu.s"
+	@echo "... Resources/Utility.o"
+	@echo "... Resources/Utility.i"
+	@echo "... Resources/Utility.s"
 	@echo "... States/GameState.o"
 	@echo "... States/GameState.i"
 	@echo "... States/GameState.s"

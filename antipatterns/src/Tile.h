@@ -7,12 +7,13 @@
 
 #include "../Resources/GraphicsSettings.h"
 
-enum TileType {
-    BRICK = 0,
-    SAND = 1,
-    GRASS = 2,
-    MUD = 3,
-    YELLOW_BRICK = 4
+enum class TileType {
+    DEFAULT = 0,
+    BRICK = 1,
+    SAND = 2,
+    GRASS = 3,
+    MUD = 4,
+    YELLOW_BRICK = 5
 };
 
 class Tile {

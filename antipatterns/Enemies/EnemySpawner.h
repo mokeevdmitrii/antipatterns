@@ -17,6 +17,7 @@ public:
     ~EnemySpawner() = default;
 
     void Update(float time_elapsed) override;
+    void UpdatePlayer(float time_elapsed, const std::shared_ptr<Creature>& player) override;
     void Render(sf::RenderTarget &target) const override;
     std::unique_ptr<Enemy> Clone() const override;
 

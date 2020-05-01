@@ -36,6 +36,11 @@ public:
 
     /* getters */
     sf::Vector2f GetPosition() const;
+    void SetPossibleMoveDirections(PossibleDirections directions);
+    sf::RectangleShape GetHitbox() const;
+
+    const std::unique_ptr<PhysicsComponent>& GetPhysicsComponent() const;
+    const std::unique_ptr<HitboxComponent>& GetHitboxComponent() const;
 protected:
     std::unique_ptr<PhysicsComponent> phys_comp_{};
     std::unique_ptr<GraphicsComponent> graph_comp_{};

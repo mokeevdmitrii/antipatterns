@@ -34,6 +34,8 @@ private:
     void InitEnemySystem(const std::map<std::string, Json::Node>& enemy_settings);
     void InitTileMap(const std::map<std::string, Json::Node>& map_settings);
 
+    void UpdateCollisions();
+
     //проверяет все выходы, если игрок стоит хоть на одном, делает этот выход
     //активным!!!
     //if Player.inside(exit.GetHitbox()) - exit.SetActive()

@@ -35,6 +35,13 @@ void EnemySpawner::Update(float time_elapsed) {
     }
 }
 
+void EnemySpawner::UpdatePlayer(float time_elapsed, const std::shared_ptr<Creature> &player) {
+    //Enemy::UpdatePlayer(time_elapsed, player);
+    for (auto &enemy : spawned_enemies_) {
+        enemy->UpdatePlayer(time_elapsed, player);
+    }
+}
+
 void EnemySpawner::Render(sf::RenderTarget &target) const {
     target.draw(sprite_);
     hitbox_comp_->Render(target);
@@ -65,6 +72,8 @@ void EnemySpawner::SetPrototype(std::shared_ptr<Enemy> prototype) {
 void EnemySpawner::UpdateAnimations(float time_elapsed) {
     graph_comp_->Play("PLAYER_IDLE", time_elapsed);
 }
+
+
 
 
 

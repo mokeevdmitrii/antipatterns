@@ -4,6 +4,10 @@
 
 #include "PhysicsComponent.h"
 
+PossibleDirections::PossibleDirections(bool left, bool right, bool up, bool down) : left_(left), right_(right), up_(up), down_(down) {
+
+}
+
 PhysicsComponent::PhysicsComponent(sf::Sprite &sprite, const std::map<std::string, Json::Node> &settings) :
         sprite_(&sprite)  {
     LoadFromMap(settings);
@@ -53,6 +57,10 @@ void PhysicsComponent::Stop() {
     velocity_.x = velocity_.y = 0;
 }
 
+void PhysicsComponent::SetPossibleMoveDirections(PossibleDirections directions) {
+    able_dir = directions;
+}
+
 void PhysicsComponent::StopAxisMoveX() {
     velocity_.x = 0;
 }
@@ -63,8 +71,12 @@ void PhysicsComponent::StopAxisMoveY() {
 
 /* functions */
 void PhysicsComponent::Accelerate(const float time_elapsed, const sf::Vector2f& direction) {
-    velocity_.x += acceleration_ * direction.x * time_elapsed;
-    velocity_.y += acceleration_ * direction.y * time_elapsed;
+    if ((direction.x < 0 && able_dir.left_) || (direction.x > 0 && able_dir.right_)) {
+        velocity_.x += acceleration_ * direction.x * time_elapsed;
+    }
+    if ((direction.y < 0 && able_dir.up_) || (direction.y > 0 && able_dir.down_)) {
+        velocity_.y += acceleration_ * direction.y * time_elapsed;
+    }
 }
 
 void PhysicsComponent::Update(const float time_elapsed) {

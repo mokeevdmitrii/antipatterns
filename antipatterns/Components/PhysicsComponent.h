@@ -19,6 +19,16 @@ enum MovementState {
     MOVING_DOWN
 };
 
+struct PossibleDirections {
+    bool left_{true};
+    bool right_{true};
+    bool up_{true};
+    bool down_{true};
+
+    PossibleDirections() = default;
+    PossibleDirections(bool left, bool right, bool up, bool down);
+};
+
 class PhysicsComponent {
 public:
     PhysicsComponent(sf::Sprite &sprite, const std::map<std::string, Json::Node> &settings);
@@ -36,6 +46,7 @@ public:
 
     /* modifiers */
     /* for collisions in future */
+    void SetPossibleMoveDirections(PossibleDirections directions);
     void Stop();
     void StopAxisMoveX();
     void StopAxisMoveY();
@@ -48,6 +59,7 @@ public:
 private:
     sf::Sprite *sprite_;
 
+    PossibleDirections able_dir;
     sf::Vector2f velocity_;
 
     float max_velocity_;

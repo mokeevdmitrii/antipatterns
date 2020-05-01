@@ -196,6 +196,12 @@
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/PauseMenu.h">
 			<Option target="antipatterns"/>
 		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Utility.cpp">
+			<Option target="antipatterns"/>
+		</Unit>
+		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/Resources/Utility.h">
+			<Option target="antipatterns"/>
+		</Unit>
 		<Unit filename="/home/dmitry/MIPT/PATTERNS/antipatterns/States/GameState.cpp">
 			<Option target="antipatterns"/>
 		</Unit>

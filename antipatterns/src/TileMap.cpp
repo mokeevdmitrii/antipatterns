@@ -12,11 +12,6 @@ TileMap::TileMap(const std::string &map_tile_name) {
     InitMap(map_tile_name);
 }
 
-void TileMap::UpdateTiles(std::unique_ptr<Creature> creature, float time_elapsed /*, EnemySystem& system */) {
-    /* проверка, не вышло ли существо за границы */
-    /* проверка всех плиток в определенном прямоугольнике */
-}
-
 void TileMap::Render(sf::RenderTarget &target) const {
     for (auto &vec_x : map_) {
         for (auto &vec_y : vec_x) {
@@ -50,7 +45,14 @@ sf::Vector2f TileMap::GetGlobalPosition(sf::Vector2i grid_position) const {
 /* initializers */
 
 void TileMap::InitMap(const std::string &file_name) {
-    const std::vector<Json::Node> map_layers = Json::Load(file_name).GetRoot().AsArray();
+    const std::map<std::string, Json::Node> map_settings = Json::Load(file_name).GetRoot().AsMap();
+    const std::vector<Json::Node> shift_nodes = map_settings.at("shift").AsArray();
+    sf::Vector2f shift = sf::Vector2f(shift_nodes.at(0).AsFloat(),
+                                      shift_nodes.at(1).AsFloat());
+    auto borders_map = map_settings.at("borders").AsMap();
+    borders_.setPosition(borders_map.at("pos_x").AsFloat(), borders_map.at("pos_y").AsFloat());
+    borders_.setSize({borders_map.at("width").AsFloat(), borders_map.at("height").AsFloat()});
+    const std::vector<Json::Node> map_layers = map_settings.at("map").AsArray();
     world_size_.y = map_layers.empty() ? 0 : map_layers.front().AsArray().size();
     world_size_.x = world_size_.y == 0 ? 0 : map_layers.front().AsArray().front().AsArray().size();
     //настраиваем размеры карты
@@ -59,13 +61,12 @@ void TileMap::InitMap(const std::string &file_name) {
         sub_vec.resize(world_size_.y);
     }
     for (const auto &layer_node : map_layers) {
-        const std::vector<Json::Node>& layer = layer_node.AsArray();
+        const std::vector<Json::Node> &layer = layer_node.AsArray();
         for (int y_pos = 0; y_pos < world_size_.y; ++y_pos) {
             const std::vector<Json::Node> &row = layer[y_pos].AsArray();
             for (int x_pos = 0; x_pos < world_size_.x; ++x_pos) {
                 auto type = static_cast<TileType>(row[x_pos].AsDouble());
-                map_[y_pos][x_pos].push_back(
-                        unique_tiles_->at(type)->Clone(GetGlobalPosition(sf::Vector2i(x_pos, y_pos))));
+                AddTileLayer(type, x_pos, y_pos, sf::Vector2f());
             }
         }
     }
@@ -74,6 +75,16 @@ void TileMap::InitMap(const std::string &file_name) {
 void TileMap::SetUniqueTiles(std::shared_ptr<std::unordered_map<TileType, std::unique_ptr<Tile>>> unique_tiles) {
     unique_tiles_ = std::move(unique_tiles);
 }
+
+void TileMap::AddTileLayer(TileType type, int x_pos, int y_pos, sf::Vector2f shift) {
+    if (type != TileType::DEFAULT) {
+        sf::Vector2f pos = GetGlobalPosition(sf::Vector2i(x_pos, y_pos));
+        map_.at(y_pos).at(x_pos).push_back(
+                unique_tiles_->at(type)->Clone(sf::Vector2f(pos.x + shift.x, pos.y + shift.y)));
+    }
+}
+
+
 
 
 

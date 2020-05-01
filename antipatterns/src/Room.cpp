@@ -11,6 +11,7 @@ Room::Room(const std::string &file_name) {
 }
 
 void Room::Update(float time_elapsed) {
+    UpdateCollisions();
     if (player_ != nullptr) {
         player_->Update(time_elapsed);
     }
@@ -29,6 +30,7 @@ ROOM_ID Room::GetRoomID() const {
 
 void Room::SetPlayer(std::shared_ptr<Creature> player) {
     player_ = std::move(player);
+    enemy_system_->SetPlayer(player_);
 }
 
 
@@ -38,6 +40,10 @@ void Room::InitEnemySystem(const std::map<std::string, Json::Node> &enemy_settin
 
 void Room::InitTileMap(const std::map<std::string, Json::Node> &map_settings) {
     map_ = std::make_shared<TileMap>(map_settings.at("tiles").AsString());
+}
+
+void Room::UpdateCollisions() {
+    map_->UpdateCreature<std::shared_ptr<Creature>>(player_, 0);
 }
 
 

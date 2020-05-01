@@ -16,6 +16,7 @@ public:
     Enemy(const Enemy& other);
     ~Enemy();
 
+    virtual void UpdatePlayer(float time_elapsed, const std::shared_ptr<Creature>& player);
     void GenerateAttributes(int level);
     virtual std::unique_ptr<Enemy> Clone() const = 0;
 private:

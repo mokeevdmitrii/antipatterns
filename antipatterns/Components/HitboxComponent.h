@@ -26,6 +26,8 @@ public:
     void SetPosition(const sf::Vector2f& position);
     void UpdateCopy(sf::Sprite& sprite);
 
+    sf::RectangleShape GetHitbox() const;
+
     bool CheckCollision(const sf::FloatRect& other) const;
     /* getters */
     sf::Vector2f GetPosition() const;

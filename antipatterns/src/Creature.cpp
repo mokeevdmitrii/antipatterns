@@ -72,6 +72,30 @@ sf::Vector2f Creature::GetPosition() const {
     return hitbox_comp_ != nullptr ? hitbox_comp_->GetPosition() : sprite_.getPosition();
 }
 
+const std::unique_ptr<PhysicsComponent> &Creature::GetPhysicsComponent() const {
+    return phys_comp_;
+}
+
+const std::unique_ptr<HitboxComponent> &Creature::GetHitboxComponent() const {
+    return hitbox_comp_;
+}
+
+void Creature::SetPossibleMoveDirections(PossibleDirections directions) {
+    if (phys_comp_ != nullptr) {
+        phys_comp_->SetPossibleMoveDirections(directions);
+    }
+}
+
+sf::RectangleShape Creature::GetHitbox() const {
+    if (hitbox_comp_ != nullptr) {
+        return hitbox_comp_->GetHitbox();
+    }
+    sf::FloatRect bounds = sprite_.getGlobalBounds();
+    auto result = sf::RectangleShape(sf::Vector2f(bounds.width, bounds.height));
+    result.setPosition(sprite_.getPosition());
+    return result;
+}
+
 
 
 

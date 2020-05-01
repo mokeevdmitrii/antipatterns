@@ -17,6 +17,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/antipatterns.dir/Resources/GraphicsSettings.cpp.o"
   "CMakeFiles/antipatterns.dir/Resources/Json.cpp.o"
   "CMakeFiles/antipatterns.dir/Resources/PauseMenu.cpp.o"
+  "CMakeFiles/antipatterns.dir/Resources/Utility.cpp.o"
   "CMakeFiles/antipatterns.dir/States/GameState.cpp.o"
   "CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o"
   "CMakeFiles/antipatterns.dir/States/State.cpp.o"

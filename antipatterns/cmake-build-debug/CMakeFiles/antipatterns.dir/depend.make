@@ -1080,6 +1080,9 @@ CMakeFiles/antipatterns.dir/Resources/PauseMenu.cpp.o: ../Resources/ButtonManage
 CMakeFiles/antipatterns.dir/Resources/PauseMenu.cpp.o: ../Resources/PauseMenu.cpp
 CMakeFiles/antipatterns.dir/Resources/PauseMenu.cpp.o: ../Resources/PauseMenu.h
 
+CMakeFiles/antipatterns.dir/Resources/Utility.cpp.o: ../Resources/Utility.cpp
+CMakeFiles/antipatterns.dir/Resources/Utility.cpp.o: ../Resources/Utility.h
+
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../SFML-2.5.1/include/SFML/Audio.hpp
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../SFML-2.5.1/include/SFML/Audio/AlResource.hpp
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../SFML-2.5.1/include/SFML/Audio/Export.hpp
@@ -1185,6 +1188,7 @@ CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Resources/Constants.h
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Resources/GraphicsSettings.h
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Resources/Json.h
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Resources/PauseMenu.h
+CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../Resources/Utility.h
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../States/GameState.cpp
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../States/GameState.h
 CMakeFiles/antipatterns.dir/States/GameState.cpp.o: ../States/State.h
@@ -1303,6 +1307,7 @@ CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Resources/Constants.h
 CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Resources/GraphicsSettings.h
 CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Resources/Json.h
 CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Resources/PauseMenu.h
+CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../Resources/Utility.h
 CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../States/GameState.h
 CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../States/MainMenuState.cpp
 CMakeFiles/antipatterns.dir/States/MainMenuState.cpp.o: ../States/MainMenuState.h
@@ -1853,6 +1858,7 @@ CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Resources/Constants.h
 CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Resources/GraphicsSettings.h
 CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Resources/Json.h
 CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Resources/PauseMenu.h
+CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../Resources/Utility.h
 CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../States/GameState.h
 CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../States/MainMenuState.h
 CMakeFiles/antipatterns.dir/src/Game.cpp.o: ../States/State.h
@@ -2075,6 +2081,7 @@ CMakeFiles/antipatterns.dir/src/Room.cpp.o: ../Enemies/Rat.h
 CMakeFiles/antipatterns.dir/src/Room.cpp.o: ../Resources/Constants.h
 CMakeFiles/antipatterns.dir/src/Room.cpp.o: ../Resources/GraphicsSettings.h
 CMakeFiles/antipatterns.dir/src/Room.cpp.o: ../Resources/Json.h
+CMakeFiles/antipatterns.dir/src/Room.cpp.o: ../Resources/Utility.h
 CMakeFiles/antipatterns.dir/src/Room.cpp.o: ../src/Creature.h
 CMakeFiles/antipatterns.dir/src/Room.cpp.o: ../src/Enemy.h
 CMakeFiles/antipatterns.dir/src/Room.cpp.o: ../src/EnemySystem.h
@@ -2282,6 +2289,7 @@ CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Components/PhysicsComponent.h
 CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Resources/Constants.h
 CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Resources/GraphicsSettings.h
 CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Resources/Json.h
+CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../Resources/Utility.h
 CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../src/Creature.h
 CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../src/Tile.h
 CMakeFiles/antipatterns.dir/src/TileMap.cpp.o: ../src/TileMap.cpp
@@ -2392,6 +2400,7 @@ CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Resources/Constants.h
 CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Resources/GraphicsSettings.h
 CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Resources/Json.h
 CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Resources/PauseMenu.h
+CMakeFiles/antipatterns.dir/src/main.cpp.o: ../Resources/Utility.h
 CMakeFiles/antipatterns.dir/src/main.cpp.o: ../States/GameState.h
 CMakeFiles/antipatterns.dir/src/main.cpp.o: ../States/MainMenuState.h
 CMakeFiles/antipatterns.dir/src/main.cpp.o: ../States/State.h
