@@ -24,6 +24,7 @@ class Exit {
 private:
     ROOM_ID id_from_;
     ROOM_ID id_to_;
+    sf::Vector2f _player_pos;
     sf::Sprite sprite_{};
     sf::RectangleShape hitbox_;
 

@@ -78,7 +78,7 @@ void GameState::Render(std::shared_ptr<sf::RenderTarget> target) {
 /* initializers */
 
 void GameState::InitKeybindings() {
-    std::ifstream in("../Config/gamestate_keybindings.txt");
+    std::ifstream in(gamestate_keybindings_file);
     if (in.is_open()) {
         std::string key_str;
         std::string key_bind;
@@ -89,13 +89,13 @@ void GameState::InitKeybindings() {
 }
 
 void GameState::InitTextures() {
-    if (!textures_["PLAYER"].loadFromFile("../Images/Sprites/Player/hero.png")) {
+    if (!textures_["PLAYER"].loadFromFile(player_texture_sheet_file)) {
         throw std::runtime_error("Player texture cannot be loaded from file");
     }
-    if (!textures_["EXITS"].loadFromFile("../Images/Exits/door_prototype.png")) {
+    if (!textures_["EXITS"].loadFromFile(exits_texture_sheet_file)) {
         throw std::runtime_error("Exits texture cannot be loaded from file");
     }
-    if (!textures_["TILE_MAP"].loadFromFile("../Images/Tiles/temp_tileset.png")) {
+    if (!textures_["TILE_MAP"].loadFromFile(tileset_texture_sheet_file )) {
         throw std::runtime_error("Tiles textures cannot be loaded from file");
     }
 }
@@ -134,7 +134,7 @@ void GameState::InitRooms() {
 void GameState::InitUniqueEnemies() {
     unique_enemies_ = std::make_shared<std::unordered_map<EnemyType, std::shared_ptr<Enemy>>>();
     const std::map<std::string, Json::Node> enemy_settings = Json::Load(
-            "../Config/enemies_settings.json").GetRoot().AsMap();
+            unique_enemies_settings_file).GetRoot().AsMap();
     /* index 0 */
     AddUniqueEnemy(EnemyType::ENEMY_SPAWNER,
                    std::make_shared<EnemySpawner>(textures_.at("PLAYER"), enemy_settings.at("EnemySpawner").AsMap()));
@@ -152,7 +152,7 @@ void GameState::AddUniqueEnemy(EnemyType enemy_type, const std::shared_ptr<Enemy
 
 void GameState::InitUniqueTiles() {
     unique_tiles_ = std::make_shared<std::unordered_map<TileType, std::unique_ptr<Tile>>>();
-    std::map<std::string, Json::Node> settings = Json::Load("../Config/unique_tiles.json").GetRoot().AsMap();
+    std::map<std::string, Json::Node> settings = Json::Load(unique_tiles_settings_file ).GetRoot().AsMap();
     int grid_size = static_cast<int>(settings.at("grid_size").AsDouble());
     TileMap::SetGridSize(grid_size);
     for (const auto &settings_map : settings.at("tiles").AsArray()) {
@@ -169,7 +169,7 @@ void GameState::InitUniqueTiles() {
 
 void GameState::InitUniqueExits() {
     unique_exits_ = std::make_shared<std::unordered_map<ExitType, std::unique_ptr<Exit>>>();
-    const std::map<std::string, Json::Node> settings = Json::Load("../Config/unique_exits.json").GetRoot().AsMap();
+    const std::map<std::string, Json::Node> settings = Json::Load(unique_exits_settings_file).GetRoot().AsMap();
     const std::vector<Json::Node> &exits_nodes = settings.at("exits").AsArray();
     for (const auto &exit_node : exits_nodes) {
         const auto &exit_settings = exit_node.AsMap();

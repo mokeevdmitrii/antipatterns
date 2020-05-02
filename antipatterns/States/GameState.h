@@ -10,6 +10,7 @@
 #include "../Enemies/Rat.h"
 #include "../src/TileMap.h"
 #include "../src/Room.h"
+#include "../Resources/Filenames.h"
 
 class GameState : public State {
 public:
