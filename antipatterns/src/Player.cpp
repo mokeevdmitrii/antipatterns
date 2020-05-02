@@ -5,7 +5,7 @@
 #include "Player.h"
 
 
-Player::Player(sf::Vector2f position, sf::Texture &texture_sheet, const std::string &file_name,
+Player::Player(sf::Vector2f position, const sf::Texture &texture_sheet, const std::string &file_name,
                std::shared_ptr<std::unordered_map<std::string, int>> keybindings) : keybindings_(
         std::move(keybindings)) {
     const std::map<std::string, Json::Node> settings = Json::Load(file_name).GetRoot().AsMap();

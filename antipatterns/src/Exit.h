@@ -11,12 +11,12 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 
-enum ROOM_ID {
+enum class ROOM_ID {
     INIT_ROOM = 0,
     SECOND_ROOM
 };
 
-enum ExitType {
+enum class ExitType {
     DOOR = 0,
 };
 
@@ -28,14 +28,12 @@ private:
     sf::Sprite sprite_{};
     sf::RectangleShape hitbox_;
 
-    static std::shared_ptr<std::unordered_map<ExitType, std::unique_ptr<Exit>>> unique_exits_;
-
     void SetRoomIDs(ROOM_ID from, ROOM_ID to);
 public:
 
     Exit(ROOM_ID from, ROOM_ID to);
 
-    Exit(sf::RectangleShape hitbox, sf::Texture& texture_sheet, sf::IntRect texture_rect);
+    Exit(sf::RectangleShape hitbox, const sf::Texture &texture_sheet, sf::IntRect texture_rect);
 
     ROOM_ID GetRoomIdFrom() const;
 
@@ -49,7 +47,6 @@ public:
 
     sf::Vector2f GetPosition() const;
 
-    static void SetUniqueExits(std::shared_ptr<std::unordered_map<ExitType, std::unique_ptr<Exit>>> unique_exits);
 };
 
 

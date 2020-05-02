@@ -64,8 +64,6 @@ protected:
     bool _paused = false;
     MousePositions mouse_positions_;
 
-    /* from resources */
-    std::unordered_map<std::string, sf::Texture> textures_;
 private:
     /* still nothing */
 

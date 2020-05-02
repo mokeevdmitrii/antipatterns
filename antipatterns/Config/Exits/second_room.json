@@ -1,3 +1,14 @@
 [
-  
+  {
+    "type" : 0,
+    "settings" : {
+      "pos_x": 300,
+      "pos_y": 300,
+      "offset_x": 0,
+      "offset_y": 0,
+      "id_from": 1,
+      "id_to": 0,
+      "exit_type": 0
+    }
+  }
 ]

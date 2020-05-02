@@ -30,7 +30,7 @@ public:
     /* initializers */
     void SetTexture(sf::Texture& texture);
     void InitPhysicsComponent(const std::map<std::string, Json::Node> &settings);
-    void InitGraphicsComponent(sf::Texture& texture_sheet, const std::map<std::string, Json::Node> &settings);
+    void InitGraphicsComponent(const sf::Texture &texture_sheet, const std::map<std::string, Json::Node> &settings);
     void InitHitboxComponent(const std::map<std::string, Json::Node> &settings);
     void InitAttributeComponent(const std::map<std::string, Json::Node> &settings);
 

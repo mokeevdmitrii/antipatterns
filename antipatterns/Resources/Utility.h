@@ -9,6 +9,7 @@
 #include <iostream>
 #include <memory>
 #include <SFML/Audio.hpp>
+#include "../src/Tile.h"
 
 
 class Segment {

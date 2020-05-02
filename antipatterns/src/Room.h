@@ -5,10 +5,9 @@
 #ifndef ANTIPATTERNS_ROOM_H
 #define ANTIPATTERNS_ROOM_H
 
-#include "TileMap.h"
-#include "EnemySystem.h"
 #include "Player.h"
-#include "Exit.h"
+#include "UniqueDatabase.h"
+#include "EnemySystem.h"
 
 class Room {
 public:
@@ -18,9 +17,8 @@ public:
 
     void Render(sf::RenderTarget &target);
 
-    //идёт по всем exit-ам, спрашивает у них ROOM_ID, если не совпадает с текущим,
-    //возвращает не совпадающий!
-    ROOM_ID GetCurrentRoomID() const;
+    //nullptr if no exit, else ptr to first active exit found
+    const Exit* GetActiveExit() const;
 
     ROOM_ID GetRoomID() const;
 
@@ -33,10 +31,6 @@ private:
 
     void UpdateCollisions();
 
-    //проверяет все выходы, если игрок стоит хоть на одном, делает этот выход
-    //активным!!!
-    //if Player.inside(exit.GetHitbox()) - exit.SetActive()
-    void UpdatePlayerExit();
 
     std::shared_ptr<TileMap> map_;
     std::shared_ptr<Creature> player_{nullptr};

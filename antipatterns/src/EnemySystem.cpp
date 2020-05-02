@@ -9,13 +9,13 @@ const std::unordered_map<std::string, EnemyType> EnemySystem::names_to_types_ = 
         {"rat",           EnemyType::RAT}
 };
 
-std::shared_ptr<std::unordered_map<EnemyType, std::shared_ptr<Enemy>>> EnemySystem::unique_enemies_ = nullptr;
 
 /* constructors and destructors */
 
 
-EnemySystem::EnemySystem(const std::map<std::string, Json::Node> &enemies_settings) {
-    LoadEnemies(enemies_settings);
+EnemySystem::EnemySystem(const std::map<std::string, Json::Node> &enemies_settings,
+                         const std::unordered_map<EnemyType, std::shared_ptr<Enemy>> &unique_enemies) {
+    LoadEnemies(enemies_settings, unique_enemies);
 }
 
 EnemySystem::~EnemySystem() {
@@ -23,7 +23,8 @@ EnemySystem::~EnemySystem() {
 }
 
 
-void EnemySystem::LoadEnemies(const std::map<std::string, Json::Node> &enemies_settings) {
+void EnemySystem::LoadEnemies(const std::map<std::string, Json::Node> &enemies_settings,
+                              const std::unordered_map<EnemyType, std::shared_ptr<Enemy>> &unique_enemies) {
     std::vector<Json::Node> tile_size_array = enemies_settings.at("tile_size").AsArray();
     sf::Vector2i tile_size = sf::Vector2i(tile_size_array.at(0).AsDouble(), tile_size_array.at(1).AsDouble());
     const std::vector<Json::Node> enemies = enemies_settings.at("enemies").AsArray();
@@ -38,25 +39,28 @@ void EnemySystem::LoadEnemies(const std::map<std::string, Json::Node> &enemies_s
         auto json_pos = enemy_settings.at("pos").AsArray();
         auto rel_pos = sf::Vector2f(json_pos.at(0).AsDouble(), json_pos.at(1).AsDouble());
         CreateEnemy({enemy_type, enemy_level, type_to_spawn},
-                    sf::Vector2f(rel_pos.x * tile_size.x, rel_pos.y * tile_size.y));
+                    sf::Vector2f(rel_pos.x * tile_size.x, rel_pos.y * tile_size.y), unique_enemies);
     }
 }
 
 
-void EnemySystem::CreateEnemy(EnemyParams params, const sf::Vector2f &pos) {
-    std::unique_ptr<Enemy> clone = unique_enemies_->at(params._type)->Clone();
+void EnemySystem::CreateEnemy(EnemyParams params, const sf::Vector2f &pos,
+                              const std::unordered_map<EnemyType, std::shared_ptr<Enemy>> &unique_enemies) {
+    std::unique_ptr<Enemy> clone = unique_enemies.at(params._type)->Clone();
     clone->GenerateAttributes(params._level);
     /* if is a correct-defined spawner */
     if (params._type_to_spawn != EnemyType::DEFAULT) {
         auto &_spawner = dynamic_cast<EnemySpawner &>(*clone);
-        _spawner.SetPrototype(unique_enemies_->at(params._type_to_spawn));
+        _spawner.SetPrototype(unique_enemies.at(params._type_to_spawn));
     }
     clone->SetPosition(pos);
     active_enemies_.push_back(std::move(clone));
 }
 
 void EnemySystem::Update(float time_elapsed) {
-    UpdatePlayer(time_elapsed);
+    if (player_ != nullptr) {
+        UpdatePlayer(time_elapsed);
+    }
     for (auto &active_enemy : active_enemies_) {
         active_enemy->Update(time_elapsed);
     }
@@ -74,13 +78,8 @@ void EnemySystem::SetPlayer(std::shared_ptr<Creature> player) {
 }
 
 
-void
-EnemySystem::SetUniqueEnemies(std::shared_ptr<std::unordered_map<EnemyType, std::shared_ptr<Enemy>>> unique_enemies) {
-    unique_enemies_ = std::move(unique_enemies);
-}
-
 void EnemySystem::UpdatePlayer(float time_elapsed) {
-    for (auto& enemy_alive : active_enemies_) {
+    for (auto &enemy_alive : active_enemies_) {
         enemy_alive->UpdatePlayer(time_elapsed, player_);
     }
 }

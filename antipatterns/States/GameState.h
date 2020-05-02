@@ -26,26 +26,17 @@ public:
 private:
     /* initializers */
     void InitKeybindings() override;
-    void InitTextures();
     void InitPlayer();
     void InitPauseMenu();
     void InitRooms();
-    void InitUniqueExits();
-    void InitUniqueEnemies();
-    void AddUniqueEnemy(EnemyType enemy_type, const std::shared_ptr<Enemy>& enemy);
-    void InitUniqueTiles();
-
 
     void ChangeRoom(ROOM_ID old_room, ROOM_ID new_room);
 
     /* thinking about moving player somewhere else */
-    static const std::unordered_map<std::string, ROOM_ID> names_to_room_ids_;
+    static const std::unordered_map<std::string, ROOM_ID> rooms_names_to_ids;
     std::unordered_map<ROOM_ID, std::unique_ptr<Room>> rooms_;
-    Room* current_room_{nullptr};
+    ROOM_ID current_room_id{ROOM_ID::INIT_ROOM};
     std::shared_ptr<Creature> player_;
-    std::shared_ptr<std::unordered_map<EnemyType, std::shared_ptr<Enemy>>> unique_enemies_;
-    std::shared_ptr<std::unordered_map<TileType, std::unique_ptr<Tile>>> unique_tiles_;
-    std::shared_ptr<std::unordered_map<ExitType, std::unique_ptr<Exit>>> unique_exits_;
     std::shared_ptr<PauseMenu> pause_menu_;
 };
 

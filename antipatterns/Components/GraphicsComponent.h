@@ -10,7 +10,7 @@
 class GraphicsComponent {
 public:
 
-    GraphicsComponent(sf::Sprite &sprite, sf::Texture &texture_sheet, const std::map<std::string, Json::Node>& settings);
+    GraphicsComponent(sf::Sprite &sprite, const sf::Texture &texture_sheet, const std::map<std::string, Json::Node>& settings);
     GraphicsComponent(const GraphicsComponent& other);
     GraphicsComponent& operator = (const GraphicsComponent& other);
     ~GraphicsComponent();
@@ -35,7 +35,7 @@ private:
         constexpr static float TIME_NORMALIZE{100};
         /* variables */
         sf::Sprite* sprite_;
-        sf::Texture &texture_sheet_;
+        const sf::Texture &texture_sheet_;
         float time_to_animate_;
         float time_{0};
         sf::IntRect start_rect_;
@@ -45,7 +45,7 @@ private:
         bool is_done_;
 
         /* constructor */
-        Animation(sf::Sprite *sprite, sf::Texture &texture_sheet, float anim_time, int start_frame_x, int start_frame_y,
+        Animation(sf::Sprite *sprite, const sf::Texture &texture_sheet, float anim_time, int start_frame_x, int start_frame_y,
                   int end_frame_x, int end_frame_y, sf::Vector2i rect_params);
         Animation(const Animation& other) = default;
         Animation&operator = (const Animation& other) = delete;
@@ -61,7 +61,7 @@ private:
     void CheckLastAnimation(const std::string& animation_key);
 
     sf::Sprite* _sprite;
-    sf::Texture& _texture_sheet;
+    const sf::Texture& _texture_sheet;
     std::unordered_map<std::string, std::unique_ptr<Animation>> _animations;
     Animation* _last_animation{nullptr};
     Animation* _prior_animation{nullptr};

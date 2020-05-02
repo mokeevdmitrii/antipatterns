@@ -16,21 +16,21 @@ struct EnemyParams {
 
 class EnemySystem {
 public:
-    explicit EnemySystem(const std::map<std::string, Json::Node> &enemies_settings);
+    explicit EnemySystem(const std::map<std::string, Json::Node> &enemies_settings,
+                         const std::unordered_map<EnemyType, std::shared_ptr<Enemy>> &unique_enemies);
 
     ~EnemySystem();
 
-    void LoadEnemies(const std::map<std::string, Json::Node> &enemies_settings);
+    void LoadEnemies(const std::map<std::string, Json::Node> &enemies_settings, const std::unordered_map<EnemyType, std::shared_ptr<Enemy>> &unique_enemies);
 
     /* add and create will be private with other signature */
-    void CreateEnemy(EnemyParams params, const sf::Vector2f &pos);
+    void CreateEnemy(EnemyParams params, const sf::Vector2f &pos, const std::unordered_map<EnemyType, std::shared_ptr<Enemy>> &unique_enemies);
 
     void Update(float time_elapsed);
 
     void Render(sf::RenderTarget &target) const;
 
     void SetPlayer(std::shared_ptr<Creature> player);
-    static void SetUniqueEnemies(std::shared_ptr<std::unordered_map<EnemyType, std::shared_ptr<Enemy>>> unique_enemies);
 
 private:
     void UpdatePlayer(float time_elapsed);
@@ -44,7 +44,6 @@ private:
     std::list<std::unique_ptr<Enemy>> dead_enemies_;
     std::shared_ptr<Creature> player_;
 
-    static std::shared_ptr<std::unordered_map<EnemyType, std::shared_ptr<Enemy>>> unique_enemies_;
     static const std::unordered_map<std::string, EnemyType> names_to_types_;
 };
 

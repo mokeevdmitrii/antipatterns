@@ -56,7 +56,7 @@ void Creature::InitPhysicsComponent(const std::map<std::string, Json::Node> &set
     phys_comp_ = std::make_unique<PhysicsComponent>(sprite_, settings);
 }
 
-void Creature::InitGraphicsComponent(sf::Texture& texture_sheet, const std::map<std::string, Json::Node> &settings) {
+void Creature::InitGraphicsComponent(const sf::Texture &texture_sheet, const std::map<std::string, Json::Node> &settings) {
     graph_comp_ = std::make_unique<GraphicsComponent>(sprite_, texture_sheet, settings);
 }
 

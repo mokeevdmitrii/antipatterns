@@ -6,10 +6,9 @@
 
 int TileMap::grid_size_ = 62;
 
-std::shared_ptr<std::unordered_map<TileType, std::unique_ptr<Tile>>> TileMap::unique_tiles_ = nullptr;
-
-TileMap::TileMap(const std::string &map_tile_name) {
-    InitMap(map_tile_name);
+TileMap::TileMap(const std::string &map_tile_name,
+                 const std::unordered_map<TileType, std::unique_ptr<Tile>> &unique_tiles) {
+    InitMap(map_tile_name, unique_tiles);
 }
 
 void TileMap::Render(sf::RenderTarget &target) const {
@@ -44,7 +43,8 @@ sf::Vector2f TileMap::GetGlobalPosition(sf::Vector2i grid_position) const {
 
 /* initializers */
 
-void TileMap::InitMap(const std::string &file_name) {
+void TileMap::InitMap(const std::string &file_name,
+                      const std::unordered_map<TileType, std::unique_ptr<Tile>> &unique_tiles) {
     const std::map<std::string, Json::Node> map_settings = Json::Load(file_name).GetRoot().AsMap();
     const std::vector<Json::Node> shift_nodes = map_settings.at("shift").AsArray();
     sf::Vector2f shift = sf::Vector2f(shift_nodes.at(0).AsFloat(),
@@ -66,21 +66,18 @@ void TileMap::InitMap(const std::string &file_name) {
             const std::vector<Json::Node> &row = layer[y_pos].AsArray();
             for (int x_pos = 0; x_pos < world_size_.x; ++x_pos) {
                 auto type = static_cast<TileType>(row[x_pos].AsDouble());
-                AddTileLayer(type, x_pos, y_pos, sf::Vector2f());
+                AddTileLayer(type, x_pos, y_pos, shift, unique_tiles);
             }
         }
     }
 }
 
-void TileMap::SetUniqueTiles(std::shared_ptr<std::unordered_map<TileType, std::unique_ptr<Tile>>> unique_tiles) {
-    unique_tiles_ = std::move(unique_tiles);
-}
-
-void TileMap::AddTileLayer(TileType type, int x_pos, int y_pos, sf::Vector2f shift) {
+void TileMap::AddTileLayer(TileType type, int x_pos, int y_pos, sf::Vector2f shift,
+                           const std::unordered_map<TileType, std::unique_ptr<Tile>> &unique_tiles) {
     if (type != TileType::DEFAULT) {
         sf::Vector2f pos = GetGlobalPosition(sf::Vector2i(x_pos, y_pos));
         map_.at(y_pos).at(x_pos).push_back(
-                unique_tiles_->at(type)->Clone(sf::Vector2f(pos.x + shift.x, pos.y + shift.y)));
+                unique_tiles.at(type)->Clone(sf::Vector2f(pos.x + shift.x, pos.y + shift.y)));
     }
 }
 

@@ -5,9 +5,8 @@
 #include "Exit.h"
 using namespace sf;
 
-std::shared_ptr<std::unordered_map<ExitType, std::unique_ptr<Exit>>> Exit::unique_exits_ = nullptr;
 
-Exit::Exit(sf::RectangleShape hitbox, sf::Texture &texture_sheet, sf::IntRect texture_rect) {
+Exit::Exit(sf::RectangleShape hitbox, const Texture &texture_sheet, sf::IntRect texture_rect) {
     hitbox_ = std::move(hitbox);
     sprite_.setTexture(texture_sheet);
     sprite_.setTextureRect(texture_rect);
@@ -53,11 +52,6 @@ void Exit::SetRoomIDs(ROOM_ID from, ROOM_ID to) {
     id_from_ = from;
     id_to_ = to;
 }
-
-void Exit::SetUniqueExits(std::shared_ptr<std::unordered_map<ExitType, std::unique_ptr<Exit>>> unique_exits) {
-    unique_exits_ = std::move(unique_exits);
-}
-
 
 
 

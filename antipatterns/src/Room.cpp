@@ -27,16 +27,15 @@ void Room::Render(sf::RenderTarget &target) {
     player_->Render(target);
 }
 
-ROOM_ID Room::GetCurrentRoomID() const {
-    ROOM_ID current_id = room_id_;
+
+const Exit *Room::GetActiveExit() const {
     for (const auto& exit : exits_) {
         const sf::RectangleShape& hitbox = exit->GetHitbox();
         if (player_->ContainedIn(hitbox)) {
-            current_id = exit->GetRoomIdTo();
-            break;
+            return exit.get();
         }
     }
-    return current_id;
+    return nullptr;
 }
 
 ROOM_ID Room::GetRoomID() const {
@@ -55,16 +54,20 @@ void Room::SetPlayer(std::shared_ptr<Creature> player) {
 
 
 void Room::InitEnemySystem(const std::map<std::string, Json::Node> &enemy_settings) {
-    enemy_system_ = std::make_unique<EnemySystem>(enemy_settings);
+    enemy_system_ = std::make_unique<EnemySystem>(enemy_settings, UniqueDatabase::Instance().GetData().enemies);
 }
 
 void Room::InitTileMap(const std::map<std::string, Json::Node> &map_settings) {
-    map_ = std::make_shared<TileMap>(map_settings.at("tiles").AsString());
+    map_ = std::make_shared<TileMap>(map_settings.at("tiles").AsString(), UniqueDatabase::Instance().GetData().tiles);
 }
 
 void Room::UpdateCollisions() {
-    map_->UpdateCreature<std::shared_ptr<Creature>>(player_, 0);
+    if (player_ != nullptr) {
+        map_->UpdateCreature<std::shared_ptr<Creature>>(player_, 0);
+    }
 }
+
+
 
 
 

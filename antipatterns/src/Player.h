@@ -8,12 +8,11 @@
 
 #include "Creature.h"
 
-class PlayerInputComponent;
 
 /* здесь я сижу сейчас */
 class Player : public Creature {
 public:
-    Player(sf::Vector2f position, sf::Texture &texture_sheet, const std::string &file_name,
+    Player(sf::Vector2f position, const sf::Texture &texture_sheet, const std::string &file_name,
            std::shared_ptr<std::unordered_map<std::string, int>> keybindings);
     ~Player() override;
     /* special input functions */

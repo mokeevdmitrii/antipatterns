@@ -26,7 +26,7 @@
 class TileMap {
     using Map = std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>>;
 public:
-    TileMap(const std::string &map_tile_name);
+    explicit TileMap(const std::string &map_tile_name, const std::unordered_map<TileType, std::unique_ptr<Tile>>& unique_tiles);
 
     ~TileMap() = default;
 
@@ -49,16 +49,13 @@ public:
 
     sf::Vector2f GetGlobalPosition(sf::Vector2i grid_position) const;
 
-    void AddTileLayer(TileType type, int x_pos, int y_pos, sf::Vector2f shift);
-
-    static void SetUniqueTiles(std::shared_ptr<std::unordered_map<TileType, std::unique_ptr<Tile>>> unique_tiles);
+    void AddTileLayer(TileType type, int x_pos, int y_pos, sf::Vector2f shift, const std::unordered_map<TileType, std::unique_ptr<Tile>>& unique_tiles);
 
 private:
     /* initializers */
-    void InitMap(const std::string &file_name);
+    void InitMap(const std::string &file_name, const std::unordered_map<TileType, std::unique_ptr<Tile>>& unique_tiles);
 
     std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>> map_;
-    static std::shared_ptr<std::unordered_map<TileType, std::unique_ptr<Tile>>> unique_tiles_;
     static int grid_size_;
     sf::Vector2i world_size_;
     sf::RectangleShape borders_;

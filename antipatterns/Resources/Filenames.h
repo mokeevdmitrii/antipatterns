@@ -14,7 +14,9 @@ static const std::string player_texture_sheet_file = "../Images/Sprites/Player/h
 static const std::string exits_texture_sheet_file = "../Images/Exits/door_prototype.png";
 static const std::string tileset_texture_sheet_file = "../Images/Tiles/temp_tileset.png";
 
-static const std::string unique_enemies_settings_file = "../Config/enemies_settings.json";
+static const std::string unique_data_file = "../Config/unique_data.json";
+
+static const std::string unique_enemies_settings_file = "../Config/unique_enemies.json";
 static const std::string unique_tiles_settings_file = "../Config/unique_tiles.json";
 static const std::string unique_exits_settings_file = "../Config/unique_exits.json";
 

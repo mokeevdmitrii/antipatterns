@@ -4,7 +4,7 @@
 
 #include "GraphicsComponent.h"
 
-GraphicsComponent::GraphicsComponent(sf::Sprite &sprite, sf::Texture &texture_sheet,
+GraphicsComponent::GraphicsComponent(sf::Sprite &sprite, const sf::Texture &texture_sheet,
                                      const std::map<std::string, Json::Node> &settings) : _sprite(&sprite), _texture_sheet(texture_sheet) {
     LoadFromMap(settings);
 }
@@ -95,7 +95,7 @@ GraphicsComponent::GraphicsComponent(const GraphicsComponent& other) : _texture_
     *this = other;
 }
 
-GraphicsComponent::Animation::Animation(sf::Sprite *sprite, sf::Texture &texture_sheet, float anim_time,
+GraphicsComponent::Animation::Animation(sf::Sprite *sprite, const sf::Texture &texture_sheet, float anim_time,
                                         int start_frame_x, int start_frame_y,
                                         int end_frame_x, int end_frame_y, sf::Vector2i rect_params) : sprite_(sprite),
                                                                                                       texture_sheet_(
