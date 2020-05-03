@@ -32,7 +32,7 @@ void Rat::Render(sf::RenderTarget &target) const {
 
 
 void Rat::UpdateAnimations(float time_elapsed) {
-    graph_comp_->Play("PLAYER_IDLE", time_elapsed);
+    Creature::UpdateMoveAnimations(time_elapsed);
 }
 
 std::unique_ptr<Enemy> Rat::Clone() const {

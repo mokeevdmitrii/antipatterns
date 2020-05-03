@@ -11,20 +11,26 @@
 #include <SFML/Audio.hpp>
 #include "../src/Tile.h"
 
+namespace Utility {
 
-class Segment {
-private:
-    constexpr static const float abs_eps = 10e-6;
+    float GetDistance(sf::Vector2f lhs, sf::Vector2f rhs);
 
-public:
-    Segment(sf::Vector2f first, sf::Vector2f second);
+    class Segment {
+    private:
+        constexpr static const float abs_eps = 10e-6;
 
-    bool Intersects(const Segment &other);
+    public:
+        Segment(sf::Vector2f first, sf::Vector2f second);
 
-    bool ContainsPoint(sf::Vector2f point);
-private:
-    std::pair<sf::Vector2f, sf::Vector2f> points_;
-};
+        bool Intersects(const Segment &other);
+
+        bool ContainsPoint(sf::Vector2f point);
+
+    private:
+        std::pair<sf::Vector2f, sf::Vector2f> points_;
+    };
+
+}
 
 
 

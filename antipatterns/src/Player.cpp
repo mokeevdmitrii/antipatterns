@@ -37,31 +37,7 @@ void Player::Render(sf::RenderTarget &target) const {
 
 
 void Player::UpdateAnimations(float time_elapsed) {
-    MovementState state = phys_comp_->GetMovementState();
-    if (state == MovementState::IDLE) {
-        //std::cout << "idle" << std::endl;
-        MovementState last_direction = phys_comp_->GetLastMoveDirection();
-        if (last_direction == MovementState::IDLE || last_direction == MovementState::MOVING_DOWN) {
-            graph_comp_->Play("IDLE_DOWN", time_elapsed);
-        } else if (last_direction == MovementState::MOVING_UP) {
-            graph_comp_->Play("IDLE_UP", time_elapsed);
-        } else if (last_direction == MovementState::MOVING_LEFT) {
-            graph_comp_->Play("IDLE_LEFT", time_elapsed);
-        } else if (last_direction == MovementState::MOVING_RIGHT) {
-            graph_comp_->Play("IDLE_RIGHT", time_elapsed);
-        }
-    } else {
-        //std::cout << "moving" << std::endl;
-        if (state == MOVING_DOWN) {
-            graph_comp_->Play("MOVING_DOWN", time_elapsed, phys_comp_->GetVelocity().y / phys_comp_->GetMaxVelocity());
-        } else if (state == MOVING_UP) {
-            graph_comp_->Play("MOVING_UP", time_elapsed, phys_comp_->GetVelocity().y / phys_comp_->GetMaxVelocity());
-        } else if (state == MOVING_LEFT) {
-            graph_comp_->Play("MOVING_LEFT", time_elapsed, phys_comp_->GetVelocity().x / phys_comp_->GetMaxVelocity());
-        } else if (state == MOVING_RIGHT) {
-            graph_comp_->Play("MOVING_RIGHT", time_elapsed, phys_comp_->GetVelocity().x / phys_comp_->GetMaxVelocity());
-        }
-    }
+    Creature::UpdateMoveAnimations(time_elapsed);
 }
 
 

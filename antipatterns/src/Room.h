@@ -32,9 +32,9 @@ private:
     void UpdateCollisions();
 
 
-    std::shared_ptr<TileMap> map_;
     std::shared_ptr<Creature> player_{nullptr};
-    std::unique_ptr<EnemySystem> enemy_system_;
+    std::unique_ptr<TileMap> map_{nullptr};
+    std::unique_ptr<EnemySystem> enemy_system_{nullptr};
     std::vector<std::unique_ptr<Exit>> exits_;
     ROOM_ID room_id_{};
 };

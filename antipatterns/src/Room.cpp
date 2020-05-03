@@ -58,7 +58,7 @@ void Room::InitEnemySystem(const std::map<std::string, Json::Node> &enemy_settin
 }
 
 void Room::InitTileMap(const std::map<std::string, Json::Node> &map_settings) {
-    map_ = std::make_shared<TileMap>(map_settings.at("tiles").AsString(), UniqueDatabase::Instance().GetData().tiles);
+    map_ = std::make_unique<TileMap>(map_settings.at("tiles").AsString(), UniqueDatabase::Instance().GetData().tiles);
 }
 
 void Room::UpdateCollisions() {

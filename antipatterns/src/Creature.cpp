@@ -119,6 +119,37 @@ bool Creature::ContainedIn(const sf::RectangleShape &other_hitbox) const {
     return true;
 }
 
+void Creature::UpdateMoveAnimations(float time_elapsed) {
+    MovementState state = phys_comp_->GetMovementState();
+    if (state == MovementState::IDLE) {
+        MovementState last_direction = phys_comp_->GetLastMoveDirection();
+        if (last_direction == MovementState::IDLE || last_direction == MovementState::MOVING_DOWN) {
+            graph_comp_->Play("IDLE_DOWN", time_elapsed);
+        } else if (last_direction == MovementState::MOVING_UP) {
+            graph_comp_->Play("IDLE_UP", time_elapsed);
+        } else if (last_direction == MovementState::MOVING_LEFT) {
+            graph_comp_->Play("IDLE_LEFT", time_elapsed);
+        } else if (last_direction == MovementState::MOVING_RIGHT) {
+            graph_comp_->Play("IDLE_RIGHT", time_elapsed);
+        }
+    } else {
+        if (state == MovementState::MOVING_DOWN) {
+            graph_comp_->Play("MOVING_DOWN", time_elapsed, std::abs(phys_comp_->GetVelocity().y) / phys_comp_->GetMaxVelocity());
+        } else if (state == MovementState::MOVING_UP) {
+            graph_comp_->Play("MOVING_UP", time_elapsed, std::abs(phys_comp_->GetVelocity().y) / phys_comp_->GetMaxVelocity());
+        } else if (state == MovementState::MOVING_LEFT) {
+            graph_comp_->Play("MOVING_LEFT", time_elapsed, std::abs(phys_comp_->GetVelocity().x) / phys_comp_->GetMaxVelocity());
+        } else if (state == MovementState::MOVING_RIGHT) {
+            graph_comp_->Play("MOVING_RIGHT", time_elapsed, std::abs(phys_comp_->GetVelocity().x) / phys_comp_->GetMaxVelocity());
+        }
+    }
+}
+
+float Creature::GetDistance(const Creature &other) const {
+    sf::Vector2f pos = GetPosition(), other_pos = other.GetPosition();
+    return Utility::GetDistance(pos, other_pos);
+}
+
 
 
 

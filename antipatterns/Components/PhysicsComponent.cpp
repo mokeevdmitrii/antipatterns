@@ -39,14 +39,12 @@ MovementState PhysicsComponent::GetMovementState() const {
         return MovementState::IDLE;
     }
     if (velocity_.x < 0 && std::abs(velocity_.x) >= std::abs(velocity_.y)) {
-        std::cout << "velocity x: " << velocity_.x << " " << "velocity y: " << velocity_.y << std::endl;
         return MovementState::MOVING_LEFT;
     }
     if (velocity_.x > 0 && std::abs(velocity_.x) >= std::abs(velocity_.y)) {
         return MovementState::MOVING_RIGHT;
     }
     if (velocity_.y < 0 && std::abs(velocity_.x) < std::abs(velocity_.y)) {
-        std::cout << "velocity x: " << velocity_.x << " " << "velocity y: " << velocity_.y << std::endl;
         return MovementState::MOVING_UP;
     }
     if (velocity_.y > 0 && std::abs(velocity_.x) < std::abs(velocity_.y)) {

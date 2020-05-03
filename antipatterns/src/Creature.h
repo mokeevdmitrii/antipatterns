@@ -8,6 +8,7 @@
 #include "../Components/AttributeComponent.h"
 #include "../Components/HitboxComponent.h"
 #include "Tile.h"
+#include "../Resources/Utility.h"
 
 
 class Creature {
@@ -24,7 +25,6 @@ public:
     /* do not change signature */
     virtual void SetPosition(const sf::Vector2f &position);
     virtual void Move(float time_elapsed, const sf::Vector2f &direction);
-    //для актуализации параметров в случае чево)
     //virtual void Actualize() = 0;
 
     /* initializers */
@@ -38,17 +38,20 @@ public:
     sf::Vector2f GetPosition() const;
     void SetPossibleMoveDirections(PossibleDirections directions);
     sf::RectangleShape GetHitbox() const;
+    float GetDistance(const Creature& other) const;
 
     bool Intersects(const sf::RectangleShape &other_hitbox) const;
     bool Contains(const sf::RectangleShape &other_hitbox) const;
     bool ContainedIn(const sf::RectangleShape &other_hitbox) const;
 
 protected:
+    void UpdateMoveAnimations(float time_elapsed);
+
     std::unique_ptr<PhysicsComponent> phys_comp_{};
     std::unique_ptr<GraphicsComponent> graph_comp_{};
     std::unique_ptr<HitboxComponent> hitbox_comp_{};
     std::unique_ptr<AttributeComponent> attribute_comp_{};
-    /* for drawing */
+
     sf::Sprite sprite_{};
 private:
 

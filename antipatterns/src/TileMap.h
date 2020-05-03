@@ -9,19 +9,6 @@
 #include "Creature.h"
 #include "../Resources/Utility.h"
 
-/* Были мысли насчёт того, чтобы использовать здесь шаблон приспособленец, то есть хранить
- * массив не с уникальными указателями на плитки, а с shared_ptr<Tile>, при этом объектов типа Tile
- * у нас было бы столько же, сколько всего существует различных типов плиток, то есть мы получили
- * бы огромный выигрыш в памяти и немного в производительности, но после оказалось, что
- * библиотека SFML is a very Simple library, поэтому она не смогла бы по одной текстуре нарисовать
- * в куче мест на экране одну и ту же плитку, в общем так мы потеряли неплохой
- * порождающий паттерн :(
- */
-
-
-/* переделать всю карту в вектор комнат (class Room), каждый раз при обновлении TileMap и прочего, обновлять только комнату!!! */
-
-
 
 class TileMap {
     using Map = std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>>;
@@ -39,7 +26,6 @@ public:
 
     static void SetGridSize(int grid_size);
 
-    /* not static because what about different grid_sizes ? */
     sf::Vector2i GetGridPosition(sf::Vector2f global_position) const;
 
     sf::Vector2f GetGlobalPosition(sf::Vector2i grid_position) const;

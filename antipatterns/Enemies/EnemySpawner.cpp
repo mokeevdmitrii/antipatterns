@@ -70,7 +70,7 @@ void EnemySpawner::SetPrototype(std::shared_ptr<Enemy> prototype) {
 
 
 void EnemySpawner::UpdateAnimations(float time_elapsed) {
-    graph_comp_->Play("PLAYER_IDLE", time_elapsed);
+    Creature::UpdateMoveAnimations(time_elapsed);
 }
 
 
