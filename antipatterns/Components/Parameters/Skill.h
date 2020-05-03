@@ -7,12 +7,20 @@
 
 #include "Effect.h"
 #include "Attribute.h"
+#include "../AttributeComponent.h"
+
+enum class SkillType {
+    TARGET,
+    AOE
+};
 
 class Skill {
 public:
+    Skill(std::shared_ptr<Effect> effects);
 
+    void Execute(AttributeComponent* one_component, AttributeComponent* other_component);
 private:
-
+    std::shared_ptr<std::vector<Effect>> effects_;
 };
 
 

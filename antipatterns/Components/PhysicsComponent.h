@@ -42,14 +42,16 @@ public:
     /* getters */
     float GetMaxVelocity() const;
     sf::Vector2f GetVelocity() const;
-    bool GetState(MovementState state) const;
+    MovementState GetMovementState() const;
+    MovementState GetLastMoveDirection() const;
+
 
     /* modifiers */
-    /* for collisions in future */
     void SetPossibleMoveDirections(PossibleDirections directions);
     void Stop();
     void StopAxisMoveX();
     void StopAxisMoveY();
+
 
     /* functions */
     void Accelerate(float time_elapsed, const sf::Vector2f &_direction);
@@ -61,6 +63,7 @@ private:
 
     PossibleDirections able_dir;
     sf::Vector2f velocity_;
+    MovementState last_direction_{MovementState::IDLE};
 
     float max_velocity_;
     float acceleration_;

@@ -20,6 +20,7 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
     GameState::InitPlayer();
     GameState::InitRooms();
     GameState::InitPauseMenu();
+    GameState::InitInputHandler();
 }
 
 GameState::~GameState() {
@@ -34,6 +35,10 @@ void GameState::Update(const float time_elapsed) {
     UpdateMousePositions();
     if (!_paused) {
         UpdateInput(time_elapsed);
+        std::unique_ptr<GameCommand> last_command = input_handler_->UpdateInput(time_elapsed);
+        if (last_command != nullptr) {
+            last_command->Execute(time_elapsed);
+        }
         for (auto& [id, room_ptr] : rooms_) {
             room_ptr->Update(time_elapsed);
         }
@@ -60,6 +65,7 @@ void GameState::Update(const float time_elapsed) {
 }
 
 void GameState::UpdateInput(const float time_elapsed) {
+
     if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(keybindings_->at("PAUSE")))) {
         Pause();
     }
@@ -74,6 +80,14 @@ void GameState::Render(std::shared_ptr<sf::RenderTarget> target) {
         pause_menu_->Render(*target);
     }
 }
+
+void GameState::ChangeRoom(ROOM_ID old_room, ROOM_ID new_room) {
+    rooms_.at(new_room)->SetPlayer(player_);
+    current_room_id = new_room;
+    player_->SetPosition(sf::Vector2f(100, 100));
+    rooms_.at(old_room)->SetPlayer(nullptr);
+}
+
 
 /* initializers */
 
@@ -90,8 +104,7 @@ void GameState::InitKeybindings() {
 
 void GameState::InitPlayer() {
     player_ = std::make_shared<Player>(sf::Vector2f(0, 0), UniqueDatabase::Instance().GetData().textures.at("PLAYER"),
-                                       "../Config/player_settings.json",
-                                       keybindings_);
+                                       "../Config/player_settings.json");
 }
 
 void GameState::InitPauseMenu() {
@@ -118,12 +131,12 @@ void GameState::InitRooms() {
     }
 }
 
-void GameState::ChangeRoom(ROOM_ID old_room, ROOM_ID new_room) {
-    rooms_.at(new_room)->SetPlayer(player_);
-    current_room_id = new_room;
-    player_->SetPosition(sf::Vector2f(100, 100));
-    rooms_.at(old_room)->SetPlayer(nullptr);
+void GameState::InitInputHandler() {
+    input_handler_ = std::make_unique<PlayerInputHandler>(player_, keybindings_);
 }
+
+
+
 
 
 

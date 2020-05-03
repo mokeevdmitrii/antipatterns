@@ -12,8 +12,7 @@
 /* здесь я сижу сейчас */
 class Player : public Creature {
 public:
-    Player(sf::Vector2f position, const sf::Texture &texture_sheet, const std::string &file_name,
-           std::shared_ptr<std::unordered_map<std::string, int>> keybindings);
+    Player(sf::Vector2f position, const sf::Texture &texture_sheet, const std::string &file_name);
     ~Player() override;
     /* special input functions */
 
@@ -21,7 +20,6 @@ public:
     void Update(float time_elapsed) override;
     void Render(sf::RenderTarget &target) const override;
 private:
-    void UpdateInput(float time_elapsed);
     void UpdateAnimations(float time_elapsed);
 
     std::shared_ptr<std::unordered_map<std::string, int>> keybindings_;

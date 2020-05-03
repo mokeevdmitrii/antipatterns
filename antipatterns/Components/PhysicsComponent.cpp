@@ -4,12 +4,13 @@
 
 #include "PhysicsComponent.h"
 
-PossibleDirections::PossibleDirections(bool left, bool right, bool up, bool down) : left_(left), right_(right), up_(up), down_(down) {
+PossibleDirections::PossibleDirections(bool left, bool right, bool up, bool down) : left_(left), right_(right), up_(up),
+                                                                                    down_(down) {
 
 }
 
 PhysicsComponent::PhysicsComponent(sf::Sprite &sprite, const std::map<std::string, Json::Node> &settings) :
-        sprite_(&sprite)  {
+        sprite_(&sprite) {
     LoadFromMap(settings);
 }
 
@@ -33,23 +34,29 @@ sf::Vector2f PhysicsComponent::GetVelocity() const {
     return velocity_;
 }
 
-bool PhysicsComponent::GetState(MovementState state) const {
-    switch (state) {
-        case IDLE:
-            return velocity_.x == velocity_.y == 0;
-        case MOVING:
-            return velocity_.x != 0 || velocity_.y != 0;
-        case MOVING_LEFT:
-            return velocity_.x < 0 && std::abs(velocity_.x) >= std::abs(velocity_.y);
-        case MOVING_RIGHT:
-            return velocity_.x > 0 && std::abs(velocity_.x) >= std::abs(velocity_.y);
-        case MOVING_UP:
-            return velocity_.y < 0 && std::abs(velocity_.x) < std::abs(velocity_.y);
-        case MOVING_DOWN:
-            return velocity_.y > 0 && std::abs(velocity_.x) < std::abs(velocity_.y);
-        default:
-            throw std::runtime_error("CASE NOT HANDLED");
+MovementState PhysicsComponent::GetMovementState() const {
+    if (velocity_.x == 0 && velocity_.y == 0) {
+        return MovementState::IDLE;
     }
+    if (velocity_.x < 0 && std::abs(velocity_.x) >= std::abs(velocity_.y)) {
+        std::cout << "velocity x: " << velocity_.x << " " << "velocity y: " << velocity_.y << std::endl;
+        return MovementState::MOVING_LEFT;
+    }
+    if (velocity_.x > 0 && std::abs(velocity_.x) >= std::abs(velocity_.y)) {
+        return MovementState::MOVING_RIGHT;
+    }
+    if (velocity_.y < 0 && std::abs(velocity_.x) < std::abs(velocity_.y)) {
+        std::cout << "velocity x: " << velocity_.x << " " << "velocity y: " << velocity_.y << std::endl;
+        return MovementState::MOVING_UP;
+    }
+    if (velocity_.y > 0 && std::abs(velocity_.x) < std::abs(velocity_.y)) {
+        return MovementState::MOVING_DOWN;
+    }
+    throw std::runtime_error("CASE NOT HANDLED");
+}
+
+MovementState PhysicsComponent::GetLastMoveDirection() const {
+    return last_direction_;
 }
 
 /* modifiers */
@@ -70,7 +77,7 @@ void PhysicsComponent::StopAxisMoveY() {
 }
 
 /* functions */
-void PhysicsComponent::Accelerate(const float time_elapsed, const sf::Vector2f& direction) {
+void PhysicsComponent::Accelerate(const float time_elapsed, const sf::Vector2f &direction) {
     if ((direction.x < 0 && able_dir.left_) || (direction.x > 0 && able_dir.right_)) {
         velocity_.x += acceleration_ * direction.x * time_elapsed;
     }
@@ -90,24 +97,26 @@ void PhysicsComponent::Update(const float time_elapsed) {
     }
     if (velocity_.x != 0) {
         velocity_.x -= deceleration_ * cos_a * time_elapsed;
-        if (velocity_.x * cos_a < 0) {
+        if (velocity_.x * cos_a <= 0) {
+            last_direction_ = cos_a < 0 ? MOVING_LEFT : MOVING_RIGHT;
             velocity_.x = 0;
         }
     }
     if (velocity_.y != 0) {
         velocity_.y -= deceleration_ * sin_a * time_elapsed;
-        if (velocity_.y * sin_a < 0) {
+        if (velocity_.y * sin_a <= 0) {
+            last_direction_ = sin_a < 0 ? MOVING_UP : MOVING_DOWN;
             velocity_.y = 0;
         }
     }
-    velocity_.x = velocity_.x;
-    velocity_.y = velocity_.y;
     sprite_->move(velocity_ * time_elapsed);
 }
 
 void PhysicsComponent::UpdateCopy(sf::Sprite &sprite) {
     sprite_ = &sprite;
 }
+
+
 
 
 

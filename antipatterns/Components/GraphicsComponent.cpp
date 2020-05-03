@@ -45,7 +45,7 @@ bool GraphicsComponent::Play(const std::string &animation_key, const float time_
     if (_prior_animation != nullptr) {
         if (_animations.at(animation_key).get() == _prior_animation) {
             CheckLastAnimation(animation_key);
-            if (_animations[animation_key]->Play(time_elapsed, speed_modifier)) {
+            if (_animations.at(animation_key)->Play(time_elapsed, speed_modifier)) {
                 _prior_animation = nullptr;
             }
         }
@@ -54,9 +54,9 @@ bool GraphicsComponent::Play(const std::string &animation_key, const float time_
             _prior_animation = _animations.at(animation_key).get();
         }
         CheckLastAnimation(animation_key);
-        _animations[animation_key]->Play(time_elapsed, speed_modifier);
+        _animations.at(animation_key)->Play(time_elapsed, speed_modifier);
     }
-    return _animations[animation_key]->IsDone();
+    return _animations.at(animation_key)->IsDone();
 }
 
 void GraphicsComponent::CheckLastAnimation(const std::string &animation_key) {

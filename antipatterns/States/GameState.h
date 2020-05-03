@@ -6,8 +6,8 @@
 #define ANTIPATTERNS_GAMESTATE_H
 
 #include "State.h"
+#include "../src/Input/InputHandler.h"
 #include "../src/EnemySystem.h"
-#include "../Enemies/Rat.h"
 #include "../src/TileMap.h"
 #include "../src/Room.h"
 #include "../Resources/Filenames.h"
@@ -24,13 +24,14 @@ public:
     void UpdateInput(float time_elapsed) override;
     void Render(std::shared_ptr<sf::RenderTarget> target) override;
 private:
+    void ChangeRoom(ROOM_ID old_room, ROOM_ID new_room);
+
     /* initializers */
     void InitKeybindings() override;
     void InitPlayer();
     void InitPauseMenu();
     void InitRooms();
-
-    void ChangeRoom(ROOM_ID old_room, ROOM_ID new_room);
+    void InitInputHandler();
 
     /* thinking about moving player somewhere else */
     static const std::unordered_map<std::string, ROOM_ID> rooms_names_to_ids;
@@ -38,6 +39,7 @@ private:
     ROOM_ID current_room_id{ROOM_ID::INIT_ROOM};
     std::shared_ptr<Creature> player_;
     std::shared_ptr<PauseMenu> pause_menu_;
+    std::unique_ptr<PlayerInputHandler> input_handler_;
 };
 
 

@@ -30,11 +30,6 @@ public:
 
     ~TileMap() = default;
 
-    /* updating all the map */
-    /* this function will be implemented later */
-    /* идея этой функции в том, чтобы в будущем не выпускать существ за пределы карты, проверяются только те плитки,
-     * которые сейчас есть на экране */
-
     template<typename T>
     void UpdateCreature(T &creature, float time_elapsed);
 
