@@ -22,10 +22,9 @@ public:
     /* pure functions */
     virtual void Update(float time_elapsed) = 0;
     virtual void Render(sf::RenderTarget &target) const = 0;
-    /* do not change signature */
+
     virtual void SetPosition(const sf::Vector2f &position);
     virtual void Move(float time_elapsed, const sf::Vector2f &direction);
-    //virtual void Actualize() = 0;
 
     /* initializers */
     void SetTexture(sf::Texture& texture);

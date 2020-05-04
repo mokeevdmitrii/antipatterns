@@ -41,30 +41,28 @@ struct ButtonParams {
     float y;
     float width;
     float height;
-    std::shared_ptr<sf::Font> font;
+    sf::Font* font;
     std::string button_text;
-    unsigned int character_size;
+    unsigned int font_size;
     ButtonColors btn_colors;
-    TextColors txt_colors;
+    TextColors font_colors;
 };
 
 class Button {
 public:
-    Button(ButtonParams params);
+    Button(const ButtonParams& params);
 
     virtual ~Button();
 
-    /* accessing */
     bool IsActive() const;
 
-    /* functions */
     void Update(const sf::Vector2f &mouse_pos);
 
     void Render(sf::RenderTarget& target) const;
 
 private:
     sf::RectangleShape shape_;
-    std::shared_ptr<sf::Font> button_font_;
+    sf::Font* button_font_;
     sf::Text text_;
     ButtonColors btn_colors_;
     TextColors txt_colors_;

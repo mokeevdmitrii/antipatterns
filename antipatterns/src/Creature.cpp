@@ -33,6 +33,11 @@ Creature::Creature(const Creature &other) {
     *this = other;
 }
 
+void Creature::SetTexture(sf::Texture &texture) {
+    sprite_.setTexture(texture);
+}
+
+
 void Creature::SetPosition(const sf::Vector2f &position) {
     if (hitbox_comp_ != nullptr) {
         hitbox_comp_->SetPosition(position);
@@ -47,10 +52,6 @@ void Creature::Move(const float time_elapsed, const sf::Vector2f &direction) {
     }
 }
 
-
-void Creature::SetTexture(sf::Texture& texture) {
-    sprite_.setTexture(texture);
-}
 
 void Creature::InitPhysicsComponent(const std::map<std::string, Json::Node> &settings) {
     phys_comp_ = std::make_unique<PhysicsComponent>(sprite_, settings);

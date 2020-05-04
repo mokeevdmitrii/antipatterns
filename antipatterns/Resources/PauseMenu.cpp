@@ -5,8 +5,8 @@
 #include "PauseMenu.h"
 
 
-PauseMenu::PauseMenu(const std::shared_ptr<sf::RenderWindow>& window) : btn_manager_("../Config/pause_menu_buttons.txt",
-                                                                                     "../Config/lobster.otf") {
+PauseMenu::PauseMenu(const std::shared_ptr<sf::RenderWindow>& window) : btn_manager_(file::kPauseMenuButtonsFile,
+                                                                                     file::kMainFontFile) {
     inner_.setSize(sf::Vector2f(window->getSize().x * inner_ratio_x_,
                                 window->getSize().y * inner_ratio_y_));
     background_.setSize(sf::Vector2f(window->getSize().x * outer_ratio_x_,
@@ -14,7 +14,6 @@ PauseMenu::PauseMenu(const std::shared_ptr<sf::RenderWindow>& window) : btn_mana
     background_.setFillColor(sf::Color(20, 20, 20, 100));
     inner_.setFillColor(sf::Color(20, 20, 20, 200));
 
-    /* goddamn center everything lmao */
     background_.setPosition(window->getSize().x / 2.f - background_.getSize().x / 2.f,
                             window->getSize().y / 2.f - background_.getSize().y / 2.f);
     inner_.setPosition(window->getSize().x / 2.f - inner_.getSize().x / 2.f,

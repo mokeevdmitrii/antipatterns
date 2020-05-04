@@ -22,9 +22,7 @@ Player::~Player() {
 
 void Player::Update(float time_elapsed) {
     phys_comp_->Update(time_elapsed);
-    /* here we use GetMovementState from PhysicsComponent and play animations */
     UpdateAnimations(time_elapsed);
-    /* here animations end */
     hitbox_comp_->Update();
 }
 

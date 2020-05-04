@@ -4,24 +4,24 @@
 
 #include "Button.h"
 
-Button::Button(ButtonParams params) {
+Button::Button(const ButtonParams& params) {
     shape_.setPosition(params.x, params.y);
     shape_.setSize(sf::Vector2f(params.width, params.height));
 
-    button_font_ = std::move(params.font);
+    button_font_ = params.font;
     text_.setString(params.button_text);
     text_.setFont(*button_font_);
     text_.setFillColor(sf::Color::White);
-    text_.setCharacterSize(params.character_size);
+    text_.setCharacterSize(params.font_size);
     text_.setPosition(shape_.getPosition().x + shape_.getGlobalBounds().width / 2 - text_.getGlobalBounds().width / 2,
                       shape_.getPosition().y + shape_.getGlobalBounds().height / 2 - text_.getGlobalBounds().height / 2);
 
     btn_colors_.active = params.btn_colors.active;
     btn_colors_.idle = params.btn_colors.idle;
     btn_colors_.hover = params.btn_colors.hover;
-    txt_colors_.active = params.txt_colors.active;
-    txt_colors_.idle = params.txt_colors.idle;
-    txt_colors_.hover = params.txt_colors.hover;
+    txt_colors_.active = params.font_colors.active;
+    txt_colors_.idle = params.font_colors.idle;
+    txt_colors_.hover = params.font_colors.hover;
 
 }
 

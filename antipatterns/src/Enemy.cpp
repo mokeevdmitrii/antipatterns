@@ -20,11 +20,15 @@ void Enemy::GenerateAttributes(int level) {
 
 }
 
-//здесь в будущем будет карта и А* - возможно!
 void Enemy::UpdatePlayer(float time_elapsed, const std::shared_ptr<Creature> &player) {
     sf::Vector2f player_pos = player->GetPosition();
     sf::Vector2f my_pos = GetPosition();
     Move(time_elapsed, {player_pos.x - my_pos.x, player_pos.y - my_pos.y});
+}
+
+void
+Enemy::UpdateEnemy(float time_elapsed, const std::unique_ptr<TileMap> &tile_map, std::shared_ptr<Creature> &player) {
+
 }
 
 

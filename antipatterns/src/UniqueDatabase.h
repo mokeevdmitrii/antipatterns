@@ -6,7 +6,7 @@
 #define ANTIPATTERNS_UNIQUEDATABASE_H
 
 #include <SFML/Graphics.hpp>
-#include "../Resources/Filenames.h"
+#include "../Resources/Constants/Filenames.h"
 #include <unordered_map>
 #include <memory>
 #include "Enemy.h"

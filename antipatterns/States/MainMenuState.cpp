@@ -10,7 +10,7 @@ MainMenuState::MainMenuState(std::shared_ptr<sf::RenderWindow> window,
                              std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
                              std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack) :
         State(std::move(window), std::move(supported_keys), std::move(state_stack)),
-        btn_manager_("../Config/main_menu_buttons.txt", "../Config/lobster.otf") {
+        btn_manager_(file::kMainMenuButtonsFile, file::kMainFontFile) {
     InitBackground();
     MainMenuState::InitKeybindings();
 }
@@ -55,7 +55,7 @@ void MainMenuState::Render(std::shared_ptr<sf::RenderTarget> target) {
 }
 
 void MainMenuState::InitKeybindings() {
-    std::ifstream in("../Config/main_menu_state_keybindings.txt");
+    std::ifstream in(file::kMainMenuStateKeybindingsFile);
     if (in.is_open()) {
         std::string key_str;
         std::string key_bind;
@@ -67,7 +67,7 @@ void MainMenuState::InitKeybindings() {
 
 void MainMenuState::InitBackground() {
     background_._image.setSize(static_cast<sf::Vector2f>(window_->getSize()));
-    if (!background_._back_texture.loadFromFile("../Images/Backgrounds/main_menu.png")) {
+    if (!background_._back_texture.loadFromFile(file::kMainMenuBackgroundFile)) {
         throw std::runtime_error("cannot load texture for main menu background");
     }
     background_._image.setTexture(&background_._back_texture);

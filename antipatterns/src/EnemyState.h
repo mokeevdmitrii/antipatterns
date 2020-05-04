@@ -16,7 +16,6 @@ enum class EnemyStateType {
 
 class EnemyState {
 public:
-    // Creature* const enemy
     virtual EnemyStateType
     Update(float time_elapsed, Creature* enemy, const std::unique_ptr<TileMap> &tile_map, std::shared_ptr<Creature> &player) = 0;
 

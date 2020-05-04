@@ -18,6 +18,7 @@ public:
     ~TileMap() = default;
 
     template<typename T>
+
     void UpdateCreature(T &creature, float time_elapsed);
 
     void Render(sf::RenderTarget &target) const;

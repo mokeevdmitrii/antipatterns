@@ -17,32 +17,26 @@ void ButtonManager::LoadFont(const std::string &file_name) {
 
 void ButtonManager::InitButtons(const std::string &file_name) {
     std::fstream in(file_name);
-    if (in.is_open()) {
+    const std::vector<Json::Node> buttons_nodes = Json::Load(file_name).GetRoot().AsArray();
+    for (const auto& settings_map_node : buttons_nodes) {
+        const auto& button_settings = settings_map_node.AsMap();
         ButtonParams params{};
-        std::string button_name{};
-        int r, g, b, a;
-        while (in >> button_name) {
-            in >> params.x >> params.y >> params.width >> params.height;
-            in.ignore();
-            std::getline(in, params.button_text);
-            params.font = std::make_shared<sf::Font>(button_font_);
-            in >> params.character_size;
-            in >> r >> g >> b >> a;
-            params.btn_colors.idle = sf::Color(r, g, b, a);
-            in >> r >> g >> b >> a;
-            params.btn_colors.hover = sf::Color(r, g, b, a);
-            in >> r >> g >> b >> a;
-            params.btn_colors.active = sf::Color(r, g, b, a);
-            in >> r >> g >> b >> a;
-            params.txt_colors.idle = sf::Color(r, g, b, a);
-            in >> r >> g >> b >> a;
-            params.txt_colors.hover = sf::Color(r, g, b, a);
-            in >> r >> g >> b >> a;
-            params.txt_colors.active = sf::Color(r, g, b, a);
-            buttons_[button_name] = std::make_shared<Button>(params);
-        }
+        std::string button_name = button_settings.at("button_name").AsString();
+        params.x = button_settings.at("button_pos").AsArray().at(0).AsFloat();
+        params.y = button_settings.at("button_pos").AsArray().at(1).AsFloat();
+        params.width = button_settings.at("button_rect").AsArray().at(0).AsFloat();
+        params.height = button_settings.at("button_rect").AsArray().at(1).AsFloat();
+        params.button_text = button_settings.at("button_text").AsString();
+        params.font_size = button_settings.at("font_size").AsInt();
+        params.font = &button_font_;
+        params.btn_colors.idle = ParseColor(button_settings.at("button_color_idle").AsArray());
+        params.btn_colors.hover = ParseColor(button_settings.at("button_color_hover").AsArray());
+        params.btn_colors.active = ParseColor(button_settings.at("button_color_active").AsArray());
+        params.font_colors.idle = ParseColor(button_settings.at("font_color_idle").AsArray());
+        params.font_colors.hover = ParseColor(button_settings.at("font_color_hover").AsArray());
+        params.font_colors.active = ParseColor(button_settings.at("font_color_active").AsArray());
+        buttons_[button_name] = std::make_shared<Button>(params);
     }
-    in.close();
 }
 
 bool ButtonManager::IsActive(const std::string &button_name) const {
@@ -75,6 +69,14 @@ std::unordered_map<std::string, std::shared_ptr<Button>>::iterator ButtonManager
 
 std::unordered_map<std::string, std::shared_ptr<Button>>::iterator ButtonManager::end() {
     return buttons_.end();
+}
+
+sf::Color ButtonManager::ParseColor(const std::vector<Json::Node>& color_json) const {
+    int r = color_json.at(0).AsInt();
+    int g = color_json.at(1).AsInt();
+    int b = color_json.at(2).AsInt();
+    int alpha = color_json.at(3).AsInt();
+    return sf::Color(r, g, b, alpha);
 }
 
 

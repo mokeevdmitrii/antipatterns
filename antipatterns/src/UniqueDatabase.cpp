@@ -5,7 +5,7 @@
 #include "UniqueDatabase.h"
 
 UniqueDatabase::UniqueDatabase() {
-    LoadUniqueData(unique_data_file);
+    LoadUniqueData(file::kUniqueDataFile);
 }
 
 void UniqueDatabase::LoadUniqueData(const std::string &file_name) {
@@ -40,7 +40,7 @@ void UniqueDatabase::LoadEnemies(const std::string &file_name) {
 }
 
 void UniqueDatabase::LoadTiles(const std::string &file_name) {
-    const std::map<std::string, Json::Node> settings = Json::Load(unique_tiles_settings_file).GetRoot().AsMap();
+    const std::map<std::string, Json::Node> settings = Json::Load(file_name).GetRoot().AsMap();
     int grid_size = static_cast<int>(settings.at("grid_size").AsDouble());
     TileMap::SetGridSize(grid_size);
     for (const auto &settings_map : settings.at("tiles").AsArray()) {
@@ -57,7 +57,7 @@ void UniqueDatabase::LoadTiles(const std::string &file_name) {
 }
 
 void UniqueDatabase::LoadExits(const std::string &file_name) {
-    const std::map<std::string, Json::Node> settings = Json::Load(unique_exits_settings_file).GetRoot().AsMap();
+    const std::map<std::string, Json::Node> settings = Json::Load(file_name).GetRoot().AsMap();
     const std::vector<Json::Node> &exits_nodes = settings.at("exits").AsArray();
     for (const auto &exit_node : exits_nodes) {
         const auto &exit_settings = exit_node.AsMap();

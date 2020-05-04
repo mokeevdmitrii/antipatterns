@@ -6,6 +6,8 @@
 #define ANTIPATTERNS_BUTTONMANAGER_H
 
 #include "Button.h"
+#include "Json.h"
+#include "Constants/Filenames.h"
 
 class ButtonManager {
 public:
@@ -23,12 +25,12 @@ public:
 
     std::shared_ptr<Button> operator[](const std::string &btn_name) const;
 
-    /* for iterating with C++11 for-each cycle */
     std::unordered_map<std::string, std::shared_ptr<Button>>::iterator begin();
     std::unordered_map<std::string, std::shared_ptr<Button>>::iterator end();
 
 private:
-    /* think about shared_ptr */
+    sf::Color ParseColor(const std::vector<Json::Node>& color_json) const;
+
     std::unordered_map<std::string, std::shared_ptr<Button>> buttons_;
     sf::Font button_font_;
 };

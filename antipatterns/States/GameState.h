@@ -10,7 +10,7 @@
 #include "../src/EnemySystem.h"
 #include "../src/TileMap.h"
 #include "../src/Room.h"
-#include "../Resources/Filenames.h"
+#include "../Resources/Constants/Filenames.h"
 
 class GameState : public State {
 public:

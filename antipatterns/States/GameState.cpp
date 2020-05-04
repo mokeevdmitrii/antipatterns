@@ -92,7 +92,7 @@ void GameState::ChangeRoom(ROOM_ID old_room, ROOM_ID new_room) {
 /* initializers */
 
 void GameState::InitKeybindings() {
-    std::ifstream in(gamestate_keybindings_file);
+    std::ifstream in(file::kGameStateKeybindingsFile);
     if (in.is_open()) {
         std::string key_str;
         std::string key_bind;

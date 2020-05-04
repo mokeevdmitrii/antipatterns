@@ -5,7 +5,9 @@
 #include "GraphicsComponent.h"
 
 GraphicsComponent::GraphicsComponent(sf::Sprite &sprite, const sf::Texture &texture_sheet,
-                                     const std::map<std::string, Json::Node> &settings) : _sprite(&sprite), _texture_sheet(texture_sheet) {
+                                     const std::map<std::string, Json::Node> &settings) : _sprite(&sprite),
+                                                                                          _texture_sheet(
+                                                                                                  texture_sheet) {
     LoadFromMap(settings);
 }
 
@@ -23,8 +25,9 @@ void GraphicsComponent::LoadFromMap(const std::map<std::string, Json::Node> &set
         int end_frame_y = static_cast<int>(anim_settings.at("end_frame_y").AsDouble());
         int rect_params_x = static_cast<int>(anim_settings.at("rect_params_x").AsDouble());
         int rect_params_y = static_cast<int>(anim_settings.at("rect_params_y").AsDouble());
-        AddAnimation(animation_key, anim_time, start_frame_x, start_frame_y, end_frame_x, end_frame_y,
-                     sf::Vector2i(rect_params_x, rect_params_y));
+        AnimationParams a_params = AnimationParams(anim_time, start_frame_x, start_frame_y, end_frame_x,
+                                                 end_frame_y, sf::Vector2i(rect_params_x, rect_params_y));
+        AddAnimation(animation_key, a_params);
     }
 }
 
@@ -34,10 +37,8 @@ bool GraphicsComponent::IsDone(const std::string &animation_key) const {
 }
 
 void
-GraphicsComponent::AddAnimation(const std::string &animation_key, float anim_time, int start_frame_x, int start_frame_y,
-                                int frames_x, int frames_y, sf::Vector2i rect_params) {
-    _animations[animation_key] = std::make_unique<Animation>(_sprite, _texture_sheet, anim_time, start_frame_x,
-                                                             start_frame_y, frames_x, frames_y, rect_params);
+GraphicsComponent::AddAnimation(const std::string &animation_key, AnimationParams a_params) {
+    _animations[animation_key] = std::make_unique<Animation>(_sprite, _texture_sheet, a_params);
 }
 
 bool GraphicsComponent::Play(const std::string &animation_key, const float time_elapsed, const float speed_modifier,
@@ -73,7 +74,7 @@ void GraphicsComponent::CheckLastAnimation(const std::string &animation_key) {
 
 void GraphicsComponent::UpdateCopy(sf::Sprite &sprite) {
     _sprite = &sprite;
-    for (auto& [key, animation] : _animations) {
+    for (auto&[key, animation] : _animations) {
         animation->sprite_ = &sprite;
     }
 }
@@ -84,64 +85,64 @@ GraphicsComponent &GraphicsComponent::operator=(const GraphicsComponent &other) 
     }
     _last_animation = nullptr;
     _prior_animation = nullptr;
-    for (const auto& [key, animation] : other._animations) {
+    for (const auto&[key, animation] : other._animations) {
         _animations[key] = std::make_unique<Animation>(*animation);
     }
     return *this;
 }
 
 
-GraphicsComponent::GraphicsComponent(const GraphicsComponent& other) : _texture_sheet(other._texture_sheet), _sprite(other._sprite) {
+GraphicsComponent::GraphicsComponent(const GraphicsComponent &other) : _texture_sheet(other._texture_sheet),
+                                                                       _sprite(other._sprite) {
     *this = other;
 }
 
-GraphicsComponent::Animation::Animation(sf::Sprite *sprite, const sf::Texture &texture_sheet, float anim_time,
-                                        int start_frame_x, int start_frame_y,
-                                        int end_frame_x, int end_frame_y, sf::Vector2i rect_params) : sprite_(sprite),
-                                                                                                      texture_sheet_(
-                                                                                                              texture_sheet),
-                                                                                                      time_to_animate_(
-                                                                                                              anim_time),
-                                                                                                      rect_params_(
-                                                                                                              rect_params),
-                                                                                                      is_done_(false) {
-    start_rect_ = sf::IntRect(start_frame_x * rect_params.x, start_frame_y * rect_params.y, rect_params.x,
-                              rect_params.y);
+
+GraphicsComponent::AnimationParams::AnimationParams(float anim_time, int start_frame_x, int start_frame_y,
+                                                    int end_frame_x, int end_frame_y, sf::Vector2i rect_params) {
+    time_to_animate_ = anim_time;
+    start_rect_ = sf::IntRect(start_frame_x * rect_params.x, start_frame_y * rect_params.y,
+                              rect_params.x, rect_params.y);
     current_rect_ = start_rect_;
     end_rect_ = sf::IntRect(end_frame_x * rect_params.x, end_frame_y * rect_params.y, rect_params.x, rect_params.y);
+    rect_params_ = rect_params;
+}
+
+
+GraphicsComponent::Animation::Animation(sf::Sprite *sprite, const sf::Texture &texture_sheet, AnimationParams a_params)
+        : sprite_(sprite), texture_sheet_(texture_sheet), a_params_(a_params) {
+
     sprite_->setTexture(texture_sheet_, true);
-    sprite_->setTextureRect(start_rect_);
+    sprite_->setTextureRect(a_params.start_rect_);
 }
 
 bool GraphicsComponent::Animation::Play(const float time_elapsed, const float speed_modifier) {
-    time_ += TIME_NORMALIZE * time_elapsed * speed_modifier;
+    a_params_.time_ += TIME_NORMALIZE * time_elapsed * speed_modifier;
     is_done_ = false;
-    if (time_ >= time_to_animate_) {
-        time_ = 0;
+    if (a_params_.time_ >= a_params_.time_to_animate_) {
+        a_params_.time_ = 0;
         Animate();
     }
     return is_done_;
 }
 
 void GraphicsComponent::Animation::Animate() {
-    if (current_rect_ != end_rect_) {
-        current_rect_.left += rect_params_.x;
+    if (a_params_.current_rect_ != a_params_.end_rect_) {
+        a_params_.current_rect_.left += a_params_.rect_params_.x;
     } else {
-        current_rect_.left = start_rect_.left;
+        a_params_.current_rect_.left = a_params_.start_rect_.left;
         is_done_ = true;
     }
-    sprite_->setTextureRect(current_rect_);
+    sprite_->setTextureRect(a_params_.current_rect_);
 }
 
 void GraphicsComponent::Animation::Reset() {
-    time_ = time_to_animate_;
-    current_rect_ = start_rect_;
+    a_params_.time_ = a_params_.time_to_animate_;
+    a_params_.current_rect_ = a_params_.start_rect_;
 }
 
 
 bool GraphicsComponent::Animation::IsDone() const {
     return is_done_;
 }
-
-
 

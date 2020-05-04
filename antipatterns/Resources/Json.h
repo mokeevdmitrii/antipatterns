@@ -46,6 +46,10 @@ namespace Json {
             return static_cast<float>(AsDouble());
         }
 
+        int AsInt() const {
+            return static_cast<int>(AsDouble());
+        }
+
         bool AsBool() const {
             return std::get<bool>(*this);
         }

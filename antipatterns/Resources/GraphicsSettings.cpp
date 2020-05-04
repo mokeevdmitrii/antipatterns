@@ -5,7 +5,7 @@
 #include "GraphicsSettings.h"
 
 GraphicsSettings::GraphicsSettings() {
-    game_title_ = "antipatterns roguelike";
+    game_title_ = "Not antipatterns actually";
     resolution_ = sf::VideoMode::getDesktopMode();
     framerate_limit_ = 60;
     fullscreen_ = false;

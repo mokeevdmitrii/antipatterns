@@ -55,13 +55,13 @@ const std::unordered_map<ATTRIBUTE_ID, std::pair<double, double>> AttributeCompo
 
 const std::unordered_map<ATTRIBUTE_ID, std::function<double(
         const std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>> &)>> AttributeComponent::id_to_functions_{
-        {ATTRIBUTE_ID::MAX_HP,       ATTRIBUTE_FORMULAS::MaxHPFunction},
-        {ATTRIBUTE_ID::MAX_MANA,     ATTRIBUTE_FORMULAS::MaxManaFunction},
-        {ATTRIBUTE_ID::PHYS_ARMOR,   ATTRIBUTE_FORMULAS::PhysArmorFunction},
-        {ATTRIBUTE_ID::MAG_ARMOR,    ATTRIBUTE_FORMULAS::MagArmorFunction},
-        {ATTRIBUTE_ID::ATTACK_SPEED, ATTRIBUTE_FORMULAS::AttackSpeedFunction},
-        {ATTRIBUTE_ID::BASE_DAMAGE,  ATTRIBUTE_FORMULAS::BaseDamageFunction},
-        {ATTRIBUTE_ID::CRIT_CHANCE,  ATTRIBUTE_FORMULAS::CritChanceFunction},
+        {ATTRIBUTE_ID::MAX_HP,       stats_formula::MaxHPFunction},
+        {ATTRIBUTE_ID::MAX_MANA,     stats_formula::MaxManaFunction},
+        {ATTRIBUTE_ID::PHYS_ARMOR,   stats_formula::PhysArmorFunction},
+        {ATTRIBUTE_ID::MAG_ARMOR,    stats_formula::MagArmorFunction},
+        {ATTRIBUTE_ID::ATTACK_SPEED, stats_formula::AttackSpeedFunction},
+        {ATTRIBUTE_ID::BASE_DAMAGE,  stats_formula::BaseDamageFunction},
+        {ATTRIBUTE_ID::CRIT_CHANCE,  stats_formula::CritChanceFunction},
 };
 
 AttributeComponent::AttributeComponent(const std::map<std::string, Json::Node> &settings) {
@@ -80,7 +80,7 @@ AttributeComponent &AttributeComponent::operator=(const AttributeComponent &othe
     }
     level_ = other.level_;
     attributes_ = std::vector<std::shared_ptr<BaseAttribute>>();
-    for (const auto& attribute : other.attributes_) {
+    for (const auto &attribute : other.attributes_) {
         attributes_.push_back(attribute->Clone());
     }
     ResetAttributesDependence();
@@ -90,7 +90,7 @@ AttributeComponent &AttributeComponent::operator=(const AttributeComponent &othe
 
 
 void AttributeComponent::Update(float time_elapsed) {
-    for (auto& attribute : attributes_) {
+    for (auto &attribute : attributes_) {
         attribute->Update(time_elapsed);
     }
     CheckBoundaries();

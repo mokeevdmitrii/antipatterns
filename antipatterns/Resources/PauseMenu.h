@@ -9,7 +9,7 @@
 
 class PauseMenu {
 public:
-    PauseMenu(const std::shared_ptr<sf::RenderWindow>& window);
+    explicit PauseMenu(const std::shared_ptr<sf::RenderWindow>& window);
     ~PauseMenu();
 
     void Update(const sf::Vector2f& mouse_pos);

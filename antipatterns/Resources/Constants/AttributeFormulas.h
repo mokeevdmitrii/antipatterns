@@ -5,9 +5,9 @@
 #ifndef ANTIPATTERNS_ATTRIBUTEFORMULAS_H
 #define ANTIPATTERNS_ATTRIBUTEFORMULAS_H
 
-#include "Attribute.h"
+#include "../../Components/Parameters/BaseAttribute.h"
 
-namespace ATTRIBUTE_FORMULAS {
+namespace stats_formula {
     using BaseStats = std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>>;
     using StatsFunc = std::function<double(const std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>> &)>;
 

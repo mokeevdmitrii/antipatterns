@@ -14,9 +14,7 @@ class Player : public Creature {
 public:
     Player(sf::Vector2f position, const sf::Texture &texture_sheet, const std::string &file_name);
     ~Player() override;
-    /* special input functions */
 
-    /* overrided functions */
     void Update(float time_elapsed) override;
     void Render(sf::RenderTarget &target) const override;
 private:
@@ -24,7 +22,6 @@ private:
 
     std::shared_ptr<std::unordered_map<std::string, int>> keybindings_;
     sf::Vector2f position_;
-    // std::shared_ptr<Equipment> equipment;
 
 };
 

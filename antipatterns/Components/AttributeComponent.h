@@ -6,8 +6,8 @@
 #define ANTIPATTERNS_ATTRIBUTECOMPONENT_H
 
 #include "GraphicsComponent.h"
-#include "Parameters/AttributeFormulas.h"
-#include "../Resources/Constants.h"
+#include "../Resources/Constants/AttributeFormulas.h"
+#include "../Resources/Constants/Constants.h"
 
 class AttributeComponent {
 public:
