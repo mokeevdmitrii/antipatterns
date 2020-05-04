@@ -13,8 +13,6 @@
 
 namespace Utility {
 
-    template<typename T, typename ...Args>
-    inline bool constexpr is_one_of = (std::is_same_v<T>)
 
     float GetDistance(sf::Vector2f lhs, sf::Vector2f rhs);
 

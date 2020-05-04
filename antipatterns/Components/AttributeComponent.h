@@ -8,6 +8,7 @@
 #include "GraphicsComponent.h"
 #include "../Resources/Constants/AttributeFormulas.h"
 #include "../Resources/Constants/Constants.h"
+#include "Parameters/Attribute.h"
 
 class AttributeComponent {
 public:
