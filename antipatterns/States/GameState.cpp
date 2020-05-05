@@ -19,6 +19,7 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> window,
     GameState::InitKeybindings();
     GameState::InitPlayer();
     GameState::InitRooms();
+    GameState::InitPlayerGui();
     GameState::InitPauseMenu();
     GameState::InitInputHandler();
 }
@@ -33,26 +34,22 @@ GameState::~GameState() {
 void GameState::Update(const float time_elapsed) {
     /* if not paused, update game */
     UpdateMousePositions();
+    player_gui_->Update(time_elapsed);
     if (!_paused) {
         UpdateInput(time_elapsed);
         std::unique_ptr<GameCommand> last_command = input_handler_->UpdateInput(time_elapsed);
         if (last_command != nullptr) {
             last_command->Execute(time_elapsed);
         }
-        for (auto& [id, room_ptr] : rooms_) {
+        for (auto&[id, room_ptr] : rooms_) {
             room_ptr->Update(time_elapsed);
         }
-        const Exit* active_exit = rooms_.at(current_room_id)->GetActiveExit();
+        const Exit *active_exit = rooms_.at(current_room_id)->GetActiveExit();
         if (active_exit != nullptr) {
             std::cout << (int) current_room_id << " " << (int) active_exit->GetRoomIdTo() << std::endl;
             ChangeRoom(current_room_id, active_exit->GetRoomIdTo());
         }
 
-        // вызывать проверку на переход в другую комнату !
-        /* if (current_room_id->GetRoomID() != current_room_id->GetCurrentRoomID()) {
-         * ChangeRoom(current_room_id->GetRoomID(), current_room_id->GetCurrentRoomID());
-         * }
-        * else update pause menu */
     } else {
         pause_menu_->Update(mouse_positions_.view);
         if (pause_menu_->IsButtonActive(std::string("PLAY"))) {
@@ -76,6 +73,7 @@ void GameState::UpdateInput(const float time_elapsed) {
 
 void GameState::Render(std::shared_ptr<sf::RenderTarget> target) {
     rooms_.at(current_room_id)->Render(*target);
+    player_gui_->Render(*target);
     if (_paused) {
         pause_menu_->Render(*target);
     }
@@ -103,16 +101,23 @@ void GameState::InitKeybindings() {
 }
 
 void GameState::InitPlayer() {
-    player_ = std::make_shared<Player>(sf::Vector2f(0, 0), UniqueDatabase::Instance().GetData().textures.at("PLAYER"),
-                                       "../Config/player_settings.json");
+    player_ = std::make_shared<Player>(sf::Vector2f(0, 0),
+                                       UniqueDatabase::Instance().GetData().textures.at("PLAYER"),
+                                       file::kPlayerSettingsFile);
 }
 
 void GameState::InitPauseMenu() {
     pause_menu_ = std::make_shared<PauseMenu>(window_);
 }
 
+void GameState::InitPlayerGui() {
+    player_gui_ = std::make_shared<gui::PlayerGUI>(player_, sf::VideoMode(window_->getSize().x, window_->getSize().y),
+                                                   file::kPlayerGuiFile);
+}
+
+
 void GameState::InitRooms() {
-    const std::map<std::string, Json::Node> rooms_settings = Json::Load("../Config/rooms.json").GetRoot().AsMap();
+    const std::map<std::string, Json::Node> rooms_settings = Json::Load(file::kRoomSettingsFile).GetRoot().AsMap();
     for (const auto&[room_name, room_settings_json] : rooms_settings) {
         const auto &room_settings = room_settings_json.AsMap();
         ROOM_ID room_id = rooms_names_to_ids.at(room_name);
@@ -122,7 +127,8 @@ void GameState::InitRooms() {
         for (const auto &exit_node : room_exits_settings) {
             const auto &exit_settings_map = exit_node.AsMap();
             ExitType curr_type = static_cast<ExitType>(exit_settings_map.at("type").AsDouble());
-            std::unique_ptr<Exit> curr_exit = std::make_unique<Exit>(*UniqueDatabase::Instance().GetData().exits.at(curr_type));
+            std::unique_ptr<Exit> curr_exit = std::make_unique<Exit>(
+                    *UniqueDatabase::Instance().GetData().exits.at(curr_type));
             curr_exit->LoadFromMap(exit_settings_map.at("settings").AsMap());
             rooms_.at(room_id)->AddExit(std::move(curr_exit));
         }
@@ -134,6 +140,7 @@ void GameState::InitRooms() {
 void GameState::InitInputHandler() {
     input_handler_ = std::make_unique<PlayerInputHandler>(player_, keybindings_);
 }
+
 
 
 

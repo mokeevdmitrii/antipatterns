@@ -29,13 +29,13 @@ void MainMenuState::Update(const float time_elapsed) {
 
     /* updating all the buttons */
     /* quit the game */
-    if (btn_manager_["END_GAME"]->IsActive()) {
+    if (btn_manager_[btn::kMainEndGameBtn]->IsActive()) {
         _to_quit = true;
     }
 
     /* new game */
     /* pushing a state */
-    if (btn_manager_["START_GAME"]->IsActive()) {
+    if (btn_manager_[btn::kMainStartGameBtn]->IsActive()) {
         state_stack_->push(std::make_shared<GameState>(window_, supported_keys_, state_stack_));
     }
 }

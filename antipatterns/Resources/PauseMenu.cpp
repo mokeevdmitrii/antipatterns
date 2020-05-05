@@ -18,7 +18,7 @@ PauseMenu::PauseMenu(const std::shared_ptr<sf::RenderWindow>& window) : btn_mana
                             window->getSize().y / 2.f - background_.getSize().y / 2.f);
     inner_.setPosition(window->getSize().x / 2.f - inner_.getSize().x / 2.f,
                        window->getSize().y / 2.f - inner_.getSize().y / 2.f);
-    menu_text_ = sf::Text("Game paused", btn_manager_.GetFont(), 30);
+    menu_text_ = sf::Text(btn::kGamePausedText, btn_manager_.GetFont(), 30);
     menu_text_.setPosition(window->getSize().x * 0.5 - menu_text_.getGlobalBounds().width * 0.5,
             window->getSize().y * 0.1 - menu_text_.getGlobalBounds().height * 0.5);
     menu_text_.setFillColor(sf::Color(200, 200, 200, 200));

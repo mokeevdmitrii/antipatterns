@@ -83,11 +83,22 @@ void AttributeValue::Update(float time_elapsed) {
     updated_ = true;
     UpdateBonuses(time_elapsed, raw_bonuses_);
     UpdateBonuses(time_elapsed, effects_);
+    if (relative_value_ < 0) {
+        relative_value_ = 0;
+    }
+    if (current_value_ > 1) {
+        relative_value_ = 1;
+    }
 }
 
 void AttributeValue::UpdateLevel(int level_change) {
     relative_value_ = 1;
 }
+
+void AttributeValue::SetCurrentValue(double value) {
+    relative_value_ = value / max_value_->GetCurrentValue();
+}
+
 
 void AttributeValue::UpdateBonuses(float time_elapsed, std::list<std::shared_ptr<BaseAttribute>> &bonuses) {
     auto b_it = bonuses.begin();
@@ -108,5 +119,6 @@ void AttributeValue::UpdateBonuses(float time_elapsed, std::list<std::shared_ptr
     relative_value_ += bonus_value / max_value_->GetCurrentValue();
     relative_value_ *= (1.0 + bonus_multiplier);
 }
+
 
 

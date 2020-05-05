@@ -11,11 +11,16 @@
 namespace file {
 
     static const std::string kMainFontFile = "../Config/lobster.otf";
+    static const std::string kWindowSettingsFile = "../Config/window_init.txt";
+    static const std::string kSupportedKeysFile = "../Config/supported_keys.txt";
+
 
 // files used in GameState.h
     static const std::string kGameStateKeybindingsFile = "../Config/game_state_keybindings.txt";
-
+    static const std::string kPlayerGuiFile = "../Config/player_gui.json";
     static const std::string kUniqueDataFile = "../Config/unique_data.json";
+    static const std::string kPlayerSettingsFile = "../Config/player_settings.json";
+    static const std::string kRoomSettingsFile = "../Config/rooms.json";
 
 // files used in MainMenuState.h
 

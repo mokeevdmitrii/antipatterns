@@ -67,6 +67,12 @@ void BaseAttribute::Update(float time_elapsed) {
 
 void BaseAttribute::ResetUpdate() {
     updated_ = false;
+    for (auto& raw_bonus : raw_bonuses_) {
+        raw_bonus->ResetUpdate();
+    }
+    for (auto& effect : effects_) {
+        effect->ResetUpdate();
+    }
 }
 
 void BaseAttribute::UpdateLevel(int level_change) {

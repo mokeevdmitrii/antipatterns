@@ -66,6 +66,11 @@ void PhysicsComponent::SetPossibleMoveDirections(PossibleDirections directions) 
     able_dir = directions;
 }
 
+void PhysicsComponent::UpdateSpeedMultiplier(float multiplier) {
+    speed_multiplier_ *= multiplier;
+}
+
+
 void PhysicsComponent::StopAxisMoveX() {
     velocity_.x = 0;
 }
@@ -107,12 +112,13 @@ void PhysicsComponent::Update(const float time_elapsed) {
             velocity_.y = 0;
         }
     }
-    sprite_->move(velocity_ * time_elapsed);
+    sprite_->move(velocity_ * speed_multiplier_ * time_elapsed);
 }
 
 void PhysicsComponent::UpdateCopy(sf::Sprite &sprite) {
     sprite_ = &sprite;
 }
+
 
 
 

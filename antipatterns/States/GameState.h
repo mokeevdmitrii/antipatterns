@@ -11,6 +11,7 @@
 #include "../src/TileMap.h"
 #include "../src/Room.h"
 #include "../Resources/Constants/Filenames.h"
+#include "../Resources/GUI/PlayerGUI.h"
 
 class GameState : public State {
 public:
@@ -30,16 +31,20 @@ private:
     void InitKeybindings() override;
     void InitPlayer();
     void InitPauseMenu();
+    void InitPlayerGui();
     void InitRooms();
     void InitInputHandler();
 
-    /* thinking about moving player somewhere else */
+
     static const std::unordered_map<std::string, ROOM_ID> rooms_names_to_ids;
     std::unordered_map<ROOM_ID, std::unique_ptr<Room>> rooms_;
     ROOM_ID current_room_id{ROOM_ID::INIT_ROOM};
-    std::shared_ptr<Creature> player_;
+    std::shared_ptr<Player> player_;
+    std::shared_ptr<gui::PlayerGUI> player_gui_;
     std::shared_ptr<PauseMenu> pause_menu_;
     std::unique_ptr<PlayerInputHandler> input_handler_;
+
+
 };
 
 

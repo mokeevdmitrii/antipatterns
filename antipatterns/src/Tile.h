@@ -19,7 +19,7 @@ enum class TileType {
 class Tile {
 public:
     Tile(TileType type, const sf::Texture &texture,
-            const sf::IntRect &rect, const sf::Vector2f &pos = sf::Vector2f());
+            const sf::IntRect &rect, double cost, const sf::Vector2f &pos = sf::Vector2f());
 
     std::unique_ptr<Tile> Clone(const sf::Vector2f& position) const;
 
@@ -27,6 +27,7 @@ public:
 private:
     sf::Sprite sprite_;
     TileType type_;
+    double move_cost_;
 };
 
 

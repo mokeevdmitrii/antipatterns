@@ -20,6 +20,8 @@ public:
 
     std::shared_ptr<BaseAttribute> Clone() const override;
 
+    ATTRIBUTE_ID GetAttributeid() const;
+
     void SetAttributeId(ATTRIBUTE_ID id);
 
 protected:

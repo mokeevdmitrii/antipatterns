@@ -48,6 +48,7 @@ public:
 
     /* modifiers */
     void SetPossibleMoveDirections(PossibleDirections directions);
+    void UpdateSpeedMultiplier(float multiplier);
     void Stop();
     void StopAxisMoveX();
     void StopAxisMoveY();
@@ -61,6 +62,7 @@ public:
 private:
     sf::Sprite *sprite_;
 
+    float speed_multiplier_{1};
     PossibleDirections able_dir;
     sf::Vector2f velocity_;
     MovementState last_direction_{MovementState::IDLE};

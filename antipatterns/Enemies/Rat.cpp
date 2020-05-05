@@ -10,6 +10,7 @@ Rat::Rat(sf::Texture &texture_sheet, const std::map<std::string, Json::Node>& se
     Creature::InitGraphicsComponent(texture_sheet, settings.at("graphics_component").AsMap());
     Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
     Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
+    Creature::InitExpComp(1);
 }
 
 Rat::Rat(const Rat &other) : Enemy(other) {

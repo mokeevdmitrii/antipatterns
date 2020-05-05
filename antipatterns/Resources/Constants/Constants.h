@@ -7,7 +7,9 @@
 
 #include <limits>
 
-const double D_INFINITY = std::numeric_limits<double>::infinity();
-const float F_INFINITY = std::numeric_limits<float>::infinity();
+const double kDInfinity = std::numeric_limits<double>::infinity();
+const float kFInfinity = std::numeric_limits<float>::infinity();
 
+const float kNormalHeight = 600;
+const float kNormalWidth = 800;
 #endif //ANTIPATTERNS_CONSTANTS_H

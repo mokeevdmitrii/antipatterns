@@ -43,16 +43,17 @@ void UniqueDatabase::LoadTiles(const std::string &file_name) {
     const std::map<std::string, Json::Node> settings = Json::Load(file_name).GetRoot().AsMap();
     int grid_size = static_cast<int>(settings.at("grid_size").AsDouble());
     TileMap::SetGridSize(grid_size);
-    for (const auto &settings_map : settings.at("tiles").AsArray()) {
+    for (const auto &settings_map_node : settings.at("tiles").AsArray()) {
+        const auto& settings_map = settings_map_node.AsMap();
         sf::IntRect curr_rect;
         TileType curr_type;
+        double cost{};
         curr_rect.height = curr_rect.width = TileMap::GetGridSize();
-        curr_rect.left = static_cast<int>(settings_map.AsMap().at("x").AsDouble()) * grid_size;
-        curr_rect.top = static_cast<int>(settings_map.AsMap().at("y").AsDouble()) * grid_size;
-        curr_type = static_cast<TileType>(settings_map.AsMap().at("type").AsDouble());
-        unique_data_.tiles.try_emplace(curr_type,
-                                       std::make_unique<Tile>(curr_type, unique_data_.textures.at("TILE_MAP"),
-                                                              curr_rect));
+        curr_rect.left = static_cast<int>(settings_map.at("x").AsDouble()) * grid_size;
+        curr_rect.top = static_cast<int>(settings_map.at("y").AsDouble()) * grid_size;
+        curr_type = static_cast<TileType>(settings_map.at("type").AsDouble());
+        cost = settings_map.at("cost").AsDouble();
+        unique_data_.tiles.try_emplace(curr_type, std::make_unique<Tile>(curr_type, unique_data_.textures.at("TILE_MAP"), curr_rect, cost));
     }
 }
 

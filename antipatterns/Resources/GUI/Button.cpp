@@ -4,7 +4,7 @@
 
 #include "Button.h"
 
-Button::Button(const ButtonParams& params) {
+gui::Button::Button(const ButtonParams& params) {
     shape_.setPosition(params.x, params.y);
     shape_.setSize(sf::Vector2f(params.width, params.height));
 
@@ -25,31 +25,31 @@ Button::Button(const ButtonParams& params) {
 
 }
 
-Button::~Button() {
+gui::Button::~Button() {
 
 }
 
-void Button::Update(const sf::Vector2f &mouse_pos) {
-    button_state_ = ButtonState::IDLE;
+void gui::Button::Update(const sf::Vector2f &mouse_pos) {
+    button_state_ = gui::ButtonState::IDLE;
 
     if (shape_.getGlobalBounds().contains(mouse_pos)) {
-        button_state_ = ButtonState::HOVER;
+        button_state_ = gui::ButtonState::HOVER;
 
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            button_state_ = ButtonState::ACTIVE;
+            button_state_ = gui::ButtonState::ACTIVE;
         }
     }
 
     switch (button_state_) {
-        case ButtonState::IDLE:
+        case gui::ButtonState::IDLE:
             shape_.setFillColor(btn_colors_.idle);
             text_.setFillColor(txt_colors_.idle);
             break;
-        case ButtonState::HOVER:
+        case gui::ButtonState::HOVER:
             shape_.setFillColor(btn_colors_.hover);
             text_.setFillColor(txt_colors_.hover);
             break;
-        case ButtonState::ACTIVE:
+        case gui::ButtonState::ACTIVE:
             shape_.setFillColor(btn_colors_.active);
             text_.setFillColor(btn_colors_.active);
             break;
@@ -58,13 +58,13 @@ void Button::Update(const sf::Vector2f &mouse_pos) {
     }
 }
 
-void Button::Render(sf::RenderTarget& target) const {
+void gui::Button::Render(sf::RenderTarget& target) const {
     target.draw(shape_);
     target.draw(text_);
 }
 
-bool Button::IsActive() const {
-    return button_state_ == ButtonState::ACTIVE;
+bool gui::Button::IsActive() const {
+    return button_state_ == gui::ButtonState::ACTIVE;
 }
 
 

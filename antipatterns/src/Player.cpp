@@ -11,6 +11,7 @@ Player::Player(sf::Vector2f position, const sf::Texture &texture_sheet, const st
     Creature::InitGraphicsComponent(texture_sheet, settings.at("graphics_component").AsMap());
     Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
     Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
+    Creature::InitExpComp(1);
     Creature::SetPosition(position);
 }
 
@@ -24,6 +25,7 @@ void Player::Update(float time_elapsed) {
     phys_comp_->Update(time_elapsed);
     UpdateAnimations(time_elapsed);
     hitbox_comp_->Update();
+    attribute_comp_->Update(time_elapsed);
 }
 
 void Player::Render(sf::RenderTarget &target) const {

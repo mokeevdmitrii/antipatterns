@@ -10,6 +10,7 @@ EnemySpawner::EnemySpawner(sf::Texture &texture_sheet, const std::map<std::strin
     Creature::InitGraphicsComponent(texture_sheet, settings.at("graphics_component").AsMap());
     Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
     Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
+    Creature::InitExpComp(1);
 }
 
 EnemySpawner::EnemySpawner(const EnemySpawner &other) : Enemy(other) {
@@ -26,7 +27,7 @@ void EnemySpawner::Update(float time_elapsed) {
     hitbox_comp_->Update();
     /* create an enemy */
     if (!cloned && spawn_clock_.getElapsedTime().asSeconds() >= 5) {
-        CreateEnemy(attribute_comp_->GetLevel());
+        CreateEnemy(exp_comp_->GetLevel());
         cloned = true;
     }
     /* update all spawned enemies */

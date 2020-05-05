@@ -19,7 +19,7 @@
 
 
 enum class ATTRIBUTE_ID {
-    VIGOR,
+    VIGOR = 0,
     STRENGTH,
     DEXTERITY,
     INTELLIGENCE,
@@ -85,7 +85,7 @@ public:
 
     virtual void UpdateLevel(int level_change);
 
-    void SetCurrentValue(double value);
+    virtual void SetCurrentValue(double value);
 
 protected:
     virtual void UpdateBonuses(float time_elapsed, std::list<std::shared_ptr<BaseAttribute>> &bonuses);

@@ -36,21 +36,21 @@ const std::unordered_map<ATTRIBUTE_ID, std::vector<ATTRIBUTE_ID>> AttributeCompo
 };
 
 const std::unordered_map<ATTRIBUTE_ID, std::pair<double, double>> AttributeComponent::id_boundaries_{
-        {ATTRIBUTE_ID::VIGOR,        {0,           D_INFINITY}},
-        {ATTRIBUTE_ID::STRENGTH,     {0,           D_INFINITY}},
-        {ATTRIBUTE_ID::DEXTERITY,    {0,           D_INFINITY}},
-        {ATTRIBUTE_ID::INTELLIGENCE, {0,           D_INFINITY}},
-        {ATTRIBUTE_ID::FAITH,        {0,           D_INFINITY}},
-        {ATTRIBUTE_ID::LUCK,         {0,           D_INFINITY}},
-        {ATTRIBUTE_ID::MAX_HP,       {1,           D_INFINITY}},
-        {ATTRIBUTE_ID::MAX_MANA,     {1,           D_INFINITY}},
-        {ATTRIBUTE_ID::PHYS_ARMOR,   {-D_INFINITY, 1}},
-        {ATTRIBUTE_ID::MAG_ARMOR,    {-D_INFINITY, 1}},
-        {ATTRIBUTE_ID::ATTACK_SPEED, {0,           D_INFINITY}},
-        {ATTRIBUTE_ID::BASE_DAMAGE,  {0,           D_INFINITY}},
+        {ATTRIBUTE_ID::VIGOR,        {0,           kDInfinity}},
+        {ATTRIBUTE_ID::STRENGTH,     {0,           kDInfinity}},
+        {ATTRIBUTE_ID::DEXTERITY,    {0,           kDInfinity}},
+        {ATTRIBUTE_ID::INTELLIGENCE, {0,           kDInfinity}},
+        {ATTRIBUTE_ID::FAITH,        {0,           kDInfinity}},
+        {ATTRIBUTE_ID::LUCK,         {0,           kDInfinity}},
+        {ATTRIBUTE_ID::MAX_HP,       {1,           kDInfinity}},
+        {ATTRIBUTE_ID::MAX_MANA,     {1,           kDInfinity}},
+        {ATTRIBUTE_ID::PHYS_ARMOR,   {-kDInfinity, 1}},
+        {ATTRIBUTE_ID::MAG_ARMOR,    {-kDInfinity, 1}},
+        {ATTRIBUTE_ID::ATTACK_SPEED, {0,           kDInfinity}},
+        {ATTRIBUTE_ID::BASE_DAMAGE,  {0,           kDInfinity}},
         {ATTRIBUTE_ID::CRIT_CHANCE,  {0,           1}},
-        {ATTRIBUTE_ID::CURR_HP,      {0,           1}},
-        {ATTRIBUTE_ID::CURR_MANA,    {0,           1}}
+        {ATTRIBUTE_ID::CURR_HP,      {0,           kDInfinity}},
+        {ATTRIBUTE_ID::CURR_MANA,    {0,           kDInfinity}}
 };
 
 const std::unordered_map<ATTRIBUTE_ID, std::function<double(
@@ -78,7 +78,6 @@ AttributeComponent &AttributeComponent::operator=(const AttributeComponent &othe
     if (&other == this) {
         return *this;
     }
-    level_ = other.level_;
     attributes_ = std::vector<std::shared_ptr<BaseAttribute>>();
     for (const auto &attribute : other.attributes_) {
         attributes_.push_back(attribute->Clone());
@@ -94,6 +93,9 @@ void AttributeComponent::Update(float time_elapsed) {
         attribute->Update(time_elapsed);
     }
     CheckBoundaries();
+    for (auto& attribute : attributes_) {
+        attribute->ResetUpdate();
+    }
 }
 
 
@@ -107,9 +109,10 @@ double AttributeComponent::GetAttributeValue(ATTRIBUTE_ID id) {
     return attributes_.at(static_cast<size_t>(id))->GetCurrentValue();
 }
 
-
-int AttributeComponent::GetLevel() const {
-    return level_;
+void AttributeComponent::UpdateLevel(int level_change) {
+    for (auto& attr : attributes_) {
+        attr->UpdateLevel(level_change);
+    }
 }
 
 
@@ -168,7 +171,7 @@ void AttributeComponent::LoadChangingAttributes(const std::map<std::string, Json
     for (const auto&[attr_name, attr_settings] : settings) {
         auto curr_id = names_to_id_.at(attr_name);
         auto curr_index = static_cast<size_t>(curr_id);
-        //вектор гарантированно содержит всего 1 элемент!
+        //вектор dependence.at(curr_id) гарантированно содержит всего 1 элемент
         auto max_value_index = static_cast<size_t>(dependence_.at(curr_id).front());
         attributes_.at(curr_index) = std::make_shared<AttributeValue>(attributes_.at(max_value_index));
     }
@@ -181,6 +184,7 @@ void AttributeComponent::GetBaseStats(Stats &stats, LevelChange &level_change,
     level_change.delta_value = settings.at("level_change").AsMap().at("delta_value").AsDouble();
     level_change.multiplier = settings.at("level_change").AsMap().at("multiplier").AsDouble();
 }
+
 
 
 

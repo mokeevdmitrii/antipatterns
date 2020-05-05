@@ -16,6 +16,10 @@ void Effect::SetAttributeId(ATTRIBUTE_ID id) {
     id_ = id;
 }
 
+ATTRIBUTE_ID Effect::GetAttributeid() const {
+    return id_;
+}
+
 std::shared_ptr<BaseAttribute> Effect::Clone() const {
     std::shared_ptr<Effect> copy = std::make_shared<Effect>(id_, stats_, level_change_);
     for (const auto &raw_bonus : raw_bonuses_) {
@@ -33,7 +37,6 @@ std::shared_ptr<BaseAttribute> Effect::Clone() const {
 
 OperatingEffect::OperatingEffect(ATTRIBUTE_ID id, Stats stats, LevelChange level_change) : Effect(id, stats,
                                                                                                   level_change) {
-
 }
 
 std::shared_ptr<BaseAttribute> OperatingEffect::Clone() const {

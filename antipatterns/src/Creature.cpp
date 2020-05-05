@@ -22,6 +22,7 @@ Creature &Creature::operator=(const Creature &other) {
     graph_comp_ = std::make_unique<GraphicsComponent>(*other.graph_comp_);
     attribute_comp_ = std::make_unique<AttributeComponent>(*other.attribute_comp_);
     hitbox_comp_ = std::make_unique<HitboxComponent>(*other.hitbox_comp_);
+    exp_comp_ = std::make_unique<ExpComponent>(*other.exp_comp_);
     phys_comp_->UpdateCopy(sprite_);
     graph_comp_->UpdateCopy(sprite_);
     hitbox_comp_->UpdateCopy(sprite_);
@@ -69,6 +70,10 @@ void Creature::InitAttributeComponent(const std::map<std::string, Json::Node> &s
     attribute_comp_ = std::make_unique<AttributeComponent>(settings);
 }
 
+void Creature::InitExpComp(int level) {
+    exp_comp_ = std::make_unique<ExpComponent>(level);
+}
+
 sf::Vector2f Creature::GetPosition() const {
     return hitbox_comp_ != nullptr ? hitbox_comp_->GetPosition() : sprite_.getPosition();
 }
@@ -88,6 +93,20 @@ sf::RectangleShape Creature::GetHitbox() const {
     result.setPosition(sprite_.getPosition());
     return result;
 }
+
+double Creature::GetAttributeValue(ATTRIBUTE_ID id) const {
+    return attribute_comp_->GetAttributeValue(id);
+}
+
+
+int Creature::GetCurrentExp() const {
+    return exp_comp_->GetCurrentExp();
+}
+
+int Creature::GetLevel() const {
+    return exp_comp_->GetLevel();
+}
+
 
 bool Creature::Intersects(const sf::RectangleShape &other_hitbox) const {
     return GetHitbox().getGlobalBounds().intersects(other_hitbox.getGlobalBounds());
@@ -150,6 +169,8 @@ float Creature::GetDistance(const Creature &other) const {
     sf::Vector2f pos = GetPosition(), other_pos = other.GetPosition();
     return Utility::GetDistance(pos, other_pos);
 }
+
+
 
 
 

@@ -3,7 +3,7 @@
 //
 
 #include "AttributeFormulas.h"
-#include "AttributeConstants.h"
+#include "GamePlayConstants.h"
 
 double stats_formula::MaxHPFunction(const stats_formula::BaseStats &stats) {
     return stat_const::kHpVigorCoeff * stats.at(ATTRIBUTE_ID::VIGOR)->GetCurrentValue();

@@ -32,12 +32,17 @@ public:
     void InitGraphicsComponent(const sf::Texture &texture_sheet, const std::map<std::string, Json::Node> &settings);
     void InitHitboxComponent(const std::map<std::string, Json::Node> &settings);
     void InitAttributeComponent(const std::map<std::string, Json::Node> &settings);
+    void InitExpComp(int level = 1);
 
     /* getters */
     sf::Vector2f GetPosition() const;
     void SetPossibleMoveDirections(PossibleDirections directions);
     sf::RectangleShape GetHitbox() const;
+    double GetAttributeValue(ATTRIBUTE_ID id) const;
+    int GetCurrentExp() const;
+    int GetLevel() const;
     float GetDistance(const Creature& other) const;
+
 
     bool Intersects(const sf::RectangleShape &other_hitbox) const;
     bool Contains(const sf::RectangleShape &other_hitbox) const;
@@ -50,6 +55,7 @@ protected:
     std::unique_ptr<GraphicsComponent> graph_comp_{};
     std::unique_ptr<HitboxComponent> hitbox_comp_{};
     std::unique_ptr<AttributeComponent> attribute_comp_{};
+    std::unique_ptr<ExpComponent> exp_comp_{};
 
     sf::Sprite sprite_{};
 private:

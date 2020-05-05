@@ -5,7 +5,6 @@
 #include "Game.h"
 #include "../States/GameState.h"
 
-/* Constructors, destructors */
 
 Game::Game() {
     InitWindow();
@@ -36,12 +35,9 @@ void Game::Update() {
     if (!states_->empty()) {
         states_->top()->Update(time_elapsed_);
         if (states_->top()->GetToQuit()) {
-            /* animation, saving */
-            //states_->top()->End();
             states_->pop();
         }
     } else {
-        /* no states left, we are closing the game */
         EndApplication();
         window_->close();
     }
@@ -78,8 +74,7 @@ void Game::EndApplication() {
 /* initializers */
 
 void Game::InitWindow() {
-    /* Creates a window from using config settings file */
-    if (!_graphics_settings.LoadFromFile("../Config/window_init.txt")) {
+    if (!_graphics_settings.LoadFromFile(file::kWindowSettingsFile)) {
         throw std::runtime_error("settings not found");
     }
 
@@ -97,10 +92,9 @@ void Game::InitWindow() {
     window_->setVerticalSyncEnabled(_graphics_settings.v_sync_enabled_);
 }
 
-/*init keys must be used before init states, or program crashes - to fix*/
 void Game::InitKeys() {
     supported_keys_ = std::make_shared<std::unordered_map<std::string, int>>();
-    std::ifstream in("../Config/supported_keys.txt");
+    std::ifstream in(file::kSupportedKeysFile);
     if (in.is_open()) {
         std::string key_str{};
         int key_val{};

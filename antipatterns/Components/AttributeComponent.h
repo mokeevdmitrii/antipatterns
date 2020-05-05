@@ -9,6 +9,8 @@
 #include "../Resources/Constants/AttributeFormulas.h"
 #include "../Resources/Constants/Constants.h"
 #include "Parameters/Attribute.h"
+#include "Parameters/Effect.h"
+#include "ExpComponent.h"
 
 class AttributeComponent {
 public:
@@ -26,7 +28,8 @@ public:
 
     double GetAttributeValue(ATTRIBUTE_ID id);
 
-    int GetLevel() const;
+    void UpdateLevel(int level_change);
+
 private:
     void ResetAttributesDependence();
 
@@ -38,10 +41,9 @@ private:
 
     void LoadChangingAttributes(const std::map<std::string, Json::Node> &settings);
 
-    void GetBaseStats(Stats& stats, LevelChange& level_change, const std::map<std::string, Json::Node>& settings);
+    void GetBaseStats(Stats &stats, LevelChange &level_change, const std::map<std::string, Json::Node> &settings);
 
     std::vector<std::shared_ptr<BaseAttribute>> attributes_;
-    int level_{1};
 
     static const std::unordered_map<std::string, ATTRIBUTE_ID> names_to_id_;
 

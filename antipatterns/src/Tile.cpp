@@ -5,7 +5,8 @@
 #include "Tile.h"
 
 Tile::Tile(TileType type, const sf::Texture &texture, const sf::IntRect &rect,
-           const sf::Vector2f &pos) : type_(type), sprite_(texture, rect) {
+           double move_cost, const sf::Vector2f &pos) : type_(type), sprite_(texture, rect),
+           move_cost_(move_cost) {
     sprite_.setPosition(pos);
 }
 

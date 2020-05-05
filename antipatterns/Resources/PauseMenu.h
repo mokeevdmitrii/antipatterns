@@ -5,7 +5,7 @@
 #ifndef ANTIPATTERNS_PAUSEMENU_H
 #define ANTIPATTERNS_PAUSEMENU_H
 
-#include "ButtonManager.h"
+#include "GUI/ButtonManager.h"
 
 class PauseMenu {
 public:
@@ -20,7 +20,7 @@ private:
     sf::RectangleShape background_;
     sf::RectangleShape inner_;
     sf::Text menu_text_;
-    ButtonManager btn_manager_;
+    gui::ButtonManager btn_manager_;
 
     constexpr static const float outer_ratio_x_{1.0};
     constexpr static const float outer_ratio_y_{1.0};

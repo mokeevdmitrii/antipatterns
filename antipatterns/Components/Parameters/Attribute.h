@@ -48,8 +48,9 @@ public:
 
     void Update(float time_elapsed) override;
 
-    //здоровье обновляется при получении уровня
     void UpdateLevel(int level_change) override;
+
+    void SetCurrentValue(double value) override;
 
 protected:
     void UpdateBonuses(float time_elapsed, std::list<std::shared_ptr<BaseAttribute>>& bonuses) override;

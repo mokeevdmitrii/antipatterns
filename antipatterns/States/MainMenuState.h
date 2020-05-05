@@ -6,7 +6,7 @@
 #define ANTIPATTERNS_MAINMENUSTATE_H
 
 #include "GameState.h"
-#include "../Resources/ButtonManager.h"
+#include "../Resources/GUI/ButtonManager.h"
 
 struct Background {
     sf::RectangleShape _image;
@@ -32,7 +32,7 @@ private:
     /* variables */
     sf::Font main_font_;
     Background background_;
-    ButtonManager btn_manager_;
+    gui::ButtonManager btn_manager_;
 };
 
 
