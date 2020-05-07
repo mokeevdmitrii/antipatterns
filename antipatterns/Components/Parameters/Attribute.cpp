@@ -76,6 +76,15 @@ double AttributeValue::GetMultiplier() const {
     return max_value_->GetMultiplier();
 }
 
+void AttributeValue::UpdateLevel(int level_change) {
+    relative_value_ = 1;
+}
+
+void AttributeValue::SetCurrentValue(double value) {
+    relative_value_ = value / max_value_->GetCurrentValue();
+}
+
+//responsible for its own value
 void AttributeValue::Update(float time_elapsed) {
     if (updated_) {
         return;
@@ -86,17 +95,9 @@ void AttributeValue::Update(float time_elapsed) {
     if (relative_value_ < 0) {
         relative_value_ = 0;
     }
-    if (current_value_ > 1) {
+    if (relative_value_ > 1) {
         relative_value_ = 1;
     }
-}
-
-void AttributeValue::UpdateLevel(int level_change) {
-    relative_value_ = 1;
-}
-
-void AttributeValue::SetCurrentValue(double value) {
-    relative_value_ = value / max_value_->GetCurrentValue();
 }
 
 

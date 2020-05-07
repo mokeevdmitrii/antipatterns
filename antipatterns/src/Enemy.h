@@ -23,6 +23,8 @@ public:
     void GenerateAttributes(int level);
     virtual std::unique_ptr<Enemy> Clone() const = 0;
 private:
+    //virtual void UpdateCombatAnimations();
+
     std::unordered_map<EnemyStateType, std::unique_ptr<EnemyState>> states_;
     EnemyStateType current_state_id_{EnemyStateType::IDLE};
 };

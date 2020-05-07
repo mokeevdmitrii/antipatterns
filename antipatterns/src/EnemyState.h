@@ -16,16 +16,24 @@ enum class EnemyStateType {
 
 class EnemyState {
 public:
+    EnemyState(EnemyStateType type) : type_(type) {}
+
     virtual EnemyStateType
-    Update(float time_elapsed, Creature* enemy, const std::unique_ptr<TileMap> &tile_map, std::shared_ptr<Creature> &player) = 0;
+    Update(float time_elapsed, Creature &enemy, std::shared_ptr<Creature> &player,
+           const std::unique_ptr<TileMap> &tile_map) = 0;
 
     EnemyStateType GetStateType() const;
+
 private:
     EnemyStateType type_{};
 };
 
 class PursuingState : public EnemyState {
 public:
+    PursuingState();
+
+    EnemyStateType Update(float time_elapsed, Creature &enemy, std::shared_ptr<Creature> &player,
+                          const std::unique_ptr<TileMap> &tile_map) override;
 
 private:
 
@@ -33,15 +41,22 @@ private:
 
 class FightingState : public EnemyState {
 public:
+    FightingState() = default;
 
+    EnemyStateType Update(float time_elapsed, Creature &enemy, std::shared_ptr<Creature> &player,
+                          const std::unique_ptr<TileMap> &tile_map) override;
 private:
 };
 
 class IdleState : public EnemyState {
 public:
+    IdleState(sf::Vector2f base_point, float aggro_radius);
 
+    EnemyStateType Update(float time_elapsed, Creature &enemy, std::shared_ptr<Creature> &player,
+                          const std::unique_ptr<TileMap> &tile_map) override;
 private:
     sf::Vector2f base_point;
+    float aggro_radius_;
 };
 
 #endif //ANTIPATTERNS_ENEMYSTATE_H

@@ -9,7 +9,6 @@
 #include "Creature.h"
 
 
-/* здесь я сижу сейчас */
 class Player : public Creature {
 public:
     Player(sf::Vector2f position, const sf::Texture &texture_sheet, const std::string &file_name);
@@ -20,7 +19,6 @@ public:
 private:
     void UpdateAnimations(float time_elapsed);
 
-    std::shared_ptr<std::unordered_map<std::string, int>> keybindings_;
     sf::Vector2f position_;
 
 };

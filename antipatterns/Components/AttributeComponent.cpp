@@ -48,9 +48,7 @@ const std::unordered_map<ATTRIBUTE_ID, std::pair<double, double>> AttributeCompo
         {ATTRIBUTE_ID::MAG_ARMOR,    {-kDInfinity, 1}},
         {ATTRIBUTE_ID::ATTACK_SPEED, {0,           kDInfinity}},
         {ATTRIBUTE_ID::BASE_DAMAGE,  {0,           kDInfinity}},
-        {ATTRIBUTE_ID::CRIT_CHANCE,  {0,           1}},
-        {ATTRIBUTE_ID::CURR_HP,      {0,           kDInfinity}},
-        {ATTRIBUTE_ID::CURR_MANA,    {0,           kDInfinity}}
+        {ATTRIBUTE_ID::CRIT_CHANCE,  {0,           1}}
 };
 
 const std::unordered_map<ATTRIBUTE_ID, std::function<double(
@@ -128,7 +126,7 @@ void AttributeComponent::ResetAttributesDependence() {
 }
 
 void AttributeComponent::CheckBoundaries() {
-    for (size_t i = 0; i < attributes_.size(); ++i) {
+    for (size_t i = 0; i < id_boundaries_.size(); ++i) {
         auto curr_id = static_cast<ATTRIBUTE_ID>(i);
         if (attributes_[i]->GetCurrentValue() < id_boundaries_.at(curr_id).first) {
             attributes_[i]->SetCurrentValue(id_boundaries_.at(curr_id).first);
