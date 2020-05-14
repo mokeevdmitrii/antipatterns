@@ -9,17 +9,17 @@
 
 class Rat : public Enemy {
 public:
-    Rat(sf::Texture& texture_sheet, const std::map<std::string, Json::Node>& settings);
-    Rat(const Rat& other);
-    ~Rat() = default;
+  Rat(sf::Texture &texture_sheet,
+      const std::map<std::string, Json::Node> &settings);
+  Rat(const Rat &other);
+  ~Rat() = default;
 
-    void Update(float time_elapsed) override;
-    void Render(sf::RenderTarget& target) const override;
-    std::unique_ptr<Enemy> Clone() const override;
+  void Update(float time_elapsed) override;
+  void Render(sf::RenderTarget &target) const override;
+  std::unique_ptr<Enemy> Clone() const override;
 
 private:
-    void UpdateAnimations(float time_elapsed);
+  void UpdateAnimations(float time_elapsed);
 };
 
-
-#endif //ANTIPATTERNS_RAT_H
+#endif // ANTIPATTERNS_RAT_H

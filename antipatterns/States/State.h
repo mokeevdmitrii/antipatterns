@@ -5,68 +5,56 @@
 #ifndef ANTIPATTERNS_STATE_H
 #define ANTIPATTERNS_STATE_H
 
-
-#include "../src/Player.h"
 #include "../Resources/PauseMenu.h"
-
+#include "../src/Player.h"
 
 struct MousePositions {
-    sf::Vector2i screen;
-    sf::Vector2i window;
-    sf::Vector2f view;
+  sf::Vector2i screen;
+  sf::Vector2i window;
+  sf::Vector2f view;
 };
-
-/*
- * enum StateType {
- *      MAIN_MENU,
- *      GAME,
- *      ...
- *      нужно ли???
- * }
- */
 
 class State {
 public:
-    State(std::shared_ptr<sf::RenderWindow> window,
-          std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
-          std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack);
+  State(std::shared_ptr<sf::RenderWindow> window,
+        std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
+        std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack);
 
-    virtual ~State();
+  virtual ~State();
 
-    /* tools for quitting */
-    bool GetToQuit() const;
+  /* tools for quitting */
+  bool GetToQuit() const;
 
-    /* State functions */
-    void UpdateMousePositions();
-    /* for pause and quit */
-    void Pause();
-    void Unpause();
-    void End();
+  /* State functions */
+  void UpdateMousePositions();
+  /* for pause and quit */
+  void Pause();
+  void Unpause();
+  void End();
 
-    virtual void Render(std::shared_ptr<sf::RenderTarget> target) = 0;
-    virtual void Update(float time_elapsed) = 0;
-    virtual void UpdateInput(float time_elapsed) = 0;
+  virtual void Render(std::shared_ptr<sf::RenderTarget> target) = 0;
+  virtual void Update(float time_elapsed) = 0;
+  virtual void UpdateInput(float time_elapsed) = 0;
 
 protected:
-    /* declarations */
+  /* declarations */
 
-    /* initializers */
-    virtual void InitKeybindings();
+  /* initializers */
+  virtual void InitKeybindings();
 
-    /* variables */
-    std::shared_ptr<std::unordered_map<std::string, int>> supported_keys_;
-    std::shared_ptr<std::unordered_map<std::string, int>> keybindings_;
+  /* variables */
+  std::shared_ptr<std::unordered_map<std::string, int>> supported_keys_;
+  std::shared_ptr<std::unordered_map<std::string, int>> keybindings_;
 
-    std::shared_ptr<sf::RenderWindow> window_;
-    std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack_;
+  std::shared_ptr<sf::RenderWindow> window_;
+  std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack_;
 
-    bool _to_quit = false;
-    bool _paused = false;
-    MousePositions mouse_positions_;
+  bool _to_quit = false;
+  bool _paused = false;
+  MousePositions mouse_positions_;
 
 private:
-    /* still nothing */
-
+  /* still nothing */
 };
 
-#endif //ANTIPATTERNS_STATE_H
+#endif // ANTIPATTERNS_STATE_H

@@ -9,33 +9,34 @@
 
 class EnemySpawner : public Enemy {
 public:
-    EnemySpawner(sf::Texture &texture_sheet, const std::map<std::string, Json::Node> &settings,
-                 std::shared_ptr<Enemy> prototype = nullptr);
+  EnemySpawner(sf::Texture &texture_sheet,
+               const std::map<std::string, Json::Node> &settings,
+               std::shared_ptr<Enemy> prototype = nullptr);
 
-    EnemySpawner(const EnemySpawner &other);
+  EnemySpawner(const EnemySpawner &other);
 
-    ~EnemySpawner() = default;
+  ~EnemySpawner() = default;
 
-    void Update(float time_elapsed) override;
-    void UpdatePlayer(float time_elapsed, const std::shared_ptr<Creature>& player) override;
-    void Render(sf::RenderTarget &target) const override;
-    std::unique_ptr<Enemy> Clone() const override;
+  void Update(float time_elapsed) override;
+  void UpdatePlayer(float time_elapsed,
+                    const std::shared_ptr<Creature> &player) override;
+  void Render(sf::RenderTarget &target) const override;
+  std::unique_ptr<Enemy> Clone() const override;
 
-    void CreateEnemy(int level);
+  void CreateEnemy(int level);
 
-    /* setter */
-    void SetPrototype(std::shared_ptr<Enemy> prototype);
+  /* setter */
+  void SetPrototype(std::shared_ptr<Enemy> prototype);
 
 private:
-    void UpdateAnimations(float time_elapsed);
+  void UpdateAnimations(float time_elapsed);
 
-    /* the enemy to be cloned */
-    std::shared_ptr<Enemy> prototype_;
-    std::list<std::unique_ptr<Enemy>> spawned_enemies_;
-    /* здесь какие-то параметры спаунера, пока сделаем одного врага */
-    sf::Clock spawn_clock_;
-    bool cloned = false;
+  /* the enemy to be cloned */
+  std::shared_ptr<Enemy> prototype_;
+  std::list<std::unique_ptr<Enemy>> spawned_enemies_;
+  /* здесь какие-то параметры спаунера, пока сделаем одного врага */
+  sf::Clock spawn_clock_;
+  bool cloned = false;
 };
 
-
-#endif //ANTIPATTERNS_ENEMYSPAWNER_H
+#endif // ANTIPATTERNS_ENEMYSPAWNER_H

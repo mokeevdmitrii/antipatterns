@@ -6,9 +6,9 @@
 #define ANTIPATTERNS_ENEMYTYPES_H
 
 enum class EnemyType {
-    DEFAULT,
-    ENEMY_SPAWNER,
-    RAT,
+  DEFAULT,
+  ENEMY_SPAWNER,
+  RAT,
 };
 
-#endif //ANTIPATTERNS_ENEMYTYPES_H
+#endif // ANTIPATTERNS_ENEMYTYPES_H

@@ -5,39 +5,38 @@
 #ifndef ANTIPATTERNS_ROOM_H
 #define ANTIPATTERNS_ROOM_H
 
+#include "EnemySystem.h"
 #include "Player.h"
 #include "UniqueDatabase.h"
-#include "EnemySystem.h"
 
 class Room {
 public:
-    explicit Room(const std::string &file_name);
+  explicit Room(const std::string &file_name);
 
-    void Update(float time_elapsed);
+  void Update(float time_elapsed);
 
-    void Render(sf::RenderTarget &target);
+  void Render(sf::RenderTarget &target);
 
-    //nullptr if no exit, else ptr to first active exit found
-    const Exit* GetActiveExit() const;
+  // nullptr if no exit, else ptr to first active exit found
+  const Exit *GetActiveExit() const;
 
-    ROOM_ID GetRoomID() const;
+  ROOM_ID GetRoomID() const;
 
-    void AddExit(std::unique_ptr<Exit> exit);
+  void AddExit(std::unique_ptr<Exit> exit);
 
-    void SetPlayer(std::shared_ptr<Creature> player);
+  void SetPlayer(std::shared_ptr<Creature> player);
+
 private:
-    void InitEnemySystem(const std::map<std::string, Json::Node>& enemy_settings);
-    void InitTileMap(const std::map<std::string, Json::Node>& map_settings);
+  void InitEnemySystem(const std::map<std::string, Json::Node> &enemy_settings);
+  void InitTileMap(const std::map<std::string, Json::Node> &map_settings);
 
-    void UpdateCollisions();
+  void UpdateCollisions();
 
-
-    std::shared_ptr<Creature> player_{nullptr};
-    std::unique_ptr<TileMap> map_{nullptr};
-    std::unique_ptr<EnemySystem> enemy_system_{nullptr};
-    std::vector<std::unique_ptr<Exit>> exits_;
-    ROOM_ID room_id_{};
+  std::shared_ptr<Creature> player_{nullptr};
+  std::unique_ptr<TileMap> map_{nullptr};
+  std::unique_ptr<EnemySystem> enemy_system_{nullptr};
+  std::vector<std::unique_ptr<Exit>> exits_;
+  ROOM_ID room_id_{};
 };
 
-
-#endif //ANTIPATTERNS_ROOM_H
+#endif // ANTIPATTERNS_ROOM_H

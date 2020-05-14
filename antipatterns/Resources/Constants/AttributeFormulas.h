@@ -8,22 +8,24 @@
 #include "../../Components/Parameters/BaseAttribute.h"
 
 namespace stats_formula {
-    using BaseStats = std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>>;
-    using StatsFunc = std::function<double(const std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>> &)>;
+using BaseStats =
+    std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>>;
+using StatsFunc = std::function<double(
+    const std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>> &)>;
 
-    double MaxHPFunction(const BaseStats &stats);
+double MaxHPFunction(const BaseStats &stats);
 
-    double MaxManaFunction(const BaseStats &stats);
+double MaxManaFunction(const BaseStats &stats);
 
-    double PhysArmorFunction(const BaseStats &stats);
+double PhysArmorFunction(const BaseStats &stats);
 
-    double MagArmorFunction(const BaseStats &stats);
+double MagArmorFunction(const BaseStats &stats);
 
-    double AttackSpeedFunction(const BaseStats &stats);
+double AttackSpeedFunction(const BaseStats &stats);
 
-    double BaseDamageFunction(const BaseStats &stats);
+double BaseDamageFunction(const BaseStats &stats);
 
-    double CritChanceFunction(const BaseStats &stats);
-}
+double CritChanceFunction(const BaseStats &stats);
+} // namespace stats_formula
 
-#endif //ANTIPATTERNS_ATTRIBUTEFORMULAS_H
+#endif // ANTIPATTERNS_ATTRIBUTEFORMULAS_H

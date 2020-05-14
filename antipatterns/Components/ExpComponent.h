@@ -9,21 +9,19 @@
 
 class ExpComponent {
 public:
-    explicit ExpComponent(int level = 1);
+  explicit ExpComponent(int level = 1);
 
-    int GainExp(int exp_gained);
+  int GainExp(int exp_gained);
 
-    void ChangeLevel(int delta_level);
+  void ChangeLevel(int delta_level);
 
-    int GetCurrentExp() const;
+  int GetCurrentExp() const;
 
-    int GetLevel() const;
+  int GetLevel() const;
 
 private:
-    int current_xp_{0};
-    int level_;
+  int current_xp_{0};
+  int level_;
 };
 
-
-
-#endif //ANTIPATTERNS_EXPCOMPONENT_H
+#endif // ANTIPATTERNS_EXPCOMPONENT_H

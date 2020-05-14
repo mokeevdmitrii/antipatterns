@@ -4,46 +4,37 @@
 
 #include "Player.h"
 
-
-Player::Player(sf::Vector2f position, const sf::Texture &texture_sheet, const std::string &file_name) {
-    const std::map<std::string, Json::Node> settings = Json::Load(file_name).GetRoot().AsMap();
-    Creature::InitPhysicsComponent(settings.at("physics_component").AsMap());
-    Creature::InitGraphicsComponent(texture_sheet, settings.at("graphics_component").AsMap());
-    Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
-    Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
-    Creature::InitExpComp(1);
-    Creature::SetPosition(position);
+Player::Player(sf::Vector2f position, const sf::Texture &texture_sheet,
+               const std::string &file_name) {
+  const std::map<std::string, Json::Node> settings =
+      Json::Load(file_name).GetRoot().AsMap();
+  Creature::InitPhysicsComponent(settings.at("physics_component").AsMap());
+  Creature::InitGraphicsComponent(texture_sheet,
+                                  settings.at("graphics_component").AsMap());
+  Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
+  Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
+  Creature::InitExpComp(1);
+  Creature::SetPosition(position);
 }
 
-Player::~Player() {
-
-}
+Player::~Player() {}
 
 /* overrided functions */
 
 void Player::Update(float time_elapsed) {
-    phys_comp_->Update(time_elapsed);
-    UpdateAnimations(time_elapsed);
-    hitbox_comp_->Update();
-    attribute_comp_->Update(time_elapsed);
+  phys_comp_->Update(time_elapsed);
+  UpdateAnimations(time_elapsed);
+  hitbox_comp_->Update();
+  attribute_comp_->Update(time_elapsed);
 }
 
 void Player::Render(sf::RenderTarget &target) const {
-    target.draw(sprite_);
-    hitbox_comp_->Render(target);
+  target.draw(sprite_);
+  hitbox_comp_->Render(target);
 }
 
 /* initializers */
 
-
 void Player::UpdateAnimations(float time_elapsed) {
-    Creature::UpdateMoveAnimations(time_elapsed);
+  Creature::UpdateMoveAnimations(time_elapsed);
 }
-
-
-
-
-
-
-
-

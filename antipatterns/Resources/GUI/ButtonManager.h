@@ -5,40 +5,38 @@
 #ifndef ANTIPATTERNS_BUTTONMANAGER_H
 #define ANTIPATTERNS_BUTTONMANAGER_H
 
-#include "Button.h"
-#include "../Json.h"
-#include "../Constants/Filenames.h"
 #include "../Constants/ButtonNames.h"
+#include "../Constants/Filenames.h"
+#include "../Json.h"
+#include "Button.h"
 
 namespace gui {
-    class ButtonManager {
-    public:
-        ButtonManager(const std::string &params_file, const std::string &font_file);
+class ButtonManager {
+public:
+  ButtonManager(const std::string &params_file, const std::string &font_file);
 
-        void LoadFont(const std::string &file_name);
+  void LoadFont(const std::string &file_name);
 
-        void InitButtons(const std::string &file_name);
+  void InitButtons(const std::string &file_name);
 
-        void Update(const sf::Vector2f &mouse_pos);
+  void Update(const sf::Vector2f &mouse_pos);
 
-        void Render(sf::RenderTarget &target) const;
+  void Render(sf::RenderTarget &target) const;
 
-        const sf::Font &GetFont();
+  const sf::Font &GetFont();
 
-        bool IsActive(const std::string &button_name) const;
+  bool IsActive(const std::string &button_name) const;
 
-        std::shared_ptr<Button> operator[](const std::string &btn_name) const;
+  std::shared_ptr<Button> operator[](const std::string &btn_name) const;
 
-        std::unordered_map<std::string, std::shared_ptr<Button>>::iterator begin();
+  std::unordered_map<std::string, std::shared_ptr<Button>>::iterator begin();
 
-        std::unordered_map<std::string, std::shared_ptr<Button>>::iterator end();
+  std::unordered_map<std::string, std::shared_ptr<Button>>::iterator end();
 
-    private:
+private:
+  std::unordered_map<std::string, std::shared_ptr<Button>> buttons_;
+  sf::Font button_font_;
+};
+} // namespace gui
 
-        std::unordered_map<std::string, std::shared_ptr<Button>> buttons_;
-        sf::Font button_font_;
-    };
-}
-
-
-#endif //ANTIPATTERNS_BUTTONMANAGER_H
+#endif // ANTIPATTERNS_BUTTONMANAGER_H

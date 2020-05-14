@@ -12,4 +12,5 @@ const float kFInfinity = std::numeric_limits<float>::infinity();
 
 const float kNormalHeight = 600;
 const float kNormalWidth = 800;
-#endif //ANTIPATTERNS_CONSTANTS_H
+
+#endif // ANTIPATTERNS_CONSTANTS_H
