@@ -12,6 +12,7 @@ Rat::Rat(sf::Texture &texture_sheet,
   Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
   Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
   Creature::InitExpComp(1);
+  Enemy::InitStates();
 }
 
 Rat::Rat(const Rat &other) : Enemy(other) {

@@ -7,12 +7,12 @@
 Room::Room(const std::string &file_name) {
   const std::map<std::string, Json::Node> room_settings =
       Json::Load(file_name).GetRoot().AsMap();
-  InitEnemySystem(room_settings.at("enemy_system").AsMap());
   InitTileMap(room_settings.at("tile_map").AsMap());
+  InitEnemySystem(room_settings.at("enemy_system").AsMap());
 }
 
 void Room::Update(float time_elapsed) {
-  UpdateCollisions();
+  UpdateCollisions(time_elapsed);
   if (player_ != nullptr) {
     player_->Update(time_elapsed);
   }
@@ -52,7 +52,7 @@ void Room::SetPlayer(std::shared_ptr<Creature> player) {
 void Room::InitEnemySystem(
     const std::map<std::string, Json::Node> &enemy_settings) {
   enemy_system_ = std::make_unique<EnemySystem>(
-      enemy_settings, UniqueDatabase::Instance().GetData().enemies);
+      enemy_settings, UniqueDatabase::Instance().GetData().enemies, *map_);
 }
 
 void Room::InitTileMap(const std::map<std::string, Json::Node> &map_settings) {
@@ -60,8 +60,8 @@ void Room::InitTileMap(const std::map<std::string, Json::Node> &map_settings) {
                                    UniqueDatabase::Instance().GetData().tiles);
 }
 
-void Room::UpdateCollisions() {
+void Room::UpdateCollisions(float time_elapsed) {
   if (player_ != nullptr) {
-    map_->UpdateCreature<std::shared_ptr<Creature>>(player_);
+    map_->UpdateCreature<std::shared_ptr<Creature>>(player_, time_elapsed);
   }
 }

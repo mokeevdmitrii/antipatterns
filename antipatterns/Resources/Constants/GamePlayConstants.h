@@ -50,4 +50,14 @@ constexpr int const kExpForNextLevel[11] = {0,    10,   50,   100,   200,  500,
 constexpr int const kMaxLevel = 10;
 } // namespace stat_const
 
+
+namespace phys_const {
+
+constexpr float kHitboxRecSide = 0.85;
+constexpr float kTimeNormalizerMap = 0.25;
+constexpr float kSmallValue = 0.01;
+constexpr float kLineStepValue = 0.25;
+
+}
+
 #endif // ANTIPATTERNS_GAMEPLAYCONSTANTS_H

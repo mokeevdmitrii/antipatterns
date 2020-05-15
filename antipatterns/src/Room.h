@@ -30,7 +30,7 @@ private:
   void InitEnemySystem(const std::map<std::string, Json::Node> &enemy_settings);
   void InitTileMap(const std::map<std::string, Json::Node> &map_settings);
 
-  void UpdateCollisions();
+  void UpdateCollisions(float time_elapsed);
 
   std::shared_ptr<Creature> player_{nullptr};
   std::unique_ptr<TileMap> map_{nullptr};

@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <set>
 #include <vector>
+#include <cmath>
 
 class AStar {
 public:
@@ -32,7 +33,7 @@ public:
 
   class Graph {
   private:
-    std::vector<std::vector<int>>
+    const std::vector<std::vector<int>> &
         adj; //поле/матрица если мы не можем пройти по клетке, то ее значение -1
     std::vector<std::vector<bool>>
         open_list_bool; //проверка в открытом списке или нет
@@ -47,40 +48,43 @@ public:
 
     explicit Graph(const std::vector<std::vector<int>> &map);
 
-    std::pair<int, int> size();
+    std::pair<int, int> Size();
 
     int GetWidth();
 
     int GetLength();
 
-    int h(const Point &end, const Point &now);
+    int GetH(const Point &end, const Point &now);
 
-    int g(const Point &current, const Point &now);
+    int GetG(const Point &current, const Point &now);
 
     void MyErase(const Point &now, std::set<Point, cmp> &open_list);
 
-    void change_g_h_f(const Point &current, Point &now,
+    void ChangeGHF(const Point &current, Point &now,
                       std::set<Point, cmp> &open_list,
                       std::vector<std::vector<std::pair<int, int>>> &parents);
 
-    bool inside_close_list(const Point &now);
+    bool IsInsideCloseList(const Point &now);
 
-    bool inside_open_list(const Point &now);
+    bool IsInsideOpenList(const Point &now);
 
-    void assign_h_g_f(const Point& end, Point &current, Point &now,
+    void AssignGHF(const Point &end, Point &current, Point &now,
                       std::set<Point, cmp> &open_list,
                       std::vector<std::vector<std::pair<int, int>>> &parents,
                       bool &status);
 
-    void A_star(int x1, int y1, int x2, int y2,
+    void AStar(int x1, int y1, int x2, int y2,
                 std::vector<std::vector<std::pair<int, int>>> &parents);
+
+    bool IsLineSolid(float x1, float y1, float x2, float y2);
   };
 
 private:
-  Graph our_graph;
+  Graph graph_;
+  const int grid_size_;
 
 public:
-  explicit AStar(const std::vector<std::vector<int>> &map);
+  explicit AStar(const std::vector<std::vector<int>> &map, int grid_size);
 
   std::vector<std::pair<int, int>> AlgorithmAStar(std::pair<int, int> start,
                                                   std::pair<int, int> end);
@@ -90,6 +94,8 @@ public:
 
   std::vector<std::pair<int, int>> GetRoad(std::pair<int, int> start,
                                            std::pair<int, int> end);
+
+  bool IsLineSolid(float start_x, float start_y, float end_x, float end_y);
 };
 
 #endif // ANTIPATTERNS_ASTAR_H

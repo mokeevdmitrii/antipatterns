@@ -51,8 +51,8 @@ sf::Vector2f HitboxComponent::GetPosition() const {
 }
 
 sf::Vector2f HitboxComponent::GetCenteredPosition() const {
-  return {hitbox_.getPosition().x + hitbox_.getSize().x,
-          hitbox_.getPosition().y + hitbox_.getSize().y};
+  return {hitbox_.getPosition().x + hitbox_.getSize().x / 2.f,
+          hitbox_.getPosition().y + hitbox_.getSize().y / 2.f};
 }
 
 bool HitboxComponent::Intersects(const sf::RectangleShape &other_hitbox) const {

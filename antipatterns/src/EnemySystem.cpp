@@ -11,8 +11,9 @@ const std::unordered_map<std::string, EnemyType> EnemySystem::names_to_types_ =
 
 EnemySystem::EnemySystem(
     const std::map<std::string, Json::Node> &enemies_settings,
-    const std::unordered_map<EnemyType, std::shared_ptr<Enemy>>
-        &unique_enemies) {
+    const std::unordered_map<EnemyType, std::shared_ptr<Enemy>> &unique_enemies,
+    const TileMap &tile_map) {
+  InitAStar(tile_map.GetCostMap(), TileMap::GetGridSize());
   LoadEnemies(enemies_settings, unique_enemies);
 }
 
@@ -59,6 +60,7 @@ void EnemySystem::CreateEnemy(
     _spawner.SetPrototype(unique_enemies.at(params._type_to_spawn));
   }
   clone->SetPosition(pos);
+  clone->SetPursuingStrategy(a_star_);
   active_enemies_.push_back(std::move(clone));
 }
 
@@ -86,4 +88,8 @@ void EnemySystem::UpdatePlayer(float time_elapsed) {
   for (auto &enemy_alive : active_enemies_) {
     enemy_alive->UpdatePlayer(time_elapsed, player_);
   }
+}
+void EnemySystem::InitAStar(const std::vector<std::vector<int>> &cost_map,
+                            int grid_size) {
+  a_star_ = std::make_shared<AStar>(cost_map, grid_size);
 }

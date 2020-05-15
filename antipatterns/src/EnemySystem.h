@@ -16,10 +16,10 @@ struct EnemyParams {
 
 class EnemySystem {
 public:
-  explicit EnemySystem(
+  EnemySystem(
       const std::map<std::string, Json::Node> &enemies_settings,
-      const std::unordered_map<EnemyType, std::shared_ptr<Enemy>>
-          &unique_enemies);
+      const std::unordered_map<EnemyType, std::shared_ptr<Enemy>> &unique_enemies,
+      const TileMap& tile_map);
 
   ~EnemySystem();
 
@@ -40,15 +40,12 @@ public:
 
 private:
   void UpdatePlayer(float time_elapsed);
-  /* returns new random position on map for [x][y]-tile within the tile */
-  /* implement later */
-  // sf::Vector2f GeneratePosition(int x, int y);
-
-  /* will think about possible use of these functions */
+  void InitAStar(const std::vector<std::vector<int>>& cost_map, int grid_size);
 
   std::list<std::unique_ptr<Enemy>> active_enemies_;
   std::list<std::unique_ptr<Enemy>> dead_enemies_;
   std::shared_ptr<Creature> player_;
+  std::shared_ptr<AStar> a_star_;
 
   static const std::unordered_map<std::string, EnemyType> names_to_types_;
 };

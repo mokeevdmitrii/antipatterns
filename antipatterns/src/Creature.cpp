@@ -124,7 +124,7 @@ void Creature::UpdateMoveAnimations(float time_elapsed) {
 
 float Creature::GetDistance(const Creature &other) const {
   sf::Vector2f pos = GetPosition(), other_pos = other.GetPosition();
-  return Utility::GetDistance(pos, other_pos);
+  return utility::GetDistance(pos, other_pos);
 }
 
 const std::unique_ptr<PhysicsComponent> &Creature::GetPhysicsComponent() const {

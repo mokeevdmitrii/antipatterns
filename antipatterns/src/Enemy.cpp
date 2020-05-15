@@ -7,10 +7,19 @@
 Enemy::Enemy() {}
 
 Enemy::Enemy(const Enemy &other) : Creature(other) {
+
   std::cout << "enemy copied" << std::endl;
 }
 
 Enemy::~Enemy() {}
+
+void Enemy::SetPursuingStrategy(std::shared_ptr<AStar> a_star) {
+  a_star_ = std::move(a_star);
+}
+
+std::shared_ptr<AStar> Enemy::GetPursuingStrategy() const {
+  return a_star_;
+}
 
 void Enemy::GenerateAttributes(int level) {}
 
@@ -24,3 +33,4 @@ void Enemy::UpdatePlayer(float time_elapsed,
 void Enemy::UpdateEnemy(float time_elapsed,
                         const std::unique_ptr<TileMap> &tile_map,
                         std::shared_ptr<Creature> &player) {}
+

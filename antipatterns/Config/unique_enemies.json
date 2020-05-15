@@ -1,6 +1,9 @@
 {
   "tile_size" : 62,
   "Rat": {
+    "states" : {
+
+    },
     "physics_component": {
       "acceleration": 3000,
       "deceleration": 2000,
@@ -230,6 +233,9 @@
     }
   },
   "EnemySpawner" : {
+    "states" : {
+
+    },
     "physics_component": {
       "acceleration": 3000,
       "deceleration": 2000,

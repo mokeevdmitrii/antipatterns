@@ -15,6 +15,9 @@ public:
   Enemy(const Enemy &other);
   ~Enemy() override;
 
+  void SetPursuingStrategy(std::shared_ptr<AStar> a_star);
+  std::shared_ptr<AStar> GetPursuingStrategy() const;
+
   virtual void UpdateEnemy(float time_elapsed,
                            const std::unique_ptr<TileMap> &tile_map,
                            std::shared_ptr<Creature> &player);
@@ -24,9 +27,10 @@ public:
   void GenerateAttributes(int level);
   virtual std::unique_ptr<Enemy> Clone() const = 0;
 
-private:
-  // virtual void UpdateCombatAnimations();
+protected:
+  void InitStates();
 
+  std::shared_ptr<AStar> a_star_;
   std::unordered_map<EnemyStateType, std::unique_ptr<EnemyState>> states_;
   EnemyStateType current_state_id_{EnemyStateType::IDLE};
 };

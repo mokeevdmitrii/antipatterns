@@ -32,7 +32,9 @@ PhysicsComponent::~PhysicsComponent() {}
 /* getters */
 float PhysicsComponent::GetMaxVelocity() const { return max_velocity_; }
 
-sf::Vector2f PhysicsComponent::GetVelocity() const { return velocity_; }
+sf::Vector2f PhysicsComponent::GetVelocity() const {
+  return velocity_ * speed_multiplier_;
+}
 
 MovementState PhysicsComponent::GetMovementState() const {
   if (velocity_.x == 0 && velocity_.y == 0) {
@@ -90,10 +92,6 @@ void PhysicsComponent::Update(const float time_elapsed) {
   float abs_v = sqrtf(velocity_.x * velocity_.x + velocity_.y * velocity_.y);
   float cos_a = velocity_.x / abs_v;
   float sin_a = velocity_.y / abs_v;
-  if (abs_v > max_velocity_) {
-    velocity_.x = max_velocity_ * cos_a;
-    velocity_.y = max_velocity_ * sin_a;
-  }
   if (velocity_.x != 0) {
     velocity_.x -= deceleration_ * cos_a * time_elapsed;
     if (velocity_.x * cos_a <= 0) {
@@ -107,6 +105,11 @@ void PhysicsComponent::Update(const float time_elapsed) {
       last_direction_ = sin_a < 0 ? MOVING_UP : MOVING_DOWN;
       velocity_.y = 0;
     }
+  }
+  abs_v = sqrtf(velocity_.x * velocity_.x + velocity_.y * velocity_.y);
+  if (abs_v > max_velocity_) {
+    velocity_.x = max_velocity_ * cos_a;
+    velocity_.y = max_velocity_ * sin_a;
   }
   sprite_->move(velocity_ * speed_multiplier_ * time_elapsed);
 }

@@ -6,12 +6,15 @@
 #define ANTIPATTERNS_UTILITY_H
 
 #include "../src/Tile.h"
+#include "Constants/GamePlayConstants.h"
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <memory>
 #include <type_traits>
 
-namespace Utility {
+namespace utility {
+
+sf::FloatRect CreateSideRect(sf::Vector2f start, sf::Vector2f end);
 
 float GetDistance(sf::Vector2f lhs, sf::Vector2f rhs);
 

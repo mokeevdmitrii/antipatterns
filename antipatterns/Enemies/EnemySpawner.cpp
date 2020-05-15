@@ -14,6 +14,7 @@ EnemySpawner::EnemySpawner(sf::Texture &texture_sheet,
   Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
   Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
   Creature::InitExpComp(1);
+  Enemy::InitStates();
 }
 
 EnemySpawner::EnemySpawner(const EnemySpawner &other) : Enemy(other) {
@@ -64,6 +65,7 @@ void EnemySpawner::CreateEnemy(int level) {
   /* further : generate new position for an enemy */
   clone->SetPosition(sf::Vector2f(GetPosition().x + 20, GetPosition().y - 30));
   clone->GenerateAttributes(level);
+  clone->SetPursuingStrategy(a_star_);
   spawned_enemies_.push_back(std::move(clone));
 }
 

@@ -3,6 +3,8 @@
 //
 
 #include "AStar.h"
+
+#include <utility>
 AStar::Point::Point(int x_, int y_) {
   x = x_;
   y = y_;
@@ -11,20 +13,24 @@ bool AStar::Point::operator<(const AStar::Point &b) const {
   return (f < b.f || (f == b.f && x < b.x) ||
           (f == b.f && x == b.x && y < b.y));
 }
+
 bool AStar::cmp::operator()(AStar::Point a, AStar::Point b) { return (a < b); }
-AStar::Graph::Graph(const std::vector<std::vector<int>> &map) {
-  adj = map;
+
+AStar::Graph::Graph(const std::vector<std::vector<int>> &map) : adj(map) {
   width = map.size();
   length = map.at(0).size();
 }
-std::pair<int, int> AStar::Graph::size() { return {width, length}; }
+std::pair<int, int> AStar::Graph::Size() { return {width, length}; }
+
 int AStar::Graph::GetWidth() { return (width); }
+
 int AStar::Graph::GetLength() { return (length); }
-int AStar::Graph::h(const AStar::Point &end, const AStar::Point &now) {
+
+int AStar::Graph::GetH(const AStar::Point &end, const AStar::Point &now) {
   int h_x = abs(end.x - now.x) + abs(end.y - now.y);
   return (h_x);
 }
-int AStar::Graph::g(const AStar::Point &current, const AStar::Point &now) {
+int AStar::Graph::GetG(const AStar::Point &current, const AStar::Point &now) {
   return (current.g + adj[now.x][now.y]);
 }
 void AStar::Graph::MyErase(const AStar::Point &now,
@@ -36,7 +42,7 @@ void AStar::Graph::MyErase(const AStar::Point &now,
     }
   }
 }
-void AStar::Graph::change_g_h_f(
+void AStar::Graph::ChangeGHF(
     const AStar::Point &current, AStar::Point &now,
     std::set<Point, cmp> &open_list,
     std::vector<std::vector<std::pair<int, int>>> &parents) {
@@ -49,17 +55,21 @@ void AStar::Graph::change_g_h_f(
     open_list.insert(now);
   }
 }
-bool AStar::Graph::inside_close_list(const AStar::Point &now) { return close_list[now.x][now.y]; }
-bool AStar::Graph::inside_open_list(const AStar::Point &now) { return open_list_bool[now.x][now.y]; }
-void AStar::Graph::assign_h_g_f(
+bool AStar::Graph::IsInsideCloseList(const AStar::Point &now) {
+  return close_list[now.x][now.y];
+}
+bool AStar::Graph::IsInsideOpenList(const AStar::Point &now) {
+  return open_list_bool[now.x][now.y];
+}
+void AStar::Graph::AssignGHF(
     const AStar::Point &end, AStar::Point &current, AStar::Point &now,
     std::set<Point, cmp> &open_list,
     std::vector<std::vector<std::pair<int, int>>> &parents, bool &status) {
-  if (inside_open_list(now)) {
-    change_g_h_f(current, now, open_list, parents);
+  if (IsInsideOpenList(now)) {
+    ChangeGHF(current, now, open_list, parents);
   } else {
-    now.g = g(current, now);
-    now.h = h(end, now);
+    now.g = GetG(current, now);
+    now.h = GetH(end, now);
     now.f = now.g + now.h;
     parents[now.x][now.y] = {current.x, current.y};
     open_list.insert(now);
@@ -70,7 +80,7 @@ void AStar::Graph::assign_h_g_f(
     }
   }
 }
-void AStar::Graph::A_star(
+void AStar::Graph::AStar(
     int x1, int y1, int x2, int y2,
     std::vector<std::vector<std::pair<int, int>>> &parents) {
   int w = adj.size();
@@ -100,37 +110,39 @@ void AStar::Graph::A_star(
     int i = current.x;
     int j = current.y;
     //теперь рассматриваем всех соседей
-    if (i - 1 >= 0 && adj[i - 1][j] != -1) { // left
+    if (i - 1 >= 0 && adj[i - 1][j] != room_const::kSolidTileValue) { // left
       Point now(i - 1, j);
-      if (!inside_close_list(now)) {
-        assign_h_g_f(end, current, now, open_list, parents, status);
+      if (!IsInsideCloseList(now)) {
+        AssignGHF(end, current, now, open_list, parents, status);
       }
       if (status) {
         break;
       }
     }
-    if (i + 1 < width && adj[i + 1][j] != -1) { // right
+    if (i + 1 < width &&
+        adj[i + 1][j] != room_const::kSolidTileValue) { // right
       Point now(i + 1, j);
-      if (!inside_close_list(now)) {
-        assign_h_g_f(end, current, now, open_list, parents, status);
+      if (!IsInsideCloseList(now)) {
+        AssignGHF(end, current, now, open_list, parents, status);
       }
       if (status) {
         break;
       }
     }
-    if (j - 1 >= 0 && adj[i][j - 1] != -1) { // up
+    if (j - 1 >= 0 && adj[i][j - 1] != room_const::kSolidTileValue) { // up
       Point now(i, j - 1);
-      if (!inside_close_list(now)) {
-        assign_h_g_f(end, current, now, open_list, parents, status);
+      if (!IsInsideCloseList(now)) {
+        AssignGHF(end, current, now, open_list, parents, status);
       }
       if (status) {
         break;
       }
     }
-    if (j + 1 < length && adj[i][j + 1] != -1) { // down
+    if (j + 1 < length &&
+        adj[i][j + 1] != room_const::kSolidTileValue) { // down
       Point now(i, j + 1);
-      if (!inside_close_list(now)) {
-        assign_h_g_f(end, current, now, open_list, parents, status);
+      if (!IsInsideCloseList(now)) {
+        AssignGHF(end, current, now, open_list, parents, status);
       }
       if (status) {
         break;
@@ -138,17 +150,38 @@ void AStar::Graph::A_star(
     }
   }
 }
-AStar::AStar(const std::vector<std::vector<int>> &map) : our_graph(map) {}
+bool AStar::Graph::IsLineSolid(float x1, float y1, float x2, float y2) {
+  float abs_dist = sqrtf((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+  if (abs_dist < phys_const::kSmallValue) {
+    return false;
+  }
+  float cos_a = (x2 - x1) / abs_dist, sin_a = (y2 - y1) / abs_dist;
+  int x1_i{}, x2_i;
+  while (sqrtf((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)) >
+         phys_const::kLineStepValue / 2) {
+    x1 += phys_const::kLineStepValue * cos_a;
+    y1 += phys_const::kLineStepValue * sin_a;
+    x1_i = static_cast<int>(std::floor(x1));
+    x2_i = static_cast<int>(std::floor(y1));
+    if (adj.at(x1_i).at(x2_i) == room_const::kSolidTileValue) {
+      return true;
+    }
+  }
+  return false;
+}
+
+AStar::AStar(const std::vector<std::vector<int>> &map, int grid_size)
+    : graph_(map), grid_size_(std::move(grid_size)) {}
 std::vector<std::pair<int, int>>
 AStar::AlgorithmAStar(std::pair<int, int> start, std::pair<int, int> end) {
   std::vector<std::vector<std::pair<int, int>>> parent;
-  int w = our_graph.GetWidth();
+  int w = graph_.GetWidth();
   parent.resize(w);
   for (size_t i = 0; i < w; ++i) {
-    parent[i].resize(our_graph.GetLength());
+    parent[i].resize(graph_.GetLength());
   }
 
-  our_graph.A_star(start.first, start.second, end.first, end.second, parent);
+  graph_.AStar(start.first, start.second, end.first, end.second, parent);
   std::vector<std::pair<int, int>> road;
   int x = end.first;
   int y = end.second;
@@ -179,4 +212,11 @@ std::pair<int, int> AStar::GetPoint(std::pair<int, int> start,
 std::vector<std::pair<int, int>> AStar::GetRoad(std::pair<int, int> start,
                                                 std::pair<int, int> end) {
   return (AlgorithmAStar(start, end));
+}
+bool AStar::IsLineSolid(float start_x, float start_y, float end_x,
+                        float end_y) {
+  return graph_.IsLineSolid(start_x / static_cast<float>(grid_size_),
+                            start_y / static_cast<float>(grid_size_),
+                            end_x / static_cast<float>(grid_size_),
+                            end_y / static_cast<float>(grid_size_));
 }

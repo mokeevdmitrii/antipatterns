@@ -39,10 +39,10 @@ sf::Vector2f TileMap::GetGlobalPosition(sf::Vector2i grid_position) const {
 
 std::vector<std::vector<int>> TileMap::GetCostMap() const {
   std::vector<std::vector<int>> cost_map(
-      map_.size(), std::vector<int>(map_.at(0).size(), -1));
-  for (int j = 0; j < map_.size(); ++j) {
-    for (int i = 0; i < map_.at(j).size(); ++i) {
-      for (const auto &layer : map_.at(j).at(i)) {
+      map_.at(0).size(), std::vector<int>(map_.size(), -1));
+  for (int j = 0; j < map_.at(0).size(); ++j) {
+    for (int i = 0; i < map_.size(); ++i) {
+      for (const auto &layer : map_.at(i).at(j)) {
         if (layer->GetPlaceType() != PlaceType::SOLID) {
           cost_map.at(j).at(i) = std::max(
               static_cast<int>(layer->GetMoveCost()), cost_map.at(j).at(i));
