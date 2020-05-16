@@ -31,13 +31,6 @@ sf::Vector2f Enemy::GetBasePoint() const { return base_point_; }
 
 void Enemy::GenerateAttributes(int level) {}
 
-void Enemy::UpdatePlayer(float time_elapsed,
-                         std::shared_ptr<Creature> &player) {
-  sf::Vector2f player_pos = player->GetPosition();
-  sf::Vector2f my_pos = GetPosition();
-  Move(time_elapsed, {player_pos.x - my_pos.x, player_pos.y - my_pos.y});
-}
-
 void Enemy::UpdateEnemy(float time_elapsed, std::shared_ptr<Creature> &player) {
   EnemyStateType new_id =
       states_.at(current_state_id_)->Update(time_elapsed, *this, player);

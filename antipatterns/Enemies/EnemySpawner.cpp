@@ -31,13 +31,15 @@ void EnemySpawner::Update(float time_elapsed) {
   }
 }
 
-void EnemySpawner::UpdatePlayer(float time_elapsed,
-                                std::shared_ptr<Creature> &player) {
-  // Enemy::UpdatePlayer(time_elapsed, player);
-  for (auto &enemy : spawned_enemies_) {
+
+void EnemySpawner::UpdateEnemy(float time_elapsed,
+                               std::shared_ptr<Creature> &player) {
+  Enemy::UpdateEnemy(time_elapsed, player);
+  for (auto& enemy : spawned_enemies_) {
     enemy->UpdateEnemy(time_elapsed, player);
   }
 }
+
 
 void EnemySpawner::Render(sf::RenderTarget &target) const {
   target.draw(sprite_);

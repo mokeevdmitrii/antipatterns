@@ -9,7 +9,7 @@
       "physics_component": {
         "acceleration": 3000,
         "deceleration": 2000,
-        "max_velocity": 100
+        "max_velocity": 120
       },
       "graphics_component": {
         "animations": {

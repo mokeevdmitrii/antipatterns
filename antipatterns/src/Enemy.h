@@ -27,8 +27,6 @@ public:
   virtual void UpdateEnemy(float time_elapsed,
                            std::shared_ptr<Creature> &player);
 
-  virtual void UpdatePlayer(float time_elapsed,
-                            std::shared_ptr<Creature> &player);
   void GenerateAttributes(int level);
   virtual std::unique_ptr<Enemy> Clone() const = 0;
 
