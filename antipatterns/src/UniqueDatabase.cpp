@@ -96,6 +96,6 @@ void UniqueDatabase::AddUniqueEnemy(EnemyType enemy_type,
   if (!unique_data_.enemies.try_emplace(enemy_type, enemy).second) {
     throw std::runtime_error("You didn't load all enemies: " +
                              std::to_string(static_cast<int>(enemy_type)) +
-                             "enemy fails");
+                             " enemy fails");
   }
 }

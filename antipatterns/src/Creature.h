@@ -7,12 +7,13 @@
 
 #include "../Components/AttributeComponent.h"
 #include "../Components/HitboxComponent.h"
+#include "../Components/SkillComponent.h"
 #include "../Resources/Utility.h"
 #include "Tile.h"
 
 class Creature {
 public:
-  Creature();
+  Creature(const sf::Texture& texture_sheet, const std::map<std::string, Json::Node>& settings);
   Creature &operator=(const Creature &other);
   Creature(const Creature &other);
 
@@ -31,9 +32,9 @@ public:
   void InitGraphicsComponent(const sf::Texture &texture_sheet,
                              const std::map<std::string, Json::Node> &settings);
   void InitHitboxComponent(const std::map<std::string, Json::Node> &settings);
-  void
-  InitAttributeComponent(const std::map<std::string, Json::Node> &settings);
-  void InitExpComp(int level = 1);
+  void InitAttributeComponent(const std::map<std::string, Json::Node> &settings);
+  void InitExpComponent(int level = 1);
+  void InitSkillComponent(const std::map<std::string, Json::Node> &settings);
 
   /* getters */
   const std::unique_ptr<PhysicsComponent> &GetPhysicsComponent() const;
@@ -41,6 +42,7 @@ public:
   const std::unique_ptr<HitboxComponent> &GetHitboxComponent() const;
   const std::unique_ptr<AttributeComponent> &GetAttributeComponent() const;
   const std::unique_ptr<ExpComponent> &GetExpComponent() const;
+  const std::unique_ptr<SkillComponent> &GetSkillComponent() const;
 
   sf::Vector2f GetPosition() const;
   sf::Vector2f GetCenteredPosition() const;
@@ -55,6 +57,7 @@ protected:
   std::unique_ptr<HitboxComponent> hitbox_comp_{};
   std::unique_ptr<AttributeComponent> attribute_comp_{};
   std::unique_ptr<ExpComponent> exp_comp_{};
+  std::unique_ptr<SkillComponent> skill_comp_{};
 
   sf::Sprite sprite_{};
 

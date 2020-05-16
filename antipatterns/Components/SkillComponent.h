@@ -9,9 +9,21 @@
 
 class SkillComponent {
 public:
+  SkillComponent(const std::map<std::string, Json::Node>& settings);
+
+  SkillComponent(const SkillComponent& other);
+
+  SkillComponent& operator = (const SkillComponent& other);
+
+  void Update(float time_elapsed);
+
+  const Skill* GetBestSkill();
+  const Skill* GetSkill(const std::string& skill_key);
 
 private:
+  void LoadFromMap(const std::map<std::string, Json::Node>& settings);
 
+  std::unordered_map<std::string, std::unique_ptr<Skill>> skills_;
 };
 
 

@@ -4,15 +4,10 @@
 
 #include "Rat.h"
 
-Rat::Rat(sf::Texture &texture_sheet,
-         const std::map<std::string, Json::Node> &settings) {
-  Creature::InitPhysicsComponent(settings.at("physics_component").AsMap());
-  Creature::InitGraphicsComponent(texture_sheet,
-                                  settings.at("graphics_component").AsMap());
-  Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
-  Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
-  Creature::InitExpComp(1);
-  Enemy::InitStates();
+Rat::Rat(const sf::Texture &texture_sheet,
+         const std::map<std::string, Json::Node> &settings)
+    : Enemy(texture_sheet, settings.at("enemy_settings").AsMap()) {
+  InitStates(settings.at("states").AsMap());
 }
 
 Rat::Rat(const Rat &other) : Enemy(other) {

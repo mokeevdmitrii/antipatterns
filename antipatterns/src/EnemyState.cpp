@@ -4,16 +4,16 @@
 
 #include "EnemyState.h"
 #include "Enemy.h"
+#include "../Enemies/Enemies.h"
 
 EnemyStateType EnemyState::GetStateType() const { return type_; }
+EnemyState::EnemyState(EnemyStateType type) : type_(type) {}
 
-IdleState::IdleState(sf::Vector2f base_point, float aggro_radius)
-    : EnemyState(EnemyStateType::IDLE), base_point(base_point),
-      aggro_radius_(aggro_radius) {}
+IdleState::IdleState() : EnemyState(EnemyStateType::IDLE) {}
 
 EnemyStateType IdleState::Update(float time_elapsed, Enemy &enemy,
                                  std::shared_ptr<Creature> &player) {
-  if (enemy.GetDistance(*player) >= aggro_radius_) {
+  if (enemy.GetDistance(*player) > enemy.GetAggroRadius()) {
     return EnemyStateType::IDLE;
   } else {
     sf::Vector2f enemy_pos = enemy.GetCenteredPosition();
@@ -26,7 +26,64 @@ EnemyStateType IdleState::Update(float time_elapsed, Enemy &enemy,
   }
 }
 
+PursuingState::PursuingState() : EnemyState(EnemyStateType::PURSUING) {}
+
+
 EnemyStateType PursuingState::Update(float time_elapsed, Enemy &enemy,
                                      std::shared_ptr<Creature> &player) {
+  if (enemy.GetDistance(*player) >= enemy.GetAggroRadius()) {
+    last_point_ = nullptr;
+    return EnemyStateType::IDLE;
+  }
+  const std::shared_ptr<AStar> &algo = enemy.GetPursuingStrategy();
+  int size = algo->GetGridSize();
+  std::function<int(float)> div_and_round = [size](float x) {
+    return static_cast<int>(std::floor(x)) / size;
+  };
+  sf::Vector2f enemy_pos = enemy.GetCenteredPosition();
+  sf::Vector2f player_pos = player->GetCenteredPosition();
+  std::pair<int, int> enemy_pos_grid{div_and_round(enemy_pos.x),
+                                     div_and_round(enemy_pos.y)};
+  std::pair<int, int> player_pos_grid{div_and_round(player_pos.x),
+                                      div_and_round(player_pos.y)};
 
+  if (last_point_ == nullptr) {
+    last_point_ = std::make_unique<std::pair<int, int>>(
+        algo->GetPoint(enemy_pos_grid, player_pos_grid));
+  }
+  //если можно идти к игроку
+  if (player_pos_grid == *last_point_ || player_pos_grid == enemy_pos_grid) {
+    enemy.Move(time_elapsed,
+               {player_pos.x - enemy_pos.x, player_pos.y - enemy_pos.y});
+    last_point_ = nullptr;
+    return EnemyStateType::PURSUING;
+  }
+  sf::Vector2f desired_pos = {(static_cast<float>(last_point_->first) + 0.5f) *
+                                  static_cast<float>(size),
+                              (static_cast<float>(last_point_->second) + 0.5f) *
+                                  static_cast<float>(size)};
+  if (utility::GetDistance(enemy_pos, desired_pos) >
+      move_const::kSmallDistance) {
+    enemy.Move(time_elapsed,
+               {desired_pos.x - enemy_pos.x, desired_pos.y - enemy_pos.y});
+    return EnemyStateType::PURSUING;
+  }
+  //иначе - если мы уже дошли до нужной точки и игрок не рядом
+  std::pair<int, int> next_point =
+      algo->GetPoint(enemy_pos_grid, player_pos_grid);
+
+  *last_point_ = next_point;
+  desired_pos = {(static_cast<float>(last_point_->first) + 0.5f) *
+                     static_cast<float>(size),
+                 (static_cast<float>(last_point_->second) + 0.5f) *
+                     static_cast<float>(size)};
+  std::cout << desired_pos.x << " " << desired_pos.y << std::endl;
+  enemy.Move(time_elapsed, {desired_pos.x - enemy_pos.x, desired_pos.y - enemy_pos.y});
+  return EnemyStateType::PURSUING;
+}
+FightingState::FightingState() : EnemyState(EnemyStateType::FIGHTING) {}
+
+EnemyStateType FightingState::Update(float time_elapsed, Enemy &enemy,
+                                     std::shared_ptr<Creature> &player) {
+  return EnemyStateType::FIGHTING;
 }

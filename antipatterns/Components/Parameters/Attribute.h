@@ -23,7 +23,7 @@ public:
 protected:
     void ApplyBaseAttributes(const BaseStats& base_attributes, double& base_value);
 
-    std::unordered_map<ATTRIBUTE_ID, std::shared_ptr<BaseAttribute>> base_attributes_;
+    BaseStats base_attributes_;
     StatsFunc calc_func_;
 private:
 

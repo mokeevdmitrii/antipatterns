@@ -15,7 +15,7 @@ enum class EnemyStateType { IDLE = 0, PURSUING = 1, FIGHTING = 2 };
 
 class EnemyState {
 public:
-  explicit EnemyState(EnemyStateType type) : type_(type) {}
+  explicit EnemyState(EnemyStateType type);
 
   virtual EnemyStateType Update(float time_elapsed, Enemy &enemy,
                                 std::shared_ptr<Creature> &player) = 0;
@@ -28,18 +28,19 @@ private:
 
 class PursuingState : public EnemyState {
 public:
-  PursuingState(std::shared_ptr<AStar> a_star);
+  PursuingState();
 
   EnemyStateType Update(float time_elapsed, Enemy &enemy,
                         std::shared_ptr<Creature> &player) override;
 
 private:
-  std::shared_ptr<AStar> a_star_;
+  sf::Vector2f base_point_;
+  std::unique_ptr<std::pair<int, int>> last_point_{nullptr};
 };
 
 class FightingState : public EnemyState {
 public:
-  FightingState() = default;
+  FightingState();
 
   EnemyStateType Update(float time_elapsed, Enemy &enemy,
                         std::shared_ptr<Creature> &player) override;
@@ -49,14 +50,36 @@ private:
 
 class IdleState : public EnemyState {
 public:
-  IdleState(sf::Vector2f base_point, float aggro_radius);
+  IdleState();
 
   EnemyStateType Update(float time_elapsed, Enemy &enemy,
                         std::shared_ptr<Creature> &player) override;
 
 private:
-  sf::Vector2f base_point;
+
+};
+
+
+class SpawnerFightingState : public EnemyState {
+public:
+  SpawnerFightingState() = default;
+
+  EnemyStateType Update(float time_elapsed, Enemy &enemy,
+                        std::shared_ptr<Creature> &player) override;
+
+private:
+};
+
+class SpawnerIdleState : public EnemyState {
+public:
+  SpawnerIdleState();
+
+  EnemyStateType Update(float time_elapsed, Enemy &enemy,
+                        std::shared_ptr<Creature> &player) override;
+
+private:
   float aggro_radius_;
+  float attack_radius_;
 };
 
 #endif // ANTIPATTERNS_ENEMYSTATE_H

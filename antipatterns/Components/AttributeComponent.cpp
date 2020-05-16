@@ -4,24 +4,7 @@
 // Created by dmitry on 4/2/20.
 
 #include "AttributeComponent.h"
-
-const std::unordered_map<std::string, ATTRIBUTE_ID>
-    AttributeComponent::names_to_id_{
-        {"vigor", ATTRIBUTE_ID::VIGOR},
-        {"strength", ATTRIBUTE_ID::STRENGTH},
-        {"dexterity", ATTRIBUTE_ID::DEXTERITY},
-        {"intelligence", ATTRIBUTE_ID::INTELLIGENCE},
-        {"faith", ATTRIBUTE_ID::FAITH},
-        {"luck", ATTRIBUTE_ID::LUCK},
-        {"max_hp", ATTRIBUTE_ID::MAX_HP},
-        {"max_mana", ATTRIBUTE_ID::MAX_MANA},
-        {"phys_armor", ATTRIBUTE_ID::PHYS_ARMOR},
-        {"mag_armor", ATTRIBUTE_ID::MAG_ARMOR},
-        {"attack_speed", ATTRIBUTE_ID::ATTACK_SPEED},
-        {"base_damage", ATTRIBUTE_ID::BASE_DAMAGE},
-        {"crit_chance", ATTRIBUTE_ID::CRIT_CHANCE},
-        {"curr_hp", ATTRIBUTE_ID::CURR_HP},
-        {"curr_mana", ATTRIBUTE_ID::CURR_MANA}};
+#include "Parameters/EffectFactory.h"
 
 const std::unordered_map<ATTRIBUTE_ID, std::vector<ATTRIBUTE_ID>>
     AttributeComponent::dependence_{
@@ -76,7 +59,7 @@ const std::unordered_map<
 
 AttributeComponent::AttributeComponent(
     const std::map<std::string, Json::Node> &settings) {
-  attributes_.resize(names_to_id_.size());
+  attributes_.resize(stat_const::names_to_id.size());
   LoadFromMap(settings);
   this->Update(0);
 }
@@ -109,21 +92,32 @@ void AttributeComponent::Update(float time_elapsed) {
   }
 }
 
-void AttributeComponent::LoadFromMap(
-    const std::map<std::string, Json::Node> &settings) {
-  LoadBaseAttributes(settings.at("base_attributes").AsMap());
-  LoadDependantAttributes(settings.at("dependant_attributes").AsMap());
-  LoadChangingAttributes(settings.at("changing_attributes").AsMap());
+void AttributeComponent::AddEffect(std::shared_ptr<Effect> effect) {
+  ATTRIBUTE_ID id_to_attach = effect->GetAttributeid();
+  attributes_.at(static_cast<int>(id_to_attach))->AddEffect(std::move(effect));
 }
 
 double AttributeComponent::GetAttributeValue(ATTRIBUTE_ID id) {
   return attributes_.at(static_cast<size_t>(id))->GetCurrentValue();
 }
 
+const std::vector<std::shared_ptr<BaseAttribute>> &
+AttributeComponent::GetAttributes() const {
+  return attributes_;
+}
+
 void AttributeComponent::UpdateLevel(int level_change) {
   for (auto &attr : attributes_) {
     attr->UpdateLevel(level_change);
   }
+}
+
+
+void AttributeComponent::LoadFromMap(
+    const std::map<std::string, Json::Node> &settings) {
+  LoadBaseAttributes(settings.at("base_attributes").AsMap());
+  LoadDependantAttributes(settings.at("dependant_attributes").AsMap());
+  LoadChangingAttributes(settings.at("changing_attributes").AsMap());
 }
 
 void AttributeComponent::ResetAttributesDependence() {
@@ -156,7 +150,7 @@ void AttributeComponent::LoadBaseAttributes(
   LevelChange temp_level_change{};
   for (const auto &[attr_name, attr_settings] : settings) {
     GetBaseStats(temp_stats, temp_level_change, attr_settings.AsMap());
-    auto curr_id = names_to_id_.at(attr_name);
+    auto curr_id = stat_const::names_to_id.at(attr_name);
     auto curr_index = static_cast<size_t>(curr_id);
     attributes_.at(curr_index) =
         std::make_shared<BaseAttribute>(temp_stats, temp_level_change);
@@ -169,7 +163,7 @@ void AttributeComponent::LoadDependantAttributes(
   LevelChange level_change{};
   for (const auto &[attr_name, attr_settings] : settings) {
     GetBaseStats(temp_stats, level_change, attr_settings.AsMap());
-    auto curr_id = names_to_id_.at(attr_name);
+    auto curr_id = stat_const::names_to_id.at(attr_name);
     auto curr_index = static_cast<size_t>(curr_id);
     std::shared_ptr<Attribute> curr_attr = std::make_shared<Attribute>(
         temp_stats, level_change,
@@ -185,7 +179,7 @@ void AttributeComponent::LoadDependantAttributes(
 void AttributeComponent::LoadChangingAttributes(
     const std::map<std::string, Json::Node> &settings) {
   for (const auto &[attr_name, attr_settings] : settings) {
-    auto curr_id = names_to_id_.at(attr_name);
+    auto curr_id = stat_const::names_to_id.at(attr_name);
     auto curr_index = static_cast<size_t>(curr_id);
     //вектор dependence.at(curr_id) гарантированно содержит всего 1 элемент
     auto max_value_index = static_cast<size_t>(dependence_.at(curr_id).front());
@@ -193,7 +187,6 @@ void AttributeComponent::LoadChangingAttributes(
         std::make_shared<AttributeValue>(attributes_.at(max_value_index));
   }
 }
-
 void AttributeComponent::GetBaseStats(
     Stats &stats, LevelChange &level_change,
     const std::map<std::string, Json::Node> &settings) {

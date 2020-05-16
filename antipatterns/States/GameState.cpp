@@ -33,11 +33,7 @@ void GameState::Update(const float time_elapsed) {
   player_gui_->Update(time_elapsed);
   if (!_paused) {
     UpdateInput(time_elapsed);
-    std::unique_ptr<GameCommand> last_command =
-        input_handler_->UpdateInput(time_elapsed);
-    if (last_command != nullptr) {
-      last_command->Execute(time_elapsed);
-    }
+    input_handler_->UpdateInput(time_elapsed);
     for (auto &[id, room_ptr] : rooms_) {
       room_ptr->Update(time_elapsed);
     }

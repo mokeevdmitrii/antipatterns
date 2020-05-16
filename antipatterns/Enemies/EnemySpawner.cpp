@@ -4,32 +4,23 @@
 
 #include "EnemySpawner.h"
 
-EnemySpawner::EnemySpawner(sf::Texture &texture_sheet,
+EnemySpawner::EnemySpawner(const sf::Texture &texture_sheet,
                            const std::map<std::string, Json::Node> &settings,
                            std::shared_ptr<Enemy> prototype)
-    : prototype_(std::move(prototype)) {
-  Creature::InitPhysicsComponent(settings.at("physics_component").AsMap());
-  Creature::InitGraphicsComponent(texture_sheet,
-                                  settings.at("graphics_component").AsMap());
-  Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
-  Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
-  Creature::InitExpComp(1);
-  Enemy::InitStates();
+    : Enemy(texture_sheet, settings.at("enemy_settings").AsMap()),
+      prototype_(std::move(prototype)) {
+  InitStates(settings.at("states").AsMap());
 }
 
 EnemySpawner::EnemySpawner(const EnemySpawner &other) : Enemy(other) {
-  /* spawned enemies in EnemySpawner prototype is guaranteed to be empty! */
   std::cout << "EnemySpawner copied" << std::endl;
   spawn_clock_.restart();
 }
 
 void EnemySpawner::Update(float time_elapsed) {
   phys_comp_->Update(time_elapsed);
-  /* here we use GetMovementState from PhysicsComponent and play animations */
   UpdateAnimations(time_elapsed);
-  /* here animations end */
   hitbox_comp_->Update();
-  /* create an enemy */
   if (!cloned && spawn_clock_.getElapsedTime().asSeconds() >= 5) {
     CreateEnemy(exp_comp_->GetLevel());
     cloned = true;
@@ -41,10 +32,10 @@ void EnemySpawner::Update(float time_elapsed) {
 }
 
 void EnemySpawner::UpdatePlayer(float time_elapsed,
-                                const std::shared_ptr<Creature> &player) {
+                                std::shared_ptr<Creature> &player) {
   // Enemy::UpdatePlayer(time_elapsed, player);
   for (auto &enemy : spawned_enemies_) {
-    enemy->UpdatePlayer(time_elapsed, player);
+    enemy->UpdateEnemy(time_elapsed, player);
   }
 }
 

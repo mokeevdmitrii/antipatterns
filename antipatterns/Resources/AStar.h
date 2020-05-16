@@ -7,9 +7,9 @@
 
 #include "Constants/GamePlayConstants.h"
 #include <algorithm>
+#include <cmath>
 #include <set>
 #include <vector>
-#include <cmath>
 
 class AStar {
 public:
@@ -33,7 +33,7 @@ public:
 
   class Graph {
   private:
-    const std::vector<std::vector<int>> &
+    const std::vector<std::vector<int>>
         adj; //поле/матрица если мы не можем пройти по клетке, то ее значение -1
     std::vector<std::vector<bool>>
         open_list_bool; //проверка в открытом списке или нет
@@ -61,20 +61,20 @@ public:
     void MyErase(const Point &now, std::set<Point, cmp> &open_list);
 
     void ChangeGHF(const Point &current, Point &now,
-                      std::set<Point, cmp> &open_list,
-                      std::vector<std::vector<std::pair<int, int>>> &parents);
+                   std::set<Point, cmp> &open_list,
+                   std::vector<std::vector<std::pair<int, int>>> &parents);
 
     bool IsInsideCloseList(const Point &now);
 
     bool IsInsideOpenList(const Point &now);
 
     void AssignGHF(const Point &end, Point &current, Point &now,
-                      std::set<Point, cmp> &open_list,
-                      std::vector<std::vector<std::pair<int, int>>> &parents,
-                      bool &status);
+                   std::set<Point, cmp> &open_list,
+                   std::vector<std::vector<std::pair<int, int>>> &parents,
+                   bool &status);
 
     void AStar(int x1, int y1, int x2, int y2,
-                std::vector<std::vector<std::pair<int, int>>> &parents);
+               std::vector<std::vector<std::pair<int, int>>> &parents);
 
     bool IsLineSolid(float x1, float y1, float x2, float y2);
   };
@@ -96,6 +96,8 @@ public:
                                            std::pair<int, int> end);
 
   bool IsLineSolid(float start_x, float start_y, float end_x, float end_y);
+
+  int GetGridSize() const;
 };
 
 #endif // ANTIPATTERNS_ASTAR_H

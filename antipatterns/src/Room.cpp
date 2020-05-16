@@ -64,4 +64,7 @@ void Room::UpdateCollisions(float time_elapsed) {
   if (player_ != nullptr) {
     map_->UpdateCreature<std::shared_ptr<Creature>>(player_, time_elapsed);
   }
+  for (auto& enemy : *enemy_system_) {
+    map_->UpdateCreature(enemy, time_elapsed);
+  }
 }

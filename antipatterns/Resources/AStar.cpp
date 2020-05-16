@@ -4,6 +4,7 @@
 
 #include "AStar.h"
 
+#include <iostream>
 #include <utility>
 AStar::Point::Point(int x_, int y_) {
   x = x_;
@@ -152,15 +153,15 @@ void AStar::Graph::AStar(
 }
 bool AStar::Graph::IsLineSolid(float x1, float y1, float x2, float y2) {
   float abs_dist = sqrtf((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-  if (abs_dist < phys_const::kSmallValue) {
+  if (abs_dist < move_const::kSmallValue) {
     return false;
   }
   float cos_a = (x2 - x1) / abs_dist, sin_a = (y2 - y1) / abs_dist;
   int x1_i{}, x2_i;
   while (sqrtf((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)) >
-         phys_const::kLineStepValue / 2) {
-    x1 += phys_const::kLineStepValue * cos_a;
-    y1 += phys_const::kLineStepValue * sin_a;
+         2 * move_const::kLineStepValue / 3) {
+    x1 += move_const::kLineStepValue * cos_a;
+    y1 += move_const::kLineStepValue * sin_a;
     x1_i = static_cast<int>(std::floor(x1));
     x2_i = static_cast<int>(std::floor(y1));
     if (adj.at(x1_i).at(x2_i) == room_const::kSolidTileValue) {
@@ -171,14 +172,15 @@ bool AStar::Graph::IsLineSolid(float x1, float y1, float x2, float y2) {
 }
 
 AStar::AStar(const std::vector<std::vector<int>> &map, int grid_size)
-    : graph_(map), grid_size_(std::move(grid_size)) {}
+    : graph_(map), grid_size_(grid_size) {}
+
 std::vector<std::pair<int, int>>
 AStar::AlgorithmAStar(std::pair<int, int> start, std::pair<int, int> end) {
   std::vector<std::vector<std::pair<int, int>>> parent;
   int w = graph_.GetWidth();
   parent.resize(w);
   for (size_t i = 0; i < w; ++i) {
-    parent[i].resize(graph_.GetLength());
+    parent[i].assign(graph_.GetLength(), {-1, -1});
   }
 
   graph_.AStar(start.first, start.second, end.first, end.second, parent);
@@ -192,6 +194,12 @@ AStar::AlgorithmAStar(std::pair<int, int> start, std::pair<int, int> end) {
     }
     int x1 = parent[x][y].first;
     int y1 = parent[x][y].second;
+    if (x1 == room_const::kSolidTileValue ||
+        y1 == room_const::kSolidTileValue) {
+      road.clear();
+      road.emplace_back(start);
+      return road;
+    }
     x = x1;
     y = y1;
     road.emplace_back(x, y);
@@ -202,7 +210,6 @@ AStar::AlgorithmAStar(std::pair<int, int> start, std::pair<int, int> end) {
 std::pair<int, int> AStar::GetPoint(std::pair<int, int> start,
                                     std::pair<int, int> end) {
   auto road = AlgorithmAStar(start, end);
-  std::reverse(road.begin(), road.end());
   // start == end
   if (road.size() == 1) {
     return {road[0].first, road[0].second};
@@ -220,3 +227,4 @@ bool AStar::IsLineSolid(float start_x, float start_y, float end_x,
                             end_x / static_cast<float>(grid_size_),
                             end_y / static_cast<float>(grid_size_));
 }
+int AStar::GetGridSize() const { return grid_size_; }

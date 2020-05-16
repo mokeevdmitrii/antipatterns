@@ -16,10 +16,10 @@ struct EnemyParams {
 
 class EnemySystem {
 public:
-  EnemySystem(
-      const std::map<std::string, Json::Node> &enemies_settings,
-      const std::unordered_map<EnemyType, std::shared_ptr<Enemy>> &unique_enemies,
-      const TileMap& tile_map);
+  EnemySystem(const std::map<std::string, Json::Node> &enemies_settings,
+              const std::unordered_map<EnemyType, std::shared_ptr<Enemy>>
+                  &unique_enemies,
+              const TileMap &tile_map);
 
   ~EnemySystem();
 
@@ -27,7 +27,14 @@ public:
                    const std::unordered_map<EnemyType, std::shared_ptr<Enemy>>
                        &unique_enemies);
 
-  /* add and create will be private with other signature */
+  auto begin() {
+    return active_enemies_.begin();
+  }
+
+  auto end() {
+    return active_enemies_.end();
+  }
+
   void CreateEnemy(EnemyParams params, const sf::Vector2f &pos,
                    const std::unordered_map<EnemyType, std::shared_ptr<Enemy>>
                        &unique_enemies);
@@ -40,7 +47,7 @@ public:
 
 private:
   void UpdatePlayer(float time_elapsed);
-  void InitAStar(const std::vector<std::vector<int>>& cost_map, int grid_size);
+  void InitAStar(const std::vector<std::vector<int>> &cost_map, int grid_size);
 
   std::list<std::unique_ptr<Enemy>> active_enemies_;
   std::list<std::unique_ptr<Enemy>> dead_enemies_;

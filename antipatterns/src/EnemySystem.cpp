@@ -86,7 +86,7 @@ void EnemySystem::SetPlayer(std::shared_ptr<Creature> player) {
 
 void EnemySystem::UpdatePlayer(float time_elapsed) {
   for (auto &enemy_alive : active_enemies_) {
-    enemy_alive->UpdatePlayer(time_elapsed, player_);
+    enemy_alive->UpdateEnemy(time_elapsed, player_);
   }
 }
 void EnemySystem::InitAStar(const std::vector<std::vector<int>> &cost_map,

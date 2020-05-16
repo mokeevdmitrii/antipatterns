@@ -8,6 +8,7 @@
 #include "../Resources/Utility.h"
 #include "Creature.h"
 #include "Tile.h"
+class Enemy;
 
 class TileMap {
   using Map = std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>>;
@@ -53,14 +54,15 @@ private:
 template <typename T>
 void TileMap::UpdateCreature(T &creature, float time_elapsed) {
   if constexpr (std::is_same_v<T, std::shared_ptr<Creature>> ||
-                std::is_same_v<T, std::unique_ptr<Creature>>) {
+                std::is_same_v<T, std::unique_ptr<Creature>> ||
+                std::is_same_v<T, std::unique_ptr<Enemy>>) {
     sf::RectangleShape hitbox = creature->GetHitbox();
     sf::Vector2f left_up_pos = hitbox.getPosition();
     sf::Vector2f speed = creature->GetPhysicsComponent()->GetVelocity();
     left_up_pos = {left_up_pos.x +
-                       phys_const::kTimeNormalizerMap * speed.x * time_elapsed,
+                       move_const::kTimeNormalizerMap * speed.x * time_elapsed,
                    left_up_pos.y +
-                       phys_const::kTimeNormalizerMap * speed.y * time_elapsed};
+                       move_const::kTimeNormalizerMap * speed.y * time_elapsed};
     sf::Vector2f size = hitbox.getSize();
     sf::Vector2f borders_pos = borders_.getPosition();
     sf::Vector2f borders_size = borders_.getSize();
@@ -73,18 +75,18 @@ void TileMap::UpdateCreature(T &creature, float time_elapsed) {
     PossibleDirections tile_directions;
     tile_directions.left = CanMove(utility::CreateSideRect(
         left_up_pos,
-        {left_up_pos.x - phys_const::kSmallValue, left_up_pos.y + size.y}));
+        {left_up_pos.x - move_const::kSmallValue, left_up_pos.y + size.y}));
     tile_directions.right = CanMove(utility::CreateSideRect(
         {left_up_pos.x + size.x, left_up_pos.y},
-        {left_up_pos.x + size.x + phys_const::kSmallValue,
+        {left_up_pos.x + size.x + move_const::kSmallValue,
          left_up_pos.y + size.y}));
     tile_directions.up = CanMove(utility::CreateSideRect(
         left_up_pos,
-        {left_up_pos.x + size.x, left_up_pos.y - phys_const::kSmallValue}));
+        {left_up_pos.x + size.x, left_up_pos.y - move_const::kSmallValue}));
     tile_directions.down = CanMove(utility::CreateSideRect(
         {left_up_pos.x, left_up_pos.y + size.y},
         {left_up_pos.x + size.x,
-         left_up_pos.y + size.y + phys_const::kSmallValue}));
+         left_up_pos.y + size.y + move_const::kSmallValue}));
     new_directions = new_directions && tile_directions;
     creature->GetPhysicsComponent()->SetPossibleMoveDirections(new_directions);
     sf::Vector2f creature_c_pos =

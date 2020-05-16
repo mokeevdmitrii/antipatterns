@@ -4,7 +4,14 @@
 
 #include "Creature.h"
 
-Creature::Creature() {}
+Creature::Creature(const sf::Texture& texture_sheet, const std::map<std::string, Json::Node>& settings) {
+  InitPhysicsComponent(settings.at("physics_component").AsMap());
+  InitGraphicsComponent(texture_sheet,
+                        settings.at("graphics_component").AsMap());
+  InitHitboxComponent(settings.at("hitbox_component").AsMap());
+  InitAttributeComponent(settings.at("attribute_component").AsMap());
+  InitExpComponent(1);
+}
 
 Creature::~Creature() {}
 
@@ -66,16 +73,24 @@ void Creature::InitAttributeComponent(
   attribute_comp_ = std::make_unique<AttributeComponent>(settings);
 }
 
-void Creature::InitExpComp(int level) {
+void Creature::InitExpComponent(int level) {
   exp_comp_ = std::make_unique<ExpComponent>(level);
 }
+
+void Creature::InitSkillComponent(
+    const std::map<std::string, Json::Node> &settings) {
+
+}
+
 
 sf::Vector2f Creature::GetPosition() const {
   return hitbox_comp_ != nullptr ? hitbox_comp_->GetPosition()
                                  : sprite_.getPosition();
 }
 
-sf::Vector2f Creature::GetCenteredPosition() const {}
+sf::Vector2f Creature::GetCenteredPosition() const {
+  return hitbox_comp_->GetCenteredPosition();
+}
 
 sf::RectangleShape Creature::GetHitbox() const {
   if (hitbox_comp_ != nullptr) {
@@ -123,7 +138,8 @@ void Creature::UpdateMoveAnimations(float time_elapsed) {
 }
 
 float Creature::GetDistance(const Creature &other) const {
-  sf::Vector2f pos = GetPosition(), other_pos = other.GetPosition();
+  sf::Vector2f pos = GetCenteredPosition(),
+               other_pos = other.GetCenteredPosition();
   return utility::GetDistance(pos, other_pos);
 }
 
@@ -147,4 +163,7 @@ Creature::GetAttributeComponent() const {
 
 const std::unique_ptr<ExpComponent> &Creature::GetExpComponent() const {
   return exp_comp_;
+}
+const std::unique_ptr<SkillComponent> &Creature::GetSkillComponent() const {
+  return skill_comp_;
 }

@@ -9,7 +9,7 @@
 
 class EnemySpawner : public Enemy {
 public:
-  EnemySpawner(sf::Texture &texture_sheet,
+  EnemySpawner(const sf::Texture &texture_sheet,
                const std::map<std::string, Json::Node> &settings,
                std::shared_ptr<Enemy> prototype = nullptr);
 
@@ -19,7 +19,7 @@ public:
 
   void Update(float time_elapsed) override;
   void UpdatePlayer(float time_elapsed,
-                    const std::shared_ptr<Creature> &player) override;
+                    std::shared_ptr<Creature> &player) override;
   void Render(sf::RenderTarget &target) const override;
   std::unique_ptr<Enemy> Clone() const override;
 

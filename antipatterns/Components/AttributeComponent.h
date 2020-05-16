@@ -25,13 +25,17 @@ public:
 
   void Update(float time_elapsed);
 
-  void LoadFromMap(const std::map<std::string, Json::Node> &settings);
+  void AddEffect(std::shared_ptr<Effect> effect);
 
   double GetAttributeValue(ATTRIBUTE_ID id);
+
+  [[nodiscard]] const std::vector<std::shared_ptr<BaseAttribute>> &GetAttributes() const;
 
   void UpdateLevel(int level_change);
 
 private:
+  void LoadFromMap(const std::map<std::string, Json::Node> &settings);
+
   void ResetAttributesDependence();
 
   void CheckBoundaries();
@@ -48,8 +52,6 @@ private:
                     const std::map<std::string, Json::Node> &settings);
 
   std::vector<std::shared_ptr<BaseAttribute>> attributes_;
-
-  static const std::unordered_map<std::string, ATTRIBUTE_ID> names_to_id_;
 
   static const std::unordered_map<ATTRIBUTE_ID, std::vector<ATTRIBUTE_ID>>
       dependence_;

@@ -11,25 +11,33 @@
 
 class Enemy : public Creature {
 public:
-  Enemy();
+  Enemy(const sf::Texture &texture_sheet,
+        const std::map<std::string, Json::Node> &settings);
   Enemy(const Enemy &other);
   ~Enemy() override;
 
   void SetPursuingStrategy(std::shared_ptr<AStar> a_star);
   std::shared_ptr<AStar> GetPursuingStrategy() const;
+  float GetAggroRadius() const;
+  float GetAttackRadius() const;
+  sf::Vector2f GetBasePoint() const;
+
+  void SetPosition(const sf::Vector2f &position) override;
 
   virtual void UpdateEnemy(float time_elapsed,
-                           const std::unique_ptr<TileMap> &tile_map,
                            std::shared_ptr<Creature> &player);
 
   virtual void UpdatePlayer(float time_elapsed,
-                            const std::shared_ptr<Creature> &player);
+                            std::shared_ptr<Creature> &player);
   void GenerateAttributes(int level);
   virtual std::unique_ptr<Enemy> Clone() const = 0;
 
 protected:
-  void InitStates();
+  void InitStates(const std::map<std::string, Json::Node> &settings);
 
+  sf::Vector2f base_point_;
+  float aggro_radius_;
+  float attack_radius_;
   std::shared_ptr<AStar> a_star_;
   std::unordered_map<EnemyStateType, std::unique_ptr<EnemyState>> states_;
   EnemyStateType current_state_id_{EnemyStateType::IDLE};

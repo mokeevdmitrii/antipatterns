@@ -8,16 +8,16 @@
       {
         "type": "rat",
         "pos": [
-          1,
-          1
+          2,
+          2
         ],
         "level": 10
       },
       {
         "type": "enemy_spawner",
         "pos": [
-          2,
-          2
+          3,
+          6
         ],
         "level": 3,
         "type_to_spawn" : 2
