@@ -16,6 +16,7 @@ Rat::Rat(const Rat &other) : Enemy(other) {
 
 void Rat::Update(float time_elapsed) {
   phys_comp_->Update(time_elapsed);
+  skill_comp_->Update(time_elapsed);
   /* here we use GetMovementState from PhysicsComponent and play animations */
   UpdateAnimations(time_elapsed);
   /* here animations end */

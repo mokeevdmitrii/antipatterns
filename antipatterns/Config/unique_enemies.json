@@ -232,6 +232,44 @@
           "curr_hp": {},
           "curr_mana": {}
         }
+      },
+      "skill_component": {
+        "Bite": {
+          "cooldown": 1,
+          "cast_time": 0.3,
+          "range": 50,
+          "priority": 0,
+          "effects": [
+            {
+              "id": "curr_hp",
+              "type": "phys_damage",
+              "stats": {
+                "base_value": -5,
+                "multiplier": 0
+              },
+              "level_change": {
+                "delta_value": 3,
+                "multiplier": 0
+              }
+            },
+            {
+              "id": "curr_hp",
+              "type": "poison",
+              "stats": {
+                "base_value": 0,
+                "multiplier": -0.1
+              },
+              "level_change": {
+                "delta_value": 0,
+                "multiplier": 0
+              },
+              "optional": {
+                "tick_time": 1,
+                "time_to_expire": 10.1
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -465,8 +503,11 @@
         },
         "changing_attributes": {
           "curr_hp": {},
-          "curr_mana": {}
+          "curr_mana": {
+          }
         }
+      },
+      "skill_component": {
       }
     }
   }

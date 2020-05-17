@@ -15,6 +15,23 @@ struct EnemyParams {
   EnemyType _type_to_spawn{EnemyType::DEFAULT};
 };
 
+struct DeadEnemy {
+  std::unique_ptr<Enemy> enemy;
+  float time_elapsed_{0};
+
+  explicit DeadEnemy(Enemy* enemy) : enemy(enemy) {
+
+  }
+
+  void Update(float time_elapsed) {
+    time_elapsed_ += time_elapsed;
+  }
+
+  bool IsReadyToRevive() const {
+    return time_elapsed_ >= room_const::kReviveTime;
+  }
+};
+
 class EnemySystem {
 public:
   EnemySystem(const std::map<std::string, Json::Node> &enemies_settings,

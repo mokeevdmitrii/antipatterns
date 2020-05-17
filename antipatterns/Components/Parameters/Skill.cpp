@@ -119,3 +119,4 @@ std::string Skill::GetAnimationKey() const { return animation_key_; }
 
 double Skill::GetPriority() const { return variables_.priority_; }
 SkillType Skill::GetType() const { return variables_.type_; }
+const SkillVariables &Skill::GetAllData() const { return variables_; }

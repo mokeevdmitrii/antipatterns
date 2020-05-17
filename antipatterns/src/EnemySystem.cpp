@@ -68,8 +68,13 @@ void EnemySystem::Update(float time_elapsed) {
   if (player_ != nullptr) {
     UpdatePlayer(time_elapsed);
   }
-  for (auto &active_enemy : active_enemies_) {
-    active_enemy->Update(time_elapsed);
+  for (auto it = active_enemies_.begin(); it != active_enemies_.end(); ++it) {
+    (*it)->Update(time_elapsed);
+    if ((*it)->IsDead()) {
+      Enemy *enemy = (*it).release();
+
+
+    }
   }
   /* здесь будет возрождение врагов */
 }

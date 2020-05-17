@@ -30,9 +30,10 @@ GameState::~GameState() { std::cout << "game destructed" << std::endl; }
 void GameState::Update(const float time_elapsed) {
   /* if not paused, update game */
   UpdateMousePositions();
-  player_gui_->Update(time_elapsed);
+  CheckEnd();
   if (!_paused) {
     UpdateInput(time_elapsed);
+    player_gui_->Update(time_elapsed);
     for (auto &[id, room_ptr] : rooms_) {
       room_ptr->Update(time_elapsed);
     }
@@ -150,4 +151,10 @@ void GameState::InitRooms() {
 
 void GameState::InitInputHandler() {
   input_handler_ = std::make_unique<PlayerInputHandler>(player_, keybindings_);
+}
+
+void GameState::CheckEnd() {
+  if (player_->IsDead()) {
+    _to_quit = true;
+  }
 }

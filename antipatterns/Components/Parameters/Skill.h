@@ -52,6 +52,7 @@ public:
   [[nodiscard]] std::string GetAnimationKey() const;
   [[nodiscard]] double GetPriority() const;
   [[nodiscard]] SkillType GetType() const;
+  [[nodiscard]] const SkillVariables& GetAllData() const;
 
   void Update(float time_elapsed);
 

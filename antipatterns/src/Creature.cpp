@@ -10,6 +10,7 @@ Creature::Creature(const sf::Texture& texture_sheet, const std::map<std::string,
                         settings.at("graphics_component").AsMap());
   InitHitboxComponent(settings.at("hitbox_component").AsMap());
   InitAttributeComponent(settings.at("attribute_component").AsMap());
+  InitSkillComponent(settings.at("skill_component").AsMap());
   InitExpComponent(1);
 }
 
@@ -27,6 +28,7 @@ Creature &Creature::operator=(const Creature &other) {
       std::make_unique<AttributeComponent>(*other.attribute_comp_);
   hitbox_comp_ = std::make_unique<HitboxComponent>(*other.hitbox_comp_);
   exp_comp_ = std::make_unique<ExpComponent>(*other.exp_comp_);
+  skill_comp_ = std::make_unique<SkillComponent>(*other.skill_comp_);
   phys_comp_->UpdateCopy(sprite_);
   graph_comp_->UpdateCopy(sprite_);
   hitbox_comp_->UpdateCopy(sprite_);
@@ -166,4 +168,7 @@ const std::unique_ptr<ExpComponent> &Creature::GetExpComponent() const {
 }
 const std::unique_ptr<SkillComponent> &Creature::GetSkillComponent() const {
   return skill_comp_;
+}
+bool Creature::IsDead() const {
+  return attribute_comp_->GetAttributeValue(ATTRIBUTE_ID::CURR_HP) <= 0;
 }

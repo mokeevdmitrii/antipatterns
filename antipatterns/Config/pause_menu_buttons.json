@@ -14,7 +14,7 @@
   },
   {
     "button_name" : "QUIT",
-    "button_pos" : [340, 200],
+    "button_pos" : [340, 300],
     "button_rect" : [100, 60],
     "button_text" : "Quit",
     "font_size" : 20,

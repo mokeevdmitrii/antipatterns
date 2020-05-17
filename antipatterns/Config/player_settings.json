@@ -9,73 +9,73 @@
       "IDLE_DOWN": {
         "animation_time": 0,
         "start_frame_x": 0,
-        "start_frame_y": 0,
+        "start_frame_y": 4,
         "end_frame_x": 0,
-        "end_frame_y": 0,
-        "rect_params_x": 32,
+        "end_frame_y": 4,
+        "rect_params_x": 60,
         "rect_params_y": 64
       },
       "IDLE_UP": {
         "animation_time": 0,
         "start_frame_x": 0,
-        "start_frame_y": 1,
+        "start_frame_y": 5,
         "end_frame_x": 0,
-        "end_frame_y": 1,
-        "rect_params_x": 32,
+        "end_frame_y": 5,
+        "rect_params_x": 60,
         "rect_params_y": 64
       },
       "IDLE_LEFT": {
         "animation_time": 0,
         "start_frame_x": 0,
-        "start_frame_y": 2,
+        "start_frame_y": 6,
         "end_frame_x": 0,
-        "end_frame_y": 2,
-        "rect_params_x": 32,
+        "end_frame_y": 6,
+        "rect_params_x": 60,
         "rect_params_y": 64
       },
       "IDLE_RIGHT": {
         "animation_time": 0,
         "start_frame_x": 0,
-        "start_frame_y": 3,
+        "start_frame_y": 7,
         "end_frame_x": 0,
-        "end_frame_y": 3,
-        "rect_params_x": 32,
+        "end_frame_y": 7,
+        "rect_params_x": 60,
         "rect_params_y": 64
       },
       "MOVING_DOWN": {
         "animation_time": 10,
         "start_frame_x": 1,
-        "start_frame_y": 0,
+        "start_frame_y": 4,
         "end_frame_x": 5,
-        "end_frame_y": 0,
-        "rect_params_x": 32,
+        "end_frame_y": 4,
+        "rect_params_x": 60,
         "rect_params_y": 64
       },
       "MOVING_UP": {
         "animation_time": 10,
         "start_frame_x": 1,
-        "start_frame_y": 1,
+        "start_frame_y": 5,
         "end_frame_x": 5,
-        "end_frame_y": 1,
-        "rect_params_x": 32,
+        "end_frame_y": 5,
+        "rect_params_x": 60,
         "rect_params_y": 64
       },
       "MOVING_LEFT": {
         "animation_time": 10,
         "start_frame_x": 1,
-        "start_frame_y": 2,
+        "start_frame_y": 6,
         "end_frame_x": 5,
-        "end_frame_y": 2,
-        "rect_params_x": 32,
+        "end_frame_y": 6,
+        "rect_params_x": 60,
         "rect_params_y": 64
       },
       "MOVING_RIGHT": {
         "animation_time": 10,
         "start_frame_x": 1,
-        "start_frame_y": 3,
+        "start_frame_y": 7,
         "end_frame_x": 5,
-        "end_frame_y": 3,
-        "rect_params_x": 32,
+        "end_frame_y": 7,
+        "rect_params_x": 60,
         "rect_params_y": 64
       }
     }
@@ -83,7 +83,7 @@
   "hitbox_component": {
     "width": 32,
     "height": 64,
-    "offset_x": 0,
+    "offset_x": 14,
     "offset_y": 0
   },
   "attribute_component": {
@@ -238,8 +238,8 @@
           "id": "curr_hp",
           "type": "poison",
           "stats": {
-            "base_value": -1,
-            "multiplier": 0
+            "base_value": -5,
+            "multiplier": -0.1
           },
           "level_change": {
             "delta_value": 0,
@@ -247,7 +247,27 @@
           },
           "optional": {
             "tick_time": 1,
-            "time_to_expire": 10
+            "time_to_expire": 10.1
+          }
+        }
+      ]
+    },
+    "Attack": {
+      "cooldown": 1,
+      "cast_time": 0.1,
+      "range": 30,
+      "priority": 10,
+      "effects": [
+        {
+          "id": "curr_hp",
+          "type": "phys_damage",
+          "stats": {
+            "base_value": 1,
+            "multiplier": 0
+          },
+          "level_change": {
+            "delta_value": 1,
+            "multiplier": 0
           }
         }
       ]

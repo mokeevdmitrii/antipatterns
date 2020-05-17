@@ -17,6 +17,7 @@ constexpr float kInitPlayerX = 0;
 constexpr float kInitPlayerY = 0;
 
 constexpr int kSolidTileValue = -1;
+constexpr double kReviveTime = 5;
 } // namespace room_const
 
 namespace stat_const {

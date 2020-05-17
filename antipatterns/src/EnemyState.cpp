@@ -3,8 +3,8 @@
 //
 
 #include "EnemyState.h"
-#include "Enemy.h"
 #include "../Enemies/Enemies.h"
+#include "Enemy.h"
 
 EnemyStateType EnemyState::GetStateType() const { return type_; }
 EnemyState::EnemyState(EnemyStateType type) : type_(type) {}
@@ -28,12 +28,22 @@ EnemyStateType IdleState::Update(float time_elapsed, Enemy &enemy,
 
 PursuingState::PursuingState() : EnemyState(EnemyStateType::PURSUING) {}
 
-
 EnemyStateType PursuingState::Update(float time_elapsed, Enemy &enemy,
                                      std::shared_ptr<Creature> &player) {
   if (enemy.GetDistance(*player) >= enemy.GetAggroRadius()) {
     last_point_ = nullptr;
     return EnemyStateType::IDLE;
+  }
+  Skill *skill = enemy.GetSkillComponent()->GetBestSkill();
+  if (skill != nullptr) {
+    if (skill->GetAllData().range >= enemy.GetDistance(*player)) {
+      skill->Cast();
+      if (skill->IsCasted()) {
+        skill->UpdateAttributes(enemy.GetAttributeComponent().get(),
+                                player->GetAttributeComponent().get());
+        skill->Reset();
+      }
+    }
   }
   const std::shared_ptr<AStar> &algo = enemy.GetPursuingStrategy();
   int size = algo->GetGridSize();
@@ -46,18 +56,19 @@ EnemyStateType PursuingState::Update(float time_elapsed, Enemy &enemy,
                                      div_and_round(enemy_pos.y)};
   std::pair<int, int> player_pos_grid{div_and_round(player_pos.x),
                                       div_and_round(player_pos.y)};
-
+  //если алгоритм поиска ни разу не запускался
   if (last_point_ == nullptr) {
     last_point_ = std::make_unique<std::pair<int, int>>(
         algo->GetPoint(enemy_pos_grid, player_pos_grid));
   }
-  //если можно идти к игроку
+  //если можно идти к игроку (напрямую, т.к он в следующей или текущей клетке)
   if (player_pos_grid == *last_point_ || player_pos_grid == enemy_pos_grid) {
     enemy.Move(time_elapsed,
                {player_pos.x - enemy_pos.x, player_pos.y - enemy_pos.y});
     last_point_ = nullptr;
     return EnemyStateType::PURSUING;
   }
+  //если мы не дошли до предыдущего запроса алгоритма поиска
   sf::Vector2f desired_pos = {(static_cast<float>(last_point_->first) + 0.5f) *
                                   static_cast<float>(size),
                               (static_cast<float>(last_point_->second) + 0.5f) *
@@ -68,7 +79,8 @@ EnemyStateType PursuingState::Update(float time_elapsed, Enemy &enemy,
                {desired_pos.x - enemy_pos.x, desired_pos.y - enemy_pos.y});
     return EnemyStateType::PURSUING;
   }
-  //иначе - если мы уже дошли до нужной точки и игрок не рядом
+  //иначе - если мы уже дошли до нужной точки и игрок не рядом - считаем
+  //следующую
   std::pair<int, int> next_point =
       algo->GetPoint(enemy_pos_grid, player_pos_grid);
 
@@ -77,8 +89,8 @@ EnemyStateType PursuingState::Update(float time_elapsed, Enemy &enemy,
                      static_cast<float>(size),
                  (static_cast<float>(last_point_->second) + 0.5f) *
                      static_cast<float>(size)};
-  std::cout << desired_pos.x << " " << desired_pos.y << std::endl;
-  enemy.Move(time_elapsed, {desired_pos.x - enemy_pos.x, desired_pos.y - enemy_pos.y});
+  enemy.Move(time_elapsed,
+             {desired_pos.x - enemy_pos.x, desired_pos.y - enemy_pos.y});
   return EnemyStateType::PURSUING;
 }
 FightingState::FightingState() : EnemyState(EnemyStateType::FIGHTING) {}

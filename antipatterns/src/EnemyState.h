@@ -46,6 +46,7 @@ public:
                         std::shared_ptr<Creature> &player) override;
 
 private:
+
 };
 
 class IdleState : public EnemyState {

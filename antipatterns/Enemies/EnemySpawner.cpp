@@ -21,6 +21,7 @@ void EnemySpawner::Update(float time_elapsed) {
   phys_comp_->Update(time_elapsed);
   UpdateAnimations(time_elapsed);
   hitbox_comp_->Update();
+  skill_comp_->Update(time_elapsed);
   if (!cloned && spawn_clock_.getElapsedTime().asSeconds() >= 5) {
     CreateEnemy(exp_comp_->GetLevel());
     cloned = true;
@@ -31,15 +32,13 @@ void EnemySpawner::Update(float time_elapsed) {
   }
 }
 
-
 void EnemySpawner::UpdateEnemy(float time_elapsed,
                                std::shared_ptr<Creature> &player) {
   Enemy::UpdateEnemy(time_elapsed, player);
-  for (auto& enemy : spawned_enemies_) {
+  for (auto &enemy : spawned_enemies_) {
     enemy->UpdateEnemy(time_elapsed, player);
   }
 }
-
 
 void EnemySpawner::Render(sf::RenderTarget &target) const {
   target.draw(sprite_);

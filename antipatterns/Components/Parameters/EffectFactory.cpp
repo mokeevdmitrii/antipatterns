@@ -57,7 +57,8 @@ EffectFactory::CreateEffect(const std::map<std::string, Json::Node> &settings) {
         curr_id, stats, level_change, &effect_type_to_func.at(curr_type));
     break;
   }
-  effect->LoadFromMap(settings.at("optional").AsMap());
-
+  if (settings.count("optional") != 0) {
+    effect->LoadFromMap(settings.at("optional").AsMap());
+  }
   return effect;
 }

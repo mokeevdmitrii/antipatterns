@@ -28,6 +28,7 @@ public:
 
 private:
   void ChangeRoom(ROOM_ID old_room, ROOM_ID new_room, sf::Vector2f new_pos);
+  void CheckEnd();
 
   /* initializers */
   void InitKeybindings() override;

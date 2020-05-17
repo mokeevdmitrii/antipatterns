@@ -36,7 +36,7 @@ SkillComponent &SkillComponent::operator=(const SkillComponent &other) {
 }
 
 Skill *SkillComponent::GetBestSkill() {
-  double priority = std::numeric_limits<double>::min();
+  double priority = -1 * std::numeric_limits<double>::infinity();
   Skill* result = nullptr;
   for (const auto &[key, skill] : skills_) {
     if (skill->GetPriority() > priority && !skill->IsOnCooldown()) {

@@ -48,6 +48,7 @@ public:
   sf::Vector2f GetCenteredPosition() const;
   sf::RectangleShape GetHitbox() const;
   float GetDistance(const Creature &other) const;
+  bool IsDead() const;
 
 protected:
   void UpdateMoveAnimations(float time_elapsed);
