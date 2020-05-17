@@ -23,8 +23,6 @@ PhysicsComponent::PhysicsComponent(
 void PhysicsComponent::LoadFromMap(
     const std::map<std::string, Json::Node> &settings) {
   max_velocity_ = static_cast<float>(settings.at("max_velocity").AsDouble());
-  acceleration_ = static_cast<float>(settings.at("acceleration").AsDouble());
-  deceleration_ = static_cast<float>(settings.at("deceleration").AsDouble());
 }
 
 PhysicsComponent::~PhysicsComponent() {}
@@ -32,24 +30,24 @@ PhysicsComponent::~PhysicsComponent() {}
 /* getters */
 float PhysicsComponent::GetMaxVelocity() const { return max_velocity_; }
 
-sf::Vector2f PhysicsComponent::GetVelocity() const {
-  return velocity_ * speed_multiplier_;
+sf::Vector2f PhysicsComponent::GetLastVelocity() const {
+  return last_velocity_ * speed_multiplier_;
 }
 
 MovementState PhysicsComponent::GetMovementState() const {
-  if (velocity_.x == 0 && velocity_.y == 0) {
+  if (last_velocity_.x == 0 && last_velocity_.y == 0) {
     return MovementState::IDLE;
   }
-  if (velocity_.x < 0 && std::abs(velocity_.x) >= std::abs(velocity_.y)) {
+  if (last_velocity_.x < 0 && std::abs(last_velocity_.x) >= std::abs(last_velocity_.y)) {
     return MovementState::MOVING_LEFT;
   }
-  if (velocity_.x > 0 && std::abs(velocity_.x) >= std::abs(velocity_.y)) {
+  if (last_velocity_.x > 0 && std::abs(last_velocity_.x) >= std::abs(last_velocity_.y)) {
     return MovementState::MOVING_RIGHT;
   }
-  if (velocity_.y < 0 && std::abs(velocity_.x) < std::abs(velocity_.y)) {
+  if (last_velocity_.y < 0 && std::abs(last_velocity_.x) < std::abs(last_velocity_.y)) {
     return MovementState::MOVING_UP;
   }
-  if (velocity_.y > 0 && std::abs(velocity_.x) < std::abs(velocity_.y)) {
+  if (last_velocity_.y > 0 && std::abs(last_velocity_.x) < std::abs(last_velocity_.y)) {
     return MovementState::MOVING_DOWN;
   }
   throw std::runtime_error("CASE NOT HANDLED");
@@ -77,41 +75,31 @@ void PhysicsComponent::StopAxisMoveY() { velocity_.y = 0; }
 
 /* functions */
 void PhysicsComponent::Accelerate(const float time_elapsed,
-                                  const sf::Vector2f &direction) {
+                                  sf::Vector2f direction) {
+  float dir_abs =
+      sqrtf(std::abs(direction.x * direction.x + direction.y * direction.y));
+  if (dir_abs >= move_const::kSmallValue) {
+    direction.x /= dir_abs;
+    direction.y /= dir_abs;
+  }
   if ((direction.x < 0 && able_dir.left) ||
       (direction.x > 0 && able_dir.right)) {
-    velocity_.x += acceleration_ * direction.x * time_elapsed;
+    velocity_.x = max_velocity_ * direction.x;
   }
   if ((direction.y < 0 && able_dir.up) || (direction.y > 0 && able_dir.down)) {
-    velocity_.y += acceleration_ * direction.y * time_elapsed;
+    velocity_.y = max_velocity_ * direction.y;
   }
 }
 
 void PhysicsComponent::Update(const float time_elapsed) {
-  /* написать здесь нормальную проверку на текущую скорость */
-  float abs_v = sqrtf(velocity_.x * velocity_.x + velocity_.y * velocity_.y);
-  float cos_a = velocity_.x / abs_v;
-  float sin_a = velocity_.y / abs_v;
-  if (velocity_.x != 0) {
-    velocity_.x -= deceleration_ * cos_a * time_elapsed;
-    if (velocity_.x * cos_a <= 0) {
-      last_direction_ = cos_a < 0 ? MOVING_LEFT : MOVING_RIGHT;
-      velocity_.x = 0;
-    }
-  }
-  if (velocity_.y != 0) {
-    velocity_.y -= deceleration_ * sin_a * time_elapsed;
-    if (velocity_.y * sin_a <= 0) {
-      last_direction_ = sin_a < 0 ? MOVING_UP : MOVING_DOWN;
-      velocity_.y = 0;
-    }
-  }
-  abs_v = sqrtf(velocity_.x * velocity_.x + velocity_.y * velocity_.y);
-  if (abs_v > max_velocity_) {
-    velocity_.x = max_velocity_ * cos_a;
-    velocity_.y = max_velocity_ * sin_a;
-  }
   sprite_->move(velocity_ * speed_multiplier_ * time_elapsed);
+  last_velocity_.x = velocity_.x;
+  last_velocity_.y = velocity_.y;
+  if (velocity_.x != 0 || velocity_.y != 0) {
+    last_direction_ = GetMovementState();
+  }
+  velocity_.x = 0;
+  velocity_.y = 0;
 }
 
 void PhysicsComponent::UpdateCopy(sf::Sprite &sprite) { sprite_ = &sprite; }

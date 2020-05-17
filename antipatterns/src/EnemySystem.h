@@ -7,6 +7,7 @@
 
 #include "../Enemies/EnemySpawner.h"
 #include "../Enemies/Rat.h"
+#include "Input/Message.h"
 
 struct EnemyParams {
   EnemyType _type{};
@@ -23,17 +24,22 @@ public:
 
   ~EnemySystem();
 
+  void ReceiveSkillMessage(std::unique_ptr<message::Message> message) {
+    Skill *casted_skill = message->GetData().AsSkillData();
+    SkillType type = casted_skill->GetType();
+    if (type == SkillType::SELF) {
+      casted_skill->UpdateAttributes(player_->GetAttributeComponent().get(),
+                                     player_->GetAttributeComponent().get());
+    }
+  }
+
   void LoadEnemies(const std::map<std::string, Json::Node> &enemies_settings,
                    const std::unordered_map<EnemyType, std::shared_ptr<Enemy>>
                        &unique_enemies);
 
-  auto begin() {
-    return active_enemies_.begin();
-  }
+  std::list<std::unique_ptr<Enemy>>::iterator begin();
 
-  auto end() {
-    return active_enemies_.end();
-  }
+  std::list<std::unique_ptr<Enemy>>::iterator end();
 
   void CreateEnemy(EnemyParams params, const sf::Vector2f &pos,
                    const std::unordered_map<EnemyType, std::shared_ptr<Enemy>>

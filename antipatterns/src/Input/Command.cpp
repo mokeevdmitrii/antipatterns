@@ -14,6 +14,9 @@ void MoveCommand::Execute(float time_elapsed) {
   is_done = true;
 }
 void MoveCommand::Undo() {}
+std::unique_ptr<message::Message> MoveCommand::GetMessage() const {
+  return nullptr;
+}
 
 float TeleportCommand::time_left_ = 0;
 
@@ -38,17 +41,41 @@ void TeleportCommand::Execute(float time_elapsed) {
       actor_->SetPosition({pos.x, pos.y + command_const::kTeleportDistance});
     }
     is_done = true;
-    time_left_= command_const::kTeleportCoolDown;
+    time_left_ = command_const::kTeleportCoolDown;
   }
 }
 
-void TeleportCommand::Undo() {
-  time_elapsed_ = 0;
-}
+void TeleportCommand::Undo() { time_elapsed_ = 0; }
 void TeleportCommand::Update(float time_elapsed) {
   if (time_left_ > 0) {
     time_left_ -= time_elapsed;
   } else if (time_left_ < 0) {
     time_left_ = 0;
   }
+}
+std::unique_ptr<message::Message> TeleportCommand::GetMessage() const {
+  return nullptr;
+}
+
+BaseSkillCommand::BaseSkillCommand(std::shared_ptr<Creature> actor,
+                                   std::string skill_key)
+    : GameCommand(std::move(actor)), skill_key_(std::move(skill_key)) {}
+
+std::unique_ptr<message::Message> BaseSkillCommand::GetMessage() const {
+  return std::make_unique<message::Message>(
+      message::Node(actor_->GetSkillComponent()->GetSkill(skill_key_)));
+}
+void BaseSkillCommand::Execute(float time_elapsed) {
+  Skill* skill = actor_->GetSkillComponent()->GetSkill(skill_key_);
+  if (!skill->IsOnCooldown()) {
+    skill->Cast();
+    if (skill->IsCasted()) {
+      is_done = true;
+      skill->Reset();
+    }
+  }
+}
+
+void BaseSkillCommand::Undo() {
+  actor_->GetSkillComponent()->GetSkill(skill_key_)->Reset();
 }

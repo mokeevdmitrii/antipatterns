@@ -17,8 +17,8 @@ public:
 
   void Update(float time_elapsed);
 
-  const Skill* GetBestSkill();
-  const Skill* GetSkill(const std::string& skill_key);
+  Skill *GetBestSkill();
+  Skill *GetSkill(const std::string& skill_key);
 
 private:
   void LoadFromMap(const std::map<std::string, Json::Node>& settings);

@@ -6,6 +6,7 @@
 #define ANTIPATTERNS_ROOM_H
 
 #include "EnemySystem.h"
+#include "Input/Message.h"
 #include "Player.h"
 #include "UniqueDatabase.h"
 
@@ -16,6 +17,13 @@ public:
   void Update(float time_elapsed);
 
   void Render(sf::RenderTarget &target);
+
+  void ReceiveMessage(std::unique_ptr<message::Message> message) {
+    //now only enemy system cam receive messages
+    if (message != nullptr) {
+      enemy_system_->ReceiveSkillMessage(std::move(message));
+    }
+  }
 
   // nullptr if no exit, else ptr to first active exit found
   const Exit *GetActiveExit() const;

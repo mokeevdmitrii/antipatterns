@@ -82,7 +82,7 @@ void TileMap::UpdateCreature(T &creature, float time_elapsed) {
     CheckBorders(creature);
     sf::RectangleShape hitbox = creature->GetHitbox();
     sf::Vector2f left_up_pos = hitbox.getPosition();
-    sf::Vector2f speed = creature->GetPhysicsComponent()->GetVelocity();
+    sf::Vector2f speed = creature->GetPhysicsComponent()->GetLastVelocity();
     left_up_pos = {left_up_pos.x +
                        move_const::kTimeNormalizerMap * speed.x * time_elapsed,
                    left_up_pos.y +

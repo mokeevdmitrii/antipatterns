@@ -93,3 +93,9 @@ void EnemySystem::InitAStar(const std::vector<std::vector<int>> &cost_map,
                             int grid_size) {
   a_star_ = std::make_shared<AStar>(cost_map, grid_size);
 }
+std::list<std::unique_ptr<Enemy>>::iterator EnemySystem::begin() {
+  return active_enemies_.begin();
+}
+std::list<std::unique_ptr<Enemy>>::iterator EnemySystem::end() {
+  return active_enemies_.end();
+}

@@ -14,6 +14,8 @@
 
 enum class SkillStatus { COOLING, CAST };
 
+enum class SkillType { SELF, ENEMY };
+
 struct SkillVariables {
   float cooldown{0};
   float cast_time{0};
@@ -21,6 +23,7 @@ struct SkillVariables {
   float time_to_cool{0};
   float time_to_cast{0};
   double priority_{};
+  SkillType type_{SkillType::ENEMY};
   std::vector<std::shared_ptr<Effect>> effects;
   SkillVariables() = default;
   SkillVariables(const SkillVariables &other);
@@ -48,6 +51,7 @@ public:
 
   [[nodiscard]] std::string GetAnimationKey() const;
   [[nodiscard]] double GetPriority() const;
+  [[nodiscard]] SkillType GetType() const;
 
   void Update(float time_elapsed);
 

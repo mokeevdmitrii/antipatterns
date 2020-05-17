@@ -99,11 +99,12 @@ constexpr double kEnemyStatsMainPow = 1.2;
 
 namespace move_const {
 
-constexpr float kHitboxRecSide = 0.85;
+constexpr float kHitboxRecSide = 0.8;
 constexpr float kTimeNormalizerMap = 0.25;
 constexpr float kSmallValue = 0.01;
 constexpr float kLineStepValue = 0.25;
 constexpr float kSmallDistance = 5;
+constexpr float kSmallSpeed = 0.01;
 
 } // namespace move_const
 
@@ -111,6 +112,8 @@ namespace command_const {
 constexpr float kTeleportTime = 0.5;
 constexpr float kTeleportDistance = 100;
 constexpr float kTeleportCoolDown = 5;
+
+static const std::string kHarakiriKey = "Harakiri";
 }
 
 #endif // ANTIPATTERNS_GAMEPLAYCONSTANTS_H

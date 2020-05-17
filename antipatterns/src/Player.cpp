@@ -8,12 +8,7 @@ Player::Player(sf::Vector2f position, const sf::Texture &texture_sheet,
                const std::string &file_name) : Creature(texture_sheet, Json::Load(file_name).GetRoot().AsMap()) {
   const std::map<std::string, Json::Node> settings =
       Json::Load(file_name).GetRoot().AsMap();
-  Creature::InitPhysicsComponent(settings.at("physics_component").AsMap());
-  Creature::InitGraphicsComponent(texture_sheet,
-                                  settings.at("graphics_component").AsMap());
-  Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
-  Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
-  Creature::InitExpComponent(1);
+  Creature::InitSkillComponent(settings.at("skill_component").AsMap());
   Creature::SetPosition(position);
 }
 
@@ -23,6 +18,7 @@ Player::~Player() {}
 
 void Player::Update(float time_elapsed) {
   phys_comp_->Update(time_elapsed);
+  skill_comp_->Update(time_elapsed);
   UpdateAnimations(time_elapsed);
   hitbox_comp_->Update();
   attribute_comp_->Update(time_elapsed);

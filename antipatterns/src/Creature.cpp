@@ -79,7 +79,7 @@ void Creature::InitExpComponent(int level) {
 
 void Creature::InitSkillComponent(
     const std::map<std::string, Json::Node> &settings) {
-
+  skill_comp_ = std::make_unique<SkillComponent>(settings);
 }
 
 
@@ -119,19 +119,19 @@ void Creature::UpdateMoveAnimations(float time_elapsed) {
   } else {
     if (state == MovementState::MOVING_DOWN) {
       graph_comp_->Play("MOVING_DOWN", time_elapsed,
-                        std::abs(phys_comp_->GetVelocity().y) /
+                        std::abs(phys_comp_->GetLastVelocity().y) /
                             phys_comp_->GetMaxVelocity());
     } else if (state == MovementState::MOVING_UP) {
       graph_comp_->Play("MOVING_UP", time_elapsed,
-                        std::abs(phys_comp_->GetVelocity().y) /
+                        std::abs(phys_comp_->GetLastVelocity().y) /
                             phys_comp_->GetMaxVelocity());
     } else if (state == MovementState::MOVING_LEFT) {
       graph_comp_->Play("MOVING_LEFT", time_elapsed,
-                        std::abs(phys_comp_->GetVelocity().x) /
+                        std::abs(phys_comp_->GetLastVelocity().x) /
                             phys_comp_->GetMaxVelocity());
     } else if (state == MovementState::MOVING_RIGHT) {
       graph_comp_->Play("MOVING_RIGHT", time_elapsed,
-                        std::abs(phys_comp_->GetVelocity().x) /
+                        std::abs(phys_comp_->GetLastVelocity().x) /
                             phys_comp_->GetMaxVelocity());
     }
   }

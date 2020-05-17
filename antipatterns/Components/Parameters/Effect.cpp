@@ -36,7 +36,8 @@ void Effect::SetMultiplier(double multiplier) {
 }
 void Effect::LoadFromMap(const std::map<std::string, Json::Node> &settings) {}
 
-void Effect::UpdateAttributes(const std::string& update_key, const BaseStats& stats) {
+void Effect::UpdateAttributes(const std::string &update_key,
+                              const BaseStats &stats) {
   if (effect_funcs_->count(update_key) != 0) {
     effect_funcs_->at(update_key)(*this, stats);
   }
@@ -176,7 +177,20 @@ ProckingEffect::ProckingEffect(ATTRIBUTE_ID id, Stats stats,
     : OverTimeEffect(id, stats, level_change, effect_funcs) {}
 
 std::shared_ptr<BaseAttribute> ProckingEffect::Clone() const {
-  return OverTimeEffect::Clone();
+  std::shared_ptr<ProckingEffect> copy = std::make_shared<ProckingEffect>(
+      id_, stats_, level_change_, effect_funcs_);
+  for (const auto &raw_bonus : raw_bonuses_) {
+    copy->AddRawBonus(raw_bonus->Clone());
+  }
+  for (const auto &effect : effects_) {
+    effect->AddEffect(effect->Clone());
+  }
+  copy->SetExpirationTime(time_to_expire_);
+  copy->current_value_ = current_value_;
+  copy->updated_ = updated_;
+  copy->SetTickTime(tick_time_);
+  copy->SetTimeFromTick(time_from_tick_);
+  return copy;
 }
 
 bool ProckingEffect::IsReady() const {

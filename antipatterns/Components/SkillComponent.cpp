@@ -35,7 +35,7 @@ SkillComponent &SkillComponent::operator=(const SkillComponent &other) {
   return *this;
 }
 
-const Skill *SkillComponent::GetBestSkill() {
+Skill *SkillComponent::GetBestSkill() {
   double priority = std::numeric_limits<double>::min();
   Skill* result = nullptr;
   for (const auto &[key, skill] : skills_) {
@@ -49,6 +49,6 @@ const Skill *SkillComponent::GetBestSkill() {
   }
   return result;
 }
-const Skill *SkillComponent::GetSkill(const std::string &skill_key) {
+Skill *SkillComponent::GetSkill(const std::string &skill_key) {
   return skills_.at(skill_key).get();
 }

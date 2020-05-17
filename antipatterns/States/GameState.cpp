@@ -33,7 +33,6 @@ void GameState::Update(const float time_elapsed) {
   player_gui_->Update(time_elapsed);
   if (!_paused) {
     UpdateInput(time_elapsed);
-    input_handler_->UpdateInput(time_elapsed);
     for (auto &[id, room_ptr] : rooms_) {
       room_ptr->Update(time_elapsed);
     }
@@ -65,6 +64,16 @@ void GameState::UpdateInput(const float time_elapsed) {
   if (sf::Keyboard::isKeyPressed(
           static_cast<sf::Keyboard::Key>(keybindings_->at("CLOSE")))) {
     End();
+  }
+
+  input_handler_->UpdateInput(time_elapsed);
+  std::shared_ptr<GameCommand> last_command_ = input_handler_->GetLastCommand();
+  if (last_command_ != nullptr) {
+    last_command_->Execute(time_elapsed);
+    if (last_command_->IsDone()) {
+      rooms_.at(current_room_id)->ReceiveMessage(last_command_->GetMessage());
+      input_handler_->Reset();
+    }
   }
 }
 

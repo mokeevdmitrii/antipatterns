@@ -7,6 +7,7 @@
 
 #include "../Resources/GraphicsSettings.h"
 #include "../Resources/Json.h"
+#include "../Resources/Constants/GamePlayConstants.h"
 
 enum MovementState {
   IDLE,
@@ -42,7 +43,7 @@ public:
 
   /* getters */
   float GetMaxVelocity() const;
-  sf::Vector2f GetVelocity() const;
+  sf::Vector2f GetLastVelocity() const;
   MovementState GetMovementState() const;
   MovementState GetLastMoveDirection() const;
 
@@ -55,7 +56,7 @@ public:
   void StopAxisMoveY();
 
   /* functions */
-  void Accelerate(float time_elapsed, const sf::Vector2f &_direction);
+  void Accelerate(float time_elapsed, sf::Vector2f direction);
   void Update(float time_elapsed);
   void UpdateCopy(sf::Sprite &sprite);
 
@@ -65,11 +66,10 @@ private:
   float speed_multiplier_{1};
   PossibleDirections able_dir;
   sf::Vector2f velocity_;
+  sf::Vector2f last_velocity_{0, 0};
   MovementState last_direction_{MovementState::IDLE};
 
   float max_velocity_;
-  float acceleration_;
-  float deceleration_;
 };
 
 #endif // ANTIPATTERNS_PHYSICSCOMPONENT_H
