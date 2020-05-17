@@ -13,7 +13,6 @@ EnemySpawner::EnemySpawner(const sf::Texture &texture_sheet,
 }
 
 EnemySpawner::EnemySpawner(const EnemySpawner &other) : Enemy(other) {
-  std::cout << "EnemySpawner copied" << std::endl;
   spawn_clock_.restart();
 }
 

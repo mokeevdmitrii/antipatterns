@@ -148,7 +148,6 @@ void EnemySystem::ReceiveAttackMessage(
                                       enemy->GetHitbox()) <= range) {
         casted_skill->UpdateAttributes(player_->GetAttributeComponent().get(),
                                        enemy->GetAttributeComponent().get());
-        std::cout << enemy->GetAttributeComponent()->GetAttributes().at((int)ATTRIBUTE_ID::CURR_HP)->GetCurrentValue() << std::endl;
       }
     }
   }

@@ -11,7 +11,7 @@ Rat::Rat(const sf::Texture &texture_sheet,
 }
 
 Rat::Rat(const Rat &other) : Enemy(other) {
-  std::cout << "rat copied" << std::endl;
+
 }
 
 void Rat::Update(float time_elapsed) {

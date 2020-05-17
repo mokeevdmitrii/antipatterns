@@ -20,7 +20,6 @@ Creature &Creature::operator=(const Creature &other) {
   if (&other == this) {
     return *this;
   }
-  std::cout << "creature copied (operator)" << std::endl;
   sprite_ = other.sprite_;
   phys_comp_ = std::make_unique<PhysicsComponent>(*other.phys_comp_);
   graph_comp_ = std::make_unique<GraphicsComponent>(*other.graph_comp_);

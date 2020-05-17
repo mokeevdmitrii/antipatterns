@@ -14,7 +14,6 @@ Enemy::Enemy(const Enemy &other) : Creature(other) {
   states_[EnemyStateType::IDLE] = std::make_unique<IdleState>();
   states_[EnemyStateType::PURSUING] = std::make_unique<PursuingState>();
   states_[EnemyStateType::FIGHTING] = std::make_unique<FightingState>();
-  std::cout << "enemy copied" << std::endl;
 }
 
 Enemy::~Enemy() {}
