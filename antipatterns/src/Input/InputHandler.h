@@ -46,29 +46,38 @@ public:
                                                     sf::Vector2f(0.f, -1.f));
     } else if (sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(
                    keybindings_->at("TELEPORT")))) {
-      if (last_key_ != static_cast<sf::Keyboard::Key>(
-                           keybindings_->at("TELEPORT"))) {
-        if (last_command_ != nullptr) last_command_->Undo();
-        last_key_ = static_cast<sf::Keyboard::Key>(
-            keybindings_->at("TELEPORT"));
+      if (last_key_ !=
+          static_cast<sf::Keyboard::Key>(keybindings_->at("TELEPORT"))) {
+        if (last_command_ != nullptr)
+          last_command_->Undo();
+        last_key_ =
+            static_cast<sf::Keyboard::Key>(keybindings_->at("TELEPORT"));
         last_command_ = std::make_unique<TeleportCommand>(player_);
       }
     } else {
       if (last_command_ != nullptr) {
         last_command_->Undo();
-        last_key_ = kUnknownKey;
+        Reset();
       }
     }
-      if (last_command_ != nullptr) {
-        last_command_->Execute(time_elapsed);
-        if (last_command_->IsDone()) {
-          last_command_ = nullptr;
-          last_key_ = kUnknownKey;
-        }
-      }
+    Update(time_elapsed);
+    if (last_command_ != nullptr) {
+      last_command_->Execute(time_elapsed);
+      if (last_command_->IsDone())
+        Reset();
+    }
   }
 
 private:
+  void Reset() {
+    last_key_ = kUnknownKey;
+    last_command_ = nullptr;
+  }
+
+  void Update(float time_elapsed) {
+    TeleportCommand::Update(time_elapsed);
+  }
+
   sf::Keyboard::Key last_key_;
   std::shared_ptr<std::unordered_map<std::string, int>> keybindings_;
   std::shared_ptr<Creature> player_;

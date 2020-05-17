@@ -50,8 +50,11 @@ public:
   void Execute(float time_elapsed) override;
 
   void Undo() override;
+
+  static void Update(float time_elapsed);
 private:
   float time_elapsed_{0};
+  static float time_left_;
 };
 
 #endif // ANTIPATTERNS_COMMAND_H

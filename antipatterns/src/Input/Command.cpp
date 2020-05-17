@@ -15,10 +15,15 @@ void MoveCommand::Execute(float time_elapsed) {
 }
 void MoveCommand::Undo() {}
 
+float TeleportCommand::time_left_ = 0;
+
 TeleportCommand::TeleportCommand(std::shared_ptr<Creature> actor)
     : GameCommand(std::move(actor)) {}
 
 void TeleportCommand::Execute(float time_elapsed) {
+  if (time_left_ > 0) {
+    return;
+  }
   time_elapsed_ += time_elapsed;
   if (time_elapsed_ >= command_const::kTeleportTime) {
     MovementState last = actor_->GetPhysicsComponent()->GetLastMoveDirection();
@@ -33,9 +38,17 @@ void TeleportCommand::Execute(float time_elapsed) {
       actor_->SetPosition({pos.x, pos.y + command_const::kTeleportDistance});
     }
     is_done = true;
+    time_left_= command_const::kTeleportCoolDown;
   }
 }
 
 void TeleportCommand::Undo() {
   time_elapsed_ = 0;
+}
+void TeleportCommand::Update(float time_elapsed) {
+  if (time_left_ > 0) {
+    time_left_ -= time_elapsed;
+  } else if (time_left_ < 0) {
+    time_left_ = 0;
+  }
 }

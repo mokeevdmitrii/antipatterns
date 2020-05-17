@@ -110,6 +110,7 @@ constexpr float kSmallDistance = 5;
 namespace command_const {
 constexpr float kTeleportTime = 0.5;
 constexpr float kTeleportDistance = 100;
+constexpr float kTeleportCoolDown = 5;
 }
 
 #endif // ANTIPATTERNS_GAMEPLAYCONSTANTS_H
