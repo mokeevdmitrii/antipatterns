@@ -56,7 +56,6 @@ public:
 
   std::unique_ptr<message::Message> GetMessage() const override;
 
-
 private:
   float time_elapsed_{0};
   static float time_left_;
@@ -64,7 +63,8 @@ private:
 
 class BaseSkillCommand : public GameCommand {
 public:
-  BaseSkillCommand(std::shared_ptr<Creature> actor, std::string skill_key);
+  BaseSkillCommand(std::shared_ptr<Creature> actor, std::string skill_key,
+                   std::string animation_key = "");
 
   [[nodiscard]] std::unique_ptr<message::Message> GetMessage() const override;
 
@@ -74,8 +74,7 @@ public:
 
 private:
   std::string skill_key_;
+  std::string animation_key_;
 };
-
-
 
 #endif // ANTIPATTERNS_COMMAND_H

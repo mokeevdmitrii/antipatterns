@@ -18,12 +18,7 @@ public:
 
   void Render(sf::RenderTarget &target);
 
-  void ReceiveMessage(std::unique_ptr<message::Message> message) {
-    //now only enemy system cam receive messages
-    if (message != nullptr) {
-      enemy_system_->ReceiveSkillMessage(std::move(message));
-    }
-  }
+  void ReceiveMessage(std::unique_ptr<message::Message> message);
 
   // nullptr if no exit, else ptr to first active exit found
   const Exit *GetActiveExit() const;

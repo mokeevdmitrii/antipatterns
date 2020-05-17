@@ -106,16 +106,16 @@ void AttributeValue::UpdateBonuses(float time_elapsed, std::list<std::shared_ptr
     double bonus_value{0}, bonus_multiplier{0};
     while (b_it != bonuses.end()) {
         //порядок - подумать!!!!
-        (*b_it)->Update(time_elapsed);
-        if ((*b_it)->ToRemove()) {
-            b_it = bonuses.erase(b_it);
-            continue;
-        }
-        if ((*b_it)->IsReady()) {
-            bonus_value += (*b_it)->GetCurrentValue();
-            bonus_multiplier += (*b_it)->GetMultiplier();
-        }
-        ++b_it;
+      if ((*b_it)->IsReady()) {
+        bonus_value += (*b_it)->GetCurrentValue();
+        bonus_multiplier += (*b_it)->GetMultiplier();
+      }
+      (*b_it)->Update(time_elapsed);
+      if ((*b_it)->ToRemove()) {
+        b_it = bonuses.erase(b_it);
+        continue;
+      }
+      ++b_it;
     }
     relative_value_ += bonus_value / max_value_->GetCurrentValue();
     relative_value_ *= (1.0 + bonus_multiplier);

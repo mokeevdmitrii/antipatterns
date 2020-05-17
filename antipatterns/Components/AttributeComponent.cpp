@@ -106,6 +106,17 @@ AttributeComponent::GetAttributes() const {
   return attributes_;
 }
 
+void AttributeComponent::ResetHpMana() {
+  attributes_.at(static_cast<int>(ATTRIBUTE_ID::CURR_HP))
+      ->SetCurrentValue(
+          attributes_.at(static_cast<int>(ATTRIBUTE_ID::MAX_HP))
+              ->GetCurrentValue());
+  attributes_.at(static_cast<int>(ATTRIBUTE_ID::CURR_MANA))
+      ->SetCurrentValue(
+          attributes_.at(static_cast<int>(ATTRIBUTE_ID::MAX_MANA))
+              ->GetCurrentValue());
+}
+
 void AttributeComponent::UpdateLevel(int level_change) {
   for (auto &attr : attributes_) {
     attr->UpdateLevel(level_change);
@@ -197,3 +208,4 @@ void AttributeComponent::GetBaseStats(
   level_change.multiplier =
       settings.at("level_change").AsMap().at("multiplier").AsDouble();
 }
+

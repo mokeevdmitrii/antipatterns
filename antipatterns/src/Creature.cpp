@@ -47,6 +47,11 @@ void Creature::SetPosition(const sf::Vector2f &position) {
   }
 }
 
+void Creature::SetCenteredPosition(const sf::Vector2f &position) {
+  sf::Vector2f size = hitbox_comp_->GetHitbox().getSize();
+  SetPosition({position.x - size.x / 2, position.y - size.y / 2});
+}
+
 void Creature::Move(const float time_elapsed, const sf::Vector2f &direction) {
   if (this->phys_comp_ != nullptr) {
     phys_comp_->Accelerate(time_elapsed, direction);
@@ -79,11 +84,11 @@ void Creature::InitExpComponent(int level) {
   exp_comp_ = std::make_unique<ExpComponent>(level);
 }
 
+
 void Creature::InitSkillComponent(
     const std::map<std::string, Json::Node> &settings) {
   skill_comp_ = std::make_unique<SkillComponent>(settings);
 }
-
 
 sf::Vector2f Creature::GetPosition() const {
   return hitbox_comp_ != nullptr ? hitbox_comp_->GetPosition()
@@ -162,7 +167,6 @@ const std::unique_ptr<AttributeComponent> &
 Creature::GetAttributeComponent() const {
   return attribute_comp_;
 }
-
 const std::unique_ptr<ExpComponent> &Creature::GetExpComponent() const {
   return exp_comp_;
 }

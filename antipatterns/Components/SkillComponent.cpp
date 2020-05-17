@@ -18,11 +18,10 @@ void SkillComponent::LoadFromMap(
 SkillComponent::SkillComponent(const SkillComponent &other) { *this = other; }
 
 void SkillComponent::Update(float time_elapsed) {
-  for (auto& [key, skill] : skills_) {
+  for (auto &[key, skill] : skills_) {
     skill->Update(time_elapsed);
   }
 }
-
 
 SkillComponent &SkillComponent::operator=(const SkillComponent &other) {
   if (&other == this) {
@@ -35,11 +34,12 @@ SkillComponent &SkillComponent::operator=(const SkillComponent &other) {
   return *this;
 }
 
-Skill *SkillComponent::GetBestSkill() {
+Skill *SkillComponent::GetBestSkill(float min_range) {
   double priority = -1 * std::numeric_limits<double>::infinity();
-  Skill* result = nullptr;
+  Skill *result = nullptr;
   for (const auto &[key, skill] : skills_) {
-    if (skill->GetPriority() > priority && !skill->IsOnCooldown()) {
+    if (skill->GetPriority() > priority && !skill->IsOnCooldown() &&
+        skill->GetAllData().range >= min_range) {
       priority = skill->GetPriority();
       result = skill.get();
     }

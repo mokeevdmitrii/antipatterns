@@ -19,17 +19,11 @@ struct DeadEnemy {
   std::unique_ptr<Enemy> enemy;
   float time_elapsed_{0};
 
-  explicit DeadEnemy(Enemy* enemy) : enemy(enemy) {
+  explicit DeadEnemy(Enemy *enemy);
 
-  }
+  void Update(float time_elapsed);
 
-  void Update(float time_elapsed) {
-    time_elapsed_ += time_elapsed;
-  }
-
-  bool IsReadyToRevive() const {
-    return time_elapsed_ >= room_const::kReviveTime;
-  }
+  bool IsReadyToRevive() const;
 };
 
 class EnemySystem {
@@ -41,14 +35,7 @@ public:
 
   ~EnemySystem();
 
-  void ReceiveSkillMessage(std::unique_ptr<message::Message> message) {
-    Skill *casted_skill = message->GetData().AsSkillData();
-    SkillType type = casted_skill->GetType();
-    if (type == SkillType::SELF) {
-      casted_skill->UpdateAttributes(player_->GetAttributeComponent().get(),
-                                     player_->GetAttributeComponent().get());
-    }
-  }
+  void ReceiveAttackMessage(std::unique_ptr<message::Message> message);
 
   void LoadEnemies(const std::map<std::string, Json::Node> &enemies_settings,
                    const std::unordered_map<EnemyType, std::shared_ptr<Enemy>>
@@ -73,7 +60,7 @@ private:
   void InitAStar(const std::vector<std::vector<int>> &cost_map, int grid_size);
 
   std::list<std::unique_ptr<Enemy>> active_enemies_;
-  std::list<std::unique_ptr<Enemy>> dead_enemies_;
+  std::list<DeadEnemy> dead_enemies_;
   std::shared_ptr<Creature> player_;
   std::shared_ptr<AStar> a_star_;
 

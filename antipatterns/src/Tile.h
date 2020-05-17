@@ -13,7 +13,9 @@ enum class TileType {
   SAND = 2,
   GRASS = 3,
   MUD = 4,
-  YELLOW_BRICK = 5
+  YELLOW_BRICK = 5,
+  WATER = 6,
+  WATER_2 = 7
 };
 
 enum class PlaceType { NORMAL = 0, SOLID = 1 };

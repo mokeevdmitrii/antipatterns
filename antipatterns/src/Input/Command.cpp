@@ -58,24 +58,37 @@ std::unique_ptr<message::Message> TeleportCommand::GetMessage() const {
 }
 
 BaseSkillCommand::BaseSkillCommand(std::shared_ptr<Creature> actor,
-                                   std::string skill_key)
-    : GameCommand(std::move(actor)), skill_key_(std::move(skill_key)) {}
+                                   std::string skill_key,
+                                   std::string animation_key)
+    : GameCommand(std::move(actor)), skill_key_(std::move(skill_key)),
+      animation_key_(std::move(animation_key)) {}
 
 std::unique_ptr<message::Message> BaseSkillCommand::GetMessage() const {
   return std::make_unique<message::Message>(
       message::Node(actor_->GetSkillComponent()->GetSkill(skill_key_)));
 }
 void BaseSkillCommand::Execute(float time_elapsed) {
-  Skill* skill = actor_->GetSkillComponent()->GetSkill(skill_key_);
+  Skill *skill = actor_->GetSkillComponent()->GetSkill(skill_key_);
   if (!skill->IsOnCooldown()) {
     skill->Cast();
+    //если есть анимация
+    if (!animation_key_.empty()) {
+      actor_->GetGraphicsComponent()->Play(animation_key_, time_elapsed, 1,
+                                           true);
+    }
     if (skill->IsCasted()) {
       is_done = true;
       skill->Reset();
+      if (!animation_key_.empty()) {
+        actor_->GetGraphicsComponent()->Reset();
+      }
     }
   }
 }
 
 void BaseSkillCommand::Undo() {
   actor_->GetSkillComponent()->GetSkill(skill_key_)->Reset();
+  if (!animation_key_.empty()) {
+    actor_->GetGraphicsComponent()->Reset();
+  }
 }

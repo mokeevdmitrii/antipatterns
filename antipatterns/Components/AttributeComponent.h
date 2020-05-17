@@ -29,7 +29,10 @@ public:
 
   double GetAttributeValue(ATTRIBUTE_ID id);
 
-  [[nodiscard]] const std::vector<std::shared_ptr<BaseAttribute>> &GetAttributes() const;
+  [[nodiscard]] const std::vector<std::shared_ptr<BaseAttribute>> &
+  GetAttributes() const;
+
+  void ResetHpMana();
 
   void UpdateLevel(int level_change);
 

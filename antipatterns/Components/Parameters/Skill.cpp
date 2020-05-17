@@ -68,12 +68,18 @@ void Skill::UpdateAttributes(AttributeComponent *caster,
   for (const std::shared_ptr<Effect> &effect : variables_.effects) {
     std::shared_ptr<Effect> copy =
         std::dynamic_pointer_cast<Effect>(effect->Clone());
+    std::cout << "before everything" << std::endl;
+    std::cout << copy->GetCurrentValue() << std::endl;
     copy->UpdateAttributes(effect_const::kSelfKey, caster->GetAttributes());
+    std::cout << "after first" << std::endl;
+    std::cout << copy->GetCurrentValue() << std::endl;
     // check if caster and receiver are enemies
     if (caster != receiver) {
       copy->UpdateAttributes(effect_const::kEnemyKey,
                              receiver->GetAttributes());
     }
+    std::cout << "after everything" << std::endl;
+    std::cout << copy->GetCurrentValue() << std::endl;
     receiver->AddEffect(copy);
   }
 }

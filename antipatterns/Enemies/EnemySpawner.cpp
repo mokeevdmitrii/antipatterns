@@ -19,33 +19,24 @@ EnemySpawner::EnemySpawner(const EnemySpawner &other) : Enemy(other) {
 
 void EnemySpawner::Update(float time_elapsed) {
   phys_comp_->Update(time_elapsed);
+  attribute_comp_->Update(time_elapsed);
   UpdateAnimations(time_elapsed);
   hitbox_comp_->Update();
   skill_comp_->Update(time_elapsed);
-  if (!cloned && spawn_clock_.getElapsedTime().asSeconds() >= 5) {
+  if (spawn_clock_.getElapsedTime().asSeconds() >= room_const::kSpawnTime) {
     CreateEnemy(exp_comp_->GetLevel());
-    cloned = true;
-  }
-  /* update all spawned enemies */
-  for (auto &enemy : spawned_enemies_) {
-    enemy->Update(time_elapsed);
+    spawn_clock_.restart();
   }
 }
 
 void EnemySpawner::UpdateEnemy(float time_elapsed,
                                std::shared_ptr<Creature> &player) {
   Enemy::UpdateEnemy(time_elapsed, player);
-  for (auto &enemy : spawned_enemies_) {
-    enemy->UpdateEnemy(time_elapsed, player);
-  }
 }
 
 void EnemySpawner::Render(sf::RenderTarget &target) const {
   target.draw(sprite_);
   hitbox_comp_->Render(target);
-  for (auto &enemy : spawned_enemies_) {
-    enemy->Render(target);
-  }
 }
 
 std::unique_ptr<Enemy> EnemySpawner::Clone() const {
@@ -54,11 +45,14 @@ std::unique_ptr<Enemy> EnemySpawner::Clone() const {
 
 void EnemySpawner::CreateEnemy(int level) {
   std::unique_ptr<Enemy> clone = prototype_->Clone();
-  /* further : generate new position for an enemy */
-  clone->SetPosition(sf::Vector2f(GetPosition().x + 20, GetPosition().y - 30));
+  sf::Vector2f random_direction = utility::GenerateRandomDirection();
+  clone->SetPosition(sf::Vector2f(
+      GetCenteredPosition().x + room_const::kSpawnDistance * random_direction.x,
+      GetCenteredPosition().y +
+          room_const::kSpawnDistance * random_direction.y));
   clone->GenerateAttributes(level);
   clone->SetPursuingStrategy(a_star_);
-  spawned_enemies_.push_back(std::move(clone));
+  spawned_enemies_->push_back(std::move(clone));
 }
 
 void EnemySpawner::SetPrototype(std::shared_ptr<Enemy> prototype) {
@@ -67,4 +61,7 @@ void EnemySpawner::SetPrototype(std::shared_ptr<Enemy> prototype) {
 
 void EnemySpawner::UpdateAnimations(float time_elapsed) {
   Creature::UpdateMoveAnimations(time_elapsed);
+}
+void EnemySpawner::SetListToSpawn(std::list<std::unique_ptr<Enemy>> &enemy) {
+  spawned_enemies_ = &enemy;
 }

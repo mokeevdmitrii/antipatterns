@@ -20,8 +20,22 @@ public:
   void Reset();
 
 private:
+  bool IsKeyPressed(const std::string &key);
 
-  static void Update(float time_elapsed);
+  void UpdateMoveCommand(float time_elapsed, const std::string &keybind,
+                         sf::Vector2f dir);
+
+  void UpdateTeleport(float time_elapsed);
+
+  void UpdateBaseSkill(float time_elapsed, const std::string &keybind,
+                       const std::string &skill_key,
+                       const std::string &animation_key = "");
+
+  void UpdateAttack(float time_elapsed, const std::string &keybind,
+                    const std::string &skill_key,
+                    std::string animation_key = "");
+
+  void UpdateCommandCooldowns(float time_elapsed);
 
   sf::Keyboard::Key last_key_{kUnknownKey};
   std::shared_ptr<std::unordered_map<std::string, int>> keybindings_;

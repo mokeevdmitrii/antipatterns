@@ -22,7 +22,10 @@ public:
   float GetAttackRadius() const;
   sf::Vector2f GetBasePoint() const;
 
+  void Revive();
+
   void SetPosition(const sf::Vector2f &position) override;
+  void SetCenteredPosition(const sf::Vector2f &position) override;
 
   virtual void UpdateEnemy(float time_elapsed,
                            std::shared_ptr<Creature> &player);

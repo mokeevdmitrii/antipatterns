@@ -21,6 +21,8 @@ public:
   void UpdateEnemy(float time_elapsed,
                    std::shared_ptr<Creature> &player) override;
 
+  void SetListToSpawn(std::list<std::unique_ptr<Enemy>>& enemy);
+
   void Render(sf::RenderTarget &target) const override;
   std::unique_ptr<Enemy> Clone() const override;
 
@@ -34,10 +36,8 @@ private:
 
   /* the enemy to be cloned */
   std::shared_ptr<Enemy> prototype_;
-  std::list<std::unique_ptr<Enemy>> spawned_enemies_;
-  /* здесь какие-то параметры спаунера, пока сделаем одного врага */
+  std::list<std::unique_ptr<Enemy>>* spawned_enemies_ = nullptr;
   sf::Clock spawn_clock_;
-  bool cloned = false;
 };
 
 #endif // ANTIPATTERNS_ENEMYSPAWNER_H

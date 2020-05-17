@@ -30,20 +30,14 @@ PursuingState::PursuingState() : EnemyState(EnemyStateType::PURSUING) {}
 
 EnemyStateType PursuingState::Update(float time_elapsed, Enemy &enemy,
                                      std::shared_ptr<Creature> &player) {
+
   if (enemy.GetDistance(*player) >= enemy.GetAggroRadius()) {
     last_point_ = nullptr;
     return EnemyStateType::IDLE;
   }
-  Skill *skill = enemy.GetSkillComponent()->GetBestSkill();
-  if (skill != nullptr) {
-    if (skill->GetAllData().range >= enemy.GetDistance(*player)) {
-      skill->Cast();
-      if (skill->IsCasted()) {
-        skill->UpdateAttributes(enemy.GetAttributeComponent().get(),
-                                player->GetAttributeComponent().get());
-        skill->Reset();
-      }
-    }
+  if (enemy.GetDistance(*player) <= enemy.GetAttackRadius()) {
+    last_point_ = nullptr;
+    return EnemyStateType::FIGHTING;
   }
   const std::shared_ptr<AStar> &algo = enemy.GetPursuingStrategy();
   int size = algo->GetGridSize();
@@ -97,5 +91,25 @@ FightingState::FightingState() : EnemyState(EnemyStateType::FIGHTING) {}
 
 EnemyStateType FightingState::Update(float time_elapsed, Enemy &enemy,
                                      std::shared_ptr<Creature> &player) {
-  return EnemyStateType::FIGHTING;
+  float distance = enemy.GetDistance(*player);
+  Skill *skill = enemy.GetSkillComponent()->GetBestSkill(distance);
+  if (skill == nullptr) {
+    if (distance <= enemy.GetAttackRadius()) {
+      return EnemyStateType::FIGHTING;
+    } else if (distance >= enemy.GetAggroRadius()) {
+      return EnemyStateType::IDLE;
+    }
+    return EnemyStateType::PURSUING;
+  }
+  //если есть способность
+  if (skill->GetAllData().range >= enemy.GetDistance(*player)) {
+    skill->Cast();
+    if (skill->IsCasted()) {
+      skill->UpdateAttributes(enemy.GetAttributeComponent().get(),
+                              player->GetAttributeComponent().get());
+      skill->Reset();
+    }
+    return EnemyStateType::FIGHTING;
+  }
+  return EnemyStateType::PURSUING;
 }

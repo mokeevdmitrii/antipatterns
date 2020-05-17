@@ -17,6 +17,7 @@ void GraphicsComponent::LoadFromMap(
     const std::map<std::string, Json::Node> &settings) {
   for (const auto &[animation_key, settings_node] :
        settings.at("animations").AsMap()) {
+    float time_normalize = kTimeNormalize;
     const std::map<std::string, Json::Node> &anim_settings =
         settings_node.AsMap();
     float anim_time =
@@ -33,9 +34,12 @@ void GraphicsComponent::LoadFromMap(
         static_cast<int>(anim_settings.at("rect_params_x").AsDouble());
     int rect_params_y =
         static_cast<int>(anim_settings.at("rect_params_y").AsDouble());
+    if (anim_settings.count("time_normalize") != 0) {
+      time_normalize = anim_settings.at("time_normalize").AsFloat();
+    }
     AnimationParams a_params = AnimationParams(
         anim_time, start_frame_x, start_frame_y, end_frame_x, end_frame_y,
-        sf::Vector2i(rect_params_x, rect_params_y));
+        sf::Vector2i(rect_params_x, rect_params_y), time_normalize);
     AddAnimation(animation_key, a_params);
   }
 }
@@ -82,6 +86,17 @@ void GraphicsComponent::CheckLastAnimation(const std::string &animation_key) {
   }
 }
 
+void GraphicsComponent::Reset() {
+  if (_last_animation != nullptr) {
+    _last_animation->Reset();
+    _last_animation = nullptr;
+  }
+  if (_prior_animation != nullptr) {
+    _prior_animation->Reset();
+    _prior_animation = nullptr;
+  }
+}
+
 void GraphicsComponent::UpdateCopy(sf::Sprite &sprite) {
   _sprite = &sprite;
   for (auto &[key, animation] : _animations) {
@@ -109,7 +124,7 @@ GraphicsComponent::GraphicsComponent(const GraphicsComponent &other)
 
 GraphicsComponent::AnimationParams::AnimationParams(
     float anim_time, int start_frame_x, int start_frame_y, int end_frame_x,
-    int end_frame_y, sf::Vector2i rect_params) {
+    int end_frame_y, sf::Vector2i rect_params, float time_normalize) {
   time_to_animate_ = anim_time;
   start_rect_ =
       sf::IntRect(start_frame_x * rect_params.x, start_frame_y * rect_params.y,
@@ -119,6 +134,7 @@ GraphicsComponent::AnimationParams::AnimationParams(
       sf::IntRect(end_frame_x * rect_params.x, end_frame_y * rect_params.y,
                   rect_params.x, rect_params.y);
   rect_params_ = rect_params;
+  time_normalize_ = time_normalize;
 }
 
 GraphicsComponent::Animation::Animation(sf::Sprite *sprite,
@@ -132,7 +148,7 @@ GraphicsComponent::Animation::Animation(sf::Sprite *sprite,
 
 bool GraphicsComponent::Animation::Play(const float time_elapsed,
                                         const float speed_modifier) {
-  a_params_.time_ += TIME_NORMALIZE * time_elapsed * speed_modifier;
+  a_params_.time_ += a_params_.time_normalize_ * time_elapsed * speed_modifier;
   is_done_ = false;
   if (a_params_.time_ >= a_params_.time_to_animate_) {
     a_params_.time_ = 0;

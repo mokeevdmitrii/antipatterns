@@ -5,8 +5,10 @@
 #ifndef ANTIPATTERNS_UTILITY_H
 #define ANTIPATTERNS_UTILITY_H
 
+#include "../Components/PhysicsComponent.h"
 #include "../src/Tile.h"
 #include "Constants/GamePlayConstants.h"
+#include "RandomDevice.h"
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <memory>
@@ -18,21 +20,19 @@ sf::FloatRect CreateSideRect(sf::Vector2f start, sf::Vector2f end);
 
 float GetDistance(sf::Vector2f lhs, sf::Vector2f rhs);
 
-class Segment {
-private:
-  constexpr static const float abs_eps = 10e-6;
+sf::Vector2f GetDirection(MovementState state);
 
-public:
-  Segment(sf::Vector2f first, sf::Vector2f second);
+std::string GetCapsDirection(MovementState state);
 
-  bool Intersects(const Segment &other);
+float GetSpecialDistance(sf::Vector2f from, const sf::RectangleShape &shape);
 
-  bool ContainsPoint(sf::Vector2f point);
+float ScalarProduct(sf::Vector2f lhs, sf::Vector2f rhs);
 
-private:
-  std::pair<sf::Vector2f, sf::Vector2f> points_;
-};
+float ScalarProduct(sf::Vector2f lhs, sf::Vector2f rhs_start,
+                    sf::Vector2f rhs_end);
 
-} // namespace Utility
+sf::Vector2f GenerateRandomDirection();
+
+} // namespace utility
 
 #endif // ANTIPATTERNS_UTILITY_H

@@ -19,6 +19,12 @@ Enemy::Enemy(const Enemy &other) : Creature(other) {
 
 Enemy::~Enemy() {}
 
+void Enemy::Revive() {
+  current_state_id_ = EnemyStateType::IDLE;
+  SetPosition(base_point_);
+  attribute_comp_->ResetHpMana();
+}
+
 void Enemy::SetPursuingStrategy(std::shared_ptr<AStar> a_star) {
   a_star_ = std::move(a_star);
 }
@@ -41,6 +47,11 @@ void Enemy::UpdateEnemy(float time_elapsed, std::shared_ptr<Creature> &player) {
 
 void Enemy::SetPosition(const sf::Vector2f &position) {
   Creature::SetPosition(position);
+  base_point_ = position;
+}
+
+void Enemy::SetCenteredPosition(const sf::Vector2f &position) {
+  Creature::SetCenteredPosition(position);
   base_point_ = position;
 }
 

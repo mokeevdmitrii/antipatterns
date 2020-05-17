@@ -14,6 +14,7 @@ const float kFInfinity = std::numeric_limits<float>::infinity();
 const float kNormalHeight = 600;
 const float kNormalWidth = 800;
 
-const sf::Keyboard::Key kUnknownKey = sf::Keyboard::BackSlash;
+const float kTimeNormalize = 100;
+const sf::Keyboard::Key kUnknownKey = sf::Keyboard::Unknown;
 
 #endif // ANTIPATTERNS_CONSTANTS_H

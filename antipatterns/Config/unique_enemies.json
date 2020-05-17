@@ -3,7 +3,7 @@
   "Rat": {
     "states": {
       "aggro_radius": 500,
-      "attack_radius": 50
+      "attack_radius": 40
     },
     "enemy_settings": {
       "physics_component": {
@@ -244,11 +244,11 @@
               "id": "curr_hp",
               "type": "phys_damage",
               "stats": {
-                "base_value": -5,
+                "base_value": 10,
                 "multiplier": 0
               },
               "level_change": {
-                "delta_value": 3,
+                "delta_value": -1,
                 "multiplier": 0
               }
             },
@@ -256,16 +256,16 @@
               "id": "curr_hp",
               "type": "poison",
               "stats": {
-                "base_value": 0,
-                "multiplier": -0.1
+                "base_value": -1,
+                "multiplier": 0
               },
               "level_change": {
                 "delta_value": 0,
                 "multiplier": 0
               },
-              "optional": {
-                "tick_time": 1,
-                "time_to_expire": 10.1
+              "optional" : {
+                "tick_time" : 2,
+                "time_to_expire": 10
               }
             }
           ]
@@ -280,9 +280,7 @@
     },
     "enemy_settings": {
       "physics_component": {
-        "acceleration": 3000,
-        "deceleration": 2000,
-        "max_velocity": 100
+        "max_velocity": 0
       },
       "graphics_component": {
         "animations": {

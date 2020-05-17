@@ -75,7 +75,7 @@ void effects_formula::PhysDamageSelfFunction(
     Effect &effect, const effects_formula::BaseStats &stats) {
   double damage = effect.GetCurrentValue();
   double delta = stats.at(Int(ATTRIBUTE_ID::BASE_DAMAGE))->GetCurrentValue();
-  effect.SetCurrentValue(damage + delta);
+  effect.SetCurrentValue(damage - delta);
   if (CheckCrit(stats.at(Int(ATTRIBUTE_ID::CRIT_CHANCE))->GetCurrentValue())) {
     effect.SetCurrentValue(effect_const::kCritValueModifier *
                            effect.GetCurrentValue());
@@ -85,7 +85,8 @@ void effects_formula::PhysDamageEnemyFunction(
     Effect &effect, const effects_formula::BaseStats &stats) {
   double armor = stats.at(Int(ATTRIBUTE_ID::PHYS_ARMOR))->GetCurrentValue();
   double damage = effect.GetCurrentValue();
-  effect.SetCurrentValue(damage * (1.0 - armor));
+  effect.SetCurrentValue(damage *
+                         (1.0 - armor / effect_const::kArmorNormalizer));
 }
 void effects_formula::MagDamageSelfFunction(
     Effect &effect, const effects_formula::BaseStats &stats) {
@@ -101,7 +102,8 @@ void effects_formula::MagDamageEnemyFunction(
     Effect &effect, const effects_formula::BaseStats &stats) {
   double armor = stats.at(Int(ATTRIBUTE_ID::MAG_ARMOR))->GetCurrentValue();
   double damage = effect.GetCurrentValue();
-  effect.SetCurrentValue(damage * (1.0 - armor));
+  effect.SetCurrentValue(damage *
+                         (1.0 - armor / effect_const::kArmorNormalizer));
 }
 void effects_formula::PoisonSelfFunction(
     Effect &effect, const effects_formula::BaseStats &stats) {
@@ -138,5 +140,6 @@ void effects_formula::StatsEnemyFunction(
 }
 
 bool effects_formula::CheckCrit(double crit_chance) {
-  return RandomDevice::Instance().RandomNumber(0.0, 1.0) <= crit_chance;
+  return RandomDevice::Instance().RandomNumber(0.0, 1.0) <=
+         crit_chance / effect_const::kCritNormalizer;
 }

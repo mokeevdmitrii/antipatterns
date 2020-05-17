@@ -18,6 +18,8 @@ constexpr float kInitPlayerY = 0;
 
 constexpr int kSolidTileValue = -1;
 constexpr double kReviveTime = 5;
+constexpr double kSpawnDistance = 60;
+constexpr float kSpawnTime = 10;
 } // namespace room_const
 
 namespace stat_const {
@@ -74,6 +76,9 @@ static const std::unordered_map<std::string, ATTRIBUTE_ID> names_to_id{
 } // namespace stat_const
 
 namespace effect_const {
+constexpr double kArmorNormalizer = 100.0;
+constexpr double kCritNormalizer = 100.0;
+
 static const std::string kSelfKey = "self";
 static const std::string kEnemyKey = "enemy";
 
@@ -112,9 +117,21 @@ constexpr float kSmallSpeed = 0.01;
 namespace command_const {
 constexpr float kTeleportTime = 0.5;
 constexpr float kTeleportDistance = 100;
-constexpr float kTeleportCoolDown = 5;
+constexpr float kTeleportCoolDown = 3;
 
 static const std::string kHarakiriKey = "Harakiri";
-}
+static const std::string kAttackKey = "Attack";
+
+static const std::string kAttackAnim = "ATTACK";
+
+static const std::string kMoveLeftKey = "MOVE_LEFT";
+static const std::string kMoveRightKey = "MOVE_RIGHT";
+static const std::string kMoveUpKey = "MOVE_UP";
+static const std::string kMoveDownKey = "MOVE_DOWN";
+static const std::string kAttackKeyBind = "ATTACK";
+static const std::string kHarakiriKeyBind = "HARAKIRI";
+static const std::string kTeleportKeyBind = "TELEPORT";
+
+} // namespace command_const
 
 #endif // ANTIPATTERNS_GAMEPLAYCONSTANTS_H

@@ -4,6 +4,16 @@
 
 #include "EnemySystem.h"
 
+DeadEnemy::DeadEnemy(Enemy *enemy) : enemy(enemy) {
+
+}
+void DeadEnemy::Update(float time_elapsed) {
+  time_elapsed_ += time_elapsed;
+}
+bool DeadEnemy::IsReadyToRevive() const {
+  return time_elapsed_ >= room_const::kReviveTime;
+}
+
 const std::unordered_map<std::string, EnemyType> EnemySystem::names_to_types_ =
     {{"enemy_spawner", EnemyType::ENEMY_SPAWNER}, {"rat", EnemyType::RAT}};
 
@@ -58,6 +68,7 @@ void EnemySystem::CreateEnemy(
   if (params._type_to_spawn != EnemyType::DEFAULT) {
     auto &_spawner = dynamic_cast<EnemySpawner &>(*clone);
     _spawner.SetPrototype(unique_enemies.at(params._type_to_spawn));
+    _spawner.SetListToSpawn(active_enemies_);
   }
   clone->SetPosition(pos);
   clone->SetPursuingStrategy(a_star_);
@@ -67,16 +78,30 @@ void EnemySystem::CreateEnemy(
 void EnemySystem::Update(float time_elapsed) {
   if (player_ != nullptr) {
     UpdatePlayer(time_elapsed);
-  }
-  for (auto it = active_enemies_.begin(); it != active_enemies_.end(); ++it) {
-    (*it)->Update(time_elapsed);
-    if ((*it)->IsDead()) {
-      Enemy *enemy = (*it).release();
-
-
+    auto active_it = active_enemies_.begin();
+    while (active_it != active_enemies_.end()) {
+      (*active_it)->Update(time_elapsed);
+      if ((*active_it)->IsDead()) {
+        Enemy *enemy = (*active_it).release();
+        dead_enemies_.emplace_back(enemy);
+        active_it = active_enemies_.erase(active_it);
+        continue;
+      }
+      ++active_it;
     }
   }
-  /* здесь будет возрождение врагов */
+  auto dead_it = dead_enemies_.begin();
+  while (dead_it != dead_enemies_.end()) {
+    dead_it->Update(time_elapsed);
+    if (dead_it->IsReadyToRevive()) {
+      Enemy* to_revive = dead_it->enemy.release();
+      to_revive->Revive();
+      active_enemies_.push_back(std::unique_ptr<Enemy>(to_revive));
+      dead_it = dead_enemies_.erase(dead_it);
+      continue;
+    }
+    ++dead_it;
+  }
 }
 
 void EnemySystem::Render(sf::RenderTarget &target) const {
@@ -103,4 +128,28 @@ std::list<std::unique_ptr<Enemy>>::iterator EnemySystem::begin() {
 }
 std::list<std::unique_ptr<Enemy>>::iterator EnemySystem::end() {
   return active_enemies_.end();
+}
+void EnemySystem::ReceiveAttackMessage(
+    std::unique_ptr<message::Message> message) {
+  Skill *casted_skill = message->GetData().AsSkillData();
+  SkillType type = casted_skill->GetType();
+  if (type == SkillType::SELF) {
+    casted_skill->UpdateAttributes(player_->GetAttributeComponent().get(),
+                                   player_->GetAttributeComponent().get());
+  } else {
+    float range = casted_skill->GetAllData().range;
+    MovementState looking =
+        player_->GetPhysicsComponent()->GetLastMoveDirection();
+    sf::Vector2f dir = utility::GetDirection(looking);
+    for (const auto &enemy : active_enemies_) {
+      if (utility::ScalarProduct(dir, player_->GetCenteredPosition(),
+                                 enemy->GetCenteredPosition()) > 0 &&
+          utility::GetSpecialDistance(player_->GetCenteredPosition(),
+                                      enemy->GetHitbox()) <= range) {
+        casted_skill->UpdateAttributes(player_->GetAttributeComponent().get(),
+                                       enemy->GetAttributeComponent().get());
+        std::cout << enemy->GetAttributeComponent()->GetAttributes().at((int)ATTRIBUTE_ID::CURR_HP)->GetCurrentValue() << std::endl;
+      }
+    }
+  }
 }

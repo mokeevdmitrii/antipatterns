@@ -12,9 +12,9 @@ Room::Room(const std::string &file_name) {
 }
 
 void Room::Update(float time_elapsed) {
-  UpdateCollisions(time_elapsed);
   if (player_ != nullptr) {
     player_->Update(time_elapsed);
+    UpdateCollisions(time_elapsed);
   }
   enemy_system_->Update(time_elapsed);
 }
@@ -66,5 +66,11 @@ void Room::UpdateCollisions(float time_elapsed) {
   }
   for (auto& enemy : *enemy_system_) {
     map_->UpdateCreature(enemy, time_elapsed);
+  }
+}
+void Room::ReceiveMessage(std::unique_ptr<message::Message> message) {
+  //now only enemy system cam receive messages
+  if (message != nullptr) {
+    enemy_system_->ReceiveAttackMessage(std::move(message));
   }
 }

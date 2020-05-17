@@ -17,7 +17,7 @@ public:
 
   void Update(float time_elapsed);
 
-  Skill *GetBestSkill();
+  Skill *GetBestSkill(float min_range);
   Skill *GetSkill(const std::string& skill_key);
 
 private:

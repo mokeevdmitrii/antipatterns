@@ -24,6 +24,7 @@ public:
   virtual void Render(sf::RenderTarget &target) const = 0;
 
   virtual void SetPosition(const sf::Vector2f &position);
+  virtual void SetCenteredPosition(const sf::Vector2f &position);
   virtual void Move(float time_elapsed, const sf::Vector2f &direction);
 
   /* initializers */

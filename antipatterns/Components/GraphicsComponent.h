@@ -5,6 +5,7 @@
 #ifndef ANTIPATTERNS_GRAPHICSCOMPONENT_H
 #define ANTIPATTERNS_GRAPHICSCOMPONENT_H
 
+#include "../Resources/Constants/Constants.h"
 #include "PhysicsComponent.h"
 
 class GraphicsComponent {
@@ -27,6 +28,8 @@ public:
   /* getter method */
   bool IsDone(const std::string &animation_key) const;
 
+  void Reset();
+
   void AddAnimation(const std::string &animation_key, AnimationParams a_params);
 
   bool Play(const std::string &animation_key, float time_elapsed,
@@ -42,16 +45,16 @@ private:
     sf::IntRect current_rect_;
     sf::IntRect end_rect_;
     sf::Vector2i rect_params_;
+    float time_normalize_;
 
     AnimationParams() = default;
 
     AnimationParams(float anim_time, int start_frame_x, int start_frame_y,
-                    int end_frame_x, int end_frame_y, sf::Vector2i rect_params);
+                    int end_frame_x, int end_frame_y, sf::Vector2i rect_params, float time_normalize_ = kTimeNormalize);
   };
 
   class Animation {
   public:
-    constexpr static float TIME_NORMALIZE{100};
     sf::Sprite *sprite_;
     const sf::Texture &texture_sheet_;
     AnimationParams a_params_;
@@ -82,5 +85,6 @@ private:
   Animation *_last_animation{nullptr};
   Animation *_prior_animation{nullptr};
 };
+
 
 #endif // ANTIPATTERNS_GRAPHICSCOMPONENT_H
