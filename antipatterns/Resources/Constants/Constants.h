@@ -7,6 +7,7 @@
 
 #include <SFML/Window/Keyboard.hpp>
 #include <limits>
+#include <string>
 
 const double kDInfinity = std::numeric_limits<double>::infinity();
 const float kFInfinity = std::numeric_limits<float>::infinity();
@@ -16,5 +17,11 @@ const float kNormalWidth = 800;
 
 const float kTimeNormalize = 100;
 const sf::Keyboard::Key kUnknownKey = sf::Keyboard::Unknown;
+
+static const std::string kPlayText = "PLAY";
+static const std::string kQuitText = "QUIT";
+static const std::string kPauseText = "PAUSE";
+static const std::string kCloseText = "CLOSE";
+static const std::string kPlayerText = "PLAYER";
 
 #endif // ANTIPATTERNS_CONSTANTS_H

@@ -36,3 +36,4 @@ void Rat::UpdateAnimations(float time_elapsed) {
 std::unique_ptr<Enemy> Rat::Clone() const {
   return std::make_unique<Rat>(*this);
 }
+

@@ -4,8 +4,8 @@
     "settings" : {
       "pos_x": 200,
       "pos_y": 300,
-      "player_pos_x" : 600,
-      "player_pos_y" : 100,
+      "player_pos_x" : 150,
+      "player_pos_y" : 330,
       "offset_x": 0,
       "offset_y": 0,
       "id_from": 1,

@@ -17,9 +17,7 @@ MainMenuState::MainMenuState(
   MainMenuState::InitKeybindings();
 }
 
-MainMenuState::~MainMenuState() {
-  std::cout << "main menu destructed" << std::endl;
-}
+MainMenuState::~MainMenuState() {}
 
 /* overrided functions */
 

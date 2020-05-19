@@ -23,7 +23,7 @@ GameState::GameState(
   GameState::InitInputHandler();
 }
 
-GameState::~GameState() { std::cout << "game destructed" << std::endl; }
+GameState::~GameState() {}
 
 /* overrided functions */
 
@@ -39,18 +39,16 @@ void GameState::Update(const float time_elapsed) {
     }
     const Exit *active_exit = rooms_.at(current_room_id)->GetActiveExit();
     if (active_exit != nullptr) {
-      std::cout << (int)current_room_id << " "
-                << (int)active_exit->GetRoomIdTo() << std::endl;
       ChangeRoom(current_room_id, active_exit->GetRoomIdTo(),
                  active_exit->GetPlayerPos());
     }
 
   } else {
     pause_menu_->Update(mouse_positions_.view);
-    if (pause_menu_->IsButtonActive(std::string("PLAY"))) {
+    if (pause_menu_->IsButtonActive(std::string(kPlayText))) {
       Unpause();
     }
-    if (pause_menu_->IsButtonActive(std::string("QUIT"))) {
+    if (pause_menu_->IsButtonActive(std::string(kQuitText))) {
       End();
     }
   }
@@ -59,11 +57,11 @@ void GameState::Update(const float time_elapsed) {
 void GameState::UpdateInput(const float time_elapsed) {
 
   if (sf::Keyboard::isKeyPressed(
-          static_cast<sf::Keyboard::Key>(keybindings_->at("PAUSE")))) {
+          static_cast<sf::Keyboard::Key>(keybindings_->at(kPauseText)))) {
     Pause();
   }
   if (sf::Keyboard::isKeyPressed(
-          static_cast<sf::Keyboard::Key>(keybindings_->at("CLOSE")))) {
+          static_cast<sf::Keyboard::Key>(keybindings_->at(kCloseText)))) {
     End();
   }
 
@@ -110,7 +108,7 @@ void GameState::InitKeybindings() {
 void GameState::InitPlayer() {
   player_ = std::make_shared<Player>(
       sf::Vector2f(room_const::kInitPlayerX, room_const::kInitPlayerY),
-      UniqueDatabase::Instance().GetData().textures.at("PLAYER"),
+      UniqueDatabase::Instance().GetData().textures.at(kPlayerText),
       file::kPlayerSettingsFile);
 }
 

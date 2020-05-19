@@ -33,6 +33,7 @@ public:
   void GenerateAttributes(int level);
   virtual std::unique_ptr<Enemy> Clone() const = 0;
 
+
 protected:
   void InitStates(const std::map<std::string, Json::Node> &settings);
 

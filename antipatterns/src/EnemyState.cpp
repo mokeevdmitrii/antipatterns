@@ -83,8 +83,11 @@ EnemyStateType PursuingState::Update(float time_elapsed, Enemy &enemy,
                      static_cast<float>(size),
                  (static_cast<float>(last_point_->second) + 0.5f) *
                      static_cast<float>(size)};
-  enemy.Move(time_elapsed,
-             {desired_pos.x - enemy_pos.x, desired_pos.y - enemy_pos.y});
+  if (utility::GetDistance(enemy_pos, desired_pos) >
+      move_const::kSmallDistance) {
+    enemy.Move(time_elapsed,
+               {desired_pos.x - enemy_pos.x, desired_pos.y - enemy_pos.y});
+  }
   return EnemyStateType::PURSUING;
 }
 FightingState::FightingState() : EnemyState(EnemyStateType::FIGHTING) {}

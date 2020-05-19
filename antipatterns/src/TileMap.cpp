@@ -90,7 +90,6 @@ void TileMap::InitMap(
     }
   }
   auto vec = GetCostMap();
-  std::cout << vec.size() << " на " << vec.at(0).size() << std::endl;
 }
 
 void TileMap::AddTileLayer(

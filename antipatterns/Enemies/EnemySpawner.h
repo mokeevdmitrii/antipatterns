@@ -28,7 +28,6 @@ public:
 
   void CreateEnemy(int level);
 
-  /* setter */
   void SetPrototype(std::shared_ptr<Enemy> prototype);
 
 private:
