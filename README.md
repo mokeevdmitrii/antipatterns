@@ -2,8 +2,14 @@
 
 ##How to launch this game
 
-1) Download a zip/clone this repository
-2) execute run.sh (./run.sh)
+1) Download a zip/clone this repository, use 1-depth clone:
+```
+git clone --depth 1  --branch curr https://github.com/mokeevdmitrii/antipatterns.git
+```
+2) execute run.sh
+```
+./run.sh
+```
 
 ###OR
 
