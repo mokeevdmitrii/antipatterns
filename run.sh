@@ -1,28 +1,24 @@
 #!/bin/bash
 #git clone https://github.com/mokeevdmitrii/antipatterns.git
 # проверка существования каталога
-if [ -e RPG_Game ]
+if [[ ! -d antipatterns ]];
 then
-	cd RPG_Game
+	git clone --depth 1  --branch curr https://github.com/mokeevdmitrii/antipatterns.git
+fi
+cd antipatterns
+if [[ -d antipatterns ]];
+then
 	cd antipatterns
-	cd antipatterns
+fi
+if [[ -d build ]];
+then
 	cd build
-	a="$PWD/antipatterns"
-	exec $a
-	exit 0
-	
 else
-	mkdir RPG_Game
-	cd RPG_Game
-	git clone https://github.com/mokeevdmitrii/antipatterns.git
-	cd antipatterns
-	git checkout curr
-	cd antipatterns
 	mkdir build
 	cd build
 	cmake ..
 	make
-	a="$PWD/antipatterns"
-	exec $a
-	exit 0
 fi
+a="$PWD/antipatterns"
+exec $a
+exit 0
