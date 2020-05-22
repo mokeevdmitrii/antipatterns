@@ -3,7 +3,7 @@
   "tiles": [
     {
       "type": 1,
-      "place_type" : 0,
+      "place_type" : 1,
       "x": 0,
       "y": 0,
       "cost" : 1
@@ -31,7 +31,7 @@
     },
     {
       "type": 5,
-      "place_type" : 1,
+      "place_type" : 0,
       "x": 0,
       "y": 4,
       "cost" : 10
