@@ -2,10 +2,10 @@
   {
     "type" : 0,
     "settings" : {
-      "pos_x": 200,
-      "pos_y": 300,
-      "player_pos_x" : 250,
-      "player_pos_y" : 330,
+      "pos_x": 700,
+      "pos_y": 500,
+      "player_pos_x" : 700,
+      "player_pos_y" : 100,
       "offset_x": 0,
       "offset_y": 0,
       "id_from": 0,

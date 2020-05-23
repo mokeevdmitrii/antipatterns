@@ -13,7 +13,7 @@
       "place_type" : 0,
       "x": 0,
       "y": 1,
-      "cost" : 5
+      "cost" : 2
     },
     {
       "type": 3,
@@ -34,7 +34,7 @@
       "place_type" : 0,
       "x": 0,
       "y": 4,
-      "cost" : 10
+      "cost" : 1
     },
     {
       "type" : 6,
