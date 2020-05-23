@@ -1,3 +1,0 @@
-/home/vova/Documents/antipatterns/antipatterns/build/CMakeFiles/rebuild_cache.dir
-/home/vova/Documents/antipatterns/antipatterns/build/CMakeFiles/antipatterns.dir
-/home/vova/Documents/antipatterns/antipatterns/build/CMakeFiles/edit_cache.dir
