@@ -7,44 +7,64 @@
 
 #include "../Enemies/EnemySpawner.h"
 #include "../Enemies/Rat.h"
+#include "Input/Message.h"
 
 struct EnemyParams {
-    int _type{};
-    int _level{1};
-    int _type_to_spawn{-1};
+  EnemyType _type{};
+  int _level{1};
+  EnemyType _type_to_spawn{EnemyType::DEFAULT};
+};
+
+struct DeadEnemy {
+  std::unique_ptr<Enemy> enemy;
+  float time_elapsed_{0};
+
+  explicit DeadEnemy(Enemy *enemy);
+
+  void Update(float time_elapsed);
+
+  bool IsReadyToRevive() const;
 };
 
 class EnemySystem {
 public:
-    EnemySystem(std::unordered_map<std::string, sf::Texture> &textures, const std::string &enemies_settings_file,
-                const std::string &enemies_location_file);
+  EnemySystem(const std::map<std::string, Json::Node> &enemies_settings,
+              const std::unordered_map<EnemyType, std::shared_ptr<Enemy>>
+                  &unique_enemies,
+              const TileMap &tile_map);
 
-    ~EnemySystem();
+  ~EnemySystem();
 
-    void LoadUniqueEnemies(const std::string& file_name);
-    void LoadEnemies(const std::string& file_name);
+  void ReceiveAttackMessage(std::unique_ptr<message::Message> message);
 
-    /* add and create will be private with other signature */
-    void CreateEnemy(EnemyParams params, const sf::Vector2f &pos);
+  void LoadEnemies(const std::map<std::string, Json::Node> &enemies_settings,
+                   const std::unordered_map<EnemyType, std::shared_ptr<Enemy>>
+                       &unique_enemies);
 
-    void Update(float time_elapsed);
+  std::list<std::unique_ptr<Enemy>>::iterator begin();
 
-    void Render(sf::RenderTarget& target) const;
+  std::list<std::unique_ptr<Enemy>>::iterator end();
+
+  void CreateEnemy(EnemyParams params, const sf::Vector2f &pos,
+                   const std::unordered_map<EnemyType, std::shared_ptr<Enemy>>
+                       &unique_enemies);
+
+  void Update(float time_elapsed);
+
+  void Render(sf::RenderTarget &target) const;
+
+  void SetPlayer(std::shared_ptr<Creature> player);
+
 private:
-    /* returns new random position on map for [x][y]-tile within the tile */
-    /* implement later */
-    //sf::Vector2f GeneratePosition(int x, int y);
+  void UpdatePlayer(float time_elapsed);
+  void InitAStar(const std::vector<std::vector<int>> &cost_map, int grid_size);
 
+  std::list<std::unique_ptr<Enemy>> active_enemies_;
+  std::list<DeadEnemy> dead_enemies_;
+  std::shared_ptr<Creature> player_;
+  std::shared_ptr<AStar> a_star_;
 
-    /* will think about possible use of these functions */
-    void AddUniqueEnemy(std::shared_ptr<Enemy> enemy);
-
-    std::list<std::unique_ptr<Enemy>> _active_enemies;
-    std::list<std::unique_ptr<Enemy>> _dead_enemies;
-    std::vector<std::shared_ptr<Enemy>> _unique_enemies;
-    std::unordered_map<std::string, sf::Texture>& _textures;
-    int _tile_size;
+  static const std::unordered_map<std::string, EnemyType> names_to_types_;
 };
 
-
-#endif //ANTIPATTERNS_ENEMYSYSTEM_H
+#endif // ANTIPATTERNS_ENEMYSYSTEM_H

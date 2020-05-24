@@ -5,28 +5,26 @@
 #include "GraphicsSettings.h"
 
 GraphicsSettings::GraphicsSettings() {
-    _game_title = "antipatterns roguelike";
-    _resolution = sf::VideoMode::getDesktopMode();
-    _framerate_limit = 60;
-    _fullscreen = false;
-    _v_sync_enabled = false;
-    _settings.antialiasingLevel = 0;
-    _video_modes = sf::VideoMode::getFullscreenModes();
+  game_title_ = "Not antipatterns actually";
+  resolution_ = sf::VideoMode::getDesktopMode();
+  framerate_limit_ = 60;
+  fullscreen_ = false;
+  v_sync_enabled_ = false;
+  settings_.antialiasingLevel = 0;
+  video_modes_ = sf::VideoMode::getFullscreenModes();
 }
-
 
 bool GraphicsSettings::LoadFromFile(const std::string &file_name) {
-    std::ifstream in(file_name);
-    bool flag = in.is_open();
-    if (in.is_open()) {
-        std::getline(in, _game_title);
-        in >> _resolution.width >> _resolution.height;
-        in >> _framerate_limit;
-        in >> _fullscreen;
-        in >> _v_sync_enabled;
-        in >> _settings.antialiasingLevel;
-    }
-    in.close();
-    return flag;
+  std::ifstream in(file_name);
+  bool flag = in.is_open();
+  if (in.is_open()) {
+    std::getline(in, game_title_);
+    in >> resolution_.width >> resolution_.height;
+    in >> framerate_limit_;
+    in >> fullscreen_;
+    in >> v_sync_enabled_;
+    in >> settings_.antialiasingLevel;
+  }
+  in.close();
+  return flag;
 }
-

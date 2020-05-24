@@ -5,46 +5,123 @@
 #ifndef ANTIPATTERNS_TILEMAP_H
 #define ANTIPATTERNS_TILEMAP_H
 
-#include "Tile.h"
+#include "../Resources/Utility.h"
 #include "Creature.h"
-
-/* Были мысли насчёт того, чтобы использовать здесь шаблон приспособленец, то есть хранить
- * массив не с уникальными указателями на плитки, а с shared_ptr<Tile>, при этом объектов типа Tile
- * у нас было бы столько же, сколько всего существует различных типов плиток, то есть мы получили
- * бы огромный выигрыш в памяти и немного в производительности, но после оказалось, что
- * библиотека SFML is a very Simple library, поэтому она не смогла бы по одной текстуре нарисовать
- * в куче мест на экране одну и ту же плитку, в общем так мы потеряли неплохой
- * порождающий паттерн :(
- */
+#include "Tile.h"
+class Enemy;
 
 class TileMap {
-    using Map = std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>>;
+  using Map = std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>>;
+
 public:
-    TileMap(const std::string& settings_file_name, const std::string& map_tile_name);
-    ~TileMap() = default;
+  explicit TileMap(
+      const std::string &map_tile_name,
+      const std::unordered_map<TileType, std::unique_ptr<Tile>> &unique_tiles);
 
-    /* updating all the map */
-    /* this function will be implemented later */
-    /* идея этой функции в том, чтобы в будущем не выпускать существ за пределы карты, проверяются только те плитки,
-     * которые сейчас есть на экране */
-    void UpdateTiles(std::unique_ptr<Creature> creature, float time_elapsed);
-    void Render(sf::RenderTarget& target) const;
+  ~TileMap() = default;
 
-    /* not static because what about different grid_sizes ? */
-    sf::Vector2i GetGridPosition(sf::Vector2f global_position) const;
-    sf::Vector2f GetGlobalPosition(sf::Vector2i grid_position) const;
+  template <typename T>
+
+  void UpdateCreature(T &creature, float time_elapsed);
+
+  void Render(sf::RenderTarget &target) const;
+
+  static int GetGridSize();
+
+  static void SetGridSize(int grid_size);
+
+  sf::Vector2i GetGridPosition(sf::Vector2f global_position) const;
+
+  sf::Vector2f GetGlobalPosition(sf::Vector2i grid_position) const;
+
+  std::vector<std::vector<int>> GetCostMap() const;
 
 private:
-    /* initializers */
-    /* initialize unique tiles parameters from a tile */
-    void InitUniqueTiles(const std::string& file_name);
-    void InitMap(const std::string& file_name);
-    std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>> _map;
-    std::unordered_map<TileType, std::unique_ptr<Tile>> _unique_tiles;
-    int _grid_size;
-    sf::Vector2i _world_size;
-    sf::Texture _tile_sheet;
+  void InitMap(
+      const std::string &file_name,
+      const std::unordered_map<TileType, std::unique_ptr<Tile>> &unique_tiles);
+  void AddTileLayer(
+      TileType type, int x_pos, int y_pos, sf::Vector2f shift,
+      const std::unordered_map<TileType, std::unique_ptr<Tile>> &unique_tiles);
+  bool CanMove(const sf::FloatRect &rect);
+
+  template <typename T>
+  void CheckBorders(T& creature) {
+    if constexpr (std::is_same_v<T, std::shared_ptr<Creature>> ||
+                  std::is_same_v<T, std::unique_ptr<Creature>> ||
+                  std::is_same_v<T, std::unique_ptr<Enemy>>) {
+      sf::Vector2f pos = creature->GetHitbox().getPosition();
+      sf::Vector2f size = creature->GetHitbox().getSize();
+      sf::Vector2f borders_pos = borders_.getPosition();
+      sf::Vector2f borders_size = borders_.getSize();
+      if (pos.x + size.x / 2 < borders_pos.x) {
+        pos.x = borders_pos.x;
+      } else if (pos.x + size.x / 2 > borders_pos.x + borders_size.x) {
+        pos.x = borders_pos.x + borders_size.x - size.x;
+      }
+      if (pos.y + size.y / 2 < borders_pos.y) {
+        pos.y = borders_pos.y;
+      } else if (pos.y + size.y / 2 > borders_pos.y + borders_size.y) {
+        pos.y = borders_pos.y + borders_size.y - size.y;
+      }
+      creature->SetPosition(pos);
+    }
+  }
+
+  std::vector<std::vector<std::vector<std::unique_ptr<Tile>>>> map_;
+  static int grid_size_;
+  sf::Vector2i world_size_;
+  sf::RectangleShape borders_;
 };
 
+template <typename T>
+void TileMap::UpdateCreature(T &creature, float time_elapsed) {
+  if constexpr (std::is_same_v<T, std::shared_ptr<Creature>> ||
+                std::is_same_v<T, std::unique_ptr<Creature>> ||
+                std::is_same_v<T, std::unique_ptr<Enemy>>) {
+    CheckBorders(creature);
+    sf::RectangleShape hitbox = creature->GetHitbox();
+    sf::Vector2f left_up_pos = hitbox.getPosition();
+    sf::Vector2f speed = creature->GetPhysicsComponent()->GetLastVelocity();
+    left_up_pos = {left_up_pos.x +
+                       move_const::kTimeNormalizerMap * speed.x * time_elapsed,
+                   left_up_pos.y +
+                       move_const::kTimeNormalizerMap * speed.y * time_elapsed};
+    sf::Vector2f size = hitbox.getSize();
+    sf::Vector2f borders_pos = borders_.getPosition();
+    sf::Vector2f borders_size = borders_.getSize();
+    PossibleDirections new_directions;
+    new_directions = {left_up_pos.x >= borders_pos.x,
+                      (left_up_pos.x + size.x) <=
+                          borders_pos.x + borders_size.x,
+                      left_up_pos.y >= borders_pos.y,
+                      left_up_pos.y + size.y <= borders_pos.y + borders_size.y};
+    PossibleDirections tile_directions;
+    tile_directions.left = CanMove(utility::CreateSideRect(
+        left_up_pos,
+        {left_up_pos.x - move_const::kSmallValue, left_up_pos.y + size.y}));
+    tile_directions.right = CanMove(utility::CreateSideRect(
+        {left_up_pos.x + size.x, left_up_pos.y},
+        {left_up_pos.x + size.x + move_const::kSmallValue,
+         left_up_pos.y + size.y}));
+    tile_directions.up = CanMove(utility::CreateSideRect(
+        left_up_pos,
+        {left_up_pos.x + size.x, left_up_pos.y - move_const::kSmallValue}));
+    tile_directions.down = CanMove(utility::CreateSideRect(
+        {left_up_pos.x, left_up_pos.y + size.y},
+        {left_up_pos.x + size.x,
+         left_up_pos.y + size.y + move_const::kSmallValue}));
+    new_directions = new_directions && tile_directions;
+    creature->GetPhysicsComponent()->SetPossibleMoveDirections(new_directions);
+    sf::Vector2f creature_c_pos =
+        creature->GetHitboxComponent()->GetCenteredPosition();
+    sf::Vector2i grid_pos = GetGridPosition(creature_c_pos);
+    double move_cost = 1;
+    for (const auto &layer : map_.at(grid_pos.y).at(grid_pos.x)) {
+      move_cost = std::max(move_cost, layer->GetMoveCost());
+    }
+    creature->GetPhysicsComponent()->UpdateSpeedMultiplier(1 / move_cost);
+  }
+}
 
-#endif //ANTIPATTERNS_TILEMAP_H
+#endif // ANTIPATTERNS_TILEMAP_H

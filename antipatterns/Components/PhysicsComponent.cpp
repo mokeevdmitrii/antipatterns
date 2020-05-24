@@ -4,97 +4,102 @@
 
 #include "PhysicsComponent.h"
 
-PhysicsComponent::PhysicsComponent(sf::Sprite &sprite, const std::map<std::string, Json::Node> &settings) :
-        _sprite(&sprite)  {
-    LoadFromMap(settings);
+PossibleDirections::PossibleDirections(bool left, bool right, bool up,
+                                       bool down)
+    : left(left), right(right), up(up), down(down) {}
+
+PossibleDirections
+PossibleDirections::operator&&(const PossibleDirections &other) {
+  return {left && other.left, right && other.right, up && other.up,
+          down && other.down};
 }
 
-void PhysicsComponent::LoadFromMap(const std::map<std::string, Json::Node> &settings) {
-    _max_velocity = static_cast<float>(settings.at("max_velocity").AsDouble());
-    _acceleration = static_cast<float>(settings.at("acceleration").AsDouble());
-    _deceleration = static_cast<float>(settings.at("deceleration").AsDouble());
+PhysicsComponent::PhysicsComponent(
+    sf::Sprite &sprite, const std::map<std::string, Json::Node> &settings)
+    : sprite_(&sprite) {
+  LoadFromMap(settings);
 }
 
-
-PhysicsComponent::~PhysicsComponent() {
-
+void PhysicsComponent::LoadFromMap(
+    const std::map<std::string, Json::Node> &settings) {
+  max_velocity_ = static_cast<float>(settings.at("max_velocity").AsDouble());
 }
+
+PhysicsComponent::~PhysicsComponent() {}
 
 /* getters */
-float PhysicsComponent::GetMaxVelocity() const {
-    return _max_velocity;
+float PhysicsComponent::GetMaxVelocity() const { return max_velocity_; }
+
+sf::Vector2f PhysicsComponent::GetLastVelocity() const {
+  return last_velocity_ * speed_multiplier_;
 }
 
-sf::Vector2f PhysicsComponent::GetVelocity() const {
-    return _velocity;
+MovementState PhysicsComponent::GetMovementState() const {
+  if (last_velocity_.x == 0 && last_velocity_.y == 0) {
+    return MovementState::IDLE;
+  }
+  if (last_velocity_.x < 0 && std::abs(last_velocity_.x) >= std::abs(last_velocity_.y)) {
+    return MovementState::MOVING_LEFT;
+  }
+  if (last_velocity_.x > 0 && std::abs(last_velocity_.x) >= std::abs(last_velocity_.y)) {
+    return MovementState::MOVING_RIGHT;
+  }
+  if (last_velocity_.y < 0 && std::abs(last_velocity_.x) < std::abs(last_velocity_.y)) {
+    return MovementState::MOVING_UP;
+  }
+  if (last_velocity_.y > 0 && std::abs(last_velocity_.x) < std::abs(last_velocity_.y)) {
+    return MovementState::MOVING_DOWN;
+  }
+  throw std::runtime_error("CASE NOT HANDLED");
 }
 
-bool PhysicsComponent::GetState(MovementState state) const {
-    switch (state) {
-        case IDLE:
-            return _velocity.x == _velocity.y == 0;
-        case MOVING:
-            return _velocity.x != 0 || _velocity.y != 0;
-        case MOVING_LEFT:
-            return _velocity.x < 0 && std::abs(_velocity.x) >= std::abs(_velocity.y);
-        case MOVING_RIGHT:
-            return _velocity.x > 0 && std::abs(_velocity.x) >= std::abs(_velocity.y);
-        case MOVING_UP:
-            return _velocity.y < 0 && std::abs(_velocity.x) < std::abs(_velocity.y);
-        case MOVING_DOWN:
-            return _velocity.y > 0 && std::abs(_velocity.x) < std::abs(_velocity.y);
-        default:
-            throw std::runtime_error("CASE NOT HANDLED");
-    }
+MovementState PhysicsComponent::GetLastMoveDirection() const {
+  return last_direction_;
 }
 
 /* modifiers */
-void PhysicsComponent::Stop() {
-    _velocity.x = _velocity.y = 0;
+void PhysicsComponent::Stop() { velocity_.x = velocity_.y = 0; }
+
+void PhysicsComponent::SetPossibleMoveDirections(
+    PossibleDirections directions) {
+  able_dir = directions;
 }
 
-void PhysicsComponent::StopAxisMoveX() {
-    _velocity.x = 0;
+void PhysicsComponent::UpdateSpeedMultiplier(float multiplier) {
+  speed_multiplier_ = multiplier;
 }
 
-void PhysicsComponent::StopAxisMoveY() {
-    _velocity.y = 0;
-}
+void PhysicsComponent::StopAxisMoveX() { velocity_.x = 0; }
+
+void PhysicsComponent::StopAxisMoveY() { velocity_.y = 0; }
 
 /* functions */
-void PhysicsComponent::Accelerate(const float time_elapsed, const sf::Vector2f& direction) {
-    _velocity.x += _acceleration * direction.x * time_elapsed;
-    _velocity.y += _acceleration * direction.y * time_elapsed;
+void PhysicsComponent::Accelerate(const float time_elapsed,
+                                  sf::Vector2f direction) {
+  float dir_abs =
+      sqrtf(std::abs(direction.x * direction.x + direction.y * direction.y));
+  if (dir_abs >= move_const::kSmallValue) {
+    direction.x /= dir_abs;
+    direction.y /= dir_abs;
+  }
+  if ((direction.x < 0 && able_dir.left) ||
+      (direction.x > 0 && able_dir.right)) {
+    velocity_.x = max_velocity_ * direction.x;
+  }
+  if ((direction.y < 0 && able_dir.up) || (direction.y > 0 && able_dir.down)) {
+    velocity_.y = max_velocity_ * direction.y;
+  }
 }
 
 void PhysicsComponent::Update(const float time_elapsed) {
-    /* написать здесь нормальную проверку на текущую скорость */
-    float abs_v = sqrtf(_velocity.x * _velocity.x + _velocity.y * _velocity.y);
-    float cos_a = _velocity.x / abs_v;
-    float sin_a = _velocity.y / abs_v;
-    if (abs_v > _max_velocity) {
-        _velocity.x = _max_velocity * cos_a;
-        _velocity.y = _max_velocity * sin_a;
-    }
-    if (_velocity.x != 0) {
-        _velocity.x -= _deceleration * cos_a * time_elapsed;
-        if (_velocity.x * cos_a < 0) {
-            _velocity.x = 0;
-        }
-    }
-    if (_velocity.y != 0) {
-        _velocity.y -= _deceleration * sin_a * time_elapsed;
-        if (_velocity.y * sin_a < 0) {
-            _velocity.y = 0;
-        }
-    }
-    _velocity.x = _velocity.x;
-    _velocity.y = _velocity.y;
-    _sprite->move(_velocity * time_elapsed);
+  sprite_->move(velocity_ * speed_multiplier_ * time_elapsed);
+  last_velocity_.x = velocity_.x;
+  last_velocity_.y = velocity_.y;
+  if (velocity_.x != 0 || velocity_.y != 0) {
+    last_direction_ = GetMovementState();
+  }
+  velocity_.x = 0;
+  velocity_.y = 0;
 }
 
-void PhysicsComponent::UpdateCopy(sf::Sprite &sprite) {
-    _sprite = &sprite;
-}
-
-
+void PhysicsComponent::UpdateCopy(sf::Sprite &sprite) { sprite_ = &sprite; }

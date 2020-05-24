@@ -5,22 +5,21 @@
 #ifndef ANTIPATTERNS_PLAYER_H
 #define ANTIPATTERNS_PLAYER_H
 
-
 #include "Creature.h"
-/* здесь я сижу сейчас */
+
 class Player : public Creature {
 public:
-    Player(sf::Vector2f position, sf::Texture& texture_sheet, const std::string& file_name);
-    ~Player() override;
-    /* overrided functions */
-    void Update(float time_elapsed) override;
-    void Render(sf::RenderTarget &target) const override;
-private:
-    /* initializers */
+  Player(sf::Vector2f position, const sf::Texture &texture_sheet,
+         const std::string &file_name);
+  ~Player() override;
 
-    void UpdateAnimations(float time_elapsed);
-    sf::Vector2f _position;
+  void Update(float time_elapsed) override;
+  void Render(sf::RenderTarget &target) const override;
+
+private:
+  void UpdateAnimations(float time_elapsed);
+
+  sf::Vector2f position_;
 };
 
-
-#endif //ANTIPATTERNS_PLAYER_H
+#endif // ANTIPATTERNS_PLAYER_H

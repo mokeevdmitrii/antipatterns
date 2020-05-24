@@ -4,42 +4,36 @@
 
 #include "Rat.h"
 
-
-Rat::Rat(sf::Texture &texture_sheet, const std::map<std::string, Json::Node>& settings) {
-    Creature::InitPhysicsComponent(settings.at("physics_component").AsMap());
-    Creature::InitGraphicsComponent(texture_sheet, settings.at("graphics_component").AsMap());
-    Creature::InitHitboxComponent(settings.at("hitbox_component").AsMap());
-    Creature::InitAttributeComponent(settings.at("attribute_component").AsMap());
+Rat::Rat(const sf::Texture &texture_sheet,
+         const std::map<std::string, Json::Node> &settings)
+    : Enemy(texture_sheet, settings.at("enemy_settings").AsMap()) {
+  InitStates(settings.at("states").AsMap());
 }
 
 Rat::Rat(const Rat &other) : Enemy(other) {
-    std::cout << "rat copied" << std::endl;
+
 }
 
-
 void Rat::Update(float time_elapsed) {
-    _phys_comp->Update(time_elapsed);
-    /* here we use GetState from PhysicsComponent and play animations */
-    UpdateAnimations(time_elapsed);
-    /* here animations end */
-    _hitbox_comp->Update();
+  phys_comp_->Update(time_elapsed);
+  skill_comp_->Update(time_elapsed);
+  attribute_comp_->Update(time_elapsed);
+  /* here we use GetMovementState from PhysicsComponent and play animations */
+  UpdateAnimations(time_elapsed);
+  /* here animations end */
+  hitbox_comp_->Update();
 }
 
 void Rat::Render(sf::RenderTarget &target) const {
-    target.draw(_sprite);
-    _hitbox_comp->Render(target);
+  target.draw(sprite_);
+  hitbox_comp_->Render(target);
 }
 
-
 void Rat::UpdateAnimations(float time_elapsed) {
-    _graph_comp->Play("PLAYER_IDLE", time_elapsed);
+  Creature::UpdateMoveAnimations(time_elapsed);
 }
 
 std::unique_ptr<Enemy> Rat::Clone() const {
-    return std::make_unique<Rat>(*this);
+  return std::make_unique<Rat>(*this);
 }
-
-
-
-
 

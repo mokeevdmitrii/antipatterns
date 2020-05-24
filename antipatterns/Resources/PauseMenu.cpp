@@ -4,44 +4,42 @@
 
 #include "PauseMenu.h"
 
+PauseMenu::PauseMenu(const std::shared_ptr<sf::RenderWindow> &window)
+    : btn_manager_(file::kPauseMenuButtonsFile, file::kMainFontFile) {
+  inner_.setSize(sf::Vector2f(window->getSize().x * inner_ratio_x_,
+                              window->getSize().y * inner_ratio_y_));
+  background_.setSize(sf::Vector2f(window->getSize().x * outer_ratio_x_,
+                                   window->getSize().y * outer_ratio_y_));
+  background_.setFillColor(sf::Color(20, 20, 20, 100));
+  inner_.setFillColor(sf::Color(20, 20, 20, 200));
 
-PauseMenu::PauseMenu(const std::shared_ptr<sf::RenderWindow>& window) : _btn_manager("../Config/pause_menu_buttons.txt",
-                                                              "../Config/lobster.otf") {
-    _inner.setSize(sf::Vector2f(window->getSize().x * _inner_ratio_x,
-                                window->getSize().y * _inner_ratio_y));
-    _background.setSize(sf::Vector2f(window->getSize().x * _outer_ratio_x,
-                                     window->getSize().y * _outer_ratio_y));
-    _background.setFillColor(sf::Color(20, 20, 20, 100));
-    _inner.setFillColor(sf::Color(20, 20, 20, 200));
-
-    /* goddamn center everything lmao */
-    _background.setPosition(window->getSize().x / 2.f - _background.getSize().x / 2.f,
-                            window->getSize().y / 2.f - _background.getSize().y / 2.f);
-    _inner.setPosition(window->getSize().x / 2.f - _inner.getSize().x / 2.f,
-                       window->getSize().y / 2.f - _inner.getSize().y / 2.f);
-    _menu_text = sf::Text("Game paused", _btn_manager.GetFont(), 30);
-    _menu_text.setPosition(window->getSize().x * 0.5 - _menu_text.getGlobalBounds().width * 0.5,
-            window->getSize().y * 0.1 - _menu_text.getGlobalBounds().height * 0.5);
-    _menu_text.setFillColor(sf::Color(200, 200, 200, 200));
+  background_.setPosition(
+      window->getSize().x / 2.f - background_.getSize().x / 2.f,
+      window->getSize().y / 2.f - background_.getSize().y / 2.f);
+  inner_.setPosition(window->getSize().x / 2.f - inner_.getSize().x / 2.f,
+                     window->getSize().y / 2.f - inner_.getSize().y / 2.f);
+  menu_text_ = sf::Text(btn::kGamePausedText, btn_manager_.GetFont(), 30);
+  menu_text_.setPosition(
+      window->getSize().x * 0.5 - menu_text_.getGlobalBounds().width * 0.5,
+      window->getSize().y * 0.1 - menu_text_.getGlobalBounds().height * 0.5);
+  menu_text_.setFillColor(sf::Color(200, 200, 200, 200));
 }
 
-PauseMenu::~PauseMenu() {
-
-}
+PauseMenu::~PauseMenu() {}
 
 /* functions */
 
-void PauseMenu::Update(const sf::Vector2f& mouse_pos) {
-    _btn_manager.Update(mouse_pos);
+void PauseMenu::Update(const sf::Vector2f &mouse_pos) {
+  btn_manager_.Update(mouse_pos);
 }
 
 void PauseMenu::Render(sf::RenderTarget &target) const {
-    target.draw(_background);
-    target.draw(_inner);
-    target.draw(_menu_text);
-    _btn_manager.Render(target);
+  target.draw(background_);
+  target.draw(inner_);
+  target.draw(menu_text_);
+  btn_manager_.Render(target);
 }
 
-bool PauseMenu::IsButtonActive(const std::string& button_key) const {
-    return _btn_manager[button_key]->IsActive();
+bool PauseMenu::IsButtonActive(const std::string &button_key) const {
+  return btn_manager_[button_key]->IsActive();
 }

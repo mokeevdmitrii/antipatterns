@@ -1,4 +1,16 @@
-1) Download a zip/clone this repository
-2) cd to folder antipatterns
-3) build the project using cmake && make
-4) execute ./antipatterns from build folder
+# This project was done by Dmitry Mokeev and Vladimir Nikitin
+
+## How to launch this game
+
+1) Download a zip/clone this repository, use 1-depth clone:
+```
+git clone --depth 1  --branch curr https://github.com/mokeevdmitrii/antipatterns.git
+```
+2) execute run.sh
+```
+./run.sh
+```
+
+### OR
+
+1) download only run.sh and execute it

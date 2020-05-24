@@ -5,35 +5,36 @@
 #ifndef ANTIPATTERNS_MAINMENUSTATE_H
 #define ANTIPATTERNS_MAINMENUSTATE_H
 
+#include "../Resources/GUI/ButtonManager.h"
 #include "GameState.h"
-#include "../Resources/ButtonManager.h"
 
 struct Background {
-    sf::RectangleShape _image;
-    sf::Texture _back_texture;
+  sf::RectangleShape _image;
+  sf::Texture _back_texture;
 };
 
 class MainMenuState : public State {
 public:
-    MainMenuState(std::shared_ptr<sf::RenderWindow> window,
-            std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
-            std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack);
-    virtual ~MainMenuState();
+  MainMenuState(
+      std::shared_ptr<sf::RenderWindow> window,
+      std::shared_ptr<std::unordered_map<std::string, int>> supported_keys,
+      std::shared_ptr<std::stack<std::shared_ptr<State>>> state_stack);
+  ~MainMenuState();
 
-    /* overrided functions */
-    void Update(float time_elapsed) override;
-    void UpdateInput(float time_elapsed) override;
-    void Render(std::shared_ptr<sf::RenderTarget> target) override;
+  /* overrided functions */
+  void Update(float time_elapsed) override;
+  void UpdateInput(float time_elapsed) override;
+  void Render(std::shared_ptr<sf::RenderTarget> target) override;
+
 private:
-    /* initializers */
-    void InitKeybindings() override;
-    void InitBackground();
+  /* initializers */
+  void InitKeybindings() override;
+  void InitBackground();
 
-    /* variables */
-    sf::Font _main_font;
-    Background _background;
-    ButtonManager _btn_manager;
+  /* variables */
+  sf::Font main_font_;
+  Background background_;
+  gui::ButtonManager btn_manager_;
 };
 
-
-#endif //ANTIPATTERNS_MAINMENUSTATE_H
+#endif // ANTIPATTERNS_MAINMENUSTATE_H

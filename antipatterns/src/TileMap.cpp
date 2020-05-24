@@ -4,78 +4,118 @@
 
 #include "TileMap.h"
 
-TileMap::TileMap(const std::string &settings_file_name, const std::string &map_tile_name) {
-    InitUniqueTiles(settings_file_name);
-    InitMap(map_tile_name);
-}
+int TileMap::grid_size_ = 62;
 
-void TileMap::UpdateTiles(std::unique_ptr<Creature> creature, float time_elapsed /*, EnemySystem& system */) {
-    /* проверка, не вышло ли существо за границы */
-    /* проверка всех плиток в определенном прямоугольнике */
+TileMap::TileMap(
+    const std::string &map_tile_name,
+    const std::unordered_map<TileType, std::unique_ptr<Tile>> &unique_tiles) {
+  InitMap(map_tile_name, unique_tiles);
 }
 
 void TileMap::Render(sf::RenderTarget &target) const {
-    for (auto &vec_x : _map) {
-        for (auto& vec_y : vec_x) {
-            for (auto &tile_layer : vec_y) {
-                tile_layer->Render(target);
-            }
-        }
+  for (auto &vec_x : map_) {
+    for (auto &vec_y : vec_x) {
+      for (auto &tile_layer : vec_y) {
+        tile_layer->Render(target);
+      }
     }
+  }
 }
 
+int TileMap::GetGridSize() { return grid_size_; }
+
+void TileMap::SetGridSize(int grid_size) { grid_size_ = grid_size; }
+
 sf::Vector2i TileMap::GetGridPosition(sf::Vector2f global_position) const {
-    return sf::Vector2i(static_cast<int>(static_cast<int>(global_position.x) / _grid_size),
-                        static_cast<int>(static_cast<int>(global_position.y)) / _grid_size);
+  return sf::Vector2i(
+      static_cast<int>(static_cast<int>(global_position.x) / grid_size_),
+      static_cast<int>(static_cast<int>(global_position.y)) / grid_size_);
 }
 
 sf::Vector2f TileMap::GetGlobalPosition(sf::Vector2i grid_position) const {
-    return sf::Vector2f(static_cast<float>(grid_position.x * _grid_size),
-                        static_cast<float>(grid_position.y * _grid_size));
+  return sf::Vector2f(static_cast<float>(grid_position.x * grid_size_),
+                      static_cast<float>(grid_position.y * grid_size_));
 }
 
-
-/* initializers */
-
-void TileMap::InitUniqueTiles(const std::string &file_name) {
-    std::map<std::string, Json::Node> settings = Json::Load(file_name).GetRoot().AsMap();
-    std::string texture_file = settings.at("file_name").AsString();
-    _tile_sheet.loadFromFile(texture_file);
-    _grid_size = static_cast<int>(settings.at("grid_size").AsDouble());
-    _world_size.x = static_cast<int>(settings.at("world_size_x").AsDouble());
-    _world_size.y = static_cast<int>(settings.at("world_size_y").AsDouble());
-    for (const auto &settings_map : settings.at("tiles").AsArray()) {
-        sf::IntRect curr_rect;
-        TileType curr_type;
-        curr_rect.height = curr_rect.width = _grid_size;
-        curr_rect.left = static_cast<int>(settings_map.AsMap().at("x").AsDouble()) * _grid_size;
-        curr_rect.top = static_cast<int>(settings_map.AsMap().at("y").AsDouble()) * _grid_size;
-        curr_type = static_cast<TileType>(settings_map.AsMap().at("type").AsDouble());
-        _unique_tiles[curr_type] = std::make_unique<Tile>(curr_type, _tile_sheet, curr_rect);
-    }
-}
-
-void TileMap::InitMap(const std::string &file_name) {
-    _map.resize(_world_size.x);
-    for (auto &sub_vec : _map) {
-        sub_vec.resize(_world_size.y);
-    }
-    const std::vector<Json::Node> map = Json::Load(file_name).GetRoot().AsArray();
-    for (int i = 0; i < _world_size.x; ++i) {
-        const std::vector<Json::Node> &map_x = map[i].AsArray();
-        for (int j = 0; j < _world_size.y; ++j) {
-            const std::vector<Json::Node> &map_y = map_x[j].AsArray();
-            for (const Json::Node &type : map_y) {
-                _map[i][j].push_back(_unique_tiles.at(static_cast<TileType>(type.AsDouble()))->Clone(
-                        GetGlobalPosition(sf::Vector2i(i, j))));
-            }
+std::vector<std::vector<int>> TileMap::GetCostMap() const {
+  std::vector<std::vector<int>> cost_map(
+      map_.at(0).size(), std::vector<int>(map_.size(), -1));
+  for (int j = 0; j < map_.at(0).size(); ++j) {
+    for (int i = 0; i < map_.size(); ++i) {
+      for (const auto &layer : map_.at(i).at(j)) {
+        if (layer->GetPlaceType() != PlaceType::SOLID) {
+          cost_map.at(j).at(i) = std::max(
+              static_cast<int>(layer->GetMoveCost()), cost_map.at(j).at(i));
         }
+      }
     }
+  }
+  return cost_map;
 }
 
+/* private */
 
+void TileMap::InitMap(
+    const std::string &file_name,
+    const std::unordered_map<TileType, std::unique_ptr<Tile>> &unique_tiles) {
+  const std::map<std::string, Json::Node> map_settings =
+      Json::Load(file_name).GetRoot().AsMap();
+  const std::vector<Json::Node> shift_nodes =
+      map_settings.at("shift").AsArray();
+  sf::Vector2f shift =
+      sf::Vector2f(shift_nodes.at(0).AsFloat(), shift_nodes.at(1).AsFloat());
+  auto borders_map = map_settings.at("borders").AsMap();
+  borders_.setPosition(borders_map.at("pos_x").AsFloat(),
+                       borders_map.at("pos_y").AsFloat());
+  borders_.setSize(
+      {borders_map.at("width").AsFloat(), borders_map.at("height").AsFloat()});
+  const std::vector<Json::Node> map_layers = map_settings.at("map").AsArray();
+  world_size_.y = map_layers.empty() ? 0 : map_layers.front().AsArray().size();
+  world_size_.x = world_size_.y == 0
+                      ? 0
+                      : map_layers.front().AsArray().front().AsArray().size();
+  //настраиваем размеры карты
+  map_.resize(world_size_.y);
+  for (auto &sub_vec : map_) {
+    sub_vec.resize(world_size_.x);
+  }
+  for (const auto &layer_node : map_layers) {
+    const std::vector<Json::Node> &layer = layer_node.AsArray();
+    for (int y_pos = 0; y_pos < world_size_.y; ++y_pos) {
+      const std::vector<Json::Node> &row = layer[y_pos].AsArray();
+      for (int x_pos = 0; x_pos < world_size_.x; ++x_pos) {
+        auto type = static_cast<TileType>(row[x_pos].AsDouble());
+        AddTileLayer(type, x_pos, y_pos, shift, unique_tiles);
+      }
+    }
+  }
+  auto vec = GetCostMap();
+}
 
+void TileMap::AddTileLayer(
+    TileType type, int x_pos, int y_pos, sf::Vector2f shift,
+    const std::unordered_map<TileType, std::unique_ptr<Tile>> &unique_tiles) {
+  if (type != TileType::NOTHING) {
+    sf::Vector2f pos = GetGlobalPosition(sf::Vector2i(x_pos, y_pos));
+    map_.at(y_pos).at(x_pos).push_back(unique_tiles.at(type)->Clone(
+        sf::Vector2f(pos.x + shift.x, pos.y + shift.y)));
+  }
+}
 
-
-
-
+bool TileMap::CanMove(const sf::FloatRect &rect) {
+  sf::Vector2f left_top_pos = {rect.left, rect.top};
+  sf::Vector2f right_down_pos = {left_top_pos.x + rect.width,
+                                 left_top_pos.y + rect.height};
+  sf::Vector2i left_top_grid = GetGridPosition(left_top_pos);
+  sf::Vector2i right_down_grid = GetGridPosition(right_down_pos);
+  for (int j = left_top_grid.y; j <= right_down_grid.y; ++j) {
+    for (int i = left_top_grid.x; i <= right_down_grid.x; ++i) {
+      for (const auto &layer : map_.at(j).at(i)) {
+        if (layer->GetPlaceType() == PlaceType::SOLID) {
+          return false;
+        }
+      }
+    }
+  }
+  return true;
+}
