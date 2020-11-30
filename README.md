@@ -4,7 +4,7 @@
 
 1) Download a zip/clone this repository, use 1-depth clone:
 ```
-git clone --depth 1  --branch curr https://github.com/mokeevdmitrii/antipatterns.git
+git clone --depth 1 https://github.com/mokeevdmitrii/antipatterns.git
 ```
 2) execute run.sh
 ```
